@@ -32,10 +32,12 @@ namespace PT.SPSS
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.masterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.barangBakuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.supplierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.penjualanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pembelianToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.keluarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.supplierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.kodeBarangToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.kodeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,7 +58,9 @@ namespace PT.SPSS
             // 
             this.masterToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.barangBakuToolStripMenuItem,
-            this.supplierToolStripMenuItem});
+            this.supplierToolStripMenuItem,
+            this.kodeBarangToolStripMenuItem,
+            this.kodeToolStripMenuItem});
             this.masterToolStripMenuItem.Name = "masterToolStripMenuItem";
             this.masterToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
             this.masterToolStripMenuItem.Text = "Master";
@@ -66,6 +70,13 @@ namespace PT.SPSS
             this.barangBakuToolStripMenuItem.Name = "barangBakuToolStripMenuItem";
             this.barangBakuToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.barangBakuToolStripMenuItem.Text = "Barang Baku";
+            // 
+            // supplierToolStripMenuItem
+            // 
+            this.supplierToolStripMenuItem.Name = "supplierToolStripMenuItem";
+            this.supplierToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.supplierToolStripMenuItem.Text = "Supplier";
+            this.supplierToolStripMenuItem.Click += new System.EventHandler(this.supplierToolStripMenuItem_Click);
             // 
             // penjualanToolStripMenuItem
             // 
@@ -85,12 +96,17 @@ namespace PT.SPSS
             this.keluarToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
             this.keluarToolStripMenuItem.Text = "Keluar";
             // 
-            // supplierToolStripMenuItem
+            // kodeBarangToolStripMenuItem
             // 
-            this.supplierToolStripMenuItem.Name = "supplierToolStripMenuItem";
-            this.supplierToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.supplierToolStripMenuItem.Text = "Supplier";
-            this.supplierToolStripMenuItem.Click += new System.EventHandler(this.supplierToolStripMenuItem_Click);
+            this.kodeBarangToolStripMenuItem.Name = "kodeBarangToolStripMenuItem";
+            this.kodeBarangToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.kodeBarangToolStripMenuItem.Text = "Kode Barang";
+            // 
+            // kodeToolStripMenuItem
+            // 
+            this.kodeToolStripMenuItem.Name = "kodeToolStripMenuItem";
+            this.kodeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.kodeToolStripMenuItem.Text = "Kode Group";
             // 
             // FormUtama
             // 
@@ -117,5 +133,7 @@ namespace PT.SPSS
         private System.Windows.Forms.ToolStripMenuItem pembelianToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem keluarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem supplierToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem kodeBarangToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem kodeToolStripMenuItem;
     }
 }

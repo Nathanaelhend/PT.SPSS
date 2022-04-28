@@ -31,15 +31,18 @@ namespace PT.SPSS
         {
             this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
-            this.textBoxKodeSupplier = new System.Windows.Forms.TextBox();
-            this.textBoxNamaSupplier = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.textBoxAlamat = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
+            this.btnKeluar = new System.Windows.Forms.Button();
             this.textBoxKota = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.btnInputSupplier = new System.Windows.Forms.Button();
+            this.textBoxAlamat = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.textBoxNamaSupplier = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.textBoxKodeSupplier = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.buttonEdit = new System.Windows.Forms.Button();
+            this.buttonInput = new System.Windows.Forms.Button();
+            this.buttonHapus = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,7 +60,10 @@ namespace PT.SPSS
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.panel1.Controls.Add(this.btnInputSupplier);
+            this.panel1.Controls.Add(this.buttonHapus);
+            this.panel1.Controls.Add(this.buttonInput);
+            this.panel1.Controls.Add(this.buttonEdit);
+            this.panel1.Controls.Add(this.btnKeluar);
             this.panel1.Controls.Add(this.textBoxKota);
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.textBoxAlamat);
@@ -71,41 +77,34 @@ namespace PT.SPSS
             this.panel1.Size = new System.Drawing.Size(365, 217);
             this.panel1.TabIndex = 1;
             // 
-            // label5
+            // btnKeluar
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(14, 16);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(114, 16);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "Kode Supplier  ";
+            this.btnKeluar.BackColor = System.Drawing.Color.Salmon;
+            this.btnKeluar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnKeluar.Location = new System.Drawing.Point(260, 172);
+            this.btnKeluar.Name = "btnKeluar";
+            this.btnKeluar.Size = new System.Drawing.Size(89, 31);
+            this.btnKeluar.TabIndex = 8;
+            this.btnKeluar.Text = "KELUAR";
+            this.btnKeluar.UseVisualStyleBackColor = false;
             // 
-            // textBoxKodeSupplier
+            // textBoxKota
             // 
-            this.textBoxKodeSupplier.Location = new System.Drawing.Point(136, 12);
-            this.textBoxKodeSupplier.Multiline = true;
-            this.textBoxKodeSupplier.Name = "textBoxKodeSupplier";
-            this.textBoxKodeSupplier.Size = new System.Drawing.Size(213, 25);
-            this.textBoxKodeSupplier.TabIndex = 1;
+            this.textBoxKota.Location = new System.Drawing.Point(136, 128);
+            this.textBoxKota.Multiline = true;
+            this.textBoxKota.Name = "textBoxKota";
+            this.textBoxKota.Size = new System.Drawing.Size(213, 25);
+            this.textBoxKota.TabIndex = 7;
             // 
-            // textBoxNamaSupplier
+            // label8
             // 
-            this.textBoxNamaSupplier.Location = new System.Drawing.Point(136, 43);
-            this.textBoxNamaSupplier.Multiline = true;
-            this.textBoxNamaSupplier.Name = "textBoxNamaSupplier";
-            this.textBoxNamaSupplier.Size = new System.Drawing.Size(213, 25);
-            this.textBoxNamaSupplier.TabIndex = 3;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(14, 47);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(115, 16);
-            this.label6.TabIndex = 2;
-            this.label6.Text = "Nama Supplier ";
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(14, 132);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(87, 16);
+            this.label8.TabIndex = 6;
+            this.label8.Text = "Kota            ";
             // 
             // textBoxAlamat
             // 
@@ -126,34 +125,74 @@ namespace PT.SPSS
             this.label7.TabIndex = 4;
             this.label7.Text = "Alamat ";
             // 
-            // textBoxKota
+            // textBoxNamaSupplier
             // 
-            this.textBoxKota.Location = new System.Drawing.Point(136, 128);
-            this.textBoxKota.Multiline = true;
-            this.textBoxKota.Name = "textBoxKota";
-            this.textBoxKota.Size = new System.Drawing.Size(213, 25);
-            this.textBoxKota.TabIndex = 7;
+            this.textBoxNamaSupplier.Location = new System.Drawing.Point(136, 43);
+            this.textBoxNamaSupplier.Multiline = true;
+            this.textBoxNamaSupplier.Name = "textBoxNamaSupplier";
+            this.textBoxNamaSupplier.Size = new System.Drawing.Size(213, 25);
+            this.textBoxNamaSupplier.TabIndex = 3;
             // 
-            // label8
+            // label6
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(14, 132);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(87, 16);
-            this.label8.TabIndex = 6;
-            this.label8.Text = "Kota            ";
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(14, 47);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(115, 16);
+            this.label6.TabIndex = 2;
+            this.label6.Text = "Nama Supplier ";
             // 
-            // btnInputSupplier
+            // textBoxKodeSupplier
             // 
-            this.btnInputSupplier.BackColor = System.Drawing.Color.Salmon;
-            this.btnInputSupplier.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInputSupplier.Location = new System.Drawing.Point(274, 172);
-            this.btnInputSupplier.Name = "btnInputSupplier";
-            this.btnInputSupplier.Size = new System.Drawing.Size(75, 31);
-            this.btnInputSupplier.TabIndex = 8;
-            this.btnInputSupplier.Text = "INPUT";
-            this.btnInputSupplier.UseVisualStyleBackColor = false;
+            this.textBoxKodeSupplier.Location = new System.Drawing.Point(136, 12);
+            this.textBoxKodeSupplier.Multiline = true;
+            this.textBoxKodeSupplier.Name = "textBoxKodeSupplier";
+            this.textBoxKodeSupplier.Size = new System.Drawing.Size(213, 25);
+            this.textBoxKodeSupplier.TabIndex = 1;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(14, 16);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(114, 16);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Kode Supplier  ";
+            // 
+            // buttonEdit
+            // 
+            this.buttonEdit.BackColor = System.Drawing.Color.Salmon;
+            this.buttonEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonEdit.Location = new System.Drawing.Point(98, 172);
+            this.buttonEdit.Name = "buttonEdit";
+            this.buttonEdit.Size = new System.Drawing.Size(75, 31);
+            this.buttonEdit.TabIndex = 9;
+            this.buttonEdit.Text = "EDIT";
+            this.buttonEdit.UseVisualStyleBackColor = false;
+            // 
+            // buttonInput
+            // 
+            this.buttonInput.BackColor = System.Drawing.Color.Salmon;
+            this.buttonInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonInput.Location = new System.Drawing.Point(17, 172);
+            this.buttonInput.Name = "buttonInput";
+            this.buttonInput.Size = new System.Drawing.Size(75, 31);
+            this.buttonInput.TabIndex = 10;
+            this.buttonInput.Text = "INPUT";
+            this.buttonInput.UseVisualStyleBackColor = false;
+            // 
+            // buttonHapus
+            // 
+            this.buttonHapus.BackColor = System.Drawing.Color.Salmon;
+            this.buttonHapus.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonHapus.Location = new System.Drawing.Point(179, 172);
+            this.buttonHapus.Name = "buttonHapus";
+            this.buttonHapus.Size = new System.Drawing.Size(75, 31);
+            this.buttonHapus.TabIndex = 11;
+            this.buttonHapus.Text = "HAPUS";
+            this.buttonHapus.UseVisualStyleBackColor = false;
             // 
             // FormEntrySupplier
             // 
@@ -178,7 +217,7 @@ namespace PT.SPSS
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btnInputSupplier;
+        private System.Windows.Forms.Button btnKeluar;
         private System.Windows.Forms.TextBox textBoxKota;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox textBoxAlamat;
@@ -187,5 +226,8 @@ namespace PT.SPSS
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox textBoxKodeSupplier;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button buttonHapus;
+        private System.Windows.Forms.Button buttonInput;
+        private System.Windows.Forms.Button buttonEdit;
     }
 }

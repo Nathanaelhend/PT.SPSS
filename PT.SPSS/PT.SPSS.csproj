@@ -49,6 +49,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormEntryBrgJadi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEntryBrgJadi.Designer.cs">
+      <DependentUpon>FormEntryBrgJadi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormEntryCatBrgJadi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEntryCatBrgJadi.Designer.cs">
+      <DependentUpon>FormEntryCatBrgJadi.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormDaftarSupplier.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -60,6 +72,12 @@
     </Compile>
     <Compile Include="FormEntrySupplier.Designer.cs">
       <DependentUpon>FormEntrySupplier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormKatBahan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormKatBahan.Designer.cs">
+      <DependentUpon>FormKatBahan.cs</DependentUpon>
     </Compile>
     <Compile Include="FormLogin.cs">
       <SubType>Form</SubType>
@@ -75,11 +93,20 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormEntryBrgJadi.resx">
+      <DependentUpon>FormEntryBrgJadi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormEntryCatBrgJadi.resx">
+      <DependentUpon>FormEntryCatBrgJadi.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormDaftarSupplier.resx">
       <DependentUpon>FormDaftarSupplier.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormEntrySupplier.resx">
       <DependentUpon>FormEntrySupplier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormKatBahan.resx">
+      <DependentUpon>FormKatBahan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
