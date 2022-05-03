@@ -137,5 +137,25 @@ namespace PT.SPSS
         {
             this.Close();
         }
+
+        private void FormEntrySupplier_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.F5)
+            {
+                FormDaftarSupplier frmDaftarSupp = new FormDaftarSupplier();
+                frmDaftarSupp.Owner = this;
+                frmDaftarSupp.Show();
+            }
+        }
+
+        private void textBoxKodeSupplier_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F5)
+            {
+                FormDaftarSupplier frmDaftarSupp = new FormDaftarSupplier();
+                frmDaftarSupp.Owner = this;
+                frmDaftarSupp.Show();
+            }
+        }
     }
 }

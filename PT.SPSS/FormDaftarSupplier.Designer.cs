@@ -125,6 +125,7 @@ namespace PT.SPSS
             this.Controls.Add(this.dataGridViewSupplier);
             this.Name = "FormDaftarSupplier";
             this.Text = "FormDaftarSupplier";
+            this.Load += new System.EventHandler(this.FormDaftarSupplier_Load);
             this.panelSupplier.ResumeLayout(false);
             this.panelSupplier.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSupplier)).EndInit();

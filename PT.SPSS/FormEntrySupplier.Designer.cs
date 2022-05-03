@@ -190,6 +190,7 @@ namespace PT.SPSS
             this.textBoxKodeSupplier.Size = new System.Drawing.Size(213, 25);
             this.textBoxKodeSupplier.TabIndex = 1;
             this.textBoxKodeSupplier.TextChanged += new System.EventHandler(this.textBoxKodeSupplier_TextChanged);
+            this.textBoxKodeSupplier.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxKodeSupplier_KeyDown);
             // 
             // label5
             // 
@@ -211,6 +212,7 @@ namespace PT.SPSS
             this.Name = "FormEntrySupplier";
             this.Text = "Entry Supplier";
             this.Load += new System.EventHandler(this.FormEntrySupplier_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormEntrySupplier_KeyDown);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
