@@ -61,5 +61,10 @@ namespace PT.SPSS
                 MessageBox.Show("Koneksi gagal. Pesan kesalahan : " + ex.Message);
             }
         }
+
+        private void btnKeluar_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

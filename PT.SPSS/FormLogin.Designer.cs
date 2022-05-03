@@ -90,7 +90,6 @@ namespace PT.SPSS
             // 
             this.txtDatabase.Location = new System.Drawing.Point(110, 39);
             this.txtDatabase.Name = "txtDatabase";
-            this.txtDatabase.PasswordChar = '*';
             this.txtDatabase.Size = new System.Drawing.Size(170, 20);
             this.txtDatabase.TabIndex = 8;
             // 
@@ -147,6 +146,7 @@ namespace PT.SPSS
             this.btnKeluar.TabIndex = 5;
             this.btnKeluar.Text = "KELUAR";
             this.btnKeluar.UseVisualStyleBackColor = true;
+            this.btnKeluar.Click += new System.EventHandler(this.btnKeluar_Click);
             // 
             // txtUsername
             // 

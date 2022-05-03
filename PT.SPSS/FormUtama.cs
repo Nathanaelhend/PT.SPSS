@@ -44,11 +44,11 @@ namespace PT.SPSS
 
         private void supplierToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form frm = Application.OpenForms["FormDaftarSupplier"];
+            Form frm = Application.OpenForms["FormEntrySupplier"];
 
             if(frm == null)
             {
-                FormDaftarSupplier formSupplier = new FormDaftarSupplier();
+                FormEntrySupplier formSupplier = new FormEntrySupplier();
                 formSupplier.MdiParent = this;
                 formSupplier.Show();
             }

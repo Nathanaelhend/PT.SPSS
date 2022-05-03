@@ -31,6 +31,9 @@ namespace PT.SPSS
         {
             this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.buttonHapus = new System.Windows.Forms.Button();
+            this.buttonSimpan = new System.Windows.Forms.Button();
+            this.buttonBatal = new System.Windows.Forms.Button();
             this.btnKeluar = new System.Windows.Forms.Button();
             this.textBoxKota = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -40,9 +43,6 @@ namespace PT.SPSS
             this.label6 = new System.Windows.Forms.Label();
             this.textBoxKodeSupplier = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.buttonEdit = new System.Windows.Forms.Button();
-            this.buttonInput = new System.Windows.Forms.Button();
-            this.buttonHapus = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -61,8 +61,8 @@ namespace PT.SPSS
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel1.Controls.Add(this.buttonHapus);
-            this.panel1.Controls.Add(this.buttonInput);
-            this.panel1.Controls.Add(this.buttonEdit);
+            this.panel1.Controls.Add(this.buttonSimpan);
+            this.panel1.Controls.Add(this.buttonBatal);
             this.panel1.Controls.Add(this.btnKeluar);
             this.panel1.Controls.Add(this.textBoxKota);
             this.panel1.Controls.Add(this.label8);
@@ -77,6 +77,42 @@ namespace PT.SPSS
             this.panel1.Size = new System.Drawing.Size(365, 217);
             this.panel1.TabIndex = 1;
             // 
+            // buttonHapus
+            // 
+            this.buttonHapus.BackColor = System.Drawing.Color.Salmon;
+            this.buttonHapus.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonHapus.Location = new System.Drawing.Point(179, 172);
+            this.buttonHapus.Name = "buttonHapus";
+            this.buttonHapus.Size = new System.Drawing.Size(75, 31);
+            this.buttonHapus.TabIndex = 11;
+            this.buttonHapus.Text = "HAPUS";
+            this.buttonHapus.UseVisualStyleBackColor = false;
+            this.buttonHapus.Click += new System.EventHandler(this.buttonHapus_Click);
+            // 
+            // buttonSimpan
+            // 
+            this.buttonSimpan.BackColor = System.Drawing.Color.Salmon;
+            this.buttonSimpan.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonSimpan.Location = new System.Drawing.Point(5, 172);
+            this.buttonSimpan.Name = "buttonSimpan";
+            this.buttonSimpan.Size = new System.Drawing.Size(87, 31);
+            this.buttonSimpan.TabIndex = 10;
+            this.buttonSimpan.Text = "SIMPAN";
+            this.buttonSimpan.UseVisualStyleBackColor = false;
+            this.buttonSimpan.Click += new System.EventHandler(this.buttonSimpan_Click_1);
+            // 
+            // buttonBatal
+            // 
+            this.buttonBatal.BackColor = System.Drawing.Color.Salmon;
+            this.buttonBatal.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonBatal.Location = new System.Drawing.Point(98, 172);
+            this.buttonBatal.Name = "buttonBatal";
+            this.buttonBatal.Size = new System.Drawing.Size(75, 31);
+            this.buttonBatal.TabIndex = 9;
+            this.buttonBatal.Text = "BATAL";
+            this.buttonBatal.UseVisualStyleBackColor = false;
+            this.buttonBatal.Click += new System.EventHandler(this.buttonBatal_Click_1);
+            // 
             // btnKeluar
             // 
             this.btnKeluar.BackColor = System.Drawing.Color.Salmon;
@@ -87,6 +123,7 @@ namespace PT.SPSS
             this.btnKeluar.TabIndex = 8;
             this.btnKeluar.Text = "KELUAR";
             this.btnKeluar.UseVisualStyleBackColor = false;
+            this.btnKeluar.Click += new System.EventHandler(this.btnKeluar_Click);
             // 
             // textBoxKota
             // 
@@ -145,11 +182,14 @@ namespace PT.SPSS
             // 
             // textBoxKodeSupplier
             // 
+            this.textBoxKodeSupplier.CausesValidation = false;
             this.textBoxKodeSupplier.Location = new System.Drawing.Point(136, 12);
+            this.textBoxKodeSupplier.MaxLength = 5;
             this.textBoxKodeSupplier.Multiline = true;
             this.textBoxKodeSupplier.Name = "textBoxKodeSupplier";
             this.textBoxKodeSupplier.Size = new System.Drawing.Size(213, 25);
             this.textBoxKodeSupplier.TabIndex = 1;
+            this.textBoxKodeSupplier.TextChanged += new System.EventHandler(this.textBoxKodeSupplier_TextChanged);
             // 
             // label5
             // 
@@ -160,39 +200,6 @@ namespace PT.SPSS
             this.label5.Size = new System.Drawing.Size(114, 16);
             this.label5.TabIndex = 0;
             this.label5.Text = "Kode Supplier  ";
-            // 
-            // buttonEdit
-            // 
-            this.buttonEdit.BackColor = System.Drawing.Color.Salmon;
-            this.buttonEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonEdit.Location = new System.Drawing.Point(98, 172);
-            this.buttonEdit.Name = "buttonEdit";
-            this.buttonEdit.Size = new System.Drawing.Size(75, 31);
-            this.buttonEdit.TabIndex = 9;
-            this.buttonEdit.Text = "EDIT";
-            this.buttonEdit.UseVisualStyleBackColor = false;
-            // 
-            // buttonInput
-            // 
-            this.buttonInput.BackColor = System.Drawing.Color.Salmon;
-            this.buttonInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonInput.Location = new System.Drawing.Point(17, 172);
-            this.buttonInput.Name = "buttonInput";
-            this.buttonInput.Size = new System.Drawing.Size(75, 31);
-            this.buttonInput.TabIndex = 10;
-            this.buttonInput.Text = "INPUT";
-            this.buttonInput.UseVisualStyleBackColor = false;
-            // 
-            // buttonHapus
-            // 
-            this.buttonHapus.BackColor = System.Drawing.Color.Salmon;
-            this.buttonHapus.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonHapus.Location = new System.Drawing.Point(179, 172);
-            this.buttonHapus.Name = "buttonHapus";
-            this.buttonHapus.Size = new System.Drawing.Size(75, 31);
-            this.buttonHapus.TabIndex = 11;
-            this.buttonHapus.Text = "HAPUS";
-            this.buttonHapus.UseVisualStyleBackColor = false;
             // 
             // FormEntrySupplier
             // 
@@ -212,9 +219,6 @@ namespace PT.SPSS
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnKeluar;
@@ -227,7 +231,7 @@ namespace PT.SPSS
         private System.Windows.Forms.TextBox textBoxKodeSupplier;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button buttonHapus;
-        private System.Windows.Forms.Button buttonInput;
-        private System.Windows.Forms.Button buttonEdit;
+        private System.Windows.Forms.Button buttonSimpan;
+        private System.Windows.Forms.Button buttonBatal;
     }
 }

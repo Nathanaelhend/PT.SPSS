@@ -35,7 +35,6 @@ namespace PT.SPSS
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonKeluar = new System.Windows.Forms.Button();
-            this.buttonTambah = new System.Windows.Forms.Button();
             this.dataGridViewSupplier = new System.Windows.Forms.DataGridView();
             this.panelSupplier.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSupplier)).BeginInit();
@@ -107,19 +106,6 @@ namespace PT.SPSS
             this.buttonKeluar.Text = "Keluar";
             this.buttonKeluar.UseVisualStyleBackColor = false;
             // 
-            // buttonTambah
-            // 
-            this.buttonTambah.BackColor = System.Drawing.Color.Crimson;
-            this.buttonTambah.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonTambah.ForeColor = System.Drawing.Color.White;
-            this.buttonTambah.Location = new System.Drawing.Point(339, 397);
-            this.buttonTambah.Name = "buttonTambah";
-            this.buttonTambah.Size = new System.Drawing.Size(129, 41);
-            this.buttonTambah.TabIndex = 45;
-            this.buttonTambah.Text = "Tambah";
-            this.buttonTambah.UseVisualStyleBackColor = false;
-            this.buttonTambah.Click += new System.EventHandler(this.buttonTambah_Click);
-            // 
             // dataGridViewSupplier
             // 
             this.dataGridViewSupplier.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -136,7 +122,6 @@ namespace PT.SPSS
             this.Controls.Add(this.panelSupplier);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonKeluar);
-            this.Controls.Add(this.buttonTambah);
             this.Controls.Add(this.dataGridViewSupplier);
             this.Name = "FormDaftarSupplier";
             this.Text = "FormDaftarSupplier";
@@ -155,7 +140,6 @@ namespace PT.SPSS
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button buttonKeluar;
-        private System.Windows.Forms.Button buttonTambah;
         private System.Windows.Forms.DataGridView dataGridViewSupplier;
     }
 }
