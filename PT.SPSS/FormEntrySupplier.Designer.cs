@@ -212,7 +212,6 @@ namespace PT.SPSS
             this.Name = "FormEntrySupplier";
             this.Text = "Entry Supplier";
             this.Load += new System.EventHandler(this.FormEntrySupplier_Load);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormEntrySupplier_KeyDown);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);

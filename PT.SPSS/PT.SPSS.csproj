@@ -49,6 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormEntryBahanBaku.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEntryBahanBaku.Designer.cs">
+      <DependentUpon>FormEntryBahanBaku.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormEntryBrgJadi.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,6 +99,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormEntryBahanBaku.resx">
+      <DependentUpon>FormEntryBahanBaku.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormEntryBrgJadi.resx">
       <DependentUpon>FormEntryBrgJadi.cs</DependentUpon>
     </EmbeddedResource>

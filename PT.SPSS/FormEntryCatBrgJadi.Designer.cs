@@ -1,7 +1,7 @@
 ﻿
 namespace PT.SPSS
 {
-    partial class FormDaftarBarang
+    partial class FormEntryCatBrgJadi
     {
         /// <summary>
         /// Required designer variable.
@@ -29,68 +29,72 @@ namespace PT.SPSS
         /// </summary>
         private void InitializeComponent()
         {
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.buttonKeluar = new System.Windows.Forms.Button();
+            this.buttonHapus = new System.Windows.Forms.Button();
+            this.buttonBatal = new System.Windows.Forms.Button();
+            this.textBoxKeterangan = new System.Windows.Forms.TextBox();
+            this.textBoxKode = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.buttonTambah = new System.Windows.Forms.Button();
+            this.buttonSimpan = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // button3
+            // buttonKeluar
             // 
-            this.button3.BackColor = System.Drawing.Color.Crimson;
-            this.button3.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(273, 157);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(81, 31);
-            this.button3.TabIndex = 74;
-            this.button3.Text = "KELUAR";
-            this.button3.UseVisualStyleBackColor = false;
+            this.buttonKeluar.BackColor = System.Drawing.Color.Crimson;
+            this.buttonKeluar.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonKeluar.ForeColor = System.Drawing.Color.White;
+            this.buttonKeluar.Location = new System.Drawing.Point(273, 157);
+            this.buttonKeluar.Name = "buttonKeluar";
+            this.buttonKeluar.Size = new System.Drawing.Size(81, 31);
+            this.buttonKeluar.TabIndex = 74;
+            this.buttonKeluar.Text = "KELUAR";
+            this.buttonKeluar.UseVisualStyleBackColor = false;
+            this.buttonKeluar.Click += new System.EventHandler(this.buttonKeluar_Click);
             // 
-            // button2
+            // buttonHapus
             // 
-            this.button2.BackColor = System.Drawing.Color.Crimson;
-            this.button2.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(186, 157);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(81, 31);
-            this.button2.TabIndex = 73;
-            this.button2.Text = "HAPUS";
-            this.button2.UseVisualStyleBackColor = false;
+            this.buttonHapus.BackColor = System.Drawing.Color.Crimson;
+            this.buttonHapus.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonHapus.ForeColor = System.Drawing.Color.White;
+            this.buttonHapus.Location = new System.Drawing.Point(186, 157);
+            this.buttonHapus.Name = "buttonHapus";
+            this.buttonHapus.Size = new System.Drawing.Size(81, 31);
+            this.buttonHapus.TabIndex = 73;
+            this.buttonHapus.Text = "HAPUS";
+            this.buttonHapus.UseVisualStyleBackColor = false;
+            this.buttonHapus.Click += new System.EventHandler(this.buttonHapus_Click);
             // 
-            // button1
+            // buttonBatal
             // 
-            this.button1.BackColor = System.Drawing.Color.Crimson;
-            this.button1.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(99, 157);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(81, 31);
-            this.button1.TabIndex = 72;
-            this.button1.Text = "EDIT";
-            this.button1.UseVisualStyleBackColor = false;
+            this.buttonBatal.BackColor = System.Drawing.Color.Crimson;
+            this.buttonBatal.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonBatal.ForeColor = System.Drawing.Color.White;
+            this.buttonBatal.Location = new System.Drawing.Point(99, 157);
+            this.buttonBatal.Name = "buttonBatal";
+            this.buttonBatal.Size = new System.Drawing.Size(81, 31);
+            this.buttonBatal.TabIndex = 72;
+            this.buttonBatal.Text = "BATAL";
+            this.buttonBatal.UseVisualStyleBackColor = false;
+            this.buttonBatal.Click += new System.EventHandler(this.buttonBatal_Click);
             // 
-            // textBox2
+            // textBoxKeterangan
             // 
-            this.textBox2.Location = new System.Drawing.Point(113, 100);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(241, 26);
-            this.textBox2.TabIndex = 71;
+            this.textBoxKeterangan.Location = new System.Drawing.Point(113, 100);
+            this.textBoxKeterangan.Multiline = true;
+            this.textBoxKeterangan.Name = "textBoxKeterangan";
+            this.textBoxKeterangan.Size = new System.Drawing.Size(241, 26);
+            this.textBoxKeterangan.TabIndex = 71;
             // 
-            // textBox1
+            // textBoxKode
             // 
-            this.textBox1.Location = new System.Drawing.Point(114, 60);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(240, 26);
-            this.textBox1.TabIndex = 70;
+            this.textBoxKode.Location = new System.Drawing.Point(114, 60);
+            this.textBoxKode.Multiline = true;
+            this.textBoxKode.Name = "textBoxKode";
+            this.textBoxKode.Size = new System.Drawing.Size(240, 26);
+            this.textBoxKode.TabIndex = 70;
+            this.textBoxKode.TextChanged += new System.EventHandler(this.textBoxKode_TextChanged);
             // 
             // label3
             // 
@@ -124,35 +128,36 @@ namespace PT.SPSS
             this.label1.Text = "Entry Kategori";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // buttonTambah
+            // buttonSimpan
             // 
-            this.buttonTambah.BackColor = System.Drawing.Color.Crimson;
-            this.buttonTambah.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonTambah.ForeColor = System.Drawing.Color.White;
-            this.buttonTambah.Location = new System.Drawing.Point(12, 157);
-            this.buttonTambah.Name = "buttonTambah";
-            this.buttonTambah.Size = new System.Drawing.Size(81, 31);
-            this.buttonTambah.TabIndex = 67;
-            this.buttonTambah.Text = "TAMBAH";
-            this.buttonTambah.UseVisualStyleBackColor = false;
+            this.buttonSimpan.BackColor = System.Drawing.Color.Crimson;
+            this.buttonSimpan.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonSimpan.ForeColor = System.Drawing.Color.White;
+            this.buttonSimpan.Location = new System.Drawing.Point(12, 157);
+            this.buttonSimpan.Name = "buttonSimpan";
+            this.buttonSimpan.Size = new System.Drawing.Size(81, 31);
+            this.buttonSimpan.TabIndex = 67;
+            this.buttonSimpan.Text = "SIMPAN";
+            this.buttonSimpan.UseVisualStyleBackColor = false;
+            this.buttonSimpan.Click += new System.EventHandler(this.buttonSimpan_Click);
             // 
-            // FormDaftarBarang
+            // FormEntryCatBrgJadi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(372, 208);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.buttonKeluar);
+            this.Controls.Add(this.buttonHapus);
+            this.Controls.Add(this.buttonBatal);
+            this.Controls.Add(this.textBoxKeterangan);
+            this.Controls.Add(this.textBoxKode);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.buttonTambah);
-            this.Name = "FormDaftarBarang";
-            this.Text = "Kategori Barang";
+            this.Controls.Add(this.buttonSimpan);
+            this.Name = "FormEntryCatBrgJadi";
+            this.Load += new System.EventHandler(this.FormEntryCatBrgJadi_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -160,14 +165,14 @@ namespace PT.SPSS
 
         #endregion
 
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button buttonKeluar;
+        private System.Windows.Forms.Button buttonHapus;
+        private System.Windows.Forms.Button buttonBatal;
+        private System.Windows.Forms.TextBox textBoxKeterangan;
+        private System.Windows.Forms.TextBox textBoxKode;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button buttonTambah;
+        private System.Windows.Forms.Button buttonSimpan;
     }
 }

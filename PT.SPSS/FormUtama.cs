@@ -63,5 +63,39 @@ namespace PT.SPSS
         {
             Application.Exit();
         }
+        
+        private void kodeBarangToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form frm = Application.OpenForms["FormEntryCatBrgJadi"];
+
+            if (frm == null)
+            {
+                FormEntryCatBrgJadi formEntryCatBrg = new FormEntryCatBrgJadi();
+                formEntryCatBrg.MdiParent = this;
+                formEntryCatBrg.Show();
+            }
+            else
+            {
+                frm.Show();
+                frm.BringToFront();
+            }
+        }
+
+        private void kodeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form frm = Application.OpenForms["FormEntrySupplier"];
+
+            if (frm == null)
+            {
+                FormEntryBrgJadi formEntryBrgJadi = new FormEntryBrgJadi();
+                formEntryBrgJadi.MdiParent = this;
+                formEntryBrgJadi.Show();
+            }
+            else
+            {
+                frm.Show();
+                frm.BringToFront();
+            }
+        }
     }
 }

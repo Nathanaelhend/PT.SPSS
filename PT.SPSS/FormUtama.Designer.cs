@@ -68,27 +68,29 @@ namespace PT.SPSS
             // barangBakuToolStripMenuItem
             // 
             this.barangBakuToolStripMenuItem.Name = "barangBakuToolStripMenuItem";
-            this.barangBakuToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.barangBakuToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
             this.barangBakuToolStripMenuItem.Text = "Barang Baku";
             // 
             // supplierToolStripMenuItem
             // 
             this.supplierToolStripMenuItem.Name = "supplierToolStripMenuItem";
-            this.supplierToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.supplierToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
             this.supplierToolStripMenuItem.Text = "Supplier";
             this.supplierToolStripMenuItem.Click += new System.EventHandler(this.supplierToolStripMenuItem_Click);
             // 
             // kodeBarangToolStripMenuItem
             // 
             this.kodeBarangToolStripMenuItem.Name = "kodeBarangToolStripMenuItem";
-            this.kodeBarangToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
-            this.kodeBarangToolStripMenuItem.Text = "Kode Barang";
+            this.kodeBarangToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.kodeBarangToolStripMenuItem.Text = "Kategori Barang Jadi";
+            this.kodeBarangToolStripMenuItem.Click += new System.EventHandler(this.kodeBarangToolStripMenuItem_Click);
             // 
             // kodeToolStripMenuItem
             // 
             this.kodeToolStripMenuItem.Name = "kodeToolStripMenuItem";
-            this.kodeToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
-            this.kodeToolStripMenuItem.Text = "Kode Group";
+            this.kodeToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.kodeToolStripMenuItem.Text = "Barang Jadi";
+            this.kodeToolStripMenuItem.Click += new System.EventHandler(this.kodeToolStripMenuItem_Click);
             // 
             // penjualanToolStripMenuItem
             // 

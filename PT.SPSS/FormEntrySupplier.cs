@@ -31,9 +31,9 @@ namespace PT.SPSS
         private void textBoxKodeSupplier_TextChanged(object sender, EventArgs e)
         {
             
-            if(textBoxKodeSupplier.Text.Length < 5)
+            if(textBoxKodeSupplier.Text.Length <5)
             {
-                MessageBox.Show("Kode Harus 5 Karakter");
+                MessageBox.Show("Kode harus 5 karakter");
             }
 
             else if(textBoxKodeSupplier.Text.Length == 5)
@@ -138,15 +138,6 @@ namespace PT.SPSS
             this.Close();
         }
 
-        private void FormEntrySupplier_KeyDown(object sender, KeyEventArgs e)
-        {
-            if(e.KeyCode == Keys.F5)
-            {
-                FormDaftarSupplier frmDaftarSupp = new FormDaftarSupplier();
-                frmDaftarSupp.Owner = this;
-                frmDaftarSupp.Show();
-            }
-        }
 
         private void textBoxKodeSupplier_KeyDown(object sender, KeyEventArgs e)
         {
