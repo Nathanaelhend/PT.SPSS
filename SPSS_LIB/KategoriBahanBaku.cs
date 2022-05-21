@@ -10,33 +10,33 @@ namespace SPSS_LIB
     public class KategoriBahanBaku
     {
         private string kodeBahan;
-        private string keterangan_kategori;
+        private string keteranganKategori;
 
         #region Constructors
-        public KategoriBahanBaku(string kodeBahan, string keterangan_kategori)
+        public KategoriBahanBaku(string kodeBahan, string keteranganKategori)
         {
             this.KodeBahan = kodeBahan;
-            this.Keterangan_kategori = keterangan_kategori;
+            this.KeteranganKategori = keteranganKategori;
         }
         #endregion
 
         #region Properties
         public string KodeBahan { get => kodeBahan; set => kodeBahan = value; }
-        public string Keterangan_kategori { get => keterangan_kategori; set => keterangan_kategori = value; }
+        public string KeteranganKategori { get => keteranganKategori; set => keteranganKategori = value; }
         #endregion
 
         #region Methods
         public static void TambahData(KategoriBahanBaku kbb)
         {
-            string sql = "insert into kategori_bahan_baku(kode, keterangan_bahan_baku) values ('" + kbb.KodeBahan + "','" +
-               kbb.Keterangan_kategori.Replace("'", "\\'") + "')";
+            string sql = "insert into kategori_bahan_baku(kodeBahan, Nama) values ('" + kbb.KodeBahan + "','" +
+               kbb.KeteranganKategori.Replace("'", "\\'") + "')";
 
             Koneksi.JalankanPerintahDML(sql);
         }
 
         public static void UbahData(KategoriBahanBaku kbb)
         {
-            string sql = "update kategori_bahan_baku set keterangan_bahan_baku='" + kbb.Keterangan_kategori.Replace("'", "\\ '") + "'where kodeBahan='" + kbb.KodeBahan + "'";
+            string sql = "update kategori_bahan_baku set Nama='" + kbb.KeteranganKategori.Replace("'", "\\ '") + "'where kodeBahan='" + kbb.KodeBahan + "'";
             Koneksi.JalankanPerintahDML(sql);
         }
 

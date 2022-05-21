@@ -11,15 +11,17 @@ namespace SPSS_LIB
     {
         private string kodeBarang;
         private string nama;
-        private int stok;
+        private string satuan;
+        private int harga;
         private KategoriBarang kategoriBarang;
 
         #region Constructors
-        public BarangJadi(string kodeBarang, string nama, int stok, KategoriBarang kategoriBarang)
+        public BarangJadi(string kodeBarang, string nama, string satuan, int harga, KategoriBarang kategoriBarang)
         {
             this.KodeBarang = kodeBarang;
             this.Nama = nama;
-            this.Stok = stok;
+            this.Satuan = satuan;
+            this.Harga = harga;
             this.KategoriBarang = kategoriBarang;
         }
         #endregion
@@ -27,29 +29,30 @@ namespace SPSS_LIB
         #region Properties
         public string KodeBarang { get => kodeBarang; set => kodeBarang = value; }
         public string Nama { get => nama; set => nama = value; }
-        public int Stok { get => stok; set => stok = value; }
+        public string Satuan { get => satuan; set => satuan = value; }
+        public int Harga { get => harga; set => harga = value; }
         public KategoriBarang KategoriBarang { get => kategoriBarang; set => kategoriBarang = value; }
         #endregion
 
         #region Methods
         public static void TambahData(BarangJadi b)
         {
-            string sql = "insert into barang_jadi(kodeBarang, nama, stok, kategori_barang) values ('" +
-                b.KodeBarang + "','" + b.Nama.Replace("'", "\\'") + "','" + b.Stok +
-                "','" + b.KategoriBarang.Kode + "')";
+            string sql = "insert into barang_jadi(kodeBarang, nama, harga, satuan, kodeKategori) values ('" +
+                b.KodeBarang + "','" + b.Nama.Replace("'", "\\'") + "','" + b.Harga +
+                "','" + b.Satuan + "','" + b.KategoriBarang.Kode + "')";
             Koneksi.JalankanPerintahDML(sql);
         }
 
         public static void UbahData(BarangJadi b)
         {
-            string sql = "update barang_jadi set nama='" + b.Nama.Replace("'", "\\'") + "',stok='" + b.Stok +
-                "',kategori_barang='" + b.KategoriBarang.Kode + "' where kodeBarang='" + b.KodeBarang + "'";
+            string sql = "update barang_jadi set nama='" + b.Nama.Replace("'", "\\'") + "',harga='" + b.Harga + "',satuan='" + b.Satuan +
+                 "',kodeKategori='" + b.KategoriBarang.Kode + "' where kodeBarang='" + b.KodeBarang + "'";
             Koneksi.JalankanPerintahDML(sql);
         }
 
         public static void HapusData(BarangJadi b)
         {
-            string sql = "delete from barang_jadi where kodeBarang='" + b.kodeBarang + "'";
+            string sql = "delete from barang_jadi where kodeBarang='" + b.KodeBarang + "'";
             Koneksi.JalankanPerintahDML(sql);
         }
 
@@ -59,13 +62,13 @@ namespace SPSS_LIB
             string sql = "";
             if (kriteria == "")
             {
-                sql = "select B.kodeBarang, B.nama, B.stok, B.kategori_barang" +
-                    " from barang_jadi B inner join kategori_barang_jadi KB on B.kategori_barang = KB.kode";
+                sql = "select B.kodeBarang, B.nama, B.harga, B.satuan, B.kodeKategori" +
+                    " from barang_jadi B inner join kategori_barang_jadi KB on B.kodeKategori = KB.kode";
             }
             else
             {
-                sql = "select B.kodeBarang, B.nama, B.stok, B.kategori_barang" +
-                    " from barang_jadi B inner join kategori_barang_jadi KB on B.kategori_barang = KB.kode" +
+                sql = "select B.kodeBarang, B.nama, B.harga, B.satuan, B.kodeKategori" +
+                    " from barang_jadi B inner join kategori_barang_jadi KB on B.kodeKategori = KB.kode" +
                     " where " + kriteria + " LIKE '%" + nilaiKriteria + "%'";
             }
 
@@ -77,7 +80,7 @@ namespace SPSS_LIB
             {
                 KategoriBarang kb = new KategoriBarang(hasil.GetValue(3).ToString(), hasil.GetValue(4).ToString());
 
-                BarangJadi b = new BarangJadi(hasil.GetValue(0).ToString(), hasil.GetValue(1).ToString(), int.Parse(hasil.GetValue(2).ToString()), kb);
+                BarangJadi b = new BarangJadi(hasil.GetValue(0).ToString(), hasil.GetValue(1).ToString(), hasil.GetValue(2).ToString(), int.Parse(hasil.GetValue(3).ToString()), kb);
                 listBrgJadi.Add(b);
             }
             return listBrgJadi;

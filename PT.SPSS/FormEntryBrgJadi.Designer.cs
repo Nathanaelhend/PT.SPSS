@@ -37,11 +37,13 @@ namespace PT.SPSS
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.buttonSimpan = new System.Windows.Forms.Button();
-            this.textBoxStok = new System.Windows.Forms.TextBox();
+            this.textBoxSatuan = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.comboKatBrgJadi = new System.Windows.Forms.ComboBox();
+            this.buttonSimpan = new System.Windows.Forms.Button();
+            this.textBoxHarga = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // buttonKeluar
@@ -49,7 +51,7 @@ namespace PT.SPSS
             this.buttonKeluar.BackColor = System.Drawing.Color.Crimson;
             this.buttonKeluar.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonKeluar.ForeColor = System.Drawing.Color.White;
-            this.buttonKeluar.Location = new System.Drawing.Point(275, 200);
+            this.buttonKeluar.Location = new System.Drawing.Point(275, 232);
             this.buttonKeluar.Name = "buttonKeluar";
             this.buttonKeluar.Size = new System.Drawing.Size(81, 31);
             this.buttonKeluar.TabIndex = 74;
@@ -62,7 +64,7 @@ namespace PT.SPSS
             this.buttonHapus.BackColor = System.Drawing.Color.Crimson;
             this.buttonHapus.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonHapus.ForeColor = System.Drawing.Color.White;
-            this.buttonHapus.Location = new System.Drawing.Point(188, 200);
+            this.buttonHapus.Location = new System.Drawing.Point(188, 232);
             this.buttonHapus.Name = "buttonHapus";
             this.buttonHapus.Size = new System.Drawing.Size(81, 31);
             this.buttonHapus.TabIndex = 73;
@@ -75,7 +77,7 @@ namespace PT.SPSS
             this.buttonBatal.BackColor = System.Drawing.Color.Crimson;
             this.buttonBatal.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonBatal.ForeColor = System.Drawing.Color.White;
-            this.buttonBatal.Location = new System.Drawing.Point(101, 200);
+            this.buttonBatal.Location = new System.Drawing.Point(101, 232);
             this.buttonBatal.Name = "buttonBatal";
             this.buttonBatal.Size = new System.Drawing.Size(81, 31);
             this.buttonBatal.TabIndex = 72;
@@ -132,32 +134,19 @@ namespace PT.SPSS
             this.label1.Text = "Entry Barang Jadi";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // buttonSimpan
+            // textBoxSatuan
             // 
-            this.buttonSimpan.BackColor = System.Drawing.Color.Crimson;
-            this.buttonSimpan.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonSimpan.ForeColor = System.Drawing.Color.White;
-            this.buttonSimpan.Location = new System.Drawing.Point(14, 200);
-            this.buttonSimpan.Name = "buttonSimpan";
-            this.buttonSimpan.Size = new System.Drawing.Size(81, 31);
-            this.buttonSimpan.TabIndex = 67;
-            this.buttonSimpan.Text = "SIMPAN";
-            this.buttonSimpan.UseVisualStyleBackColor = false;
-            this.buttonSimpan.Click += new System.EventHandler(this.buttonSimpan_Click);
-            // 
-            // textBoxStok
-            // 
-            this.textBoxStok.Location = new System.Drawing.Point(114, 124);
-            this.textBoxStok.Multiline = true;
-            this.textBoxStok.Name = "textBoxStok";
-            this.textBoxStok.Size = new System.Drawing.Size(240, 26);
-            this.textBoxStok.TabIndex = 77;
+            this.textBoxSatuan.Location = new System.Drawing.Point(114, 156);
+            this.textBoxSatuan.Multiline = true;
+            this.textBoxSatuan.Name = "textBoxSatuan";
+            this.textBoxSatuan.Size = new System.Drawing.Size(240, 26);
+            this.textBoxSatuan.TabIndex = 77;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(12, 161);
+            this.label4.Location = new System.Drawing.Point(12, 193);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(74, 16);
             this.label4.TabIndex = 76;
@@ -167,28 +156,62 @@ namespace PT.SPSS
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(11, 131);
+            this.label5.Location = new System.Drawing.Point(11, 163);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(47, 16);
+            this.label5.Size = new System.Drawing.Size(64, 16);
             this.label5.TabIndex = 75;
-            this.label5.Text = "Stok :";
+            this.label5.Text = "Satuan :";
             // 
             // comboKatBrgJadi
             // 
             this.comboKatBrgJadi.FormattingEnabled = true;
-            this.comboKatBrgJadi.Location = new System.Drawing.Point(114, 156);
+            this.comboKatBrgJadi.Location = new System.Drawing.Point(114, 188);
             this.comboKatBrgJadi.Name = "comboKatBrgJadi";
             this.comboKatBrgJadi.Size = new System.Drawing.Size(240, 21);
             this.comboKatBrgJadi.TabIndex = 78;
             this.comboKatBrgJadi.SelectedIndexChanged += new System.EventHandler(this.comboKatBrgJadi_SelectedIndexChanged);
             // 
+            // buttonSimpan
+            // 
+            this.buttonSimpan.BackColor = System.Drawing.Color.Crimson;
+            this.buttonSimpan.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonSimpan.ForeColor = System.Drawing.Color.White;
+            this.buttonSimpan.Location = new System.Drawing.Point(12, 232);
+            this.buttonSimpan.Name = "buttonSimpan";
+            this.buttonSimpan.Size = new System.Drawing.Size(81, 31);
+            this.buttonSimpan.TabIndex = 79;
+            this.buttonSimpan.Text = "SIMPAN";
+            this.buttonSimpan.UseVisualStyleBackColor = false;
+            this.buttonSimpan.Click += new System.EventHandler(this.buttonSimpan_Click_1);
+            // 
+            // textBoxHarga
+            // 
+            this.textBoxHarga.Location = new System.Drawing.Point(114, 124);
+            this.textBoxHarga.Multiline = true;
+            this.textBoxHarga.Name = "textBoxHarga";
+            this.textBoxHarga.Size = new System.Drawing.Size(240, 26);
+            this.textBoxHarga.TabIndex = 81;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(11, 130);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(59, 16);
+            this.label6.TabIndex = 80;
+            this.label6.Text = "Harga :";
+            // 
             // FormEntryBrgJadi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(373, 248);
+            this.ClientSize = new System.Drawing.Size(373, 273);
+            this.Controls.Add(this.textBoxHarga);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.buttonSimpan);
             this.Controls.Add(this.comboKatBrgJadi);
-            this.Controls.Add(this.textBoxStok);
+            this.Controls.Add(this.textBoxSatuan);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.buttonKeluar);
@@ -199,7 +222,6 @@ namespace PT.SPSS
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.buttonSimpan);
             this.Name = "FormEntryBrgJadi";
             this.Load += new System.EventHandler(this.FormEntryBrgJadi_Load);
             this.ResumeLayout(false);
@@ -217,10 +239,12 @@ namespace PT.SPSS
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button buttonSimpan;
-        private System.Windows.Forms.TextBox textBoxStok;
+        private System.Windows.Forms.TextBox textBoxSatuan;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox comboKatBrgJadi;
+        private System.Windows.Forms.Button buttonSimpan;
+        private System.Windows.Forms.TextBox textBoxHarga;
+        private System.Windows.Forms.Label label6;
     }
 }

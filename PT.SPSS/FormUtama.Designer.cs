@@ -35,6 +35,7 @@ namespace PT.SPSS
             this.supplierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.kodeBarangToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.kodeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.kategoriBahanBakuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.penjualanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pembelianToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.keluarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -60,7 +61,8 @@ namespace PT.SPSS
             this.barangBakuToolStripMenuItem,
             this.supplierToolStripMenuItem,
             this.kodeBarangToolStripMenuItem,
-            this.kodeToolStripMenuItem});
+            this.kodeToolStripMenuItem,
+            this.kategoriBahanBakuToolStripMenuItem});
             this.masterToolStripMenuItem.Name = "masterToolStripMenuItem";
             this.masterToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
             this.masterToolStripMenuItem.Text = "Master";
@@ -68,29 +70,37 @@ namespace PT.SPSS
             // barangBakuToolStripMenuItem
             // 
             this.barangBakuToolStripMenuItem.Name = "barangBakuToolStripMenuItem";
-            this.barangBakuToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
-            this.barangBakuToolStripMenuItem.Text = "Barang Baku";
+            this.barangBakuToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.barangBakuToolStripMenuItem.Text = "Bahan Baku";
+            this.barangBakuToolStripMenuItem.Click += new System.EventHandler(this.barangBakuToolStripMenuItem_Click);
             // 
             // supplierToolStripMenuItem
             // 
             this.supplierToolStripMenuItem.Name = "supplierToolStripMenuItem";
-            this.supplierToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.supplierToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
             this.supplierToolStripMenuItem.Text = "Supplier";
             this.supplierToolStripMenuItem.Click += new System.EventHandler(this.supplierToolStripMenuItem_Click);
             // 
             // kodeBarangToolStripMenuItem
             // 
             this.kodeBarangToolStripMenuItem.Name = "kodeBarangToolStripMenuItem";
-            this.kodeBarangToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.kodeBarangToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
             this.kodeBarangToolStripMenuItem.Text = "Kategori Barang Jadi";
             this.kodeBarangToolStripMenuItem.Click += new System.EventHandler(this.kodeBarangToolStripMenuItem_Click);
             // 
             // kodeToolStripMenuItem
             // 
             this.kodeToolStripMenuItem.Name = "kodeToolStripMenuItem";
-            this.kodeToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.kodeToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
             this.kodeToolStripMenuItem.Text = "Barang Jadi";
             this.kodeToolStripMenuItem.Click += new System.EventHandler(this.kodeToolStripMenuItem_Click);
+            // 
+            // kategoriBahanBakuToolStripMenuItem
+            // 
+            this.kategoriBahanBakuToolStripMenuItem.Name = "kategoriBahanBakuToolStripMenuItem";
+            this.kategoriBahanBakuToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.kategoriBahanBakuToolStripMenuItem.Text = "Kategori Bahan Baku";
+            this.kategoriBahanBakuToolStripMenuItem.Click += new System.EventHandler(this.kategoriBahanBakuToolStripMenuItem_Click);
             // 
             // penjualanToolStripMenuItem
             // 
@@ -138,5 +148,6 @@ namespace PT.SPSS
         private System.Windows.Forms.ToolStripMenuItem supplierToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem kodeBarangToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem kodeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem kategoriBahanBakuToolStripMenuItem;
     }
 }

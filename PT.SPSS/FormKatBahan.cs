@@ -29,7 +29,7 @@ namespace PT.SPSS
                 if (listKBB.Count > 0)
                 {
                     baru = false;
-                    textBoxKeterangan.Text = listKBB[0].Keterangan_kategori;
+                    textBoxKeterangan.Text = listKBB[0].KeteranganKategori;
                     textBoxKeterangan.Focus();
                 }
                 else
