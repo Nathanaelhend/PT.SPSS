@@ -97,5 +97,40 @@ namespace PT.SPSS
                 frm.BringToFront();
             }
         }
+
+        private void kategoriBahanBakuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form frm = Application.OpenForms["FormKatBahan"];
+
+            if (frm == null)
+            {
+                FormKatBahan formEntryKatBahan = new FormKatBahan();
+                formEntryKatBahan.MdiParent = this;
+                formEntryKatBahan.Show();
+            }
+            else
+            {
+                frm.Show();
+                frm.BringToFront();
+            }
+        }
+
+        private void barangBakuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            Form frm = Application.OpenForms["FormEntryBahanBaku"];
+
+            if (frm == null)
+            {
+                FormEntryBahanBaku formEntrybhnBaku = new FormEntryBahanBaku();
+                formEntrybhnBaku.MdiParent = this;
+                formEntrybhnBaku.Show();
+            }
+            else
+            {
+                frm.Show();
+                frm.BringToFront();
+            }
+        }
     }
 }

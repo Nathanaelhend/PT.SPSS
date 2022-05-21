@@ -28,7 +28,7 @@ namespace SPSS_LIB
         #region Methods
         public static void TambahData(KategoriBarang kb)
         {
-            string sql = "insert into kategori_barang_jadi(kode, keterangan_barang) values ('" + kb.Kode + "','" +
+            string sql = "insert into kategori_barang_jadi(kode, keteranganBarang) values ('" + kb.Kode + "','" +
                kb.KeteranganBarang.Replace("'", "\\'") + "')";
 
             Koneksi.JalankanPerintahDML(sql);
@@ -36,7 +36,7 @@ namespace SPSS_LIB
 
         public static void UbahData(KategoriBarang kb)
         {
-            string sql = "update kategori_barang_jadi set keterangan_barang='" + kb.KeteranganBarang.Replace("'", "\\ '") + "'where kode='" + kb.Kode + "'";
+            string sql = "update kategori_barang_jadi set keteranganBarang='" + kb.KeteranganBarang.Replace("'", "\\ '") + "'where kode='" + kb.Kode + "'";
             Koneksi.JalankanPerintahDML(sql);
         }
 
