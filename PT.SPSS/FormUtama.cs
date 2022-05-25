@@ -132,5 +132,22 @@ namespace PT.SPSS
                 frm.BringToFront();
             }
         }
+
+        private void pembelianToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form frm = Application.OpenForms["FormPembelian"];
+
+            if (frm == null)
+            {
+                FormPembelian formPembelian = new FormPembelian();
+                formPembelian.MdiParent = this;
+                formPembelian.Show();
+            }
+            else
+            {
+                frm.Show();
+                frm.BringToFront();
+            }
+        }
     }
 }
