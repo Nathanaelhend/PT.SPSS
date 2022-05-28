@@ -16,7 +16,6 @@ namespace PT.SPSS
         List<Supplier> listSupplier = new List<Supplier>();
         List<BahanBaku> listBhnBaku = new List<BahanBaku>();
         Pembelian pembelian;
-        //string date = "";
 
         public FormPembelian()
         {
@@ -114,38 +113,40 @@ namespace PT.SPSS
             try
             {
                 Supplier supplierDipilih = (Supplier)comboBoxSupplier.SelectedItem;
+                BahanBaku bhnBakuDipilih = (BahanBaku)comboBoxBahanBaku.SelectedItem;
 
-                pembelian = new Pembelian(textBoxNoNota.Text, dateTimePicker.Value, supplierDipilih, int.Parse(textBoxJumlah.Text), double.Parse(textBoxDiscPrs.Text), int.Parse(textBoxDiscRp.Text), int.Parse(textBoxDpp.Text), double.Parse(textBoxPPnPrs.Text), int.Parse(textBoxPPnRp.Text), int.Parse(textBoxNetto.Text));
+                    pembelian = new Pembelian("12345", dateTimePicker.Value, supplierDipilih, int.Parse(textBoxJmlhAll.Text),
+                    double.Parse(textBoxDiscPrsAll.Text), int.Parse(textBoxDiscRpAll.Text), int.Parse(textBoxDpp.Text), double.Parse(textBoxPPnPrs.Text), int.Parse(textBoxPPnRp.Text), int.Parse(textBoxNetto.Text));
 
-                List<BahanBaku> listBahanBaku = new List<BahanBaku>();
 
-                for (int i = 0; i < dataGridViewPembelian.Rows.Count; i++)
-                {
-                    string namaBahan = dataGridViewPembelian.Rows[i].Cells["nama"].Value.ToString();
-                    listBahanBaku = BahanBaku.BacaData("B.kode", namaBahan);
+            for (int i = 0; i < dataGridViewPembelian.Rows.Count; i++)
+            {
+                
+                string kodeBahan = dataGridViewPembelian.Rows[i].Cells["nama"].Value.ToString();
 
-                    int qty = int.Parse(dataGridViewPembelian.Rows[i].Cells["quantity"].Value.ToString());
-                    int harga = int.Parse(dataGridViewPembelian.Rows[i].Cells["harga"].Value.ToString());
-                    int jumlah = int.Parse(dataGridViewPembelian.Rows[i].Cells["jumlah"].Value.ToString());
-                    double discPrs = double.Parse(dataGridViewPembelian.Rows[i].Cells["diskon_persen"].Value.ToString());
-                    int discRph = int.Parse(dataGridViewPembelian.Rows[i].Cells["diskon_rph"].Value.ToString());
-                    int total = int.Parse(dataGridViewPembelian.Rows[i].Cells["total_harga"].Value.ToString());
 
-                    pembelian.TambahPembelianDetil(listBahanBaku[0], qty, harga, jumlah,discPrs,discRph,total);
-                }
+                int qty = int.Parse(dataGridViewPembelian.Rows[i].Cells["quantity"].Value.ToString());
+                int harga = int.Parse(dataGridViewPembelian.Rows[i].Cells["harga"].Value.ToString());
+                int jumlah = int.Parse(dataGridViewPembelian.Rows[i].Cells["jumlah"].Value.ToString());
+                double discPrs = double.Parse(dataGridViewPembelian.Rows[i].Cells["diskon_persen"].Value.ToString());
+                int discRph = int.Parse(dataGridViewPembelian.Rows[i].Cells["diskon_rph"].Value.ToString());
+                int total = int.Parse(dataGridViewPembelian.Rows[i].Cells["total_harga"].Value.ToString());
 
-                Pembelian.TambahData(pembelian);
+                pembelian.TambahPembelianDetil(bhnBakuDipilih, qty, harga, jumlah, discPrs, discRph, total);
+            }
+
+            Pembelian.TambahData(pembelian);
 
                 MessageBox.Show("Data nota Beli berhasil tersimpan.", "Informasi");
 
-                //panggil event handler buttonCetak_Click
-                //buttonCetak_Click(sender, e);
-            }
+            //panggil event handler buttonCetak_Click
+            //buttonCetak_Click(sender, e);
+        }
             catch (Exception ex)
             {
                 MessageBox.Show("Gagal menyimpan nota. Pesan kesalahan : " + ex.Message, "Kesalahan");
             }
-        }
+}
 
         private void FormatDataGrid()
         {

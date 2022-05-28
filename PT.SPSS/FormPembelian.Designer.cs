@@ -552,6 +552,7 @@ namespace PT.SPSS
             this.dataGridViewPembelian.Location = new System.Drawing.Point(10, 367);
             this.dataGridViewPembelian.Name = "dataGridViewPembelian";
             this.dataGridViewPembelian.RowHeadersWidth = 51;
+            this.dataGridViewPembelian.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewPembelian.Size = new System.Drawing.Size(945, 249);
             this.dataGridViewPembelian.TabIndex = 51;
             // 

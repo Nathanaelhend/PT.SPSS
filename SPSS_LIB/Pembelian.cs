@@ -34,7 +34,7 @@ namespace SPSS_LIB
             this.PpnPersen = ppnPersen;
             this.PpnRph = ppnRph;
             this.Netto = netto;
-            this.ListBeliDetail = listBeliDetail;
+            this.ListBeliDetail = new List<PembelianDetail>();
         }
         #endregion
 
@@ -74,8 +74,8 @@ namespace SPSS_LIB
 
                     foreach (PembelianDetail pembelianDetail in pembelian.ListBeliDetail)
                     {
-                        string sql2 = "insert into nota_beli_detail(nomor_nota_beli, id_barang_baku, quantity, harga, jumlah, diskon_persen, diskon_rph, total_harga) VALUES('" + pembelian.NoNota + "','" +
-                                       pembelianDetail.BhnBaku + "','" + pembelianDetail.Quantity + "','" + pembelianDetail.Harga + "','" + pembelianDetail.Jumlah + "','" + pembelian.DiscPersen + "','" +
+                        string sql2 = "insert into nota_beli_detail(nomor_nota_beli, id_barang_baku, quantity, harga, tanggal, supplier_id, jumlah, diskon_persen, diskon_rph, total_harga) VALUES('" + pembelian.NoNota + "','" +
+                                       pembelianDetail.BhnBaku.Kode + "','" + pembelianDetail.Quantity + "','" + pembelianDetail.Harga + "','" + pembelian.Tanggal.ToString("yyyy-MM-dd hh:mm:ss") + "','" + pembelian.Supplier.KodeSupplier + "','" + pembelianDetail.Jumlah + "','" + pembelianDetail.DiscPersen + "','" +
                                        pembelianDetail.DiscRph + "','" + pembelianDetail.TotalHarga + "')";
 
                         Koneksi.JalankanPerintahDML(sql2);
@@ -90,10 +90,10 @@ namespace SPSS_LIB
             }
         }
 
-        public static int HitungDisc(int jumlah, int persen)
+        public static double HitungDisc(int jumlah, int persen)
         {
-            int disc = 0;
-            disc = (jumlah * persen) / 100; 
+            double disc = 0;
+            disc = jumlah  * (persen / 100); 
             return disc;
         }
 
