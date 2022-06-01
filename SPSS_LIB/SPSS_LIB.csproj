@@ -48,6 +48,8 @@
   <ItemGroup>
     <Compile Include="BahanBaku.cs" />
     <Compile Include="BarangJadi.cs" />
+    <Compile Include="DetailHPP.cs" />
+    <Compile Include="HPP.cs" />
     <Compile Include="KategoriBahanBaku.cs" />
     <Compile Include="KategoriBarang.cs" />
     <Compile Include="Koneksi.cs" />

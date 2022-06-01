@@ -8,7 +8,7 @@ namespace SPSS_LIB
 {
     public class PembelianDetail
     {
-        private BahanBaku bhnBaku;
+        private string kode;
         private int quantity;
         private int harga;
         private int jumlah;
@@ -17,9 +17,9 @@ namespace SPSS_LIB
         private int totalHarga;
 
         #region Constructors
-        public PembelianDetail(BahanBaku bhnBaku, int quantity, int harga, int jumlah, double discPersen, int discRph, int totalHarga)
+        public PembelianDetail(string kode, int quantity, int harga, int jumlah, double discPersen, int discRph, int totalHarga)
         {
-            this.BhnBaku = bhnBaku;
+            this.Kode = kode;
             this.Quantity = quantity;
             this.Harga = harga;
             this.Jumlah = jumlah;
@@ -30,7 +30,7 @@ namespace SPSS_LIB
         #endregion
 
         #region Properties
-        public BahanBaku BhnBaku { get => bhnBaku; set => bhnBaku = value; }
+        public string Kode { get => kode; set => kode = value; }
         public int Quantity { get => quantity; set => quantity = value; }
         public int Harga { get => harga; set => harga = value; }
         public int Jumlah { get => jumlah; set => jumlah = value; }

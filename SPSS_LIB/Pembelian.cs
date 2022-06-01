@@ -4,6 +4,7 @@ using System.Linq;
 using System.Transactions;
 using System.Text;
 using System.Threading.Tasks;
+using MySql.Data.MySqlClient;
 
 namespace SPSS_LIB
 {
@@ -53,47 +54,126 @@ namespace SPSS_LIB
         #endregion
 
         #region Methods
-        public void TambahPembelianDetil(BahanBaku bhnBaku, int quantity, int harga, int jumlah, double discPersen, int discRph, int netto)
+        public void TambahPembelianDetil(string kode, int quantity, int harga, int jumlah, double discPersen, int discRph, int netto)
         {
-            PembelianDetail notaBeliDetil = new PembelianDetail(bhnBaku, quantity, harga, jumlah, discPersen, discRph, netto);
+            PembelianDetail notaBeliDetil = new PembelianDetail(kode, quantity, harga, jumlah, discPersen, discRph, netto);
 
             this.ListBeliDetail.Add(notaBeliDetil);
         }
 
         public static void TambahData(Pembelian pembelian)
         {
+
             using (TransactionScope transScope = new TransactionScope())
             {
                 try
                 {
                     string sql1 = "insert into nota_beli(no_nota, tanggal, supplier_id, jumlah, diskon_persen, diskon_rph, dpp, ppn_persen, ppn_rupiah, total_beli) VALUES('" + pembelian.NoNota + "','" +
                                     pembelian.Tanggal.ToString("yyyy-MM-dd hh:mm:ss") + "','" + pembelian.Supplier.KodeSupplier + "','" + pembelian.Jumlah + "','" +
-                                    pembelian.DiscPersen + "','" + pembelian.DiscRph + "','"  + pembelian.Dpp + "','" + pembelian.PpnPersen + "','" + pembelian.PpnRph + "','" + pembelian.Netto + "')";
+                                    pembelian.DiscPersen + "','" + pembelian.DiscRph + "','" + pembelian.Dpp + "','" + pembelian.PpnPersen + "','" + pembelian.PpnRph + "','" + pembelian.Netto + "')";
 
                     Koneksi.JalankanPerintahDML(sql1);
 
                     foreach (PembelianDetail pembelianDetail in pembelian.ListBeliDetail)
                     {
                         string sql2 = "insert into nota_beli_detail(nomor_nota_beli, id_barang_baku, quantity, harga, tanggal, supplier_id, jumlah, diskon_persen, diskon_rph, total_harga) VALUES('" + pembelian.NoNota + "','" +
-                                       pembelianDetail.BhnBaku.Kode + "','" + pembelianDetail.Quantity + "','" + pembelianDetail.Harga + "','" + pembelian.Tanggal.ToString("yyyy-MM-dd hh:mm:ss") + "','" + pembelian.Supplier.KodeSupplier + "','" + pembelianDetail.Jumlah + "','" + pembelianDetail.DiscPersen + "','" +
+                                       pembelianDetail.Kode + "','" + pembelianDetail.Quantity + "','" + pembelianDetail.Harga + "','" + pembelian.Tanggal.ToString("yyyy-MM-dd hh:mm:ss") +
+                                       "','" + pembelian.Supplier.KodeSupplier + "','" + pembelianDetail.Jumlah + "','" + pembelianDetail.DiscPersen + "','" +
                                        pembelianDetail.DiscRph + "','" + pembelianDetail.TotalHarga + "')";
 
                         Koneksi.JalankanPerintahDML(sql2);
                     }
-                    transScope.Complete();
                 }
                 catch (Exception ex)
                 {
                     transScope.Dispose();
-                    throw (new Exception("Penyimpanan transaksi pembelian gagal. Pesan Kesalahan : " + ex.Message));
+                    throw (new Exception("Penyimpanan Data HPP gagal. Pesan Kesalahan : " + ex.Message));
                 }
             }
         }
 
+        public static List<Pembelian> BacaData(string pKriteria, string pNilaiKriteria, ref string pNilaiKriteria2)
+        {
+            string sql = "";
+            if (pKriteria == "")
+            {
+                sql = "SELECT nb.no_nota as Nomor_Nota, nb.tanggal as Tanggal_Nota, s.nama as Nama_Supplier, bb.nama as Nama_Bahan_Baku, nbd.quantity," +
+                      "nbd.harga FROM nota_beli nb INNER JOIN nota_beli_detail nbd ON nb.no_nota = nbd.nomor_nota_beli INNER JOIN supplier s ON s.kodeSupplier=nb.supplier_id " +
+                      "INNER JOIN bahan_baku bb ON bb.kode = nbd.id_barang_baku";
+            }
+            else if(pKriteria != "nb.tanggal")
+            {
+                sql = "SELECT nb.no_nota as Nomor_Nota, nb.tanggal as Tanggal_Nota, s.nama as Nama_Supplier, bb.nama as Nama_Bahan_Baku," +
+                      "nbd.quantity, nbd.harga FROM nota_beli nb INNER JOIN nota_beli_detail nbd ON nb.no_nota = nbd.nomor_nota_beli INNER JOIN supplier s ON s.kodeSupplier = nb.supplier_id " +
+                      "INNER JOIN bahan_baku bb ON bb.kode = nbd.id_barang_baku WHERE " + pKriteria  + " LIKE '%" + pNilaiKriteria + "%'";
+            }
+            else
+            {
+                sql = "SELECT nb.no_nota as Nomor_Nota, nb.tanggal as Tanggal_Nota, s.nama as Nama_Supplier, bb.nama as Nama_Bahan_Baku, nbd.quantity, nbd.harga" +
+                      "FROM nota_beli nb INNER JOIN nota_beli_detail nbd ON nb.no_nota = nbd.nomor_nota_beli INNER JOIN supplier s ON s.kodeSupplier = nb.supplier_id" +
+                      "INNER JOIN bahan_baku bb ON bb.kode = nbd.id_barang_baku WHERE nb.tanggal BETWEEN " + pNilaiKriteria +  "AND" + pNilaiKriteria2;
+            }
+
+            MySqlDataReader hasilData1 = Koneksi.JalankanPerintahQuery(sql);
+
+            List<Pembelian> listHasilData = new List<Pembelian>();
+
+            while (hasilData1.Read() == true)
+            { 
+                string noNota = hasilData1.GetValue(0).ToString();
+
+                DateTime tanggal = DateTime.Parse(hasilData1.GetValue(1).ToString());
+
+                List<Supplier> listSupplier = Supplier.BacaData("kodeSupplier", hasilData1.GetValue(1).ToString());
+
+                int jumlah = int.Parse(hasilData1.GetValue(2).ToString());
+
+                double discPersen = double.Parse(hasilData1.GetValue(3).ToString()); 
+                int discRph = int.Parse(hasilData1.GetValue(4).ToString());
+                int dpp = int.Parse(hasilData1.GetValue(5).ToString());
+                double ppnPersen = double.Parse(hasilData1.GetValue(6).ToString());
+                int ppnRph = int.Parse(hasilData1.GetValue(7).ToString());
+                int netto = int.Parse(hasilData1.GetValue(8).ToString());
+
+                Pembelian nota = new Pembelian(noNota, tanggal, listSupplier[0], jumlah, discPersen, discRph, dpp, ppnPersen, ppnRph, netto);
+
+
+                string sql2 = "select nbd.id_barang_baku, nbd.quantity, nbd.harga, nbd.tanggal, nbd.supplier_id, nbd.jumlahh" +
+                    " FROM NotaBeli N INNER JOIN detailnotabeli NBD ON N.NoNota = NBD.NoNota " +
+                    " INNER JOIN Tipe T ON NBD.KodeTipe = T.KodeTipe " +
+                    " WHERE N.NoNota = '" + noNota + "'";
+
+
+                MySqlDataReader hasilData2 = Koneksi.JalankanPerintahQuery(sql2);
+
+                //while (hasilData2.Read() == true)
+                //{
+                //    //Barang yang terbeli 
+                //    List<BahanBaku> listBhnBaku = BahanBaku.BacaData("B.kode", hasilData2.GetValue(0).ToString());
+
+                //    int hargaJual = int.Parse(hasilData2.GetValue(2).ToString());
+
+                //    int jumlah = int.Parse(hasilData2.GetValue(3).ToString());
+
+
+                //    PembelianDetail detilBeli = new PembelianDetail(listBhnBaku[0], hargaJual, jumlah);
+
+
+                //    nota.TambahNotaBeliDetil(listBhnBaku[0], hargaJual, jumlah);
+                //}
+
+                //listHasilData.Add(nota);
+
+            }
+            return listHasilData;
+        }
+
+
+
         public static double HitungDisc(int jumlah, int persen)
         {
             double disc = 0;
-            disc = jumlah  * (persen / 100); 
+            disc = (jumlah * persen) / 100; 
             return disc;
         }
 

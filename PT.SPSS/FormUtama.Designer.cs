@@ -105,8 +105,9 @@ namespace PT.SPSS
             // penjualanToolStripMenuItem
             // 
             this.penjualanToolStripMenuItem.Name = "penjualanToolStripMenuItem";
-            this.penjualanToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
-            this.penjualanToolStripMenuItem.Text = "Penjualan";
+            this.penjualanToolStripMenuItem.Size = new System.Drawing.Size(42, 20);
+            this.penjualanToolStripMenuItem.Text = "HPP";
+            this.penjualanToolStripMenuItem.Click += new System.EventHandler(this.penjualanToolStripMenuItem_Click);
             // 
             // pembelianToolStripMenuItem
             // 

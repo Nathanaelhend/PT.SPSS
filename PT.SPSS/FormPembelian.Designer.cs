@@ -188,6 +188,7 @@ namespace PT.SPSS
             this.textBoxTotal.Name = "textBoxTotal";
             this.textBoxTotal.Size = new System.Drawing.Size(110, 27);
             this.textBoxTotal.TabIndex = 21;
+            this.textBoxTotal.TextChanged += new System.EventHandler(this.textBoxTotal_TextChanged);
             // 
             // label15
             // 
@@ -266,6 +267,7 @@ namespace PT.SPSS
             this.textBoxHarga.Name = "textBoxHarga";
             this.textBoxHarga.Size = new System.Drawing.Size(89, 27);
             this.textBoxHarga.TabIndex = 14;
+            this.textBoxHarga.TextChanged += new System.EventHandler(this.textBoxHarga_TextChanged);
             this.textBoxHarga.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxHarga_KeyDown);
             // 
             // label12
@@ -555,6 +557,7 @@ namespace PT.SPSS
             this.dataGridViewPembelian.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewPembelian.Size = new System.Drawing.Size(945, 249);
             this.dataGridViewPembelian.TabIndex = 51;
+            this.dataGridViewPembelian.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPembelian_CellClick);
             // 
             // buttonKeluar
             // 

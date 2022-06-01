@@ -149,5 +149,22 @@ namespace PT.SPSS
                 frm.BringToFront();
             }
         }
+
+        private void penjualanToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form frm = Application.OpenForms["FormEntryHPP"];
+
+            if (frm == null)
+            {
+                FormEntryHPP formHPP = new FormEntryHPP();
+                formHPP.MdiParent = this;
+                formHPP.Show();
+            }
+            else
+            {
+                frm.Show();
+                frm.BringToFront();
+            }
+        }
     }
 }

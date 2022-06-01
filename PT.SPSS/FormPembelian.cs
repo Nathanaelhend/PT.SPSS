@@ -74,7 +74,7 @@ namespace PT.SPSS
                 textBoxDiscRp.Text = Pembelian.HitungDisc(int.Parse(textBoxJumlah.Text), int.Parse(textBoxDiscPrs.Text)).ToString();
                 textBoxTotal.Text = Pembelian.HitungTotal(int.Parse(textBoxJumlah.Text), int.Parse(textBoxDiscRp.Text)).ToString();
 
-                dataGridViewPembelian.Rows.Add(bahanDipilih.Nama.ToString(),textBoxQty.Text, textBoxHarga.Text, textBoxJumlah.Text, textBoxDiscPrs.Text, textBoxDiscRp.Text, textBoxTotal.Text);
+                dataGridViewPembelian.Rows.Add(bahanDipilih.Kode.ToString(),bahanDipilih.Nama.ToString(), textBoxQty.Text, textBoxHarga.Text, textBoxJumlah.Text, textBoxDiscPrs.Text, textBoxDiscRp.Text, textBoxTotal.Text);
 
                 textBoxJmlhAll.Text = HitungTotal().ToString();
 
@@ -110,43 +110,41 @@ namespace PT.SPSS
 
         private void buttonSimpan_Click(object sender, EventArgs e)
         {
-            try
-            {
+            //try
+            //{
                 Supplier supplierDipilih = (Supplier)comboBoxSupplier.SelectedItem;
                 BahanBaku bhnBakuDipilih = (BahanBaku)comboBoxBahanBaku.SelectedItem;
 
-                    pembelian = new Pembelian("12345", dateTimePicker.Value, supplierDipilih, int.Parse(textBoxJmlhAll.Text),
-                    double.Parse(textBoxDiscPrsAll.Text), int.Parse(textBoxDiscRpAll.Text), int.Parse(textBoxDpp.Text), double.Parse(textBoxPPnPrs.Text), int.Parse(textBoxPPnRp.Text), int.Parse(textBoxNetto.Text));
+                pembelian = new Pembelian(textBoxNoNota.Text, dateTimePicker.Value, supplierDipilih, int.Parse(textBoxJmlhAll.Text),
+                double.Parse(textBoxDiscPrsAll.Text), int.Parse(textBoxDiscRpAll.Text), int.Parse(textBoxDpp.Text), double.Parse(textBoxPPnPrs.Text), int.Parse(textBoxPPnRp.Text), int.Parse(textBoxNetto.Text));
 
-
-            for (int i = 0; i < dataGridViewPembelian.Rows.Count; i++)
-            {
                 
-                string kodeBahan = dataGridViewPembelian.Rows[i].Cells["nama"].Value.ToString();
+                for (int i = 0; i < dataGridViewPembelian.Rows.Count; i++)
+                {
 
+                    string kodeBahan = dataGridViewPembelian.Rows[i].Cells["kode"].Value.ToString();
+                    
+                    int qty = int.Parse(dataGridViewPembelian.Rows[i].Cells["quantity"].Value.ToString());
+                    int harga = int.Parse(dataGridViewPembelian.Rows[i].Cells["harga"].Value.ToString());
+                    int jumlah = int.Parse(dataGridViewPembelian.Rows[i].Cells["jumlah"].Value.ToString());
+                    double discPrs = double.Parse(dataGridViewPembelian.Rows[i].Cells["diskon_persen"].Value.ToString());
+                    int discRph = int.Parse(dataGridViewPembelian.Rows[i].Cells["diskon_rph"].Value.ToString());
+                    int total = int.Parse(dataGridViewPembelian.Rows[i].Cells["total_harga"].Value.ToString());
 
-                int qty = int.Parse(dataGridViewPembelian.Rows[i].Cells["quantity"].Value.ToString());
-                int harga = int.Parse(dataGridViewPembelian.Rows[i].Cells["harga"].Value.ToString());
-                int jumlah = int.Parse(dataGridViewPembelian.Rows[i].Cells["jumlah"].Value.ToString());
-                double discPrs = double.Parse(dataGridViewPembelian.Rows[i].Cells["diskon_persen"].Value.ToString());
-                int discRph = int.Parse(dataGridViewPembelian.Rows[i].Cells["diskon_rph"].Value.ToString());
-                int total = int.Parse(dataGridViewPembelian.Rows[i].Cells["total_harga"].Value.ToString());
+                    pembelian.TambahPembelianDetil(kodeBahan, qty, harga, jumlah, discPrs, discRph, total);
+                }
 
-                pembelian.TambahPembelianDetil(bhnBakuDipilih, qty, harga, jumlah, discPrs, discRph, total);
-            }
-
-            Pembelian.TambahData(pembelian);
+                Pembelian.TambahData(pembelian);
 
                 MessageBox.Show("Data nota Beli berhasil tersimpan.", "Informasi");
-
+            //}
             //panggil event handler buttonCetak_Click
             //buttonCetak_Click(sender, e);
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("Gagal menyimpan nota. Pesan kesalahan : " + ex.Message, "Kesalahan");
+            //}
         }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Gagal menyimpan nota. Pesan kesalahan : " + ex.Message, "Kesalahan");
-            }
-}
 
         private void FormatDataGrid()
         {
@@ -154,6 +152,7 @@ namespace PT.SPSS
             dataGridViewPembelian.Columns.Clear();
 
             //menambah kolom di datagridview
+            dataGridViewPembelian.Columns.Add("kode", "Kode Bahan");
             dataGridViewPembelian.Columns.Add("nama", "Nama Bahan");
             dataGridViewPembelian.Columns.Add("quantity", "Qty");
             dataGridViewPembelian.Columns.Add("harga", "Harga");
@@ -196,6 +195,32 @@ namespace PT.SPSS
             {
                 textBoxAlamat.Text = "";
             }
+        }
+
+        private void textBoxTotal_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridViewPembelian_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = this.dataGridViewPembelian.Rows[e.RowIndex];
+
+                comboBoxBahanBaku.SelectedItem = row.Cells["nama"].Value.ToString();
+                textBoxQty.Text = row.Cells["quantity"].Value.ToString();
+                textBoxHarga.Text = row.Cells["harga"].Value.ToString();
+                textBoxJumlah.Text = row.Cells["jumlah"].Value.ToString();
+                textBoxDiscPrs.Text = row.Cells["diskon_persen"].Value.ToString();
+                textBoxDiscRp.Text = row.Cells["diskon_rph"].Value.ToString();
+                textBoxTotal.Text = row.Cells["total_harga"].Value.ToString();
+            }
+        }
+
+        private void textBoxHarga_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
