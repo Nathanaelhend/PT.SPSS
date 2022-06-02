@@ -16,5 +16,10 @@ namespace PT.SPSS
         {
             InitializeComponent();
         }
+
+        private void panelSupplier_Paint(object sender, PaintEventArgs e)
+        {
+            
+        }
     }
 }
