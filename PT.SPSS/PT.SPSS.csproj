@@ -49,6 +49,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DaftarBahanBaku.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DaftarBahanBaku.Designer.cs">
+      <DependentUpon>DaftarBahanBaku.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DaftarBahanJadi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DaftarBahanJadi.Designer.cs">
+      <DependentUpon>DaftarBahanJadi.cs</DependentUpon>
+    </Compile>
     <Compile Include="DaftarNotaDetail.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,6 +129,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="DaftarBahanBaku.resx">
+      <DependentUpon>DaftarBahanBaku.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DaftarBahanJadi.resx">
+      <DependentUpon>DaftarBahanJadi.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DaftarNotaDetail.resx">
       <DependentUpon>DaftarNotaDetail.cs</DependentUpon>
     </EmbeddedResource>
