@@ -27,15 +27,15 @@ namespace PT.SPSS
 
             if (listBahanBaku.Count > 0)
             {
-                dataGridViewBahanBaku.DataSource = listBahanBaku;
+                dataGridViewBarangBaku.DataSource = listBahanBaku;
             }
             else
             {
-                dataGridViewBahanBaku.DataSource = null;
+                dataGridViewBarangBaku.DataSource = null;
             }
 
-            dataGridViewBahanBaku.AllowUserToAddRows = false;
-            dataGridViewBahanBaku.ReadOnly = true;
+            dataGridViewBarangBaku.AllowUserToAddRows = false;
+            dataGridViewBarangBaku.ReadOnly = true;
         }
 
         private void DisplayOnDataGrid()
@@ -50,7 +50,7 @@ namespace PT.SPSS
                 foreach (BahanBaku b in listBahanBaku)
                 {
                     //menambahkan data barang satu persatu ke datagridview
-                    dataGridViewBarangBaku.Rows.Add(b.KodeBarang, b.Barcode, b.Nama, b.HargaJual, b.Stok, b.Kategori.KodeKategori, b.Kategori.Nama);
+                    dataGridViewBarangBaku.Rows.Add(b.Kode, b.Nama, b.Harga, b.Satuan, b.Kategori.KodeKategori, b.Kategori.Nama);
                 }
 
             }
@@ -62,8 +62,8 @@ namespace PT.SPSS
 
         private void FormatDataGrid()
         {
-            dataGridViewBarangBaku.Columns.Add("KodeBahanBaku", "Kode Bahan Baku");
-            dataGridViewBarangBaku.Columns.Add("NamaBahanBaku", "Nama");
+            dataGridViewBarangBaku.Columns.Add("KodeBahanJadi", "Kode Bahan Jadi");
+            dataGridViewBarangBaku.Columns.Add("NamaBahanJadi", "Nama");
             dataGridViewBarangBaku.Columns.Add("Harga", "Harga");
             dataGridViewBarangBaku.Columns.Add("Satuan", "Satuan");
             dataGridViewBarangBaku.Columns.Add("KodeKategori", "Kode Kategori");
