@@ -92,26 +92,25 @@ namespace SPSS_LIB
             }
         }
 
-        public static List<Pembelian> BacaData(string pKriteria, string pNilaiKriteria, ref string pNilaiKriteria2)
+        public static List<Pembelian> BacaData(string pKriteria, string pNilaiKriteria)
         {
             string sql = "";
             if (pKriteria == "")
             {
-                sql = "SELECT nb.no_nota as Nomor_Nota, nb.tanggal as Tanggal_Nota, s.nama as Nama_Supplier, bb.nama as Nama_Bahan_Baku, nbd.quantity," +
-                      "nbd.harga FROM nota_beli nb INNER JOIN nota_beli_detail nbd ON nb.no_nota = nbd.nomor_nota_beli INNER JOIN supplier s ON s.kodeSupplier=nb.supplier_id " +
-                      "INNER JOIN bahan_baku bb ON bb.kode = nbd.id_barang_baku";
+                //sql = "SELECT nb.no_nota as Nomor_Nota, nb.tanggal as Tanggal_Nota, s.nama as Nama_Supplier, bb.nama as Nama_Bahan_Baku, nbd.quantity," +
+                //      "nbd.harga FROM nota_beli nb INNER JOIN nota_beli_detail nbd ON nb.no_nota = nbd.nomor_nota_beli INNER JOIN supplier s ON s.kodeSupplier=nb.supplier_id " +
+                //      "INNER JOIN bahan_baku bb ON bb.kode = nbd.id_barang_baku";
+                sql = "select nb.no_nota, nb.tanggal, nb.supplier_id, S.nama, nb.jumlah, nb.diskon_persen, diskon_rph, nb.dpp, nb.ppn_persen, nb.ppn_rupiah," +
+                      "nb.total_beli from nota_beli nb INNER JOIN supplier S on nb.supplier_id = S.kodeSupplier";
             }
-            else if(pKriteria != "nb.tanggal")
-            {
-                sql = "SELECT nb.no_nota as Nomor_Nota, nb.tanggal as Tanggal_Nota, s.nama as Nama_Supplier, bb.nama as Nama_Bahan_Baku," +
-                      "nbd.quantity, nbd.harga FROM nota_beli nb INNER JOIN nota_beli_detail nbd ON nb.no_nota = nbd.nomor_nota_beli INNER JOIN supplier s ON s.kodeSupplier = nb.supplier_id " +
-                      "INNER JOIN bahan_baku bb ON bb.kode = nbd.id_barang_baku WHERE " + pKriteria  + " LIKE '%" + pNilaiKriteria + "%'";
-            }
+
             else
             {
-                sql = "SELECT nb.no_nota as Nomor_Nota, nb.tanggal as Tanggal_Nota, s.nama as Nama_Supplier, bb.nama as Nama_Bahan_Baku, nbd.quantity, nbd.harga" +
-                      "FROM nota_beli nb INNER JOIN nota_beli_detail nbd ON nb.no_nota = nbd.nomor_nota_beli INNER JOIN supplier s ON s.kodeSupplier = nb.supplier_id" +
-                      "INNER JOIN bahan_baku bb ON bb.kode = nbd.id_barang_baku WHERE nb.tanggal BETWEEN " + pNilaiKriteria +  "AND" + pNilaiKriteria2;
+                //sql = "SELECT nb.no_nota as Nomor_Nota, nb.tanggal as Tanggal_Nota, s.nama as Nama_Supplier, bb.nama as Nama_Bahan_Baku, nbd.quantity, nbd.harga" +
+                //      "FROM nota_beli nb INNER JOIN nota_beli_detail nbd ON nb.no_nota = nbd.nomor_nota_beli INNER JOIN supplier s ON s.kodeSupplier = nb.supplier_id" +
+                //      "INNER JOIN bahan_baku bb ON bb.kode = nbd.id_barang_baku WHERE nb.tanggal BETWEEN " + pKriteria + "AND" + pNilaiKriteria;
+                sql = "select nb.no_nota, nb.tanggal, nb.supplier_id, S.nama, nb.jumlah, nb.diskon_persen, diskon_rph, nb.dpp, nb.ppn_persen, nb.ppn_rupiah," +
+                      "nb.total_beli from nota_beli nb INNER JOIN supplier S on nb.supplier_id = S.kodeSupplier" + "WHERE" + pKriteria + "LIKE'%" + pNilaiKriteria + "%'";
             }
 
             MySqlDataReader hasilData1 = Koneksi.JalankanPerintahQuery(sql);
@@ -124,16 +123,86 @@ namespace SPSS_LIB
 
                 DateTime tanggal = DateTime.Parse(hasilData1.GetValue(1).ToString());
 
-                List<Supplier> listSupplier = Supplier.BacaData("kodeSupplier", hasilData1.GetValue(1).ToString());
+                List<Supplier> listSupplier = Supplier.BacaData("kodeSupplier", hasilData1.GetValue(2).ToString());
 
-                int jumlah = int.Parse(hasilData1.GetValue(2).ToString());
+                List<Supplier> listSupplierNama = Supplier.BacaData("nama", hasilData1.GetValue(3).ToString());
 
-                double discPersen = double.Parse(hasilData1.GetValue(3).ToString()); 
-                int discRph = int.Parse(hasilData1.GetValue(4).ToString());
-                int dpp = int.Parse(hasilData1.GetValue(5).ToString());
-                double ppnPersen = double.Parse(hasilData1.GetValue(6).ToString());
-                int ppnRph = int.Parse(hasilData1.GetValue(7).ToString());
-                int netto = int.Parse(hasilData1.GetValue(8).ToString());
+                int jumlah = int.Parse(hasilData1.GetValue(4).ToString());
+
+                double discPersen = double.Parse(hasilData1.GetValue(5).ToString()); 
+                int discRph = int.Parse(hasilData1.GetValue(6).ToString());
+                int dpp = int.Parse(hasilData1.GetValue(7).ToString());
+                double ppnPersen = double.Parse(hasilData1.GetValue(8).ToString());
+                int ppnRph = int.Parse(hasilData1.GetValue(9).ToString());
+                int netto = int.Parse(hasilData1.GetValue(10).ToString());
+
+                Pembelian nota = new Pembelian(noNota, tanggal, listSupplier[0], jumlah, discPersen, discRph, dpp, ppnPersen, ppnRph, netto);
+
+
+                string sql2 = "select nbd.id_barang_baku, nbd.quantity, nbd.harga, nbd.jumlah, nbd.diskon_persen, nbd.diskon_rph, nbd.total_harga" +
+                    " FROM nota_beli N INNER JOIN nota_beli_detail NBD ON N.no_nota = NBD.nomor_nota_beli " +
+                     
+                    " WHERE N.no_nota = '" + noNota + "'";
+
+
+                MySqlDataReader hasilData2 = Koneksi.JalankanPerintahQuery(sql2);
+
+                while (hasilData2.Read() == true)
+                {
+                    //Barang yang terbeli 
+                    //List<BahanBaku> listBhnBaku = BahanBaku.BacaData("B.kode", hasilData2.GetValue(0).ToString());
+
+                    string kode = hasilData2.GetValue(0).ToString();
+                    int qty = int.Parse(hasilData2.GetValue(1).ToString());
+                    int harga = int.Parse(hasilData2.GetValue(2).ToString());
+                    int jum = int.Parse(hasilData2.GetValue(3).ToString());
+                    double discPrs = double.Parse(hasilData2.GetValue(4).ToString());
+                    int discRp = int.Parse(hasilData2.GetValue(5).ToString());
+                    int total = int.Parse(hasilData2.GetValue(6).ToString());
+
+                    PembelianDetail detilBeli = new PembelianDetail(kode, qty, harga, jum, discPrs, discRp, total);
+
+
+                    nota.TambahPembelianDetil(kode, qty, harga, jum, discPrs, discRp, total);
+                }
+
+                listHasilData.Add(nota);
+
+            }
+            return listHasilData;
+        }
+
+        public static List<Pembelian> BacaDataTanggal(string tanggalAwal, string tanggalAkhir)
+        {
+            string sql = "";
+           
+                //sql = "SELECT nb.no_nota as Nomor_Nota, nb.tanggal as Tanggal_Nota, s.nama as Nama_Supplier, bb.nama as Nama_Bahan_Baku, nbd.quantity, nbd.harga" +
+                //      " FROM nota_beli nb INNER JOIN nota_beli_detail nbd ON nb.no_nota = nbd.nomor_nota_beli INNER JOIN supplier s ON s.kodeSupplier = nb.supplier_id" +
+                //      " INNER JOIN bahan_baku bb ON bb.kode = nbd.id_barang_baku WHERE nb.tanggal BETWEEN "+ tanggalAwal + "# AND #" + tanggalAkhir;
+
+                sql = "select nb.no_nota, nb.tanggal, nb.supplier_id, S.nama, nb.jumlah, nb.diskon_persen, diskon_rph, nb.dpp, nb.ppn_persen, nb.ppn_rupiah," +
+                      " nb.total_beli from nota_beli nb INNER JOIN supplier S on nb.supplier_id = S.kodeSupplier" + " WHERE nb.tanggal BETWEEN '" + tanggalAwal.ToString() + "' AND '" + tanggalAkhir.ToString() + "'";
+
+            MySqlDataReader hasilData1 = Koneksi.JalankanPerintahQuery(sql);
+
+            List<Pembelian> listHasilData = new List<Pembelian>();
+
+            while (hasilData1.Read() == true)
+            {
+                string noNota = hasilData1.GetValue(0).ToString();
+
+                DateTime tanggal = DateTime.Parse(hasilData1.GetValue(1).ToString());
+
+                List<Supplier> listSupplier = Supplier.BacaData("kodeSupplier", hasilData1.GetValue(2).ToString());
+
+                int jumlah = int.Parse(hasilData1.GetValue(4).ToString());
+
+                double discPersen = double.Parse(hasilData1.GetValue(5).ToString());
+                int discRph = int.Parse(hasilData1.GetValue(6).ToString());
+                int dpp = int.Parse(hasilData1.GetValue(7).ToString());
+                double ppnPersen = double.Parse(hasilData1.GetValue(8).ToString());
+                int ppnRph = int.Parse(hasilData1.GetValue(9).ToString());
+                int netto = int.Parse(hasilData1.GetValue(10).ToString());
 
                 Pembelian nota = new Pembelian(noNota, tanggal, listSupplier[0], jumlah, discPersen, discRph, dpp, ppnPersen, ppnRph, netto);
 
@@ -159,14 +228,15 @@ namespace SPSS_LIB
                 //    PembelianDetail detilBeli = new PembelianDetail(listBhnBaku[0], hargaJual, jumlah);
 
 
-                //    nota.TambahNotaBeliDetil(listBhnBaku[0], hargaJual, jumlah);
+                //    nota.TambahPembelianDetil(listBhnBaku[0], hargaJual, jumlah);
                 //}
 
-                //listHasilData.Add(nota);
+               listHasilData.Add(nota);
 
             }
             return listHasilData;
         }
+
 
 
 

@@ -110,8 +110,8 @@ namespace PT.SPSS
 
         private void buttonSimpan_Click(object sender, EventArgs e)
         {
-            //try
-            //{
+            try
+            {
                 Supplier supplierDipilih = (Supplier)comboBoxSupplier.SelectedItem;
                 BahanBaku bhnBakuDipilih = (BahanBaku)comboBoxBahanBaku.SelectedItem;
 
@@ -137,13 +137,13 @@ namespace PT.SPSS
                 Pembelian.TambahData(pembelian);
 
                 MessageBox.Show("Data nota Beli berhasil tersimpan.", "Informasi");
-            //}
+            }
             //panggil event handler buttonCetak_Click
             //buttonCetak_Click(sender, e);
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("Gagal menyimpan nota. Pesan kesalahan : " + ex.Message, "Kesalahan");
-            //}
+            catch (Exception ex)
+            {
+                MessageBox.Show("Gagal menyimpan nota. Pesan kesalahan : " + ex.Message, "Kesalahan");
+            }
         }
 
         private void FormatDataGrid()

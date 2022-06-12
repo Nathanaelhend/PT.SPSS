@@ -58,11 +58,6 @@ namespace PT.SPSS
                 frm.BringToFront();
             }
         }
-
-        private void keluarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
         
         private void kodeBarangToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -165,6 +160,39 @@ namespace PT.SPSS
                 frm.Show();
                 frm.BringToFront();
             }
+        }
+
+        private void keluarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void daftarSupplierToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormDaftarSupplier frmDaftarSupp = new FormDaftarSupplier();
+            frmDaftarSupp.Owner = this;
+            frmDaftarSupp.Show();
+        }
+
+        private void bahanBakuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DaftarBahanBaku frmDaftarBhnBaku = new DaftarBahanBaku();
+            frmDaftarBhnBaku.Owner = this;
+            frmDaftarBhnBaku.Show();
+        }
+
+        private void barangJadiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DaftarBrgJadi frmDaftaBrgJadi = new DaftarBrgJadi();
+            frmDaftaBrgJadi.Owner = this;
+            frmDaftaBrgJadi.Show();
+        }
+
+        private void notaBeliToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DaftarNotaDetail frmDaftarNotaDetil = new DaftarNotaDetail();
+            frmDaftarNotaDetil.Owner = this;
+            frmDaftarNotaDetil.Show();
         }
     }
 }

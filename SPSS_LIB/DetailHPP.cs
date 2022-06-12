@@ -8,28 +8,22 @@ namespace SPSS_LIB
 {
     public class DetailHPP
     {
-        private BahanBaku bhnBaku;
+        private string kode;
         private int quantity;
         private int harga;
         private int jumlah;
 
-        #region Constructors
-        public DetailHPP(BahanBaku bhnBaku, int quantity, int harga, int jumlah)
+        public DetailHPP(string kode, int quantity, int harga, int jumlah)
         {
-            this.BhnBaku = bhnBaku;
+            this.Kode = kode;
             this.Quantity = quantity;
             this.Harga = harga;
             this.Jumlah = jumlah;
         }
-        #endregion
 
-        #region Properties
-        public BahanBaku BhnBaku { get => bhnBaku; set => bhnBaku = value; }
+        public string Kode { get => kode; set => kode = value; }
         public int Quantity { get => quantity; set => quantity = value; }
         public int Harga { get => harga; set => harga = value; }
         public int Jumlah { get => jumlah; set => jumlah = value; }
-        #endregion
-
-
     }
 }

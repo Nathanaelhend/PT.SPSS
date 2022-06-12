@@ -50,7 +50,7 @@ namespace PT.SPSS
                 foreach (BahanBaku b in listBahanBaku)
                 {
                     //menambahkan data barang satu persatu ke datagridview
-                    dataGridViewBarangBaku.Rows.Add(b.Kode, b.Nama, b.Harga, b.Satuan, b.Kategori.KodeKategori, b.Kategori.Nama);
+                    dataGridViewBarangBaku.Rows.Add(b.Kode, b.Nama, b.Harga, b.Satuan, b.KategoriBhnBaku.KodeBahan);
                 }
 
             }
@@ -69,16 +69,16 @@ namespace PT.SPSS
             dataGridViewBarangBaku.Columns.Add("KodeKategori", "Kode Kategori");
             dataGridViewBarangBaku.Columns.Add("NamaKategori", "Nama Kategori");
 
-            dataGridViewBarangBaku.Columns["Harga"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            //dataGridViewBarangBaku.Columns["Harga"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
-            dataGridViewBarangBaku.Columns["Harga"].DefaultCellStyle.Format = "#,###";
+            //dataGridViewBarangBaku.Columns["Harga"].DefaultCellStyle.Format = "#,###";
 
-            dataGridViewBarangBaku.Columns["KodeBahanBaku"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewBarangBaku.Columns["NamaBahanBaku"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewBarangBaku.Columns["Harga"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewBarangBaku.Columns["Satuan"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewBarangBaku.Columns["KodeKategori"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewBarangBaku.Columns["NamaKategori"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            //dataGridViewBarangBaku.Columns["KodeBahanJadi"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            //dataGridViewBarangBaku.Columns["NamaBahanBaku"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            //dataGridViewBarangBaku.Columns["Harga"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            //dataGridViewBarangBaku.Columns["Satuan"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            //dataGridViewBarangBaku.Columns["KodeKategori"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            //dataGridViewBarangBaku.Columns["NamaKategori"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
         }
 
@@ -102,7 +102,7 @@ namespace PT.SPSS
                 kriteria = "kbb.nama";
             }
 
-            listBahanBaku = listBahanBaku.BacaData(kriteria, textBoxKriteria.Text);
+            listBahanBaku = BahanBaku.BacaData(kriteria, textBoxKriteria.Text);
 
             DisplayOnDataGrid();
         }

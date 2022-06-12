@@ -50,11 +50,11 @@ namespace PT.SPSS
             dataGridViewHPP.Columns.Clear();
 
             //menambah kolom di datagridview
+            dataGridViewHPP.Columns.Add("kode", "Kode Bahan");
             dataGridViewHPP.Columns.Add("nama", "Nama Bahan");
             dataGridViewHPP.Columns.Add("quantity", "Qty");
             dataGridViewHPP.Columns.Add("harga", "Harga");
             dataGridViewHPP.Columns.Add("jumlah", "Jumlah");
-            dataGridViewHPP.Columns.Add("total", "Total");
 
             //agar lebar kolom dapat menyesuaikan panjang/isi data
             //dataGridViewPembelian.Columns["KodeTipe"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
@@ -105,19 +105,34 @@ namespace PT.SPSS
             }
         }
 
-        
+
+        private int HitungTotal()
+        {
+            int Total = 0;
+            for (int i = 0; i < dataGridViewHPP.Rows.Count; i++)
+            {
+                int subTotal = int.Parse(dataGridViewHPP.Rows[i].Cells["jumlah"].Value.ToString());
+                Total += subTotal;
+            }
+            return Total;
+        }
 
         private void textBoxQtyBB_KeyDown(object sender, KeyEventArgs e)
         {
             BahanBaku bahanDipilih = (BahanBaku)comboBoxKodeBB.SelectedItem;
 
+           
+
             if (e.KeyCode == Keys.Enter)
             {
                 textBoxTotal.Text = HPP.HitungTotalBB(int.Parse(textBoxHarga.Text), int.Parse(textBoxQtyBB.Text)).ToString();
-                textBoxJumlah.Text += textBoxTotal.Text;
 
-                dataGridViewHPP.Rows.Add(bahanDipilih.Nama.ToString(), textBoxQtyBB.Text, textBoxHarga.Text, textBoxJumlah.Text, textBoxTotal.Text);
+                // textBoxJumlah.Text += textBoxTotal.Text;
+                
+
+                dataGridViewHPP.Rows.Add(bahanDipilih.Kode.ToString(), bahanDipilih.Nama.ToString(), textBoxQtyBB.Text, textBoxHarga.Text, textBoxTotal.Text);
             }
+            textBoxJumlah.Text = HitungTotal().ToString();
         }
 
         private void buttonSimpan_Click(object sender, EventArgs e)
@@ -136,14 +151,14 @@ namespace PT.SPSS
                 for (int i = 0; i < dataGridViewHPP.Rows.Count; i++)
                 {
 
-                    string kodeBahan = dataGridViewHPP.Rows[i].Cells["nama"].Value.ToString();
+                    string kodeBahan = dataGridViewHPP.Rows[i].Cells["kode"].Value.ToString();
 
                     int qty = int.Parse(dataGridViewHPP.Rows[i].Cells["quantity"].Value.ToString());
                     int harga = int.Parse(dataGridViewHPP.Rows[i].Cells["harga"].Value.ToString());
                     int jumlah = int.Parse(dataGridViewHPP.Rows[i].Cells["jumlah"].Value.ToString());
                     
 
-                    hpp.TambahHPPDetil(bhnBakuDipilih, qty, harga, jumlah);
+                    hpp.TambahHPPDetil(kodeBahan, qty, harga, jumlah);
                 }
 
                 HPP.TambahData(hpp);

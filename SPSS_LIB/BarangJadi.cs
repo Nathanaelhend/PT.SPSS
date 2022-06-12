@@ -11,17 +11,17 @@ namespace SPSS_LIB
     {
         private string kodeBarang;
         private string nama;
-        private string satuan;
         private int harga;
+        private string satuan;
         private KategoriBarang kategoriBarang;
 
         #region Constructors
-        public BarangJadi(string kodeBarang, string nama, string satuan, int harga, KategoriBarang kategoriBarang)
+        public BarangJadi(string kodeBarang, string nama, int harga, string satuan, KategoriBarang kategoriBarang)
         {
             this.KodeBarang = kodeBarang;
             this.Nama = nama;
-            this.Satuan = satuan;
             this.Harga = harga;
+            this.Satuan = satuan;
             this.KategoriBarang = kategoriBarang;
         }
         #endregion
@@ -29,8 +29,8 @@ namespace SPSS_LIB
         #region Properties
         public string KodeBarang { get => kodeBarang; set => kodeBarang = value; }
         public string Nama { get => nama; set => nama = value; }
-        public string Satuan { get => satuan; set => satuan = value; }
         public int Harga { get => harga; set => harga = value; }
+        public string Satuan { get => satuan; set => satuan = value; }
         public KategoriBarang KategoriBarang { get => kategoriBarang; set => kategoriBarang = value; }
         #endregion
 
@@ -62,12 +62,12 @@ namespace SPSS_LIB
             string sql = "";
             if (kriteria == "")
             {
-                sql = "select B.kodeBarang, B.nama, B.harga, B.satuan, B.kodeKategori" +
+                sql = "select B.kodeBarang, B.nama, B.harga, B.satuan, B.kodeKategori, KB.keteranganBarang" +
                     " from barang_jadi B inner join kategori_barang_jadi KB on B.kodeKategori = KB.kode";
             }
             else
             {
-                sql = "select B.kodeBarang, B.nama, B.harga, B.satuan, B.kodeKategori" +
+                sql = "select B.kodeBarang, B.nama, B.harga, B.satuan, B.kodeKategori, KB.keteranganBarang" +
                     " from barang_jadi B inner join kategori_barang_jadi KB on B.kodeKategori = KB.kode" +
                     " where " + kriteria + " LIKE '%" + nilaiKriteria + "%'";
             }
@@ -80,7 +80,7 @@ namespace SPSS_LIB
             {
                 KategoriBarang kb = new KategoriBarang(hasil.GetValue(3).ToString(), hasil.GetValue(4).ToString());
 
-                BarangJadi b = new BarangJadi(hasil.GetValue(0).ToString(), hasil.GetValue(1).ToString(), hasil.GetValue(2).ToString(), int.Parse(hasil.GetValue(3).ToString()), kb);
+                BarangJadi b = new BarangJadi(hasil.GetValue(0).ToString(), hasil.GetValue(1).ToString(), int.Parse(hasil.GetValue(2).ToString()), hasil.GetValue(3).ToString(), kb);
                 listBrgJadi.Add(b);
             }
             return listBrgJadi;

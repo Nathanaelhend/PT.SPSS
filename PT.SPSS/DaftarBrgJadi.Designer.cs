@@ -1,7 +1,7 @@
 ﻿
 namespace PT.SPSS
 {
-    partial class DaftarBahanJadi
+    partial class DaftarBrgJadi
     {
         /// <summary>
         /// Required designer variable.

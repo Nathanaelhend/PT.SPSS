@@ -22,7 +22,7 @@ namespace PT.SPSS
         {
             this.Height = 50 + panelLogin.Height;
             txtServer.Text = "localhost";
-            txtDatabase.Text = "pt_spss";
+            txtDatabase.Text = "pt_spss_kp";
         }
 
         private void linkLabelSetting_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

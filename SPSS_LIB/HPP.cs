@@ -45,19 +45,19 @@ namespace SPSS_LIB
 
 
         #region Methods
-        public void TambahHPPDetil(BahanBaku bhnBaku, int quantity, int harga, int jumlah)
+        public void TambahHPPDetil(string kode, int quantity, int harga, int jumlah)
         {
-            DetailHPP detailHPP = new DetailHPP(bhnBaku, quantity, harga, jumlah);
+            DetailHPP detailHPP = new DetailHPP(kode, quantity, harga, jumlah);
 
             this.ListDetailHPP.Add(detailHPP);
         }
 
         public static void TambahData(HPP hpp)
         {
-            using (TransactionScope transScope = new TransactionScope())
-            {
-                try
-                {
+            //using (TransactionScope transScope = new TransactionScope())
+            //{
+            //    try
+            //    {
                     string sql1 = "insert into total_hpp(noBukti, tanggal, deadline, kodeBrgJadi, qty, jumlah, hpp) VALUES('" + hpp.NoBukti + "','" +
                                     hpp.Tanggal.ToString("yyyy-MM-dd hh:mm:ss") + "','" + hpp.Deadline.ToString("yyyy-MM-dd hh:mm:ss") + "','" + hpp.BrgJadi.KodeBarang + "','" +
                                     hpp.Quantity + "','" + hpp.Jumlah + "','" + hpp.Hpp  + "')";
@@ -67,20 +67,20 @@ namespace SPSS_LIB
                     foreach (DetailHPP hppDetail in hpp.ListDetailHPP)
                     {
                         string sql2 = "insert into detail_hpp(noBukti, tanggal, kodeBhnBaku, qty, harga, jumlah) VALUES('" + hpp.NoBukti + "','" +
-                                       hpp.Tanggal.ToString("yyyy-MM-dd hh:mm:ss") + "','" + hppDetail.BhnBaku.Kode + "','" + hppDetail.Quantity + "','" +
+                                       hpp.Tanggal.ToString("yyyy-MM-dd hh:mm:ss") + "','" + hppDetail.Kode + "','" + hppDetail.Quantity + "','" +
                                        hppDetail.Harga + "','" + hppDetail.Jumlah + "')";
 
                         Koneksi.JalankanPerintahDML(sql2);
                     }
-                    transScope.Complete();
-                }
-                catch (Exception ex)
-                {
-                    transScope.Dispose();
-                    throw (new Exception("Penyimpanan Data HPP gagal. Pesan Kesalahan : " + ex.Message));
-                }
+                    //transScope.Complete();
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        transScope.Dispose();
+            //        throw (new Exception("Penyimpanan Data HPP gagal. Pesan Kesalahan : " + ex.Message));
+            //    }
 
-            }
+            //}
         }
 
         public static int HitungHPP(int total, int quantity)
@@ -93,6 +93,12 @@ namespace SPSS_LIB
         {
             int total = harga * quantity;
             return total;
+        }
+
+        public static int HitungJumlah(int harga, int total)
+        {
+            int jumlah = harga + total;
+            return jumlah;
         }
         #endregion
     }

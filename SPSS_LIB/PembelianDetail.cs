@@ -38,6 +38,5 @@ namespace SPSS_LIB
         public int DiscRph { get => discRph; set => discRph = value; }
         public int TotalHarga { get => totalHarga; set => totalHarga = value; }
         #endregion
-
     }
 }

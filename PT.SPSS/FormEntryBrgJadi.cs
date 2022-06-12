@@ -56,7 +56,7 @@ namespace PT.SPSS
             try
             {
                 KategoriBarang kb = (KategoriBarang)comboKatBrgJadi.SelectedItem;
-                BarangJadi b = new BarangJadi(textBoxKodeBrgJadi.Text, textBoxNama.Text, int.Parse(textBoxHarga.Text).ToString(), int.Parse(textBoxSatuan.Text), kb);
+                BarangJadi b = new BarangJadi(textBoxKodeBrgJadi.Text, textBoxNama.Text, int.Parse(textBoxHarga.Text), textBoxSatuan.Text, kb);
                 BarangJadi.HapusData(b);
                 MessageBox.Show("Hapus data berhasil.", "Informasi");
             }
@@ -77,19 +77,19 @@ namespace PT.SPSS
         {
             if (baru == true)
             {
-                try
-                {
+                //try
+                //{
                     KategoriBarang kb = (KategoriBarang)comboKatBrgJadi.SelectedItem;
-                    BarangJadi b = new BarangJadi(textBoxKodeBrgJadi.Text, textBoxNama.Text, int.Parse(textBoxHarga.Text).ToString(), int.Parse(textBoxSatuan.Text), kb);
+                    BarangJadi b = new BarangJadi(textBoxKodeBrgJadi.Text, textBoxNama.Text, int.Parse(textBoxHarga.Text), textBoxSatuan.Text, kb);
                     BarangJadi.TambahData(b);
 
                     MessageBox.Show("Data Berhasil Disimpan");
-                }
+                //}
 
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Gagal Menyimpan. Kesalahan : " + ex.Message);
-                }
+                //catch (Exception ex)
+                //{
+                //    MessageBox.Show("Gagal Menyimpan. Kesalahan : " + ex.Message);
+                //}
             }
 
             else
@@ -97,7 +97,7 @@ namespace PT.SPSS
                 try
                 {
                     KategoriBarang kb = (KategoriBarang)comboKatBrgJadi.SelectedItem;
-                    BarangJadi b = new BarangJadi(textBoxKodeBrgJadi.Text, textBoxNama.Text, int.Parse(textBoxHarga.Text).ToString(), int.Parse(textBoxSatuan.Text), kb);
+                    BarangJadi b = new BarangJadi(textBoxKodeBrgJadi.Text, textBoxNama.Text, int.Parse(textBoxHarga.Text), textBoxSatuan.Text, kb);
                     BarangJadi.UbahData(b);
                     MessageBox.Show("Pengubahan berhasil.", "Informasi");
                 }
