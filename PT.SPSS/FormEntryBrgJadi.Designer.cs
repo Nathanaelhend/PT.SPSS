@@ -101,6 +101,7 @@ namespace PT.SPSS
             this.textBoxKodeBrgJadi.Size = new System.Drawing.Size(240, 26);
             this.textBoxKodeBrgJadi.TabIndex = 70;
             this.textBoxKodeBrgJadi.TextChanged += new System.EventHandler(this.textBoxKodeBrgJadi_TextChanged);
+            this.textBoxKodeBrgJadi.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxKodeBrgJadi_KeyDown);
             // 
             // label3
             // 

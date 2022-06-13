@@ -72,18 +72,18 @@ namespace PT.SPSS
 
         private void dateTimePickerDateAkhir_ValueChanged(object sender, EventArgs e)
         {
-            //listPembelian = Pembelian.BacaDataTanggal(dateTimePickerDateAwal.Value.Date.ToString(), dateTimePickerDateAkhir.Value.Date.ToString());
+            listPembelian = Pembelian.BacaDataTanggal(dateTimePickerDateAwal.Value.Date, dateTimePickerDateAkhir.Value.Date);
 
-            //if (listPembelian.Count > 0)
-            //{
-            //    dataGridViewPembelian.DataSource = listPembelian;
-            //}
-            //else
-            //{
-            //    dataGridViewPembelian.DataSource = null;
-            //}
+            if (listPembelian.Count > 0)
+            {
+                dataGridViewPembelian.DataSource = listPembelian;
+            }
+            else
+            {
+                dataGridViewPembelian.DataSource = null;
+            }
 
-            //TampilGrid();
+            TampilGrid();
         }
 
         private void dateTimePickerDateAwal_ValueChanged(object sender, EventArgs e)
@@ -103,12 +103,12 @@ namespace PT.SPSS
 
         private void buttonTampil_Click(object sender, EventArgs e)
         {
-            DateTime tglAwal = dateTimePickerDateAwal.Value.Date;
-            DateTime tglAkhir = dateTimePickerDateAkhir.Value.Date;
+            //DateTime tglAwal = dateTimePickerDateAwal.Value.Date;
+            //DateTime tglAkhir = dateTimePickerDateAkhir.Value.Date;
 
 
-            dv.RowFilter = String.Format("tanggal > #{0:dd/MM/yyyy}# AND tanggal < #{1:dd/MM/yyyy}#", tglAwal, tglAkhir);
-            dataGridViewPembelian.DataSource = dv;
+            //dv.RowFilter = String.Format("tanggal >= #{0:dd/MM/yyyy}# AND tanggal <= #{1:dd/MM/yyyy}#", tglAwal, tglAkhir);
+            //dataGridViewPembelian.DataSource = dv;
         }
     }
 }

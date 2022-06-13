@@ -125,5 +125,7 @@ namespace PT.SPSS
         {
             textBoxKode.Focus();
         }
+
+        
     }
 }

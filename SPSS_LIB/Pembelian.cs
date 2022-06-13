@@ -63,7 +63,6 @@ namespace SPSS_LIB
 
         public static void TambahData(Pembelian pembelian)
         {
-
             using (TransactionScope transScope = new TransactionScope())
             {
                 try
@@ -83,11 +82,12 @@ namespace SPSS_LIB
 
                         Koneksi.JalankanPerintahDML(sql2);
                     }
+                    transScope.Complete();
                 }
                 catch (Exception ex)
                 {
                     transScope.Dispose();
-                    throw (new Exception("Penyimpanan Data HPP gagal. Pesan Kesalahan : " + ex.Message));
+                    throw (new Exception("Penyimpanan Data Pembelian gagal. Pesan Kesalahan : " + ex.Message));
                 }
             }
         }
@@ -172,7 +172,7 @@ namespace SPSS_LIB
             return listHasilData;
         }
 
-        public static List<Pembelian> BacaDataTanggal(string tanggalAwal, string tanggalAkhir)
+        public static List<Pembelian> BacaDataTanggal(DateTime tanggalAwal, DateTime tanggalAkhir)
         {
             string sql = "";
            

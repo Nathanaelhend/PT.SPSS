@@ -110,8 +110,8 @@ namespace PT.SPSS
 
         private void buttonSimpan_Click(object sender, EventArgs e)
         {
-            try
-            {
+            //try
+            //{
                 Supplier supplierDipilih = (Supplier)comboBoxSupplier.SelectedItem;
                 BahanBaku bhnBakuDipilih = (BahanBaku)comboBoxBahanBaku.SelectedItem;
 
@@ -137,13 +137,13 @@ namespace PT.SPSS
                 Pembelian.TambahData(pembelian);
 
                 MessageBox.Show("Data nota Beli berhasil tersimpan.", "Informasi");
-            }
+            //}
             //panggil event handler buttonCetak_Click
             //buttonCetak_Click(sender, e);
-            catch (Exception ex)
-            {
-                MessageBox.Show("Gagal menyimpan nota. Pesan kesalahan : " + ex.Message, "Kesalahan");
-            }
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("Gagal menyimpan nota. Pesan kesalahan : " + ex.Message, "Kesalahan");
+            //}
         }
 
         private void FormatDataGrid()
@@ -202,21 +202,21 @@ namespace PT.SPSS
 
         }
 
-        private void dataGridViewPembelian_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                DataGridViewRow row = this.dataGridViewPembelian.Rows[e.RowIndex];
+        //private void dataGridViewPembelian_CellClick(object sender, DataGridViewCellEventArgs e)
+        //{
+        //    if (e.RowIndex >= 0)
+        //    {
+        //        DataGridViewRow row = this.dataGridViewPembelian.Rows[e.RowIndex];
 
-                comboBoxBahanBaku.SelectedItem = row.Cells["nama"].Value.ToString();
-                textBoxQty.Text = row.Cells["quantity"].Value.ToString();
-                textBoxHarga.Text = row.Cells["harga"].Value.ToString();
-                textBoxJumlah.Text = row.Cells["jumlah"].Value.ToString();
-                textBoxDiscPrs.Text = row.Cells["diskon_persen"].Value.ToString();
-                textBoxDiscRp.Text = row.Cells["diskon_rph"].Value.ToString();
-                textBoxTotal.Text = row.Cells["total_harga"].Value.ToString();
-            }
-        }
+        //        comboBoxBahanBaku.SelectedItem = row.Cells["nama"].Value.ToString();
+        //        textBoxQty.Text = row.Cells["quantity"].Value.ToString();
+        //        textBoxHarga.Text = row.Cells["harga"].Value.ToString();
+        //        textBoxJumlah.Text = row.Cells["jumlah"].Value.ToString();
+        //        textBoxDiscPrs.Text = row.Cells["diskon_persen"].Value.ToString();
+        //        textBoxDiscRp.Text = row.Cells["diskon_rph"].Value.ToString();
+        //        textBoxTotal.Text = row.Cells["total_harga"].Value.ToString();
+        //    }
+        //}
 
         private void textBoxHarga_TextChanged(object sender, EventArgs e)
         {

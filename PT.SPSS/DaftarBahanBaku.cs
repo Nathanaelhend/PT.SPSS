@@ -21,7 +21,7 @@ namespace PT.SPSS
 
         private void DaftarBahanBaku_Load(object sender, EventArgs e)
         {
-            FormatDataGrid();
+            //sFormatDataGrid();
 
             listBahanBaku = BahanBaku.BacaData("", "");
 

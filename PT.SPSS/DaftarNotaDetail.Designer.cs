@@ -107,7 +107,7 @@ namespace PT.SPSS
             this.dateTimePickerDateAwal.CustomFormat = "yyyy-MM-dd";
             this.dateTimePickerDateAwal.Enabled = false;
             this.dateTimePickerDateAwal.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePickerDateAwal.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePickerDateAwal.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePickerDateAwal.Location = new System.Drawing.Point(166, 74);
             this.dateTimePickerDateAwal.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePickerDateAwal.Name = "dateTimePickerDateAwal";
@@ -130,7 +130,7 @@ namespace PT.SPSS
             this.dateTimePickerDateAkhir.CustomFormat = "yyyy-MM-dd";
             this.dateTimePickerDateAkhir.Enabled = false;
             this.dateTimePickerDateAkhir.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePickerDateAkhir.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePickerDateAkhir.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePickerDateAkhir.Location = new System.Drawing.Point(360, 74);
             this.dateTimePickerDateAkhir.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePickerDateAkhir.Name = "dateTimePickerDateAkhir";

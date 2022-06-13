@@ -135,5 +135,15 @@ namespace PT.SPSS
                 }
             }
         }
+
+        private void textBoxKodeBrgJadi_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F5)
+            {
+                DaftarBrgJadi frmDaftarBrgJadi = new DaftarBrgJadi();
+                frmDaftarBrgJadi.Owner = this;
+                frmDaftarBrgJadi.Show();
+            }
+        }
     }
 }
