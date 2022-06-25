@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Transactions;
+using MySql.Data.MySqlClient;
 
 namespace SPSS_LIB
 {
@@ -54,15 +55,15 @@ namespace SPSS_LIB
 
         public static void TambahData(HPP hpp)
         {
-            //using (TransactionScope transScope = new TransactionScope())
-            //{
-            //    try
-            //    {
+            using (TransactionScope transScope = new TransactionScope())
+            {
+                try
+                {
                     string sql1 = "insert into total_hpp(noBukti, tanggal, deadline, kodeBrgJadi, qty, jumlah, hpp) VALUES('" + hpp.NoBukti + "','" +
                                     hpp.Tanggal.ToString("yyyy-MM-dd hh:mm:ss") + "','" + hpp.Deadline.ToString("yyyy-MM-dd hh:mm:ss") + "','" + hpp.BrgJadi.KodeBarang + "','" +
                                     hpp.Quantity + "','" + hpp.Jumlah + "','" + hpp.Hpp  + "')";
 
-                Koneksi.JalankanPerintahDML(sql1);
+                    Koneksi.JalankanPerintahDML(sql1);
 
                     foreach (DetailHPP hppDetail in hpp.ListDetailHPP)
                     {
@@ -72,16 +73,48 @@ namespace SPSS_LIB
 
                         Koneksi.JalankanPerintahDML(sql2);
                     }
-                    //transScope.Complete();
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        transScope.Dispose();
-            //        throw (new Exception("Penyimpanan Data HPP gagal. Pesan Kesalahan : " + ex.Message));
-            //    }
+                    transScope.Complete();
+                }
+                catch (Exception ex)
+                {
+                    transScope.Dispose();
+                    throw (new Exception("Penyimpanan Data HPP gagal. Pesan Kesalahan : " + ex.Message));
+                }
 
-            //}
+            }
         }
+
+        public static List<HPP> BacaData(string kriteria, string nilaiKriteria)
+        {
+            string sql = "";
+            if (kriteria == "")
+            {
+                sql = "SELECT h.noBukti, h.tanggal, h.deadline, h.qty, h.jumlah, h.hpp, b.kodeBarang, b.nama" +
+                    "FROM total_hpp h INNER JOIN barang_jadi b ON h.kodeBrgJadi = b.kodeBarang";
+            }
+            else
+            {
+                sql = "SELECT h.noBukti, h.tanggal, h.deadline, h.qty, h.jumlah, h.hpp, b.kodeBarang, b.nama" +
+                    "FROM total_hpp h INNER JOIN barang_jadi b ON h.kodeBrgJadi = b.kodeBarang" +
+                    " where " + kriteria + " LIKE '%" + nilaiKriteria + "%'";
+
+            }
+
+            MySqlDataReader hasil = Koneksi.JalankanPerintahQuery(sql);
+
+
+            List<HPP> listHPP = new List<HPP>();
+            while (hasil.Read() == true)
+            { 
+                List<BarangJadi> listBrgJadi = BarangJadi.BacaData("kodeBarang", hasil.GetValue(3).ToString());
+
+                HPP h = new HPP(hasil.GetValue(0).ToString(), DateTime.Parse(hasil.GetValue(1).ToString()), DateTime.Parse(hasil.GetValue(2).ToString()), listBrgJadi[0], int.Parse(hasil.GetValue(4).ToString()), int.Parse(hasil.GetValue(5).ToString()), int.Parse(hasil.GetValue(6).ToString()));
+                listHPP.Add(h);
+            }
+            return listHPP;
+        }
+
+
 
         public static int HitungHPP(int total, int quantity)
         {

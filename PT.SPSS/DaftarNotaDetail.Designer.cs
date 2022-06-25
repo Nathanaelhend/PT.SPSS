@@ -40,9 +40,9 @@ namespace PT.SPSS
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.label3 = new System.Windows.Forms.Label();
             this.panelSupplier = new System.Windows.Forms.Panel();
+            this.buttonTampil = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.buttonKeluar = new System.Windows.Forms.Button();
-            this.buttonTampil = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPembelian)).BeginInit();
             this.panelSupplier.SuspendLayout();
             this.SuspendLayout();
@@ -104,10 +104,10 @@ namespace PT.SPSS
             // 
             // dateTimePickerDateAwal
             // 
-            this.dateTimePickerDateAwal.CustomFormat = "yyyy-MM-dd";
+            this.dateTimePickerDateAwal.CustomFormat = "yyyy/MM/dd";
             this.dateTimePickerDateAwal.Enabled = false;
             this.dateTimePickerDateAwal.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePickerDateAwal.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerDateAwal.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePickerDateAwal.Location = new System.Drawing.Point(166, 74);
             this.dateTimePickerDateAwal.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePickerDateAwal.Name = "dateTimePickerDateAwal";
@@ -130,7 +130,7 @@ namespace PT.SPSS
             this.dateTimePickerDateAkhir.CustomFormat = "yyyy-MM-dd";
             this.dateTimePickerDateAkhir.Enabled = false;
             this.dateTimePickerDateAkhir.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePickerDateAkhir.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerDateAkhir.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePickerDateAkhir.Location = new System.Drawing.Point(360, 74);
             this.dateTimePickerDateAkhir.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePickerDateAkhir.Name = "dateTimePickerDateAkhir";
@@ -183,6 +183,16 @@ namespace PT.SPSS
             this.panelSupplier.TabIndex = 44;
             this.panelSupplier.Paint += new System.Windows.Forms.PaintEventHandler(this.panelSupplier_Paint);
             // 
+            // buttonTampil
+            // 
+            this.buttonTampil.Location = new System.Drawing.Point(541, 74);
+            this.buttonTampil.Name = "buttonTampil";
+            this.buttonTampil.Size = new System.Drawing.Size(75, 23);
+            this.buttonTampil.TabIndex = 14;
+            this.buttonTampil.Text = "TAMPIL";
+            this.buttonTampil.UseVisualStyleBackColor = true;
+            this.buttonTampil.Click += new System.EventHandler(this.buttonTampil_Click);
+            // 
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(166, 107);
@@ -201,16 +211,6 @@ namespace PT.SPSS
             this.buttonKeluar.TabIndex = 49;
             this.buttonKeluar.Text = "Keluar";
             this.buttonKeluar.UseVisualStyleBackColor = false;
-            // 
-            // buttonTampil
-            // 
-            this.buttonTampil.Location = new System.Drawing.Point(541, 74);
-            this.buttonTampil.Name = "buttonTampil";
-            this.buttonTampil.Size = new System.Drawing.Size(75, 23);
-            this.buttonTampil.TabIndex = 14;
-            this.buttonTampil.Text = "TAMPIL";
-            this.buttonTampil.UseVisualStyleBackColor = true;
-            this.buttonTampil.Click += new System.EventHandler(this.buttonTampil_Click);
             // 
             // DaftarNotaDetail
             // 

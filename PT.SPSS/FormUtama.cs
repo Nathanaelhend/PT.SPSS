@@ -194,5 +194,12 @@ namespace PT.SPSS
             frmDaftarNotaDetil.Owner = this;
             frmDaftarNotaDetil.Show();
         }
+
+        private void penerimaanProduksiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PenerimaanProduksi frmPenerimaan = new PenerimaanProduksi();
+            frmPenerimaan.Owner = this;
+            frmPenerimaan.Show();
+        }
     }
 }

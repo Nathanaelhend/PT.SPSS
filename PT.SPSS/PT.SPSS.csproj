@@ -127,6 +127,12 @@
     <Compile Include="FormUtama.Designer.cs">
       <DependentUpon>FormUtama.cs</DependentUpon>
     </Compile>
+    <Compile Include="PenerimaanProduksi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PenerimaanProduksi.Designer.cs">
+      <DependentUpon>PenerimaanProduksi.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="DaftarBahanBaku.resx">
@@ -167,6 +173,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormUtama.resx">
       <DependentUpon>FormUtama.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PenerimaanProduksi.resx">
+      <DependentUpon>PenerimaanProduksi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

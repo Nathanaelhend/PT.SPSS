@@ -181,7 +181,7 @@ namespace SPSS_LIB
                 //      " INNER JOIN bahan_baku bb ON bb.kode = nbd.id_barang_baku WHERE nb.tanggal BETWEEN "+ tanggalAwal + "# AND #" + tanggalAkhir;
 
                 sql = "select nb.no_nota, nb.tanggal, nb.supplier_id, S.nama, nb.jumlah, nb.diskon_persen, diskon_rph, nb.dpp, nb.ppn_persen, nb.ppn_rupiah," +
-                      " nb.total_beli from nota_beli nb INNER JOIN supplier S on nb.supplier_id = S.kodeSupplier" + " WHERE nb.tanggal BETWEEN '" + tanggalAwal.ToString() + "' AND '" + tanggalAkhir.ToString() + "'";
+                      " nb.total_beli from nota_beli nb INNER JOIN supplier S on nb.supplier_id = S.kodeSupplier" + " WHERE nb.tanggal BETWEEN '" + tanggalAwal.ToString("yyyy-MM-dd") + "' AND '" + tanggalAkhir.ToString("yyyy-MM-dd") + "'";
 
             MySqlDataReader hasilData1 = Koneksi.JalankanPerintahQuery(sql);
 
@@ -207,13 +207,13 @@ namespace SPSS_LIB
                 Pembelian nota = new Pembelian(noNota, tanggal, listSupplier[0], jumlah, discPersen, discRph, dpp, ppnPersen, ppnRph, netto);
 
 
-                string sql2 = "select nbd.id_barang_baku, nbd.quantity, nbd.harga, nbd.tanggal, nbd.supplier_id, nbd.jumlahh" +
-                    " FROM NotaBeli N INNER JOIN detailnotabeli NBD ON N.NoNota = NBD.NoNota " +
-                    " INNER JOIN Tipe T ON NBD.KodeTipe = T.KodeTipe " +
-                    " WHERE N.NoNota = '" + noNota + "'";
+                //string sql2 = "select nbd.id_barang_baku, nbd.quantity, nbd.harga, nbd.tanggal, nbd.supplier_id, nbd.jumlah" +
+                //    " FROM nota_beli N INNER JOIN nota_beli_detail NBD ON N.NoNota = NBD.NoNota " +
+                //    " INNER JOIN Tipe T ON NBD.KodeTipe = T.KodeTipe " +
+                //    " WHERE N.NoNota = '" + noNota + "'";
 
 
-                MySqlDataReader hasilData2 = Koneksi.JalankanPerintahQuery(sql2);
+                //MySqlDataReader hasilData2 = Koneksi.JalankanPerintahQuery(sql2);
 
                 //while (hasilData2.Read() == true)
                 //{

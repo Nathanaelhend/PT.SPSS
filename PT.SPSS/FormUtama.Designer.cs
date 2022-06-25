@@ -39,12 +39,13 @@ namespace PT.SPSS
             this.penjualanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pembelianToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.DaftarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.keluarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.daftarSupplierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bahanBakuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.barangJadiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.notaBeliToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hPPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.keluarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.penerimaanProduksiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,6 +56,7 @@ namespace PT.SPSS
             this.penjualanToolStripMenuItem,
             this.pembelianToolStripMenuItem,
             this.DaftarToolStripMenuItem,
+            this.penerimaanProduksiToolStripMenuItem,
             this.keluarToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -135,13 +137,6 @@ namespace PT.SPSS
             this.DaftarToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
             this.DaftarToolStripMenuItem.Text = "Daftar";
             // 
-            // keluarToolStripMenuItem
-            // 
-            this.keluarToolStripMenuItem.Name = "keluarToolStripMenuItem";
-            this.keluarToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
-            this.keluarToolStripMenuItem.Text = "Keluar";
-            this.keluarToolStripMenuItem.Click += new System.EventHandler(this.keluarToolStripMenuItem_Click);
-            // 
             // daftarSupplierToolStripMenuItem
             // 
             this.daftarSupplierToolStripMenuItem.Name = "daftarSupplierToolStripMenuItem";
@@ -175,6 +170,20 @@ namespace PT.SPSS
             this.hPPToolStripMenuItem.Name = "hPPToolStripMenuItem";
             this.hPPToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.hPPToolStripMenuItem.Text = "HPP";
+            // 
+            // keluarToolStripMenuItem
+            // 
+            this.keluarToolStripMenuItem.Name = "keluarToolStripMenuItem";
+            this.keluarToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
+            this.keluarToolStripMenuItem.Text = "Keluar";
+            this.keluarToolStripMenuItem.Click += new System.EventHandler(this.keluarToolStripMenuItem_Click);
+            // 
+            // penerimaanProduksiToolStripMenuItem
+            // 
+            this.penerimaanProduksiToolStripMenuItem.Name = "penerimaanProduksiToolStripMenuItem";
+            this.penerimaanProduksiToolStripMenuItem.Size = new System.Drawing.Size(131, 20);
+            this.penerimaanProduksiToolStripMenuItem.Text = "Penerimaan Produksi";
+            this.penerimaanProduksiToolStripMenuItem.Click += new System.EventHandler(this.penerimaanProduksiToolStripMenuItem_Click);
             // 
             // FormUtama
             // 
@@ -210,5 +219,6 @@ namespace PT.SPSS
         private System.Windows.Forms.ToolStripMenuItem barangJadiToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem notaBeliToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem hPPToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem penerimaanProduksiToolStripMenuItem;
     }
 }
