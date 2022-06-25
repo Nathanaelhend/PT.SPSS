@@ -90,12 +90,12 @@ namespace SPSS_LIB
             if (kriteria == "")
             {
                 sql = "SELECT h.noBukti, h.tanggal, h.deadline, h.qty, h.jumlah, h.hpp, b.kodeBarang, b.nama" +
-                    "FROM total_hpp h INNER JOIN barang_jadi b ON h.kodeBrgJadi = b.kodeBarang";
+                    " FROM total_hpp h INNER JOIN barang_jadi b ON h.kodeBrgJadi = b.kodeBarang";
             }
             else
             {
                 sql = "SELECT h.noBukti, h.tanggal, h.deadline, h.qty, h.jumlah, h.hpp, b.kodeBarang, b.nama" +
-                    "FROM total_hpp h INNER JOIN barang_jadi b ON h.kodeBrgJadi = b.kodeBarang" +
+                    " FROM total_hpp h INNER JOIN barang_jadi b ON h.kodeBrgJadi = b.kodeBarang" +
                     " where " + kriteria + " LIKE '%" + nilaiKriteria + "%'";
 
             }
@@ -106,9 +106,13 @@ namespace SPSS_LIB
             List<HPP> listHPP = new List<HPP>();
             while (hasil.Read() == true)
             { 
-                List<BarangJadi> listBrgJadi = BarangJadi.BacaData("kodeBarang", hasil.GetValue(3).ToString());
+                List<BarangJadi> listBrgJadi = BarangJadi.BacaData("kodeBarang", hasil.GetValue(6).ToString());
 
-                HPP h = new HPP(hasil.GetValue(0).ToString(), DateTime.Parse(hasil.GetValue(1).ToString()), DateTime.Parse(hasil.GetValue(2).ToString()), listBrgJadi[0], int.Parse(hasil.GetValue(4).ToString()), int.Parse(hasil.GetValue(5).ToString()), int.Parse(hasil.GetValue(6).ToString()));
+                DateTime tanggal = DateTime.Parse(hasil.GetValue(1).ToString());
+
+                DateTime deadline = DateTime.Parse(hasil.GetValue(2).ToString());
+
+                HPP h = new HPP(hasil.GetValue(0).ToString(), tanggal, deadline, listBrgJadi[0], int.Parse(hasil.GetValue(3).ToString()), int.Parse(hasil.GetValue(4).ToString()), int.Parse(hasil.GetValue(5).ToString()));
                 listHPP.Add(h);
             }
             return listHPP;

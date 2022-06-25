@@ -14,7 +14,7 @@ namespace PT.SPSS
     public partial class DaftarNotaDetail : Form
     {
         List<Pembelian> listPembelian = new List<Pembelian>();
-        DataView dv;
+        //DataView dv;
         public DaftarNotaDetail()
         {
             InitializeComponent();
@@ -38,7 +38,7 @@ namespace PT.SPSS
             //    dataGridViewPembelian.DataSource = null;
             //}
 
-            //dataGridViewPembelian.AllowUserToAddRows = false;
+            dataGridViewPembelian.AllowUserToAddRows = false;
             //dataGridViewPembelian.ReadOnly = true;
 
             //dataGridViewPembelian.Rows.Clear();
@@ -50,7 +50,33 @@ namespace PT.SPSS
                 {
                     foreach (PembelianDetail nbd in n.ListBeliDetail)
                     {
-                        dataGridViewPembelian.Rows.Add(n.NoNota, n.Tanggal.ToShortDateString(), n.Supplier.KodeSupplier, n.Supplier.Nama, nbd.Jumlah, nbd.DiscRph, n.Jumlah);
+                        //DataTable dt = new DataTable();
+                        //DataRow dataRow = dataTable.NewRow();
+                        //dataRow["noNota"] = n.NoNota;
+                        //dataRow["tanggal"] = n.Tanggal.ToShortDateString();
+                        //dataRow["supplier"] = n.Supplier.KodeSupplier;
+                        //dataRow["jumlah"] = nbd.Jumlah;
+                        //dataRow["diskon"] = nbd.DiscRph;
+                        //dataRow["total"] = n.Jumlah;
+
+                        //dataTable.Rows.Add(dataRow);
+
+                        //dataTable.AcceptChanges();
+
+                        //dt = dataGridViewPembelian.DataSource as DataTable;
+
+                        //DataRow dr = dt.NewRow();
+
+                        //dr[0] = n.NoNota;
+                        //dr[1] = n.Tanggal.ToShortDateString();
+                        //dr[2] = n.Supplier.KodeSupplier;
+                        //dr[3] = nbd.Jumlah;
+                        //dr[4] = nbd.DiscRph;
+                        //dr[5] = n.Jumlah;
+
+                        //dt.Rows.Add(dr);
+
+                        dataGridViewPembelian.Rows.Add(n.NoNota, n.Tanggal.ToString("yyyy-MM-dd"), n.Supplier.KodeSupplier,nbd.Jumlah, nbd.DiscRph, n.Jumlah);
                     }
                 }
             }
@@ -88,8 +114,7 @@ namespace PT.SPSS
 
         private void dateTimePickerDateAkhir_ValueChanged(object sender, EventArgs e)
         {
-            listPembelian = Pembelian.BacaDataTanggal(dateTimePickerDateAwal.Value.Date, dateTimePickerDateAkhir.Value.Date);
-
+           
             if (listPembelian.Count > 0)
             {
                 dataGridViewPembelian.DataSource = listPembelian;
@@ -98,6 +123,8 @@ namespace PT.SPSS
             {
                 dataGridViewPembelian.DataSource = null;
             }
+
+            listPembelian = Pembelian.BacaDataTanggal(dateTimePickerDateAwal.Value.Date, dateTimePickerDateAkhir.Value.Date);
 
             TampilGrid();
         }
@@ -119,12 +146,13 @@ namespace PT.SPSS
 
         private void buttonTampil_Click(object sender, EventArgs e)
         {
-            DateTime tglAwal = dateTimePickerDateAwal.Value.Date;
-            DateTime tglAkhir = dateTimePickerDateAkhir.Value.Date;
+            //DateTime tglAwal = dateTimePickerDateAwal.Value.Date;
+            //DateTime tglAkhir = dateTimePickerDateAkhir.Value.Date;
 
+            
 
-            dv.RowFilter = String.Format("tanggal >= #{0:dd/MM/yyyy}# AND tanggal <= #{1:dd/MM/yyyy}#", tglAwal, tglAkhir);
-            dataGridViewPembelian.DataSource = dv;
+            //dv.RowFilter = String.Format("tanggal >= #{0:yyyy/MM/dd}# AND tanggal <= #{1:yyyy/MM/dd}#", tglAwal, tglAkhir);
+            //dataGridViewPembelian.DataSource = dv;
         }
     }
 }

@@ -39,7 +39,7 @@ namespace PT.SPSS
 
             else if (textBoxNoOrder.Text.Length == 5)
             {
-                listHPP = HPP.BacaData("kode", textBoxNoOrder.Text);
+                listHPP = HPP.BacaData("noBukti", textBoxNoOrder.Text);
                 if (listHPP.Count > 0)
                 {
                     dateTimePickerTglOrder.Value = listHPP[0].Tanggal;

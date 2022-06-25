@@ -5,6 +5,7 @@ using System.Transactions;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
+using System.Globalization;
 
 namespace SPSS_LIB
 {
@@ -181,7 +182,7 @@ namespace SPSS_LIB
                 //      " INNER JOIN bahan_baku bb ON bb.kode = nbd.id_barang_baku WHERE nb.tanggal BETWEEN "+ tanggalAwal + "# AND #" + tanggalAkhir;
 
                 sql = "select nb.no_nota, nb.tanggal, nb.supplier_id, S.nama, nb.jumlah, nb.diskon_persen, diskon_rph, nb.dpp, nb.ppn_persen, nb.ppn_rupiah," +
-                      " nb.total_beli from nota_beli nb INNER JOIN supplier S on nb.supplier_id = S.kodeSupplier" + " WHERE nb.tanggal BETWEEN '" + tanggalAwal.ToString("yyyy-MM-dd") + "' AND '" + tanggalAkhir.ToString("yyyy-MM-dd") + "'";
+                      " nb.total_beli from nota_beli nb INNER JOIN supplier S on nb.supplier_id = S.kodeSupplier" + " WHERE nb.tanggal BETWEEN '" + tanggalAwal.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture) + "' AND '" + tanggalAkhir.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture) + "'";
 
             MySqlDataReader hasilData1 = Koneksi.JalankanPerintahQuery(sql);
 

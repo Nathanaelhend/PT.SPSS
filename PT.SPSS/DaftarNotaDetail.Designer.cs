@@ -104,7 +104,7 @@ namespace PT.SPSS
             // 
             // dateTimePickerDateAwal
             // 
-            this.dateTimePickerDateAwal.CustomFormat = "yyyy/MM/dd";
+            this.dateTimePickerDateAwal.CustomFormat = "yyyy-MM-dd";
             this.dateTimePickerDateAwal.Enabled = false;
             this.dateTimePickerDateAwal.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePickerDateAwal.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
