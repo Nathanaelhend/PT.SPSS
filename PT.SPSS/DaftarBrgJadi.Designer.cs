@@ -59,6 +59,7 @@ namespace PT.SPSS
             this.textBoxKriteria.Name = "textBoxKriteria";
             this.textBoxKriteria.Size = new System.Drawing.Size(281, 22);
             this.textBoxKriteria.TabIndex = 2;
+            this.textBoxKriteria.TextChanged += new System.EventHandler(this.textBoxKriteria_TextChanged);
             // 
             // comboBoxKriteria
             // 
@@ -122,7 +123,7 @@ namespace PT.SPSS
             this.dataGridViewBarangJadi.Size = new System.Drawing.Size(815, 330);
             this.dataGridViewBarangJadi.TabIndex = 55;
             // 
-            // DaftarBahanJadi
+            // DaftarBrgJadi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -131,7 +132,7 @@ namespace PT.SPSS
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonKeluar);
             this.Controls.Add(this.dataGridViewBarangJadi);
-            this.Name = "DaftarBahanJadi";
+            this.Name = "DaftarBrgJadi";
             this.Text = "DaftarBahanJadi";
             this.Load += new System.EventHandler(this.DaftarBahanJadi_Load);
             this.panelSupplier.ResumeLayout(false);

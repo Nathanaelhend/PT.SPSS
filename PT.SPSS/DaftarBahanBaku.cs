@@ -21,21 +21,22 @@ namespace PT.SPSS
 
         private void DaftarBahanBaku_Load(object sender, EventArgs e)
         {
-            //sFormatDataGrid();
+            FormatDataGrid();
 
             listBahanBaku = BahanBaku.BacaData("", "");
 
-            if (listBahanBaku.Count > 0)
-            {
-                dataGridViewBarangBaku.DataSource = listBahanBaku;
-            }
-            else
-            {
-                dataGridViewBarangBaku.DataSource = null;
-            }
+            DisplayOnDataGrid();
+            //if (listBahanBaku.Count > 0)
+            //{
+            //    dataGridViewBarangBaku.DataSource = listBahanBaku;
+            //}
+            //else
+            //{
+            //    dataGridViewBarangBaku.DataSource = null;
+            //}
 
-            dataGridViewBarangBaku.AllowUserToAddRows = false;
-            dataGridViewBarangBaku.ReadOnly = true;
+            //dataGridViewBarangBaku.AllowUserToAddRows = false;
+            //dataGridViewBarangBaku.ReadOnly = true;
         }
 
         private void DisplayOnDataGrid()
@@ -50,7 +51,7 @@ namespace PT.SPSS
                 foreach (BahanBaku b in listBahanBaku)
                 {
                     //menambahkan data barang satu persatu ke datagridview
-                    dataGridViewBarangBaku.Rows.Add(b.Kode, b.Nama, b.Harga, b.Satuan, b.KategoriBhnBaku.KodeBahan);
+                    dataGridViewBarangBaku.Rows.Add(b.Kode, b.Nama, b.Harga, b.Satuan, b.KategoriBhnBaku.KodeBahan, b.KategoriBhnBaku.KeteranganKategori);
                 }
 
             }

@@ -21,19 +21,21 @@ namespace PT.SPSS
 
         private void DaftarBahanJadi_Load(object sender, EventArgs e)
         {
+            FormatDataGrid();
             listBahanJadi = BarangJadi.BacaData("", "");
 
-            if (listBahanJadi.Count > 0)
-            {
-                dataGridViewBarangJadi.DataSource = listBahanJadi;
-            }
-            else
-            {
-                dataGridViewBarangJadi.DataSource = null;
-            }
+            DisplayOnDataGrid();
+            //if (listBahanJadi.Count > 0)
+            //{
+            //    dataGridViewBarangJadi.DataSource = listBahanJadi;
+            //}
+            //else
+            //{
+            //    dataGridViewBarangJadi.DataSource = null;
+            //}
 
-            dataGridViewBarangJadi.AllowUserToAddRows = false;
-            dataGridViewBarangJadi.ReadOnly = true;
+            //dataGridViewBarangJadi.AllowUserToAddRows = false;
+            //dataGridViewBarangJadi.ReadOnly = true;
         }
 
         private void DisplayOnDataGrid()
@@ -48,7 +50,7 @@ namespace PT.SPSS
                 foreach (BarangJadi b in listBahanJadi)
                 {
                     //menambahkan data barang satu persatu ke datagridview
-                    dataGridViewBarangJadi.Rows.Add(b.KodeBarang, b.Nama, b.Harga, b.Satuan, b.KategoriBarang.Kode);
+                    dataGridViewBarangJadi.Rows.Add(b.KodeBarang, b.Nama, b.Harga, b.Satuan, b.KategoriBarang.Kode, b.KategoriBarang.KeteranganBarang);
                 }
 
             }
@@ -78,6 +80,31 @@ namespace PT.SPSS
             dataGridViewBarangJadi.Columns["KodeKategori"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dataGridViewBarangJadi.Columns["NamaKategori"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
+        }
+
+        private void textBoxKriteria_TextChanged(object sender, EventArgs e)
+        {
+            string kriteria = "";
+            if (comboBoxKriteria.Text == "Kode")
+            {
+                kriteria = "b.Kode";
+            }
+            else if (comboBoxKriteria.Text == "Nama")
+            {
+                kriteria = "b.nama";
+            }
+            else if (comboBoxKriteria.Text == "Satuan")
+            {
+                kriteria = "b.satuan";
+            }
+            else if (comboBoxKriteria.Text == "Kategori")
+            {
+                kriteria = "kbb.nama";
+            }
+
+            listBahanJadi = BarangJadi.BacaData(kriteria, textBoxKriteria.Text);
+
+            DisplayOnDataGrid();
         }
     }
 }

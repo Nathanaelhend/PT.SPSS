@@ -173,7 +173,7 @@ namespace SPSS_LIB
             return listHasilData;
         }
 
-        public static List<Pembelian> BacaDataTanggal(DateTime tanggalAwal, DateTime tanggalAkhir)
+        public static List<Pembelian> BacaDataTanggal(string tanggalAwal, string tanggalAkhir)
         {
             string sql = "";
            
@@ -182,11 +182,13 @@ namespace SPSS_LIB
                 //      " INNER JOIN bahan_baku bb ON bb.kode = nbd.id_barang_baku WHERE nb.tanggal BETWEEN "+ tanggalAwal + "# AND #" + tanggalAkhir;
 
                 sql = "select nb.no_nota, nb.tanggal, nb.supplier_id, S.nama, nb.jumlah, nb.diskon_persen, diskon_rph, nb.dpp, nb.ppn_persen, nb.ppn_rupiah," +
-                      " nb.total_beli from nota_beli nb INNER JOIN supplier S on nb.supplier_id = S.kodeSupplier" + " WHERE nb.tanggal BETWEEN '" + tanggalAwal.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture) + "' AND '" + tanggalAkhir.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture) + "'";
+                      " nb.total_beli from nota_beli nb INNER JOIN supplier S on nb.supplier_id = S.kodeSupplier" + " WHERE nb.tanggal BETWEEN '" + tanggalAwal + "' AND '" + tanggalAkhir + "'";
 
             MySqlDataReader hasilData1 = Koneksi.JalankanPerintahQuery(sql);
 
             List<Pembelian> listHasilData = new List<Pembelian>();
+
+            System.Diagnostics.Debug.WriteLine(hasilData1);
 
             while (hasilData1.Read() == true)
             {
