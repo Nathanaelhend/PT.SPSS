@@ -5,6 +5,9 @@ using System.Transactions;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
+using System.IO;
+using System.Drawing;
+using System.Drawing.Printing;
 using System.Globalization;
 
 namespace SPSS_LIB
@@ -238,6 +241,60 @@ namespace SPSS_LIB
 
             }
             return listHasilData;
+        }
+
+        public static void CetakNota(string pKriteria, string pNilaiKriteria, string pNamaFile, Font pFont)
+        {
+            List<Pembelian> listNotaBeli = new List<Pembelian>();
+
+            //baca data nota tertentu yg akan dicetak
+            listNotaBeli = Pembelian.BacaData(pKriteria, pNilaiKriteria);
+
+            //simpan dulu isi nota yang akan ditampilkan ke objek file (StreamWriter)
+            StreamWriter file = new StreamWriter(pNamaFile);
+
+            foreach (Pembelian nota in listNotaBeli)
+            {
+                //tampilkan info perusahaan
+                file.WriteLine("");
+                file.WriteLine("REKAP PEMBELIAN");
+                file.WriteLine("=".PadRight(50, '='));
+
+                //tampilkan header nota
+                file.WriteLine("No.Nota : " + nota.NoNota);
+                file.WriteLine("Tanggal : " + nota.Tanggal);
+                file.WriteLine("");
+                file.WriteLine("=".PadRight(50, '='));
+
+                //tampilkan barang yang terjual
+                int grandTotal = 0; //untuk menampilkan grand total nota
+                foreach (PembelianDetail nbd in nota.ListBeliDetail)
+                {
+                    //string nama = nbd.Tipe.Nama;
+                    //jika nama terlalu panjang maka hanya tampilkan 30 karakter pertama saja
+                    //if (nama.Length > 30)
+                    //{
+                    //    nama = nama.Substring(0, 30);
+                    //}
+                    int jumlah = nbd.Jumlah;
+                    int harga = nbd.Harga;
+                    int subTotal = jumlah * harga;
+                    file.Write(jumlah.ToString().PadRight(3, ' '));
+                    file.Write(harga.ToString("#,###").PadRight(7, ' ')); //agar harga ditampilkan dengan pemisah ribuan
+                    file.Write(subTotal.ToString("#,###").PadRight(20, ' ')); //agar subTotal ditampilkan dengan pemisah ribuan
+                    file.WriteLine("");
+                    grandTotal += subTotal;
+                }
+                file.WriteLine("=".PadRight(50, '='));
+                file.WriteLine("TOTAL : " + grandTotal.ToString("#,###"));
+                file.WriteLine("=".PadRight(50, '='));
+
+                file.WriteLine("");
+            }
+            file.Close();
+            //cetak ke printer
+            //Cetak c = new Cetak(pNamaFile, pFont, 20, 10, 10, 10);
+           // c.CetakKePrinter("text");
         }
 
 

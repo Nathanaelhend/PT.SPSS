@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.Reporting.WinForms;
+using MySql.Data.MySqlClient;
 using SPSS_LIB;
 
 namespace PT.SPSS
@@ -14,6 +16,8 @@ namespace PT.SPSS
     public partial class DaftarNotaDetail : Form
     {
         List<Pembelian> listPembelian = new List<Pembelian>();
+        FrmCetak frmCetak;
+        pt_spss_kpDataSet dataSetpembelian;
         DataView dv = new DataView();
         public DaftarNotaDetail()
         {
@@ -72,12 +76,12 @@ namespace PT.SPSS
 
         private void FormatDataGrid()
         {
-            dataGridViewPembelian.Columns.Add("NoNota", "Nomor Nota");
-            dataGridViewPembelian.Columns.Add("Tanggal", "Tanggal");
-            dataGridViewPembelian.Columns.Add("Supplier", "Supplier");
-            dataGridViewPembelian.Columns.Add("Jumlah", "jumlah");
-            dataGridViewPembelian.Columns.Add("Diskon", "diskon");
-            dataGridViewPembelian.Columns.Add("Total", "total");
+            dataGridViewPembelian.Columns.Add("NoNota","");
+            dataGridViewPembelian.Columns.Add("Tanggal","");
+            dataGridViewPembelian.Columns.Add("Supplier", "");
+            dataGridViewPembelian.Columns.Add("Jumlah", "");
+            dataGridViewPembelian.Columns.Add("Diskon", "");
+            dataGridViewPembelian.Columns.Add("Total", "");
 
             //dataGridViewPembelian.Columns["Harga"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
@@ -131,6 +135,8 @@ namespace PT.SPSS
             if (listPembelian.Count > 0)
             {
                 dataGridViewPembelian.DataSource = listPembelian;
+                
+                
             }
             else
             {

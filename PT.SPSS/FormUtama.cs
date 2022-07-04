@@ -195,11 +195,25 @@ namespace PT.SPSS
             frmDaftarNotaDetil.Show();
         }
 
-        private void penerimaanProduksiToolStripMenuItem_Click(object sender, EventArgs e)
+        private void reportPembelianToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            PenerimaanProduksi frmPenerimaan = new PenerimaanProduksi();
-            frmPenerimaan.Owner = this;
-            frmPenerimaan.Show();
+            FrmCetak frmCetak = new FrmCetak();
+            frmCetak.Owner = this;
+            frmCetak.Show();
         }
+
+        //private void penerimaanProduksiToolStripMenuItem_Click(object sender, EventArgs e)
+        //{
+        //    PenerimaanProduksi frmPenerimaan = new PenerimaanProduksi();
+        //    frmPenerimaan.Owner = this;
+        //    frmPenerimaan.Show();
+        //}
+
+        //private void reportPembelianToolStripMenuItem_Click(object sender, EventArgs e)
+        //{
+        //    FormReport frmReportPembelian = new FormReport();
+        //    frmReportPembelian.Owner = this;
+        //    frmReportPembelian.Show();
+        //}
     }
 }

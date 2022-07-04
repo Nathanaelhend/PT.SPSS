@@ -232,8 +232,6 @@ namespace PT.SPSS
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView dataGridViewPembelian;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.RadioButton radioButtonNomorNota;
         private System.Windows.Forms.RadioButton radioButtonRangeTanggal;
@@ -247,5 +245,6 @@ namespace PT.SPSS
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button buttonKeluar;
         private System.Windows.Forms.Button buttonTampil;
+        private System.Windows.Forms.DataGridView dataGridViewPembelian;
     }
 }
