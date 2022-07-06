@@ -188,13 +188,6 @@ namespace PT.SPSS
             frmDaftaBrgJadi.Show();
         }
 
-        private void notaBeliToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            DaftarNotaDetail frmDaftarNotaDetil = new DaftarNotaDetail();
-            frmDaftarNotaDetil.Owner = this;
-            frmDaftarNotaDetil.Show();
-        }
-
         private void reportPembelianToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmReportNotaBeli frmCetak = new FrmReportNotaBeli();
@@ -221,6 +214,13 @@ namespace PT.SPSS
             FormReportPenerimaan formRptPenerimaan = new FormReportPenerimaan();
             formRptPenerimaan.Owner = this;
             formRptPenerimaan.Show();
+        }
+
+        private void sisaProduksiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormSisaProduksi frmSisaProduksi = new FormSisaProduksi();
+            frmSisaProduksi.Owner = this;
+            frmSisaProduksi.Show();
         }
 
         //private void penerimaanProduksiToolStripMenuItem_Click(object sender, EventArgs e)

@@ -340,7 +340,7 @@ namespace PT.SPSS
             this.textBoxQty.Location = new System.Drawing.Point(121, 64);
             this.textBoxQty.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxQty.Name = "textBoxQty";
-            this.textBoxQty.Size = new System.Drawing.Size(86, 27);
+            this.textBoxQty.Size = new System.Drawing.Size(97, 27);
             this.textBoxQty.TabIndex = 30;
             this.textBoxQty.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxQty_KeyDown);
             // 

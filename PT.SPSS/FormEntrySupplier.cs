@@ -140,12 +140,12 @@ namespace PT.SPSS
                     }
                 }
 
-                else
-                {
-                    textBoxNamaSupplier.Text = "";
-                    textBoxAlamat.Text = "";
-                    textBoxKota.Text = "";
-                }
+                //else
+                //{
+                //    textBoxNamaSupplier.Text = "";
+                //    textBoxAlamat.Text = "";
+                //    textBoxKota.Text = "";
+                //}
             }
 
             else if (textBoxKodeSupplier.Text == "")

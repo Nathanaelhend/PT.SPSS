@@ -110,8 +110,8 @@ namespace PT.SPSS
 
         private void buttonSimpan_Click(object sender, EventArgs e)
         {
-            //try
-            //{
+            try
+            {
                 Supplier supplierDipilih = (Supplier)comboBoxSupplier.SelectedItem;
                 BahanBaku bhnBakuDipilih = (BahanBaku)comboBoxBahanBaku.SelectedItem;
 
@@ -137,13 +137,30 @@ namespace PT.SPSS
                 Pembelian.TambahData(pembelian);
 
                 MessageBox.Show("Data nota Beli berhasil tersimpan.", "Informasi");
-            //}
-            //panggil event handler buttonCetak_Click
-            //buttonCetak_Click(sender, e);
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("Gagal menyimpan nota. Pesan kesalahan : " + ex.Message, "Kesalahan");
-            //}
+
+                textBoxNoNota.Text = "";
+                dateTimePicker.Value = DateTime.Now;
+                textBoxQty.Text = "";
+                textBoxHarga.Text = "";
+                textBoxJumlah.Text = "";
+                textBoxDiscPrs.Text = "";
+                textBoxDiscRp.Text = "";
+                textBoxTotal.Text = "";
+                textBoxJmlhAll.Text = "";
+                textBoxDiscPrsAll.Text = "";
+                textBoxDiscRpAll.Text = "";
+                textBoxDpp.Text = "";
+                textBoxPPnPrs.Text = "";
+                textBoxPPnRp.Text = "";
+                textBoxNetto.Text = "";
+                textBoxNoNota.Focus();
+                dataGridViewPembelian.Columns.Clear();
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show("Gagal menyimpan nota. Pesan kesalahan : " + ex.Message, "Kesalahan");
+            }
         }
 
         private void FormatDataGrid()
@@ -222,5 +239,11 @@ namespace PT.SPSS
         {
 
         }
+
+        private void buttonKeluar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
     }
 }

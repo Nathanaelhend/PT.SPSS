@@ -569,6 +569,7 @@ namespace PT.SPSS
             this.buttonKeluar.TabIndex = 52;
             this.buttonKeluar.Text = "Keluar";
             this.buttonKeluar.UseVisualStyleBackColor = false;
+            this.buttonKeluar.Click += new System.EventHandler(this.buttonKeluar_Click);
             // 
             // FormPembelian
             // 

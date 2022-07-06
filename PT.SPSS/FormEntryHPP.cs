@@ -162,6 +162,17 @@ namespace PT.SPSS
                 HPP.TambahData(hpp);
 
                 MessageBox.Show("Data HPP berhasil tersimpan.", "Informasi");
+                textBoxNoBukti.Text = "";
+                dateTimePicker.Value = DateTime.Now;
+                dateTimeDeadline.Value = DateTime.Now;
+                textBoxQty.Text = "";
+                textBoxJumlah.Text = "";
+                textBoxHPP.Text = "";
+                textBoxHarga.Text = "";
+                textBoxQty.Text = "";
+                textBoxTotal.Text = "";
+                textBoxNoBukti.Focus();
+                dataGridViewHPP.Columns.Clear();
             }
             catch (Exception ex)
             {

@@ -47,6 +47,7 @@ namespace PT.SPSS
             this.penerimaanProduksiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.keluarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportPenerimanProduksiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sisaProduksiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -134,7 +135,8 @@ namespace PT.SPSS
             this.barangJadiToolStripMenuItem,
             this.reportPembelianToolStripMenuItem,
             this.reportDetailPembelianToolStripMenuItem,
-            this.reportPenerimanProduksiToolStripMenuItem});
+            this.reportPenerimanProduksiToolStripMenuItem,
+            this.sisaProduksiToolStripMenuItem});
             this.DaftarToolStripMenuItem.Name = "DaftarToolStripMenuItem";
             this.DaftarToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
             this.DaftarToolStripMenuItem.Text = "Report";
@@ -195,6 +197,13 @@ namespace PT.SPSS
             this.reportPenerimanProduksiToolStripMenuItem.Text = "Peneriman Produksi";
             this.reportPenerimanProduksiToolStripMenuItem.Click += new System.EventHandler(this.reportPenerimanProduksiToolStripMenuItem_Click);
             // 
+            // sisaProduksiToolStripMenuItem
+            // 
+            this.sisaProduksiToolStripMenuItem.Name = "sisaProduksiToolStripMenuItem";
+            this.sisaProduksiToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.sisaProduksiToolStripMenuItem.Text = "Sisa Produksi";
+            this.sisaProduksiToolStripMenuItem.Click += new System.EventHandler(this.sisaProduksiToolStripMenuItem_Click);
+            // 
             // FormUtama
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -231,5 +240,6 @@ namespace PT.SPSS
         private System.Windows.Forms.ToolStripMenuItem reportPembelianToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reportDetailPembelianToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reportPenerimanProduksiToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sisaProduksiToolStripMenuItem;
     }
 }

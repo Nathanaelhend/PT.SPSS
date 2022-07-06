@@ -57,5 +57,10 @@ namespace PT.SPSS
             dateTimePickerTglHPP.Value = DateTime.Now;
             textBoxNoBukti.Focus();
         }
+
+        private void buttonKeluar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

@@ -99,6 +99,7 @@ namespace PT.SPSS
             this.buttonKeluar.TabIndex = 104;
             this.buttonKeluar.Text = "KELUAR";
             this.buttonKeluar.UseVisualStyleBackColor = false;
+            this.buttonKeluar.Click += new System.EventHandler(this.buttonKeluar_Click);
             // 
             // textBoxNoBukti
             // 

@@ -156,6 +156,12 @@
     <Compile Include="FormReportPenerimaan.Designer.cs">
       <DependentUpon>FormReportPenerimaan.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormSisaProduksi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSisaProduksi.Designer.cs">
+      <DependentUpon>FormSisaProduksi.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormUtama.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -220,6 +226,9 @@
     <EmbeddedResource Include="FormReportPenerimaan.resx">
       <DependentUpon>FormReportPenerimaan.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormSisaProduksi.resx">
+      <DependentUpon>FormSisaProduksi.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormUtama.resx">
       <DependentUpon>FormUtama.cs</DependentUpon>
     </EmbeddedResource>
@@ -238,6 +247,7 @@
     <EmbeddedResource Include="ReportPembelian.rdlc" />
     <EmbeddedResource Include="ReportPembelianDetail.rdlc" />
     <EmbeddedResource Include="ReportPenerimaan.rdlc" />
+    <EmbeddedResource Include="ReportSisaProduksi.rdlc" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\SPSS_LIB.Pembelian.datasource" />
     <None Include="Properties\DataSources\SPSS_LIB.PembelianDetail.datasource" />

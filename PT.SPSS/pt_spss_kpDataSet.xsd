@@ -206,6 +206,30 @@ WHERE        (penerimaan_produksi.tanggalPenerimaan &gt;= @Param1 AND penerimaan
               </DbSource>
             </Sources>
           </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="sisa_produksiTableAdapter" GeneratorDataComponentClassName="sisa_produksiTableAdapter" Name="sisa_produksi" UserDataComponentName="sisa_produksiTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="pt_spss_kpConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT  total_hpp.noBukti, barang_jadi.nama, SUM(penerimaan_produksi.hasilProduksi) AS Hasil_Jadi, total_hpp.qty, total_hpp.qty - SUM(penerimaan_produksi.hasilProduksi) AS Sisa_Produksi
+FROM            penerimaan_produksi INNER JOIN
+                         total_hpp ON penerimaan_produksi.noBuktiHPP = total_hpp.noBukti INNER JOIN
+                         barang_jadi ON penerimaan_produksi.kodeBrgJadi = barang_jadi.kodeBarang AND total_hpp.kodeBrgJadi = barang_jadi.kodeBarang
+GROUP BY barang_jadi.nama, total_hpp.noBukti</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Hasil_Jadi" DataSetColumn="Hasil_Jadi" />
+              <Mapping SourceColumn="Sisa_Produksi" DataSetColumn="Sisa_Produksi" />
+              <Mapping SourceColumn="nama" DataSetColumn="nama" />
+              <Mapping SourceColumn="qty" DataSetColumn="qty" />
+              <Mapping SourceColumn="noBukti" DataSetColumn="noBukti" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
         </Tables>
         <Sources />
       </DataSource>
@@ -214,7 +238,7 @@ WHERE        (penerimaan_produksi.tanggalPenerimaan &gt;= @Param1 AND penerimaan
   <xs:element name="pt_spss_kpDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="pt_spss_kpDataSet" msprop:Generator_UserDSName="pt_spss_kpDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="nota_beli" msprop:Generator_TableClassName="nota_beliDataTable" msprop:Generator_TableVarName="tablenota_beli" msprop:Generator_TablePropName="nota_beli" msprop:Generator_RowDeletingName="nota_beliRowDeleting" msprop:Generator_RowChangingName="nota_beliRowChanging" msprop:Generator_RowEvHandlerName="nota_beliRowChangeEventHandler" msprop:Generator_RowDeletedName="nota_beliRowDeleted" msprop:Generator_UserTableName="nota_beli" msprop:Generator_RowChangedName="nota_beliRowChanged" msprop:Generator_RowEvArgName="nota_beliRowChangeEvent" msprop:Generator_RowClassName="nota_beliRow">
+        <xs:element name="nota_beli" msprop:Generator_TableClassName="nota_beliDataTable" msprop:Generator_TableVarName="tablenota_beli" msprop:Generator_RowChangedName="nota_beliRowChanged" msprop:Generator_TablePropName="nota_beli" msprop:Generator_RowDeletingName="nota_beliRowDeleting" msprop:Generator_RowChangingName="nota_beliRowChanging" msprop:Generator_RowEvHandlerName="nota_beliRowChangeEventHandler" msprop:Generator_RowDeletedName="nota_beliRowDeleted" msprop:Generator_RowClassName="nota_beliRow" msprop:Generator_UserTableName="nota_beli" msprop:Generator_RowEvArgName="nota_beliRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="no_nota" msprop:Generator_ColumnVarNameInTable="columnno_nota" msprop:Generator_ColumnPropNameInRow="no_nota" msprop:Generator_ColumnPropNameInTable="no_notaColumn" msprop:Generator_UserColumnName="no_nota">
@@ -249,7 +273,7 @@ WHERE        (penerimaan_produksi.tanggalPenerimaan &gt;= @Param1 AND penerimaan
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="nota_beli_detail" msprop:Generator_TableClassName="nota_beli_detailDataTable" msprop:Generator_TableVarName="tablenota_beli_detail" msprop:Generator_TablePropName="nota_beli_detail" msprop:Generator_RowDeletingName="nota_beli_detailRowDeleting" msprop:Generator_RowChangingName="nota_beli_detailRowChanging" msprop:Generator_RowEvHandlerName="nota_beli_detailRowChangeEventHandler" msprop:Generator_RowDeletedName="nota_beli_detailRowDeleted" msprop:Generator_UserTableName="nota_beli_detail" msprop:Generator_RowChangedName="nota_beli_detailRowChanged" msprop:Generator_RowEvArgName="nota_beli_detailRowChangeEvent" msprop:Generator_RowClassName="nota_beli_detailRow">
+        <xs:element name="nota_beli_detail" msprop:Generator_TableClassName="nota_beli_detailDataTable" msprop:Generator_TableVarName="tablenota_beli_detail" msprop:Generator_RowChangedName="nota_beli_detailRowChanged" msprop:Generator_TablePropName="nota_beli_detail" msprop:Generator_RowDeletingName="nota_beli_detailRowDeleting" msprop:Generator_RowChangingName="nota_beli_detailRowChanging" msprop:Generator_RowEvHandlerName="nota_beli_detailRowChangeEventHandler" msprop:Generator_RowDeletedName="nota_beli_detailRowDeleted" msprop:Generator_RowClassName="nota_beli_detailRow" msprop:Generator_UserTableName="nota_beli_detail" msprop:Generator_RowEvArgName="nota_beli_detailRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="nomor_nota_beli" msprop:Generator_ColumnVarNameInTable="columnnomor_nota_beli" msprop:Generator_ColumnPropNameInRow="nomor_nota_beli" msprop:Generator_ColumnPropNameInTable="nomor_nota_beliColumn" msprop:Generator_UserColumnName="nomor_nota_beli">
@@ -304,7 +328,7 @@ WHERE        (penerimaan_produksi.tanggalPenerimaan &gt;= @Param1 AND penerimaan
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="penerimaan_produksi" msprop:Generator_TableClassName="penerimaan_produksiDataTable" msprop:Generator_TableVarName="tablepenerimaan_produksi" msprop:Generator_TablePropName="penerimaan_produksi" msprop:Generator_RowDeletingName="penerimaan_produksiRowDeleting" msprop:Generator_RowChangingName="penerimaan_produksiRowChanging" msprop:Generator_RowEvHandlerName="penerimaan_produksiRowChangeEventHandler" msprop:Generator_RowDeletedName="penerimaan_produksiRowDeleted" msprop:Generator_UserTableName="penerimaan_produksi" msprop:Generator_RowChangedName="penerimaan_produksiRowChanged" msprop:Generator_RowEvArgName="penerimaan_produksiRowChangeEvent" msprop:Generator_RowClassName="penerimaan_produksiRow">
+        <xs:element name="penerimaan_produksi" msprop:Generator_TableClassName="penerimaan_produksiDataTable" msprop:Generator_TableVarName="tablepenerimaan_produksi" msprop:Generator_RowChangedName="penerimaan_produksiRowChanged" msprop:Generator_TablePropName="penerimaan_produksi" msprop:Generator_RowDeletingName="penerimaan_produksiRowDeleting" msprop:Generator_RowChangingName="penerimaan_produksiRowChanging" msprop:Generator_RowEvHandlerName="penerimaan_produksiRowChangeEventHandler" msprop:Generator_RowDeletedName="penerimaan_produksiRowDeleted" msprop:Generator_RowClassName="penerimaan_produksiRow" msprop:Generator_UserTableName="penerimaan_produksi" msprop:Generator_RowEvArgName="penerimaan_produksiRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="noBukti" msprop:Generator_ColumnVarNameInTable="columnnoBukti" msprop:Generator_ColumnPropNameInRow="noBukti" msprop:Generator_ColumnPropNameInTable="noBuktiColumn" msprop:Generator_UserColumnName="noBukti">
@@ -342,6 +366,29 @@ WHERE        (penerimaan_produksi.tanggalPenerimaan &gt;= @Param1 AND penerimaan
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="sisa_produksi" msprop:Generator_TableClassName="sisa_produksiDataTable" msprop:Generator_TableVarName="tablesisa_produksi" msprop:Generator_TablePropName="sisa_produksi" msprop:Generator_RowDeletingName="sisa_produksiRowDeleting" msprop:Generator_RowChangingName="sisa_produksiRowChanging" msprop:Generator_RowEvHandlerName="sisa_produksiRowChangeEventHandler" msprop:Generator_RowDeletedName="sisa_produksiRowDeleted" msprop:Generator_UserTableName="sisa_produksi" msprop:Generator_RowChangedName="sisa_produksiRowChanged" msprop:Generator_RowEvArgName="sisa_produksiRowChangeEvent" msprop:Generator_RowClassName="sisa_produksiRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Hasil_Jadi" msprop:Generator_ColumnVarNameInTable="columnHasil_Jadi" msprop:Generator_ColumnPropNameInRow="Hasil_Jadi" msprop:Generator_ColumnPropNameInTable="Hasil_JadiColumn" msprop:Generator_UserColumnName="Hasil_Jadi" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Sisa_Produksi" msprop:Generator_ColumnVarNameInTable="columnSisa_Produksi" msprop:Generator_ColumnPropNameInRow="Sisa_Produksi" msprop:Generator_ColumnPropNameInTable="Sisa_ProduksiColumn" msprop:Generator_UserColumnName="Sisa_Produksi" type="xs:decimal" minOccurs="0" />
+              <xs:element name="nama" msprop:Generator_ColumnVarNameInTable="columnnama" msprop:Generator_ColumnPropNameInRow="nama" msprop:Generator_ColumnPropNameInTable="namaColumn" msprop:Generator_UserColumnName="nama" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="qty" msprop:Generator_ColumnVarNameInTable="columnqty" msprop:Generator_ColumnPropNameInRow="qty" msprop:Generator_ColumnPropNameInTable="qtyColumn" msprop:Generator_UserColumnName="qty" type="xs:int" minOccurs="0" />
+              <xs:element name="noBukti" msprop:Generator_ColumnVarNameInTable="columnnoBukti" msprop:Generator_ColumnPropNameInRow="noBukti" msprop:Generator_ColumnPropNameInTable="noBuktiColumn" msprop:Generator_UserColumnName="noBukti">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="15" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
     <xs:unique name="Constraint1" msdata:PrimaryKey="true">
@@ -359,10 +406,14 @@ WHERE        (penerimaan_produksi.tanggalPenerimaan &gt;= @Param1 AND penerimaan
       <xs:field xpath="mstns:noHPP" />
       <xs:field xpath="mstns:kodeBrgJadi" />
     </xs:unique>
+    <xs:unique name="sisa_produksi_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:sisa_produksi" />
+      <xs:field xpath="mstns:noBukti" />
+    </xs:unique>
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="fk_nota_beli_has_barang_baku_nota_beli1" msdata:parent="nota_beli" msdata:child="nota_beli_detail" msdata:parentkey="no_nota" msdata:childkey="nomor_nota_beli" msprop:Generator_UserChildTable="nota_beli_detail" msprop:Generator_ChildPropName="Getnota_beli_detailRows" msprop:Generator_UserRelationName="fk_nota_beli_has_barang_baku_nota_beli1" msprop:Generator_ParentPropName="nota_beliRow" msprop:Generator_RelationVarName="relationfk_nota_beli_has_barang_baku_nota_beli1" msprop:Generator_UserParentTable="nota_beli" />
+      <msdata:Relationship name="fk_nota_beli_has_barang_baku_nota_beli1" msdata:parent="nota_beli" msdata:child="nota_beli_detail" msdata:parentkey="no_nota" msdata:childkey="nomor_nota_beli" msprop:Generator_UserChildTable="nota_beli_detail" msprop:Generator_ChildPropName="Getnota_beli_detailRows" msprop:Generator_UserRelationName="fk_nota_beli_has_barang_baku_nota_beli1" msprop:Generator_RelationVarName="relationfk_nota_beli_has_barang_baku_nota_beli1" msprop:Generator_UserParentTable="nota_beli" msprop:Generator_ParentPropName="nota_beliRow" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>
