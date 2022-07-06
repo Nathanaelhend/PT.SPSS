@@ -189,7 +189,6 @@ namespace PT.SPSS
             this.textBoxKodeSupplier.Name = "textBoxKodeSupplier";
             this.textBoxKodeSupplier.Size = new System.Drawing.Size(213, 25);
             this.textBoxKodeSupplier.TabIndex = 1;
-            this.textBoxKodeSupplier.TextChanged += new System.EventHandler(this.textBoxKodeSupplier_TextChanged);
             this.textBoxKodeSupplier.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxKodeSupplier_KeyDown);
             // 
             // label5

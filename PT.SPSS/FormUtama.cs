@@ -197,9 +197,30 @@ namespace PT.SPSS
 
         private void reportPembelianToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmCetak frmCetak = new FrmCetak();
+            FrmReportNotaBeli frmCetak = new FrmReportNotaBeli();
             frmCetak.Owner = this;
             frmCetak.Show();
+        }
+
+        private void reportDetailPembelianToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormReportDetilNota frmDetailReport = new FormReportDetilNota();
+            frmDetailReport.Owner = this;
+            frmDetailReport.Show();
+        }
+
+        private void penerimaanProduksiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormPenerimaan frmPenerimaan = new FormPenerimaan();
+            frmPenerimaan.Owner = this;
+            frmPenerimaan.Show();
+        }
+
+        private void reportPenerimanProduksiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormReportPenerimaan formRptPenerimaan = new FormReportPenerimaan();
+            formRptPenerimaan.Owner = this;
+            formRptPenerimaan.Show();
         }
 
         //private void penerimaanProduksiToolStripMenuItem_Click(object sender, EventArgs e)

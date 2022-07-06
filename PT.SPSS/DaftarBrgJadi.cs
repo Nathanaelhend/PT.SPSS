@@ -84,27 +84,24 @@ namespace PT.SPSS
 
         private void textBoxKriteria_TextChanged(object sender, EventArgs e)
         {
-            string kriteria = "";
             if (comboBoxKriteria.Text == "Kode")
             {
-                kriteria = "b.Kode";
+                //kriteria = "b.kodeBarang";
+                listBahanJadi = BarangJadi.BacaData("kodeBarang", textBoxKriteria.Text);
             }
             else if (comboBoxKriteria.Text == "Nama")
             {
-                kriteria = "b.nama";
+                listBahanJadi = BarangJadi.BacaData("nama", textBoxKriteria.Text);
             }
             else if (comboBoxKriteria.Text == "Satuan")
             {
-                kriteria = "b.satuan";
+                //kriteria = "b.satuan";
+                listBahanJadi = BarangJadi.BacaData("satuan", textBoxKriteria.Text);
             }
-            else if (comboBoxKriteria.Text == "Kategori")
-            {
-                kriteria = "kbb.nama";
-            }
-
-            listBahanJadi = BarangJadi.BacaData(kriteria, textBoxKriteria.Text);
 
             DisplayOnDataGrid();
         }
+
+
     }
 }

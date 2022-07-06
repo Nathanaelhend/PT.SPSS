@@ -84,12 +84,6 @@
     <Compile Include="DaftarBrgJadi.Designer.cs">
       <DependentUpon>DaftarBrgJadi.cs</DependentUpon>
     </Compile>
-    <Compile Include="DaftarNotaDetail.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DaftarNotaDetail.Designer.cs">
-      <DependentUpon>DaftarNotaDetail.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormEntryBahanBaku.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -144,17 +138,35 @@
     <Compile Include="FormPembelian.Designer.cs">
       <DependentUpon>FormPembelian.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormPenerimaan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPenerimaan.Designer.cs">
+      <DependentUpon>FormPenerimaan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormReportDetilNota.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormReportDetilNota.Designer.cs">
+      <DependentUpon>FormReportDetilNota.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormReportPenerimaan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormReportPenerimaan.Designer.cs">
+      <DependentUpon>FormReportPenerimaan.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormUtama.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormUtama.Designer.cs">
       <DependentUpon>FormUtama.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmCetak.cs">
+    <Compile Include="FrmReportNotaBeli.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmCetak.Designer.cs">
-      <DependentUpon>FrmCetak.cs</DependentUpon>
+    <Compile Include="FrmReportNotaBeli.Designer.cs">
+      <DependentUpon>FrmReportNotaBeli.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -171,9 +183,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DaftarBrgJadi.resx">
       <DependentUpon>DaftarBrgJadi.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DaftarNotaDetail.resx">
-      <DependentUpon>DaftarNotaDetail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormEntryBahanBaku.resx">
       <DependentUpon>FormEntryBahanBaku.cs</DependentUpon>
@@ -202,11 +211,20 @@
     <EmbeddedResource Include="FormPembelian.resx">
       <DependentUpon>FormPembelian.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormPenerimaan.resx">
+      <DependentUpon>FormPenerimaan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormReportDetilNota.resx">
+      <DependentUpon>FormReportDetilNota.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormReportPenerimaan.resx">
+      <DependentUpon>FormReportPenerimaan.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormUtama.resx">
       <DependentUpon>FormUtama.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmCetak.resx">
-      <DependentUpon>FrmCetak.cs</DependentUpon>
+    <EmbeddedResource Include="FrmReportNotaBeli.resx">
+      <DependentUpon>FrmReportNotaBeli.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -218,6 +236,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <EmbeddedResource Include="ReportPembelian.rdlc" />
+    <EmbeddedResource Include="ReportPembelianDetail.rdlc" />
+    <EmbeddedResource Include="ReportPenerimaan.rdlc" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\SPSS_LIB.Pembelian.datasource" />
     <None Include="Properties\DataSources\SPSS_LIB.PembelianDetail.datasource" />

@@ -70,6 +70,10 @@ namespace SPSS_LIB
                 sql = "select B.kode, B.nama, B.harga, B.satuan, B.kodeKatBahanBaku, KBB.Nama" +
                     " from bahan_baku B inner join kategori_bahan_baku KBB on B.kodeKatBahanBaku = KBB.kodeBahan" +
                     " where " + kriteria + " LIKE '%" + nilaiKriteria + "%'";
+
+                //sql = "SELECT nota_beli_detail.nomor_nota_beli, nota_beli_detail.tanggal, nota_beli_detail.id_barang_baku, " +
+                //      "nota_beli_detail.harga FROM nota_beli_detail" + " WHERE  " + kriteria + " LIKE '%" + nilaiKriteria + "%'" +
+                //      "ORDER BY nota_beli_detail.tanggal DESC LIMIT 1";
             }
 
             MySqlDataReader hasil = Koneksi.JalankanPerintahQuery(sql);

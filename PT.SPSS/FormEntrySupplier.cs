@@ -28,39 +28,6 @@ namespace PT.SPSS
             textBoxKodeSupplier.Focus();
         }
 
-        private void textBoxKodeSupplier_TextChanged(object sender, EventArgs e)
-        {
-            
-            if(textBoxKodeSupplier.Text.Length <5)
-            {
-                MessageBox.Show("Kode harus 5 karakter");
-            }
-
-            else if(textBoxKodeSupplier.Text.Length == 5)
-            {
-                listSupplier = Supplier.BacaData("kodeSupplier", textBoxKodeSupplier.Text);
-                if (listSupplier.Count > 0)
-                {
-                    baru = false;
-                    textBoxNamaSupplier.Text = listSupplier[0].Nama;
-                    textBoxAlamat.Text = listSupplier[0].Alamat;
-                    textBoxKota.Text = listSupplier[0].Kota;
-                    textBoxNamaSupplier.Focus();
-                }
-                else
-                {
-                    baru = true;
-                }
-            }
-
-            else
-            {
-                textBoxNamaSupplier.Text = "";
-                textBoxAlamat.Text = "";
-                textBoxKota.Text = "";
-            }
-        }
-
         private void buttonHapus_Click(object sender, EventArgs e)
         {
             try
@@ -146,6 +113,46 @@ namespace PT.SPSS
                 FormDaftarSupplier frmDaftarSupp = new FormDaftarSupplier();
                 frmDaftarSupp.Owner = this;
                 frmDaftarSupp.Show();
+            }
+
+            else if (e.KeyCode == Keys.Enter)
+            {
+                if (textBoxKodeSupplier.Text.Length < 5)
+                {
+                    MessageBox.Show("Kode harus 5 karakter");
+                }
+
+                else if (textBoxKodeSupplier.Text.Length == 5)
+                {
+                    listSupplier = Supplier.BacaData("kodeSupplier", textBoxKodeSupplier.Text);
+                    if (listSupplier.Count > 0)
+                    {
+                        baru = false;
+                        textBoxNamaSupplier.Text = listSupplier[0].Nama;
+                        textBoxAlamat.Text = listSupplier[0].Alamat;
+                        textBoxKota.Text = listSupplier[0].Kota;
+                        textBoxNamaSupplier.Focus();
+                    }
+                    else
+                    {
+                        baru = true;
+                        textBoxNamaSupplier.Focus();
+                    }
+                }
+
+                else
+                {
+                    textBoxNamaSupplier.Text = "";
+                    textBoxAlamat.Text = "";
+                    textBoxKota.Text = "";
+                }
+            }
+
+            else if (textBoxKodeSupplier.Text == "")
+            {
+                textBoxNamaSupplier.Text = "";
+                textBoxAlamat.Text = "";
+                textBoxKota.Text = "";
             }
         }
     }

@@ -96,6 +96,18 @@ namespace SPSS_LIB
             }
         }
 
+        //public static List<Pembelian> BacaHargaTerbaru(string pKriteria, string pNilaiKriteria)
+        //{
+        //    string sql = "";
+        //    if(pKriteria == "")
+        //    {
+        //        sql = "SELECT nota_beli_detail.nomor_nota_beli, nota_beli_detail.tanggal, nota_beli_detail.id_barang_baku, nota_beli_detail.harga" +
+        //              "FROM nota_beli_detail WHERE nota_beli_detail.id_barang_baku = " + pKriteria + "LIKE'%" + pNilaiKriteria + "ORDER BY nota_beli_detail.tanggal DESC LIMIT 1";
+        //        MySqlDataReader hasilData1 = Koneksi.JalankanPerintahQuery(sql);
+        //    }
+
+        //}
+
         public static List<Pembelian> BacaData(string pKriteria, string pNilaiKriteria)
         {
             string sql = "";

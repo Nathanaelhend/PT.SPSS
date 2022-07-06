@@ -88,19 +88,15 @@ namespace PT.SPSS
             string kriteria = "";
             if(comboBoxKriteria.Text == "Kode")
             {
-                kriteria = "b.Kode";
+                listBahanBaku = BahanBaku.BacaData("kode", textBoxKriteria.Text);
             }
             else if(comboBoxKriteria.Text == "Nama")
             {
-                kriteria = "b.nama";
+                listBahanBaku = BahanBaku.BacaData("nama", textBoxKriteria.Text);
             }
             else if(comboBoxKriteria.Text == "Satuan")
             {
-                kriteria = "b.satuan";
-            }
-            else if (comboBoxKriteria.Text == "Kategori")
-            {
-                kriteria = "kbb.nama";
+                listBahanBaku = BahanBaku.BacaData("satuan", textBoxKriteria.Text);
             }
 
             listBahanBaku = BahanBaku.BacaData(kriteria, textBoxKriteria.Text);
