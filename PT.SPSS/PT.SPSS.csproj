@@ -102,12 +102,6 @@
     <Compile Include="FormEntryCatBrgJadi.Designer.cs">
       <DependentUpon>FormEntryCatBrgJadi.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormDaftarSupplier.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormDaftarSupplier.Designer.cs">
-      <DependentUpon>FormDaftarSupplier.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormEntryHPP.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -198,9 +192,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormEntryCatBrgJadi.resx">
       <DependentUpon>FormEntryCatBrgJadi.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormDaftarSupplier.resx">
-      <DependentUpon>FormDaftarSupplier.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormEntryHPP.resx">
       <DependentUpon>FormEntryHPP.cs</DependentUpon>

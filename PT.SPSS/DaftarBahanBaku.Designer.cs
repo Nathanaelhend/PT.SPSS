@@ -31,7 +31,6 @@ namespace PT.SPSS
         {
             this.panelSupplier = new System.Windows.Forms.Panel();
             this.textBoxKriteria = new System.Windows.Forms.TextBox();
-            this.comboBoxKriteria = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonKeluar = new System.Windows.Forms.Button();
@@ -44,33 +43,19 @@ namespace PT.SPSS
             // 
             this.panelSupplier.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panelSupplier.Controls.Add(this.textBoxKriteria);
-            this.panelSupplier.Controls.Add(this.comboBoxKriteria);
             this.panelSupplier.Controls.Add(this.label2);
             this.panelSupplier.Location = new System.Drawing.Point(10, 61);
             this.panelSupplier.Name = "panelSupplier";
-            this.panelSupplier.Size = new System.Drawing.Size(682, 50);
+            this.panelSupplier.Size = new System.Drawing.Size(400, 50);
             this.panelSupplier.TabIndex = 50;
             // 
             // textBoxKriteria
             // 
-            this.textBoxKriteria.Location = new System.Drawing.Point(360, 15);
+            this.textBoxKriteria.Location = new System.Drawing.Point(188, 14);
             this.textBoxKriteria.Name = "textBoxKriteria";
-            this.textBoxKriteria.Size = new System.Drawing.Size(212, 20);
+            this.textBoxKriteria.Size = new System.Drawing.Size(196, 20);
             this.textBoxKriteria.TabIndex = 2;
             this.textBoxKriteria.TextChanged += new System.EventHandler(this.textBoxKriteria_TextChanged);
-            // 
-            // comboBoxKriteria
-            // 
-            this.comboBoxKriteria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxKriteria.FormattingEnabled = true;
-            this.comboBoxKriteria.Items.AddRange(new object[] {
-            "Kode",
-            "Nama",
-            "Satuan"});
-            this.comboBoxKriteria.Location = new System.Drawing.Point(178, 15);
-            this.comboBoxKriteria.Name = "comboBoxKriteria";
-            this.comboBoxKriteria.Size = new System.Drawing.Size(154, 21);
-            this.comboBoxKriteria.TabIndex = 1;
             // 
             // label2
             // 
@@ -89,7 +74,7 @@ namespace PT.SPSS
             this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(10, 15);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(682, 33);
+            this.label1.Size = new System.Drawing.Size(400, 33);
             this.label1.TabIndex = 49;
             this.label1.Text = "Daftar Barang Baku";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -97,11 +82,11 @@ namespace PT.SPSS
             // buttonKeluar
             // 
             this.buttonKeluar.BackColor = System.Drawing.Color.Crimson;
-            this.buttonKeluar.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonKeluar.Font = new System.Drawing.Font("Tahoma", 16F, System.Drawing.FontStyle.Bold);
             this.buttonKeluar.ForeColor = System.Drawing.Color.White;
-            this.buttonKeluar.Location = new System.Drawing.Point(563, 391);
+            this.buttonKeluar.Location = new System.Drawing.Point(281, 328);
             this.buttonKeluar.Name = "buttonKeluar";
-            this.buttonKeluar.Size = new System.Drawing.Size(129, 41);
+            this.buttonKeluar.Size = new System.Drawing.Size(129, 33);
             this.buttonKeluar.TabIndex = 52;
             this.buttonKeluar.Text = "Keluar";
             this.buttonKeluar.UseVisualStyleBackColor = false;
@@ -112,14 +97,14 @@ namespace PT.SPSS
             this.dataGridViewBarangBaku.Location = new System.Drawing.Point(10, 117);
             this.dataGridViewBarangBaku.Name = "dataGridViewBarangBaku";
             this.dataGridViewBarangBaku.RowHeadersWidth = 51;
-            this.dataGridViewBarangBaku.Size = new System.Drawing.Size(682, 268);
+            this.dataGridViewBarangBaku.Size = new System.Drawing.Size(400, 205);
             this.dataGridViewBarangBaku.TabIndex = 51;
             // 
             // DaftarBahanBaku
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(700, 446);
+            this.ClientSize = new System.Drawing.Size(422, 370);
             this.Controls.Add(this.panelSupplier);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonKeluar);
@@ -139,7 +124,6 @@ namespace PT.SPSS
 
         private System.Windows.Forms.Panel panelSupplier;
         private System.Windows.Forms.TextBox textBoxKriteria;
-        private System.Windows.Forms.ComboBox comboBoxKriteria;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button buttonKeluar;

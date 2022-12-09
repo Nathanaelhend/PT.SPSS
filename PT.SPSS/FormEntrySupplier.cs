@@ -108,14 +108,7 @@ namespace PT.SPSS
 
         private void textBoxKodeSupplier_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.F5)
-            {
-                FormDaftarSupplier frmDaftarSupp = new FormDaftarSupplier();
-                frmDaftarSupp.Owner = this;
-                frmDaftarSupp.Show();
-            }
-
-            else if (e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter)
             {
                 if (textBoxKodeSupplier.Text.Length < 5)
                 {
@@ -146,14 +139,15 @@ namespace PT.SPSS
                 //    textBoxAlamat.Text = "";
                 //    textBoxKota.Text = "";
                 //}
+                else if (textBoxKodeSupplier.Text == "")
+                {
+                    textBoxNamaSupplier.Text = "";
+                    textBoxAlamat.Text = "";
+                    textBoxKota.Text = "";
+                }
             }
 
-            else if (textBoxKodeSupplier.Text == "")
-            {
-                textBoxNamaSupplier.Text = "";
-                textBoxAlamat.Text = "";
-                textBoxKota.Text = "";
-            }
+            
         }
     }
 }

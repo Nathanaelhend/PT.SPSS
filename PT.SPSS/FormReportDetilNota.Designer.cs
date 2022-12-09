@@ -30,7 +30,7 @@ namespace PT.SPSS
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.nota_beli_detailBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.pt_spss_kpDataSet = new PT.SPSS.pt_spss_kpDataSet();
             this.comboBoxSupplier = new System.Windows.Forms.ComboBox();
@@ -124,16 +124,16 @@ namespace PT.SPSS
             // 
             // reportViewer1
             // 
-            reportDataSource2.Name = "DataSetDetail";
-            reportDataSource2.Value = this.nota_beli_detailBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
+            reportDataSource1.Name = "DataSetDetail";
+            reportDataSource1.Value = this.nota_beli_detailBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "PT.SPSS.ReportPembelianDetail.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(12, 191);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
             this.reportViewer1.Size = new System.Drawing.Size(944, 501);
             this.reportViewer1.TabIndex = 14;
-            this.reportViewer1.ZoomPercent = 85;
+            this.reportViewer1.ZoomPercent = 75;
             // 
             // comboBoxBhnBaku
             // 

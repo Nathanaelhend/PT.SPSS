@@ -16,33 +16,99 @@ namespace PT.SPSS
         List<Supplier> listSupplier = new List<Supplier>();
         List<BahanBaku> listBhnBaku = new List<BahanBaku>();
         Pembelian pembelian;
-
+        public string kodeBahanBaku = "";
         public FormPembelian()
         {
             InitializeComponent();
         }
 
-        private void FormPembelian_Load(object sender, EventArgs e)
+        public void FormPembelian_Load(object sender, EventArgs e)
         {
             dateTimePicker.Value = DateTime.Now;
+            textBoxNoNota.Focus();
 
             listSupplier = Supplier.BacaData("", "");
 
-            comboBoxSupplier.DataSource = listSupplier;
-            comboBoxSupplier.DisplayMember = "nama";
+            //comboBoxSupplier.DataSource = listSupplier;
+            //comboBoxSupplier.DisplayMember = "nama";
 
-            comboBoxSupplier.DropDownStyle = ComboBoxStyle.DropDownList;
+            //comboBoxSupplier.DropDownStyle = ComboBoxStyle.DropDownList;
 
-            listBhnBaku = BahanBaku.BacaData("", "");
-
-            comboBoxBahanBaku.DataSource = listBhnBaku;
-            comboBoxBahanBaku.DisplayMember = "nama";
-
-            comboBoxBahanBaku.DropDownStyle = ComboBoxStyle.DropDownList;
+            listBhnBaku = BahanBaku.BacaData("");
 
             FormatDataGrid();
         }
 
+        private void FormatDataGrid2()
+        {
+            dataGridViewBhnBaku.Columns.Clear();
+
+            dataGridViewBhnBaku.Columns.Add("kode", "Kode");
+            dataGridViewBhnBaku.Columns.Add("nama", "Nama");
+
+            dataGridViewBhnBaku.Columns["Kode"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewBhnBaku.Columns["Nama"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
+            dataGridViewBhnBaku.Columns["Kode"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridViewBhnBaku.Columns["Nama"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+
+            dataGridViewBhnBaku.AllowUserToAddRows = false;
+            dataGridViewBhnBaku.ReadOnly = true;
+
+        }
+
+        private void TampilDataGrid2()
+        {
+
+
+            if (listBhnBaku.Count > 0)
+            {
+                foreach (BahanBaku b in listBhnBaku)
+                {
+                    dataGridViewBhnBaku.Rows.Add(b.Kode, b.Nama);
+                }
+            }
+            else
+            {
+                dataGridViewBhnBaku.DataSource = null;
+            }
+        }
+
+        private void FormatDataGrid3()
+        {
+            dataGridViewBhnBaku.Columns.Clear();
+
+            dataGridViewBhnBaku.Columns.Add("kodeSupplier", "Kode");
+            dataGridViewBhnBaku.Columns.Add("nama", "Nama");
+            dataGridViewBhnBaku.Columns.Add("alamat", "Alamat");
+            dataGridViewBhnBaku.Columns.Add("kota", "Kota");
+
+            dataGridViewBhnBaku.Columns["Kode"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewBhnBaku.Columns["Nama"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewBhnBaku.Columns["Alamat"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewBhnBaku.Columns["Kota"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
+            dataGridViewBhnBaku.AllowUserToAddRows = false;
+            dataGridViewBhnBaku.ReadOnly = true;
+
+        }
+
+        private void TampilDataGrid3()
+        {
+
+
+            if (listSupplier.Count > 0)
+            {
+                foreach (Supplier s in listSupplier)
+                {
+                    dataGridViewSupplier.Rows.Add(s.KodeSupplier, s.Nama, s.Alamat, s.Kota);
+                }
+            }
+            else
+            {
+                dataGridViewSupplier.DataSource = null;
+            }
+        }
 
         private void textBoxHarga_KeyDown(object sender, KeyEventArgs e)
         {
@@ -67,24 +133,18 @@ namespace PT.SPSS
 
         private void textBoxDiscPrs_KeyDown(object sender, KeyEventArgs e)
         {
-            BahanBaku bahanDipilih = (BahanBaku)comboBoxBahanBaku.SelectedItem;
-
             if (e.KeyCode == Keys.Enter)
             {
                 textBoxDiscRp.Text = Pembelian.HitungDisc(int.Parse(textBoxJumlah.Text), int.Parse(textBoxDiscPrs.Text)).ToString();
                 textBoxTotal.Text = Pembelian.HitungTotal(int.Parse(textBoxJumlah.Text), int.Parse(textBoxDiscRp.Text)).ToString();
 
-                dataGridViewPembelian.Rows.Add(bahanDipilih.Kode.ToString(),bahanDipilih.Nama.ToString(), textBoxQty.Text, textBoxHarga.Text, textBoxJumlah.Text, textBoxDiscPrs.Text, textBoxDiscRp.Text, textBoxTotal.Text);
-
-                textBoxJmlhAll.Text = HitungTotal().ToString();
-
-                textBoxQty.Focus();
-                textBoxQty.Text = "";
-                textBoxHarga.Text = "";
-                textBoxJumlah.Text = "";
-                textBoxDiscPrs.Text = "";
-                textBoxDiscRp.Text = "";
-                textBoxTotal.Text = "";
+                //dataGridViewPembelian.Rows.Add(textBoxKode.Text, textBoxNamaBahan.Text, textBoxQty.Text, textBoxHarga.Text, textBoxDiscPrs.Text, textBoxDiscRp.Text, textBoxTotal.Text);
+                //textBoxQty.Text = "";
+                //textBoxHarga.Text = "";
+                //textBoxJumlah.Text = "";
+                //textBoxDiscPrs.Text = "";
+                //textBoxDiscRp.Text = "";
+                //textBoxTotal.Text = "";
             }
         }
 
@@ -112,8 +172,7 @@ namespace PT.SPSS
         {
             try
             {
-                Supplier supplierDipilih = (Supplier)comboBoxSupplier.SelectedItem;
-                BahanBaku bhnBakuDipilih = (BahanBaku)comboBoxBahanBaku.SelectedItem;
+                Supplier supplierDipilih = textBoxSupplier.Text;
 
                 pembelian = new Pembelian(textBoxNoNota.Text, dateTimePicker.Value, supplierDipilih, int.Parse(textBoxJmlhAll.Text),
                 double.Parse(textBoxDiscPrsAll.Text), int.Parse(textBoxDiscRpAll.Text), int.Parse(textBoxDpp.Text), double.Parse(textBoxPPnPrs.Text), int.Parse(textBoxPPnRp.Text), int.Parse(textBoxNetto.Text));
@@ -139,6 +198,7 @@ namespace PT.SPSS
                 MessageBox.Show("Data nota Beli berhasil tersimpan.", "Informasi");
 
                 textBoxNoNota.Text = "";
+                textBoxNamaBahan.Text = "";
                 dateTimePicker.Value = DateTime.Now;
                 textBoxQty.Text = "";
                 textBoxHarga.Text = "";
@@ -163,6 +223,25 @@ namespace PT.SPSS
             }
         }
 
+        private void DisplayOnDataGrid()
+        {
+            if (listBhnBaku.Count > 0)
+            {
+                //kosongi datagridviewBarang
+                dataGridViewBhnBaku.Rows.Clear();
+                foreach (BahanBaku b in listBhnBaku)
+                {
+                    //menambahkan data barang satu persatu ke datagridview
+                    dataGridViewBhnBaku.Rows.Add(b.Kode, b.Nama);
+                }
+
+            }
+            else
+            {
+                dataGridViewBhnBaku.DataSource = null;
+            }
+        }
+
         private void FormatDataGrid()
         {
             //kosongi semua kolom di datagridview
@@ -178,62 +257,17 @@ namespace PT.SPSS
             dataGridViewPembelian.Columns.Add("diskon_rph", "Diskon");
             dataGridViewPembelian.Columns.Add("total_harga", "Total Harga");
 
-            //agar lebar kolom dapat menyesuaikan panjang/isi data
-            //dataGridViewPembelian.Columns["KodeTipe"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            //dataGridViewPembelian.Columns["NamaTipe"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            //dataGridViewPembelian.Columns["HargaJual"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            //dataGridViewPembelian.Columns["Jumlah"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            //dataGridViewPembelian.Columns["SubTotal"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-
-            ////agar harga jual, jumlah, subTotal rata kanan
-            //dataGridViewPembelian.Columns["HargaJual"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            //dataGridViewPembelian.Columns["Jumlah"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            //dataGridViewPembelian.Columns["SubTotal"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-
-            ////agar harga jual dan subtotal ditampilkan dengan format pemisah ribuan (1000 delimeter)
-            //dataGridViewPembelian.Columns["HargaJual"].DefaultCellStyle.Format = "#,###";
-            //dataGridViewPembelian.Columns["SubTotal"].DefaultCellStyle.Format = "#,###";
-
             //agar datagrid tidak bisa diganti-ganti oleh user
             dataGridViewPembelian.AllowUserToAddRows = false;
             dataGridViewPembelian.ReadOnly = true;
         }
 
-        private void comboBoxSupplier_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            dateTimePicker.Value = DateTime.Now;
-            if (comboBoxSupplier.SelectedIndex != -1)
-            {
-                Supplier supplierDipilih = (Supplier)comboBoxSupplier.SelectedItem;
-                textBoxAlamat.Text = supplierDipilih.Alamat;
-                textBoxKota.Text = supplierDipilih.Kota;
-            }
-            else
-            {
-                textBoxAlamat.Text = "";
-            }
-        }
+        
 
         private void textBoxTotal_TextChanged(object sender, EventArgs e)
         {
 
         }
-
-        //private void dataGridViewPembelian_CellClick(object sender, DataGridViewCellEventArgs e)
-        //{
-        //    if (e.RowIndex >= 0)
-        //    {
-        //        DataGridViewRow row = this.dataGridViewPembelian.Rows[e.RowIndex];
-
-        //        comboBoxBahanBaku.SelectedItem = row.Cells["nama"].Value.ToString();
-        //        textBoxQty.Text = row.Cells["quantity"].Value.ToString();
-        //        textBoxHarga.Text = row.Cells["harga"].Value.ToString();
-        //        textBoxJumlah.Text = row.Cells["jumlah"].Value.ToString();
-        //        textBoxDiscPrs.Text = row.Cells["diskon_persen"].Value.ToString();
-        //        textBoxDiscRp.Text = row.Cells["diskon_rph"].Value.ToString();
-        //        textBoxTotal.Text = row.Cells["total_harga"].Value.ToString();
-        //    }
-        //}
 
         private void textBoxHarga_TextChanged(object sender, EventArgs e)
         {
@@ -245,5 +279,135 @@ namespace PT.SPSS
             this.Close();
         }
 
+
+        private void buttonBatal_Click(object sender, EventArgs e)
+        {
+            
+            textBoxNoNota.Text = "";
+            textBoxNamaBahan.Text = "";
+            dateTimePicker.Value = DateTime.Now;
+            textBoxQty.Text = "";
+            textBoxHarga.Text = "";
+            textBoxJumlah.Text = "";
+            textBoxDiscPrs.Text = "";
+            textBoxDiscRp.Text = "";
+            textBoxTotal.Text = "";
+            textBoxJmlhAll.Text = "";
+            textBoxDiscPrsAll.Text = "";
+            textBoxDiscRpAll.Text = "";
+            textBoxDpp.Text = "";
+            textBoxPPnPrs.Text = "";
+            textBoxPPnRp.Text = "";
+            textBoxNetto.Text = "";
+            textBoxNoNota.Focus();
+            dataGridViewPembelian.Columns.Clear();
+            FormatDataGrid();
+        }
+
+        private void comboBoxBahanBaku_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //textBoxQty.Text = "";
+            //textBoxHarga.Text = "";
+            //textBoxJumlah.Text = "";
+            //textBoxDiscPrs.Text = "";
+            //textBoxDiscRp.Text = "";
+            //textBoxTotal.Text = "";
+        }
+
+        private void buttonSave_Click(object sender, EventArgs e)
+        {
+            //BahanBaku bahanDipilih = (BahanBaku)comboBoxBahanBaku.SelectedItem;
+
+            dataGridViewPembelian.Rows.Add(textBoxKode.Text, textBoxNamaBahan.Text, textBoxQty.Text, textBoxHarga.Text, textBoxJumlah.Text, textBoxDiscPrs.Text, textBoxDiscRp.Text, textBoxTotal.Text);
+
+            textBoxJmlhAll.Text = HitungTotal().ToString();
+            textBoxKode.Text = "";
+            textBoxNamaBahan.Text = "";
+            textBoxQty.Text = "";
+            textBoxHarga.Text = "";
+            textBoxJumlah.Text = "";
+            textBoxDiscPrs.Text = "";
+            textBoxDiscRp.Text = "";
+            textBoxTotal.Text = "";
+            textBoxKode.Focus();
+
+        }
+
+        private void buttonBatalBhnBaku_Click(object sender, EventArgs e)
+        {
+            textBoxNamaBahan.Text = "";
+            textBoxQty.Text = "";
+            textBoxHarga.Text = "";
+            textBoxJumlah.Text = "";
+            textBoxDiscPrs.Text = "";
+            textBoxDiscRp.Text = "";
+            textBoxTotal.Text = "";
+            textBoxQty.Focus();
+        }
+
+
+
+        private void dataGridViewBhnBaku_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = this.dataGridViewBhnBaku.Rows[e.RowIndex];
+
+                textBoxKode.Text = row.Cells["kode"].Value.ToString();
+                textBoxNamaBahan.Text = row.Cells["nama"].Value.ToString();
+            }
+            panelBahan.Visible = false;
+        }
+
+        private void textBoxNama_TextChanged(object sender, EventArgs e)
+        {
+            listBhnBaku = BahanBaku.BacaData(textBoxNama.Text);
+            DisplayOnDataGrid();
+        }
+
+        private void textBoxNama_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                panelBahan.Visible = false;
+            }
+        }
+
+        private void textBoxKode_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F5)
+            {
+                panelBahan.Visible = true;
+                FormatDataGrid2();
+                listBhnBaku = BahanBaku.BacaData("");
+                TampilDataGrid2();
+                textBoxNama.Focus();
+            }
+        }
+
+        private void textBoxSupplier_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.F5)
+            {
+                panelSupplier.Visible = true;
+                FormatDataGrid3();
+                listSupplier = Supplier.BacaData("", "");
+                TampilDataGrid3();
+                textBoxSuppGrid.Focus();
+            }
+        }
+
+        private void dataGridViewSupplier_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = this.dataGridViewSupplier.Rows[e.RowIndex];
+
+                textBoxKode.Text = row.Cells["kode"].Value.ToString();
+                textBoxAlamat.Text = row.Cells["alamat"].Value.ToString();
+                textBoxKota.Text = row.Cells["kota"].Value.ToString();
+            }
+            panelBahan.Visible = false;
+        }
     }
 }

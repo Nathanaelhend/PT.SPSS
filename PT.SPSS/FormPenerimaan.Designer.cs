@@ -48,6 +48,12 @@ namespace PT.SPSS
             this.label8 = new System.Windows.Forms.Label();
             this.textBoxNamaBrg = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
+            this.buttonBatal = new System.Windows.Forms.Button();
+            this.panelHPP = new System.Windows.Forms.Panel();
+            this.textBoxNHPP = new System.Windows.Forms.TextBox();
+            this.dataGridViewHPP = new System.Windows.Forms.DataGridView();
+            this.panelHPP.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewHPP)).BeginInit();
             this.SuspendLayout();
             // 
             // label7
@@ -147,7 +153,7 @@ namespace PT.SPSS
             this.buttonSimpan.BackColor = System.Drawing.Color.Crimson;
             this.buttonSimpan.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSimpan.ForeColor = System.Drawing.Color.White;
-            this.buttonSimpan.Location = new System.Drawing.Point(197, 328);
+            this.buttonSimpan.Location = new System.Drawing.Point(107, 328);
             this.buttonSimpan.Name = "buttonSimpan";
             this.buttonSimpan.Size = new System.Drawing.Size(81, 31);
             this.buttonSimpan.TabIndex = 97;
@@ -235,11 +241,53 @@ namespace PT.SPSS
             this.label9.TabIndex = 118;
             this.label9.Text = "Nama Barang :";
             // 
+            // buttonBatal
+            // 
+            this.buttonBatal.BackColor = System.Drawing.Color.Crimson;
+            this.buttonBatal.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonBatal.ForeColor = System.Drawing.Color.White;
+            this.buttonBatal.Location = new System.Drawing.Point(194, 328);
+            this.buttonBatal.Name = "buttonBatal";
+            this.buttonBatal.Size = new System.Drawing.Size(81, 31);
+            this.buttonBatal.TabIndex = 120;
+            this.buttonBatal.Text = "BATAL";
+            this.buttonBatal.UseVisualStyleBackColor = false;
+            this.buttonBatal.Click += new System.EventHandler(this.buttonBatal_Click);
+            // 
+            // panelHPP
+            // 
+            this.panelHPP.Controls.Add(this.textBoxNHPP);
+            this.panelHPP.Controls.Add(this.dataGridViewHPP);
+            this.panelHPP.Location = new System.Drawing.Point(49, 153);
+            this.panelHPP.Name = "panelHPP";
+            this.panelHPP.Size = new System.Drawing.Size(422, 243);
+            this.panelHPP.TabIndex = 121;
+            this.panelHPP.Visible = false;
+            // 
+            // textBoxNHPP
+            // 
+            this.textBoxNHPP.Location = new System.Drawing.Point(17, 22);
+            this.textBoxNHPP.Multiline = true;
+            this.textBoxNHPP.Name = "textBoxNHPP";
+            this.textBoxNHPP.Size = new System.Drawing.Size(128, 25);
+            this.textBoxNHPP.TabIndex = 1;
+            // 
+            // dataGridViewHPP
+            // 
+            this.dataGridViewHPP.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewHPP.Location = new System.Drawing.Point(17, 53);
+            this.dataGridViewHPP.Name = "dataGridViewHPP";
+            this.dataGridViewHPP.Size = new System.Drawing.Size(390, 186);
+            this.dataGridViewHPP.TabIndex = 0;
+            this.dataGridViewHPP.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewHPP_CellClick);
+            // 
             // FormPenerimaan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(371, 373);
+            this.ClientSize = new System.Drawing.Size(483, 424);
+            this.Controls.Add(this.panelHPP);
+            this.Controls.Add(this.buttonBatal);
             this.Controls.Add(this.textBoxNamaBrg);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.textBoxQty);
@@ -261,6 +309,9 @@ namespace PT.SPSS
             this.Controls.Add(this.buttonSimpan);
             this.Name = "FormPenerimaan";
             this.Load += new System.EventHandler(this.FormPenerimaan_Load);
+            this.panelHPP.ResumeLayout(false);
+            this.panelHPP.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewHPP)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -287,5 +338,9 @@ namespace PT.SPSS
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox textBoxNamaBrg;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button buttonBatal;
+        private System.Windows.Forms.Panel panelHPP;
+        private System.Windows.Forms.TextBox textBoxNHPP;
+        private System.Windows.Forms.DataGridView dataGridViewHPP;
     }
 }

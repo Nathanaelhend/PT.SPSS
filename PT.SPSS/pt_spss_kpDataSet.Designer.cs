@@ -3154,7 +3154,7 @@ FROM            nota_beli INNER JOIN
 FROM            nota_beli INNER JOIN
                          supplier ON nota_beli.supplier_id = supplier.kodeSupplier
 WHERE        (nota_beli.tanggal >= @Param1) AND (nota_beli.tanggal <= @Param2)
-ORDER BY nota_beli.tanggal DESC";
+ORDER BY nota_beli.tanggal ASC";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             global::MySql.Data.MySqlClient.MySqlParameter param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@Param1";
@@ -3480,7 +3480,7 @@ FROM            nota_beli_detail INNER JOIN
                          bahan_baku ON nota_beli_detail.id_barang_baku = bahan_baku.kode INNER JOIN
                          supplier ON nota_beli_detail.supplier_id = supplier.kodeSupplier
 WHERE        (nota_beli_detail.tanggal >= @Param1 AND nota_beli_detail.tanggal <= @Param2)
-ORDER BY nota_beli_detail.tanggal DESC";
+ORDER BY nota_beli_detail.tanggal ASC";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@Param1";

@@ -23,7 +23,7 @@ namespace PT.SPSS
         {
             FormatDataGrid();
 
-            listBahanBaku = BahanBaku.BacaData("", "");
+            listBahanBaku = BahanBaku.BacaData("");
 
             DisplayOnDataGrid();
             //if (listBahanBaku.Count > 0)
@@ -51,7 +51,7 @@ namespace PT.SPSS
                 foreach (BahanBaku b in listBahanBaku)
                 {
                     //menambahkan data barang satu persatu ke datagridview
-                    dataGridViewBarangBaku.Rows.Add(b.Kode, b.Nama, b.Harga, b.Satuan, b.KategoriBhnBaku.KodeBahan, b.KategoriBhnBaku.KeteranganKategori);
+                    dataGridViewBarangBaku.Rows.Add(b.Kode, b.Nama);    
                 }
 
             }
@@ -64,11 +64,7 @@ namespace PT.SPSS
         private void FormatDataGrid()
         {
             dataGridViewBarangBaku.Columns.Add("KodeBahanJadi", "Kode Bahan Jadi");
-            dataGridViewBarangBaku.Columns.Add("NamaBahanJadi", "Nama");
-            dataGridViewBarangBaku.Columns.Add("Harga", "Harga");
-            dataGridViewBarangBaku.Columns.Add("Satuan", "Satuan");
-            dataGridViewBarangBaku.Columns.Add("KodeKategori", "Kode Kategori");
-            dataGridViewBarangBaku.Columns.Add("NamaKategori", "Nama Kategori");
+            dataGridViewBarangBaku.Columns.Add("nama", "Nama");
 
             //dataGridViewBarangBaku.Columns["Harga"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
@@ -85,23 +81,27 @@ namespace PT.SPSS
 
         private void textBoxKriteria_TextChanged(object sender, EventArgs e)
         {
-            string kriteria = "";
-            if(comboBoxKriteria.Text == "Kode")
-            {
-                listBahanBaku = BahanBaku.BacaData("kode", textBoxKriteria.Text);
-            }
-            else if(comboBoxKriteria.Text == "Nama")
-            {
-                listBahanBaku = BahanBaku.BacaData("nama", textBoxKriteria.Text);
-            }
-            else if(comboBoxKriteria.Text == "Satuan")
-            {
-                listBahanBaku = BahanBaku.BacaData("satuan", textBoxKriteria.Text);
-            }
 
-            listBahanBaku = BahanBaku.BacaData(kriteria, textBoxKriteria.Text);
+            listBahanBaku = BahanBaku.BacaData(textBoxKriteria.Text);
+
+            //listBahanBaku = BahanBaku.BacaData(kriteria, textBoxKriteria.Text);
 
             DisplayOnDataGrid();
         }
+
+        private void dataGridViewBarangBaku_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if(e.RowIndex >= 0)
+            {
+                DataGridViewRow row = this.dataGridViewBarangBaku.Rows[e.RowIndex];
+                // dapatkan form pembelian
+                FormPembelian frmBeli = (FormPembelian)this.Owner;
+                frmBeli.kodeBahanBaku = row.Cells["KodeBarangJadi"].Value.ToString();
+                frmBeli.textBoxNamaBahan.Text = row.Cells["nama"].Value.ToString();
+                this.Close();
+            }
+        }
+
+        
     }
 }

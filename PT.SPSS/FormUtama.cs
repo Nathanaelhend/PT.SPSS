@@ -33,7 +33,7 @@ namespace PT.SPSS
             try
             {
                 Koneksi koneksi = new Koneksi("localhost", "pt_spss", "root", "");
-                MessageBox.Show("Koneksi berhasil");
+                //MessageBox.Show("Koneksi berhasil");
             }
 
             catch(Exception ex)
@@ -165,13 +165,6 @@ namespace PT.SPSS
         private void keluarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
-        }
-
-        private void daftarSupplierToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FormDaftarSupplier frmDaftarSupp = new FormDaftarSupplier();
-            frmDaftarSupp.Owner = this;
-            frmDaftarSupp.Show();
         }
 
         private void bahanBakuToolStripMenuItem_Click(object sender, EventArgs e)

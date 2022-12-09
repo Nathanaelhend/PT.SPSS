@@ -44,10 +44,10 @@ namespace PT.SPSS
             this.barangJadiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportPembelianToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportDetailPembelianToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.penerimaanProduksiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.keluarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportPenerimanProduksiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sisaProduksiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.penerimaanProduksiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.keluarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -144,21 +144,20 @@ namespace PT.SPSS
             // daftarSupplierToolStripMenuItem
             // 
             this.daftarSupplierToolStripMenuItem.Name = "daftarSupplierToolStripMenuItem";
-            this.daftarSupplierToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
+            this.daftarSupplierToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.daftarSupplierToolStripMenuItem.Text = "Supplier";
-            this.daftarSupplierToolStripMenuItem.Click += new System.EventHandler(this.daftarSupplierToolStripMenuItem_Click);
             // 
             // bahanBakuToolStripMenuItem
             // 
             this.bahanBakuToolStripMenuItem.Name = "bahanBakuToolStripMenuItem";
-            this.bahanBakuToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
+            this.bahanBakuToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.bahanBakuToolStripMenuItem.Text = "Bahan Baku";
             this.bahanBakuToolStripMenuItem.Click += new System.EventHandler(this.bahanBakuToolStripMenuItem_Click);
             // 
             // barangJadiToolStripMenuItem
             // 
             this.barangJadiToolStripMenuItem.Name = "barangJadiToolStripMenuItem";
-            this.barangJadiToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
+            this.barangJadiToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.barangJadiToolStripMenuItem.Text = "Barang Jadi";
             this.barangJadiToolStripMenuItem.Click += new System.EventHandler(this.barangJadiToolStripMenuItem_Click);
             // 
@@ -176,20 +175,6 @@ namespace PT.SPSS
             this.reportDetailPembelianToolStripMenuItem.Text = "Detail Pembelian";
             this.reportDetailPembelianToolStripMenuItem.Click += new System.EventHandler(this.reportDetailPembelianToolStripMenuItem_Click);
             // 
-            // penerimaanProduksiToolStripMenuItem
-            // 
-            this.penerimaanProduksiToolStripMenuItem.Name = "penerimaanProduksiToolStripMenuItem";
-            this.penerimaanProduksiToolStripMenuItem.Size = new System.Drawing.Size(131, 20);
-            this.penerimaanProduksiToolStripMenuItem.Text = "Penerimaan Produksi";
-            this.penerimaanProduksiToolStripMenuItem.Click += new System.EventHandler(this.penerimaanProduksiToolStripMenuItem_Click);
-            // 
-            // keluarToolStripMenuItem
-            // 
-            this.keluarToolStripMenuItem.Name = "keluarToolStripMenuItem";
-            this.keluarToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
-            this.keluarToolStripMenuItem.Text = "Keluar";
-            this.keluarToolStripMenuItem.Click += new System.EventHandler(this.keluarToolStripMenuItem_Click);
-            // 
             // reportPenerimanProduksiToolStripMenuItem
             // 
             this.reportPenerimanProduksiToolStripMenuItem.Name = "reportPenerimanProduksiToolStripMenuItem";
@@ -204,6 +189,20 @@ namespace PT.SPSS
             this.sisaProduksiToolStripMenuItem.Text = "Sisa Produksi";
             this.sisaProduksiToolStripMenuItem.Click += new System.EventHandler(this.sisaProduksiToolStripMenuItem_Click);
             // 
+            // penerimaanProduksiToolStripMenuItem
+            // 
+            this.penerimaanProduksiToolStripMenuItem.Name = "penerimaanProduksiToolStripMenuItem";
+            this.penerimaanProduksiToolStripMenuItem.Size = new System.Drawing.Size(131, 20);
+            this.penerimaanProduksiToolStripMenuItem.Text = "Penerimaan Produksi";
+            this.penerimaanProduksiToolStripMenuItem.Click += new System.EventHandler(this.penerimaanProduksiToolStripMenuItem_Click);
+            // 
+            // keluarToolStripMenuItem
+            // 
+            this.keluarToolStripMenuItem.Name = "keluarToolStripMenuItem";
+            this.keluarToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
+            this.keluarToolStripMenuItem.Text = "Keluar";
+            this.keluarToolStripMenuItem.Click += new System.EventHandler(this.keluarToolStripMenuItem_Click);
+            // 
             // FormUtama
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -211,7 +210,7 @@ namespace PT.SPSS
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.menuStrip1);
             this.Name = "FormUtama";
-            this.Text = "Form Utama";
+            this.Text = "Sistem Informasi PT.SPSS";
             this.Load += new System.EventHandler(this.FormUtama_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

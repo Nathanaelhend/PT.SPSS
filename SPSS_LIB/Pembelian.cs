@@ -309,9 +309,6 @@ namespace SPSS_LIB
            // c.CetakKePrinter("text");
         }
 
-
-
-
         public static double HitungDisc(int jumlah, int persen)
         {
             double disc = 0;

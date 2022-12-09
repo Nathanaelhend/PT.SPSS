@@ -14,6 +14,9 @@ namespace PT.SPSS
     public partial class FormEntryHPP : Form
     {
         List<BahanBaku> listBhnBaku = new List<BahanBaku>();
+        List<BahanBaku> listBhnBakuHrg = new List<BahanBaku>();
+
+
         List<BarangJadi> listBrgJadi = new List<BarangJadi>();
         HPP hpp;
 
@@ -27,9 +30,11 @@ namespace PT.SPSS
             dateTimePicker.Value = DateTime.Now;
             dateTimeDeadline.Value = DateTime.Now;
 
-            listBhnBaku = BahanBaku.BacaData("", "");
+            listBhnBaku = BahanBaku.BacaData("");
 
-            comboBoxKodeBB.DataSource = listBhnBaku;
+            listBhnBakuHrg = BahanBaku.BacaLastPrice("", "");
+
+            comboBoxKodeBB.DataSource = listBhnBakuHrg;
             comboBoxKodeBB.DisplayMember = "nama";
 
             comboBoxKodeBB.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -120,8 +125,6 @@ namespace PT.SPSS
         private void textBoxQtyBB_KeyDown(object sender, KeyEventArgs e)
         {
             BahanBaku bahanDipilih = (BahanBaku)comboBoxKodeBB.SelectedItem;
-
-           
 
             if (e.KeyCode == Keys.Enter)
             {

@@ -29,7 +29,7 @@ namespace PT.SPSS
             comboBoxSupplier.DisplayMember = "nama";
             comboBoxSupplier.DropDownStyle = ComboBoxStyle.DropDownList;
 
-            listBhnBaku = BahanBaku.BacaData("", "");
+            listBhnBaku = BahanBaku.BacaData("");
 
 
             comboBoxBhnBaku.DataSource = listBhnBaku;

@@ -31,9 +31,11 @@ namespace PT.SPSS
         {
             this.panelSupplier = new System.Windows.Forms.Panel();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.buttonHapus = new System.Windows.Forms.Button();
-            this.buttonSimpan = new System.Windows.Forms.Button();
-            this.buttonBatal = new System.Windows.Forms.Button();
+            this.textBoxKode = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.textBoxNamaBahan = new System.Windows.Forms.TextBox();
+            this.buttonSave = new System.Windows.Forms.Button();
+            this.buttonBatalBhnBaku = new System.Windows.Forms.Button();
             this.textBoxJumlah = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.textBoxTotal = new System.Windows.Forms.TextBox();
@@ -47,16 +49,19 @@ namespace PT.SPSS
             this.textBoxHarga = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.comboBoxBahanBaku = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.textBoxKota = new System.Windows.Forms.TextBox();
             this.textBoxAlamat = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.comboBoxSupplier = new System.Windows.Forms.ComboBox();
             this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.textBoxNoNota = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.panelBahan = new System.Windows.Forms.Panel();
+            this.textBoxNama = new System.Windows.Forms.TextBox();
+            this.dataGridViewBhnBaku = new System.Windows.Forms.DataGridView();
+            this.buttonSimpan = new System.Windows.Forms.Button();
+            this.buttonBatal = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.textBoxNetto = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -73,16 +78,25 @@ namespace PT.SPSS
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridViewPembelian = new System.Windows.Forms.DataGridView();
             this.buttonKeluar = new System.Windows.Forms.Button();
+            this.textBoxSupplier = new System.Windows.Forms.TextBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.textBoxSuppGrid = new System.Windows.Forms.TextBox();
+            this.dataGridViewSupplier = new System.Windows.Forms.DataGridView();
             this.panelSupplier.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.panelBahan.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBhnBaku)).BeginInit();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPembelian)).BeginInit();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSupplier)).BeginInit();
             this.SuspendLayout();
             // 
             // panelSupplier
             // 
             this.panelSupplier.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panelSupplier.Controls.Add(this.panel1);
             this.panelSupplier.Controls.Add(this.groupBox4);
             this.panelSupplier.Controls.Add(this.groupBox1);
             this.panelSupplier.Controls.Add(this.dateTimePicker);
@@ -91,14 +105,16 @@ namespace PT.SPSS
             this.panelSupplier.Controls.Add(this.label2);
             this.panelSupplier.Location = new System.Drawing.Point(10, 56);
             this.panelSupplier.Name = "panelSupplier";
-            this.panelSupplier.Size = new System.Drawing.Size(945, 305);
+            this.panelSupplier.Size = new System.Drawing.Size(998, 305);
             this.panelSupplier.TabIndex = 50;
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.buttonHapus);
-            this.groupBox4.Controls.Add(this.buttonSimpan);
-            this.groupBox4.Controls.Add(this.buttonBatal);
+            this.groupBox4.Controls.Add(this.textBoxKode);
+            this.groupBox4.Controls.Add(this.label5);
+            this.groupBox4.Controls.Add(this.textBoxNamaBahan);
+            this.groupBox4.Controls.Add(this.buttonSave);
+            this.groupBox4.Controls.Add(this.buttonBatalBhnBaku);
             this.groupBox4.Controls.Add(this.textBoxJumlah);
             this.groupBox4.Controls.Add(this.label17);
             this.groupBox4.Controls.Add(this.textBoxTotal);
@@ -112,57 +128,73 @@ namespace PT.SPSS
             this.groupBox4.Controls.Add(this.textBoxHarga);
             this.groupBox4.Controls.Add(this.label12);
             this.groupBox4.Controls.Add(this.label11);
-            this.groupBox4.Controls.Add(this.comboBoxBahanBaku);
             this.groupBox4.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.Location = new System.Drawing.Point(8, 162);
             this.groupBox4.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox4.Size = new System.Drawing.Size(918, 129);
+            this.groupBox4.Size = new System.Drawing.Size(964, 129);
             this.groupBox4.TabIndex = 15;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Input Bahan Baku";
             // 
-            // buttonHapus
+            // textBoxKode
             // 
-            this.buttonHapus.BackColor = System.Drawing.Color.Salmon;
-            this.buttonHapus.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonHapus.Location = new System.Drawing.Point(170, 83);
-            this.buttonHapus.Name = "buttonHapus";
-            this.buttonHapus.Size = new System.Drawing.Size(75, 31);
-            this.buttonHapus.TabIndex = 26;
-            this.buttonHapus.Text = "HAPUS";
-            this.buttonHapus.UseVisualStyleBackColor = false;
+            this.textBoxKode.Location = new System.Drawing.Point(9, 49);
+            this.textBoxKode.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxKode.Name = "textBoxKode";
+            this.textBoxKode.Size = new System.Drawing.Size(107, 27);
+            this.textBoxKode.TabIndex = 55;
+            this.textBoxKode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxKode_KeyDown);
             // 
-            // buttonSimpan
+            // label5
             // 
-            this.buttonSimpan.BackColor = System.Drawing.Color.Salmon;
-            this.buttonSimpan.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonSimpan.Location = new System.Drawing.Point(5, 83);
-            this.buttonSimpan.Name = "buttonSimpan";
-            this.buttonSimpan.Size = new System.Drawing.Size(87, 31);
-            this.buttonSimpan.TabIndex = 25;
-            this.buttonSimpan.Text = "SIMPAN";
-            this.buttonSimpan.UseVisualStyleBackColor = false;
-            this.buttonSimpan.Click += new System.EventHandler(this.buttonSimpan_Click);
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(40, 29);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(44, 17);
+            this.label5.TabIndex = 56;
+            this.label5.Text = "Kode";
             // 
-            // buttonBatal
+            // textBoxNamaBahan
             // 
-            this.buttonBatal.BackColor = System.Drawing.Color.Salmon;
-            this.buttonBatal.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonBatal.Location = new System.Drawing.Point(92, 83);
-            this.buttonBatal.Name = "buttonBatal";
-            this.buttonBatal.Size = new System.Drawing.Size(75, 31);
-            this.buttonBatal.TabIndex = 24;
-            this.buttonBatal.Text = "BATAL";
-            this.buttonBatal.UseVisualStyleBackColor = false;
+            this.textBoxNamaBahan.Location = new System.Drawing.Point(121, 51);
+            this.textBoxNamaBahan.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxNamaBahan.Name = "textBoxNamaBahan";
+            this.textBoxNamaBahan.Size = new System.Drawing.Size(189, 27);
+            this.textBoxNamaBahan.TabIndex = 26;
+            // 
+            // buttonSave
+            // 
+            this.buttonSave.BackColor = System.Drawing.Color.Salmon;
+            this.buttonSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonSave.Location = new System.Drawing.Point(4, 83);
+            this.buttonSave.Name = "buttonSave";
+            this.buttonSave.Size = new System.Drawing.Size(87, 31);
+            this.buttonSave.TabIndex = 27;
+            this.buttonSave.Text = "SIMPAN";
+            this.buttonSave.UseVisualStyleBackColor = false;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
+            // 
+            // buttonBatalBhnBaku
+            // 
+            this.buttonBatalBhnBaku.BackColor = System.Drawing.Color.Salmon;
+            this.buttonBatalBhnBaku.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonBatalBhnBaku.Location = new System.Drawing.Point(91, 83);
+            this.buttonBatalBhnBaku.Name = "buttonBatalBhnBaku";
+            this.buttonBatalBhnBaku.Size = new System.Drawing.Size(75, 31);
+            this.buttonBatalBhnBaku.TabIndex = 26;
+            this.buttonBatalBhnBaku.Text = "BATAL";
+            this.buttonBatalBhnBaku.UseVisualStyleBackColor = false;
+            this.buttonBatalBhnBaku.Click += new System.EventHandler(this.buttonBatalBhnBaku_Click);
             // 
             // textBoxJumlah
             // 
             this.textBoxJumlah.BackColor = System.Drawing.SystemColors.Window;
             this.textBoxJumlah.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxJumlah.Enabled = false;
-            this.textBoxJumlah.Location = new System.Drawing.Point(442, 40);
+            this.textBoxJumlah.Location = new System.Drawing.Point(507, 50);
             this.textBoxJumlah.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxJumlah.Name = "textBoxJumlah";
             this.textBoxJumlah.Size = new System.Drawing.Size(107, 27);
@@ -172,7 +204,7 @@ namespace PT.SPSS
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(468, 21);
+            this.label17.Location = new System.Drawing.Point(533, 31);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(57, 17);
             this.label17.TabIndex = 22;
@@ -183,7 +215,7 @@ namespace PT.SPSS
             this.textBoxTotal.BackColor = System.Drawing.SystemColors.Window;
             this.textBoxTotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxTotal.Enabled = false;
-            this.textBoxTotal.Location = new System.Drawing.Point(766, 41);
+            this.textBoxTotal.Location = new System.Drawing.Point(831, 51);
             this.textBoxTotal.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxTotal.Name = "textBoxTotal";
             this.textBoxTotal.Size = new System.Drawing.Size(110, 27);
@@ -194,7 +226,7 @@ namespace PT.SPSS
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(655, 22);
+            this.label15.Location = new System.Drawing.Point(720, 32);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(93, 17);
             this.label15.TabIndex = 19;
@@ -205,7 +237,7 @@ namespace PT.SPSS
             this.textBoxDiscRp.BackColor = System.Drawing.SystemColors.Window;
             this.textBoxDiscRp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxDiscRp.Enabled = false;
-            this.textBoxDiscRp.Location = new System.Drawing.Point(651, 41);
+            this.textBoxDiscRp.Location = new System.Drawing.Point(716, 51);
             this.textBoxDiscRp.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxDiscRp.Name = "textBoxDiscRp";
             this.textBoxDiscRp.Size = new System.Drawing.Size(97, 27);
@@ -215,7 +247,7 @@ namespace PT.SPSS
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(796, 22);
+            this.label16.Location = new System.Drawing.Point(861, 32);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(43, 17);
             this.label16.TabIndex = 20;
@@ -223,7 +255,7 @@ namespace PT.SPSS
             // 
             // textBoxDiscPrs
             // 
-            this.textBoxDiscPrs.Location = new System.Drawing.Point(568, 41);
+            this.textBoxDiscPrs.Location = new System.Drawing.Point(633, 51);
             this.textBoxDiscPrs.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxDiscPrs.Name = "textBoxDiscPrs";
             this.textBoxDiscPrs.Size = new System.Drawing.Size(61, 27);
@@ -234,7 +266,7 @@ namespace PT.SPSS
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(559, 21);
+            this.label14.Location = new System.Drawing.Point(624, 31);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(87, 17);
             this.label14.TabIndex = 16;
@@ -242,7 +274,7 @@ namespace PT.SPSS
             // 
             // textBoxQty
             // 
-            this.textBoxQty.Location = new System.Drawing.Point(264, 41);
+            this.textBoxQty.Location = new System.Drawing.Point(329, 51);
             this.textBoxQty.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxQty.Name = "textBoxQty";
             this.textBoxQty.Size = new System.Drawing.Size(68, 27);
@@ -252,7 +284,7 @@ namespace PT.SPSS
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(280, 21);
+            this.label13.Location = new System.Drawing.Point(345, 31);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(33, 17);
             this.label13.TabIndex = 15;
@@ -262,7 +294,7 @@ namespace PT.SPSS
             // 
             this.textBoxHarga.BackColor = System.Drawing.SystemColors.Window;
             this.textBoxHarga.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBoxHarga.Location = new System.Drawing.Point(341, 40);
+            this.textBoxHarga.Location = new System.Drawing.Point(406, 50);
             this.textBoxHarga.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxHarga.Name = "textBoxHarga";
             this.textBoxHarga.Size = new System.Drawing.Size(89, 27);
@@ -274,7 +306,7 @@ namespace PT.SPSS
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(344, 21);
+            this.label12.Location = new System.Drawing.Point(409, 31);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(89, 17);
             this.label12.TabIndex = 12;
@@ -284,33 +316,24 @@ namespace PT.SPSS
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(50, 22);
+            this.label11.Location = new System.Drawing.Point(154, 31);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(135, 17);
             this.label11.TabIndex = 11;
             this.label11.Text = "Nama Bahan Baku";
             // 
-            // comboBoxBahanBaku
-            // 
-            this.comboBoxBahanBaku.FormattingEnabled = true;
-            this.comboBoxBahanBaku.Location = new System.Drawing.Point(4, 42);
-            this.comboBoxBahanBaku.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBoxBahanBaku.Name = "comboBoxBahanBaku";
-            this.comboBoxBahanBaku.Size = new System.Drawing.Size(244, 27);
-            this.comboBoxBahanBaku.TabIndex = 11;
-            // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.textBoxSupplier);
             this.groupBox1.Controls.Add(this.textBoxKota);
             this.groupBox1.Controls.Add(this.textBoxAlamat);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.comboBoxSupplier);
             this.groupBox1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(8, 68);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(918, 74);
+            this.groupBox1.Size = new System.Drawing.Size(964, 74);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Informasi Supplier";
@@ -320,7 +343,7 @@ namespace PT.SPSS
             this.textBoxKota.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.textBoxKota.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxKota.Enabled = false;
-            this.textBoxKota.Location = new System.Drawing.Point(692, 29);
+            this.textBoxKota.Location = new System.Drawing.Point(716, 30);
             this.textBoxKota.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxKota.Multiline = true;
             this.textBoxKota.Name = "textBoxKota";
@@ -332,11 +355,11 @@ namespace PT.SPSS
             this.textBoxAlamat.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.textBoxAlamat.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxAlamat.Enabled = false;
-            this.textBoxAlamat.Location = new System.Drawing.Point(341, 29);
+            this.textBoxAlamat.Location = new System.Drawing.Point(311, 30);
             this.textBoxAlamat.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxAlamat.Multiline = true;
             this.textBoxAlamat.Name = "textBoxAlamat";
-            this.textBoxAlamat.Size = new System.Drawing.Size(334, 27);
+            this.textBoxAlamat.Size = new System.Drawing.Size(383, 27);
             this.textBoxAlamat.TabIndex = 10;
             // 
             // label4
@@ -348,16 +371,6 @@ namespace PT.SPSS
             this.label4.Size = new System.Drawing.Size(87, 19);
             this.label4.TabIndex = 8;
             this.label4.Text = "Supplier :";
-            // 
-            // comboBoxSupplier
-            // 
-            this.comboBoxSupplier.FormattingEnabled = true;
-            this.comboBoxSupplier.Location = new System.Drawing.Point(92, 29);
-            this.comboBoxSupplier.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBoxSupplier.Name = "comboBoxSupplier";
-            this.comboBoxSupplier.Size = new System.Drawing.Size(218, 27);
-            this.comboBoxSupplier.TabIndex = 7;
-            this.comboBoxSupplier.SelectedIndexChanged += new System.EventHandler(this.comboBoxSupplier_SelectedIndexChanged);
             // 
             // dateTimePicker
             // 
@@ -395,10 +408,65 @@ namespace PT.SPSS
             this.label2.TabIndex = 0;
             this.label2.Text = "Nomor Nota : ";
             // 
+            // panelBahan
+            // 
+            this.panelBahan.Controls.Add(this.textBoxNama);
+            this.panelBahan.Controls.Add(this.dataGridViewBhnBaku);
+            this.panelBahan.Location = new System.Drawing.Point(147, 415);
+            this.panelBahan.Name = "panelBahan";
+            this.panelBahan.Size = new System.Drawing.Size(268, 253);
+            this.panelBahan.TabIndex = 54;
+            this.panelBahan.Visible = false;
+            // 
+            // textBoxNama
+            // 
+            this.textBoxNama.Location = new System.Drawing.Point(16, 17);
+            this.textBoxNama.Multiline = true;
+            this.textBoxNama.Name = "textBoxNama";
+            this.textBoxNama.Size = new System.Drawing.Size(154, 27);
+            this.textBoxNama.TabIndex = 54;
+            this.textBoxNama.TextChanged += new System.EventHandler(this.textBoxNama_TextChanged);
+            this.textBoxNama.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxNama_KeyDown);
+            // 
+            // dataGridViewBhnBaku
+            // 
+            this.dataGridViewBhnBaku.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewBhnBaku.Location = new System.Drawing.Point(16, 50);
+            this.dataGridViewBhnBaku.Name = "dataGridViewBhnBaku";
+            this.dataGridViewBhnBaku.Size = new System.Drawing.Size(233, 186);
+            this.dataGridViewBhnBaku.TabIndex = 53;
+            this.dataGridViewBhnBaku.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewBhnBaku_CellClick);
+            // 
+            // buttonSimpan
+            // 
+            this.buttonSimpan.BackColor = System.Drawing.Color.Salmon;
+            this.buttonSimpan.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonSimpan.Location = new System.Drawing.Point(268, 162);
+            this.buttonSimpan.Name = "buttonSimpan";
+            this.buttonSimpan.Size = new System.Drawing.Size(87, 31);
+            this.buttonSimpan.TabIndex = 25;
+            this.buttonSimpan.Text = "SIMPAN";
+            this.buttonSimpan.UseVisualStyleBackColor = false;
+            this.buttonSimpan.Click += new System.EventHandler(this.buttonSimpan_Click);
+            // 
+            // buttonBatal
+            // 
+            this.buttonBatal.BackColor = System.Drawing.Color.Salmon;
+            this.buttonBatal.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonBatal.Location = new System.Drawing.Point(355, 162);
+            this.buttonBatal.Name = "buttonBatal";
+            this.buttonBatal.Size = new System.Drawing.Size(75, 31);
+            this.buttonBatal.TabIndex = 24;
+            this.buttonBatal.Text = "BATAL";
+            this.buttonBatal.UseVisualStyleBackColor = false;
+            this.buttonBatal.Click += new System.EventHandler(this.buttonBatal_Click);
+            // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.buttonSimpan);
             this.groupBox3.Controls.Add(this.textBoxNetto);
             this.groupBox3.Controls.Add(this.label8);
+            this.groupBox3.Controls.Add(this.buttonBatal);
             this.groupBox3.Controls.Add(this.textBoxDpp);
             this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Controls.Add(this.textBoxDiscRpAll);
@@ -543,7 +611,7 @@ namespace PT.SPSS
             this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(10, 10);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(945, 33);
+            this.label1.Size = new System.Drawing.Size(998, 33);
             this.label1.TabIndex = 49;
             this.label1.Text = "Form Pembelian";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -555,7 +623,7 @@ namespace PT.SPSS
             this.dataGridViewPembelian.Name = "dataGridViewPembelian";
             this.dataGridViewPembelian.RowHeadersWidth = 51;
             this.dataGridViewPembelian.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewPembelian.Size = new System.Drawing.Size(945, 249);
+            this.dataGridViewPembelian.Size = new System.Drawing.Size(998, 249);
             this.dataGridViewPembelian.TabIndex = 51;
             // 
             // buttonKeluar
@@ -571,13 +639,50 @@ namespace PT.SPSS
             this.buttonKeluar.UseVisualStyleBackColor = false;
             this.buttonKeluar.Click += new System.EventHandler(this.buttonKeluar_Click);
             // 
+            // textBoxSupplier
+            // 
+            this.textBoxSupplier.Location = new System.Drawing.Point(121, 30);
+            this.textBoxSupplier.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxSupplier.Name = "textBoxSupplier";
+            this.textBoxSupplier.Size = new System.Drawing.Size(148, 27);
+            this.textBoxSupplier.TabIndex = 57;
+            this.textBoxSupplier.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxSupplier_KeyDown);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.textBoxSuppGrid);
+            this.panel1.Controls.Add(this.dataGridViewSupplier);
+            this.panel1.Location = new System.Drawing.Point(254, 52);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(567, 253);
+            this.panel1.TabIndex = 55;
+            this.panel1.Visible = false;
+            // 
+            // textBoxSuppGrid
+            // 
+            this.textBoxSuppGrid.Location = new System.Drawing.Point(16, 17);
+            this.textBoxSuppGrid.Multiline = true;
+            this.textBoxSuppGrid.Name = "textBoxSuppGrid";
+            this.textBoxSuppGrid.Size = new System.Drawing.Size(154, 27);
+            this.textBoxSuppGrid.TabIndex = 54;
+            // 
+            // dataGridViewSupplier
+            // 
+            this.dataGridViewSupplier.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewSupplier.Location = new System.Drawing.Point(16, 50);
+            this.dataGridViewSupplier.Name = "dataGridViewSupplier";
+            this.dataGridViewSupplier.Size = new System.Drawing.Size(512, 186);
+            this.dataGridViewSupplier.TabIndex = 53;
+            this.dataGridViewSupplier.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSupplier_CellClick);
+            // 
             // FormPembelian
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(967, 858);
+            this.ClientSize = new System.Drawing.Size(1020, 858);
             this.Controls.Add(this.panelSupplier);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.panelBahan);
             this.Controls.Add(this.buttonKeluar);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.dataGridViewPembelian);
@@ -591,9 +696,15 @@ namespace PT.SPSS
             this.groupBox4.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.panelBahan.ResumeLayout(false);
+            this.panelBahan.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBhnBaku)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPembelian)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSupplier)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -606,7 +717,6 @@ namespace PT.SPSS
         private System.Windows.Forms.DataGridView dataGridViewPembelian;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox comboBoxSupplier;
         private System.Windows.Forms.DateTimePicker dateTimePicker;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBoxNoNota;
@@ -616,7 +726,6 @@ namespace PT.SPSS
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.ComboBox comboBoxBahanBaku;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox textBoxDiscRp;
         private System.Windows.Forms.TextBox textBoxDiscPrs;
@@ -640,9 +749,20 @@ namespace PT.SPSS
         private System.Windows.Forms.TextBox textBoxKota;
         private System.Windows.Forms.TextBox textBoxNetto;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Button buttonHapus;
         private System.Windows.Forms.Button buttonSimpan;
         private System.Windows.Forms.Button buttonBatal;
         private System.Windows.Forms.Button buttonKeluar;
+        private System.Windows.Forms.Button buttonSave;
+        private System.Windows.Forms.Button buttonBatalBhnBaku;
+        public System.Windows.Forms.TextBox textBoxNamaBahan;
+        private System.Windows.Forms.DataGridView dataGridViewBhnBaku;
+        private System.Windows.Forms.Panel panelBahan;
+        private System.Windows.Forms.TextBox textBoxNama;
+        private System.Windows.Forms.TextBox textBoxKode;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox textBoxSupplier;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.TextBox textBoxSuppGrid;
+        private System.Windows.Forms.DataGridView dataGridViewSupplier;
     }
 }

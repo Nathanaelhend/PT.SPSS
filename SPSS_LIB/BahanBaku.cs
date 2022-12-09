@@ -57,29 +57,62 @@ namespace SPSS_LIB
         }
 
 
-        public static List<BahanBaku> BacaData(string kriteria, string nilaiKriteria)
+        public static List<BahanBaku> BacaData(string nilaiKriteria)
         {
             string sql = "";
-            if (kriteria == "")
-            {
-                sql = "select B.kode, B.nama, B.harga, B.satuan, B.kodeKatBahanBaku, KBB.Nama" +
-                    " from bahan_baku B inner join kategori_bahan_baku KBB on B.kodeKatBahanBaku = KBB.kodeBahan";
-            }
-            else
-            {
+            //if (kriteria == "")
+            //{
+            //    sql = "select B.kode, B.nama, B.harga, B.satuan, B.kodeKatBahanBaku, KBB.Nama" +
+            //        " from bahan_baku B inner join kategori_bahan_baku KBB on B.kodeKatBahanBaku = KBB.kodeBahan";
+            //    //sql = "SELECT harga FROM nota_beli_detail ORDER BY nota_beli_detail.tanggal DESC LIMIT 1";
+            //}
+            //else
+            //{
                 sql = "select B.kode, B.nama, B.harga, B.satuan, B.kodeKatBahanBaku, KBB.Nama" +
                     " from bahan_baku B inner join kategori_bahan_baku KBB on B.kodeKatBahanBaku = KBB.kodeBahan" +
-                    " where " + kriteria + " LIKE '%" + nilaiKriteria + "%'";
+                    " where " + "B.nama" + " LIKE '%" + nilaiKriteria + "%'";
 
                 //sql = "SELECT nota_beli_detail.nomor_nota_beli, nota_beli_detail.tanggal, nota_beli_detail.id_barang_baku, " +
                 //      "nota_beli_detail.harga FROM nota_beli_detail" + " WHERE  " + kriteria + " LIKE '%" + nilaiKriteria + "%'" +
                 //      "ORDER BY nota_beli_detail.tanggal DESC LIMIT 1";
-            }
+            //}
 
             MySqlDataReader hasil = Koneksi.JalankanPerintahQuery(sql);
 
 
             List<BahanBaku> listBhnBaku = new List<BahanBaku>();
+            while (hasil.Read() == true)
+            {
+                KategoriBahanBaku kbb = new KategoriBahanBaku(hasil.GetValue(4).ToString(), hasil.GetValue(5).ToString());
+
+                BahanBaku b = new BahanBaku(hasil.GetValue(0).ToString(), hasil.GetValue(1).ToString(), int.Parse(hasil.GetValue(2).ToString()), hasil.GetValue(3).ToString(), kbb);
+                listBhnBaku.Add(b);
+            }
+            return listBhnBaku;
+        }
+
+        public static List<BahanBaku> BacaLastPrice(string kriteria, string nilaiKriteria)
+        {
+            string sql = "";
+            if (kriteria == "")
+            {
+                //sql = "SELECT nbd.id_barang_baku, b.nama, nbd.harga, b.satuan, b.kodeKatBahanBaku, kbb.Nama FROM nota_beli_detail nbd " + 
+                //      " INNER JOIN bahan_baku b ON nbd.id_barang_baku = b.kode inner join kategori_bahan_baku kbb on b.kodeKatBahanBaku = kbb.kodeBahan WHERE id_barang_baku = nbd.id_barang_baku ORDER BY nbd.tanggal DESC LIMIT 1";
+                sql = "SELECT nbd.id_barang_baku, b.nama, nbd.harga, b.satuan, b.kodeKatBahanBaku, kbb.Nama " +
+                    " FROM bahan_baku b INNER JOIN nota_beli_detail nbd ON b.kode = nbd.id_barang_baku INNER JOIN kategori_bahan_baku kbb ON b.kodeKatBahanBaku = kbb.kodeBahan, " +
+                    " (SELECT id_barang_baku,MAX(tanggal)AS tanggal,harga FROM nota_beli_detail GROUP BY id_barang_baku) max_sales where nbd.id_barang_baku=max_sales.id_barang_baku and nbd.tanggal=max_sales.tanggal";
+
+            }
+            else
+            {
+                //sql = "select * from supplier where " + kriteria + " like '%" + nilaiKriteria + "%'";
+                sql = "SELECT nbd.id_barang_baku, b.nama, nbd.harga, b.satuan, b.kodeKatBahanBaku, kbb.Nama FROM nota_beli_detail nbd " +
+                      " INNER JOIN bahan_baku b ON nbd.id_barang_baku = b.kode inner join kategori_bahan_baku kbb on b.kodeKatBahanBaku = kbb.kodeBahan " +
+                      " WHERE id_barang_baku = nbd.id_barang_baku ORDER BY nbd.tanggal DESC LIMIT 1";
+            }
+            MySqlDataReader hasil = Koneksi.JalankanPerintahQuery(sql);
+            List<BahanBaku> listBhnBaku = new List<BahanBaku>();
+
             while (hasil.Read() == true)
             {
                 KategoriBahanBaku kbb = new KategoriBahanBaku(hasil.GetValue(4).ToString(), hasil.GetValue(5).ToString());

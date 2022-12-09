@@ -111,7 +111,7 @@ namespace PT.SPSS
         {
             if (textBoxKodeBhnBaku.Text.Length == 5)
             {
-                listBhnBaku = BahanBaku.BacaData("kode", textBoxKodeBhnBaku.Text);
+                listBhnBaku = BahanBaku.BacaData(textBoxKodeBhnBaku.Text);
                 if (listBhnBaku.Count > 0)
                 {
                     baru = false;
