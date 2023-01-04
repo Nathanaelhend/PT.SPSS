@@ -185,9 +185,8 @@ namespace PT.SPSS
             this.textBoxKodeSupplier.CausesValidation = false;
             this.textBoxKodeSupplier.Location = new System.Drawing.Point(136, 12);
             this.textBoxKodeSupplier.MaxLength = 5;
-            this.textBoxKodeSupplier.Multiline = true;
             this.textBoxKodeSupplier.Name = "textBoxKodeSupplier";
-            this.textBoxKodeSupplier.Size = new System.Drawing.Size(213, 25);
+            this.textBoxKodeSupplier.Size = new System.Drawing.Size(213, 20);
             this.textBoxKodeSupplier.TabIndex = 1;
             this.textBoxKodeSupplier.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxKodeSupplier_KeyDown);
             // 

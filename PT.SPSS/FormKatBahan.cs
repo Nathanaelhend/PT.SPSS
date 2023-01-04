@@ -48,32 +48,46 @@ namespace PT.SPSS
         {
             if (baru == true)
             {
-                try
+                if (textBoxKodeCatBB.Text != "" && textBoxKeterangan.Text != "")
                 {
-                    KategoriBahanBaku kbb = new KategoriBahanBaku(textBoxKodeCatBB.Text, textBoxKeterangan.Text);
-                    KategoriBahanBaku.TambahData(kbb);
+                    try
+                    {
+                        KategoriBahanBaku kbb = new KategoriBahanBaku(textBoxKodeCatBB.Text, textBoxKeterangan.Text);
+                        KategoriBahanBaku.TambahData(kbb);
 
-                    MessageBox.Show("Data Berhasil Disimpan");
+                        MessageBox.Show("Data Berhasil Disimpan");
+                    }
+
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Gagal Menyimpan. Kesalahan : " + ex.Message);
+                    }
                 }
-
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show("Gagal Menyimpan. Kesalahan : " + ex.Message);
+                    MessageBox.Show("Harap Isi Data!");
                 }
             }
 
             else
             {
-                try
+                if (textBoxKodeCatBB.Text != "" && textBoxKeterangan.Text != "")
                 {
-                    KategoriBahanBaku kbb = new KategoriBahanBaku(textBoxKodeCatBB.Text, textBoxKeterangan.Text);
-                    KategoriBahanBaku.UbahData(kbb);
-                    MessageBox.Show("Pengubahan berhasil.", "Informasi");
-                }
+                    try
+                    {
+                        KategoriBahanBaku kbb = new KategoriBahanBaku(textBoxKodeCatBB.Text, textBoxKeterangan.Text);
+                        KategoriBahanBaku.UbahData(kbb);
+                        MessageBox.Show("Pengubahan berhasil.", "Informasi");
+                    }
 
-                catch (Exception ex)
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Pengubahan gagal. Pesan Kesalahan : " + ex.Message, "Kesalahan");
+                    }
+                }
+                else
                 {
-                    MessageBox.Show("Pengubahan gagal. Pesan Kesalahan : " + ex.Message, "Kesalahan");
+                    MessageBox.Show("Harap Isi Data!");
                 }
             }
 
@@ -91,16 +105,23 @@ namespace PT.SPSS
 
         private void buttonHapus_Click(object sender, EventArgs e)
         {
-            try
+            if (textBoxKodeCatBB.Text != "" && textBoxKeterangan.Text != "")
             {
-                KategoriBahanBaku kbb = new KategoriBahanBaku(textBoxKodeCatBB.Text, textBoxKeterangan.Text);
-                KategoriBahanBaku.HapusData(kbb);
-                MessageBox.Show("Hapus data berhasil.", "Informasi");
-            }
+                try
+                {
+                    KategoriBahanBaku kbb = new KategoriBahanBaku(textBoxKodeCatBB.Text, textBoxKeterangan.Text);
+                    KategoriBahanBaku.HapusData(kbb);
+                    MessageBox.Show("Hapus data berhasil.", "Informasi");
+                }
 
-            catch (Exception ex)
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Gagal menghapus. Pesan Kesalahan : " + ex.Message);
+                }
+            }
+            else
             {
-                MessageBox.Show("Gagal menghapus. Pesan Kesalahan : " + ex.Message);
+                MessageBox.Show("Harap Isi Data!");
             }
 
             textBoxKodeCatBB.Text = "";

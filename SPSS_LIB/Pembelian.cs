@@ -16,7 +16,7 @@ namespace SPSS_LIB
     {
         private string noNota;
         private DateTime tanggal;
-        private Supplier supplier;
+        private string supplier;
         private int jumlah;
         private double discPersen;
         private int discRph;
@@ -27,26 +27,26 @@ namespace SPSS_LIB
         private List<PembelianDetail> listBeliDetail;
 
         #region Constructors
-        public Pembelian(string noNota, DateTime tanggal, Supplier supplier, int jumlah, double discPersen, int discRph, int dpp, double ppnPersen, int ppnRph, int netto)
+        public Pembelian(string noNota, DateTime tanggal, string supplier, int jumlah, double discPersen, int discRph, int dpp, double ppnPersen, int ppnRph, int netto)
         {
-            this.NoNota = noNota;
-            this.Tanggal = tanggal;
-            this.Supplier = supplier;
-            this.Jumlah = jumlah;
-            this.DiscPersen = discPersen;
-            this.DiscRph = discRph;
-            this.Dpp = dpp;
-            this.PpnPersen = ppnPersen;
-            this.PpnRph = ppnRph;
-            this.Netto = netto;
-            this.ListBeliDetail = new List<PembelianDetail>();
+            this.noNota = noNota;
+            this.tanggal = tanggal;
+            this.supplier = supplier;
+            this.jumlah = jumlah;
+            this.discPersen = discPersen;
+            this.discRph = discRph;
+            this.dpp = dpp;
+            this.ppnPersen = ppnPersen;
+            this.ppnRph = ppnRph;
+            this.netto = netto;
+            this.listBeliDetail = new List<PembelianDetail>();
         }
         #endregion
 
         #region Properties
         public string NoNota { get => noNota; set => noNota = value; }
         public DateTime Tanggal { get => tanggal; set => tanggal = value; }
-        public Supplier Supplier { get => supplier; set => supplier = value; }
+        public string Supplier { get => supplier; set => supplier = value; }
         public int Jumlah { get => jumlah; set => jumlah = value; }
         public double DiscPersen { get => discPersen; set => discPersen = value; }
         public int DiscRph { get => discRph; set => discRph = value; }
@@ -72,7 +72,7 @@ namespace SPSS_LIB
                 try
                 {
                     string sql1 = "insert into nota_beli(no_nota, tanggal, supplier_id, jumlah, diskon_persen, diskon_rph, dpp, ppn_persen, ppn_rupiah, total_beli) VALUES('" + pembelian.NoNota + "','" +
-                                    pembelian.Tanggal.ToString("yyyy-MM-dd hh:mm:ss") + "','" + pembelian.Supplier.KodeSupplier + "','" + pembelian.Jumlah + "','" +
+                                    pembelian.Tanggal.ToString("yyyy-MM-dd hh:mm:ss") + "','" + pembelian.Supplier + "','" + pembelian.Jumlah + "','" +
                                     pembelian.DiscPersen + "','" + pembelian.DiscRph + "','" + pembelian.Dpp + "','" + pembelian.PpnPersen + "','" + pembelian.PpnRph + "','" + pembelian.Netto + "')";
 
                     Koneksi.JalankanPerintahDML(sql1);
@@ -81,7 +81,7 @@ namespace SPSS_LIB
                     {
                         string sql2 = "insert into nota_beli_detail(nomor_nota_beli, id_barang_baku, quantity, harga, tanggal, supplier_id, jumlah, diskon_persen, diskon_rph, total_harga) VALUES('" + pembelian.NoNota + "','" +
                                        pembelianDetail.Kode + "','" + pembelianDetail.Quantity + "','" + pembelianDetail.Harga + "','" + pembelian.Tanggal.ToString("yyyy-MM-dd hh:mm:ss") +
-                                       "','" + pembelian.Supplier.KodeSupplier + "','" + pembelianDetail.Jumlah + "','" + pembelianDetail.DiscPersen + "','" +
+                                       "','" + pembelian.Supplier + "','" + pembelianDetail.Jumlah + "','" + pembelianDetail.DiscPersen + "','" +
                                        pembelianDetail.DiscRph + "','" + pembelianDetail.TotalHarga + "')";
 
                         Koneksi.JalankanPerintahDML(sql2);
@@ -96,35 +96,19 @@ namespace SPSS_LIB
             }
         }
 
-        //public static List<Pembelian> BacaHargaTerbaru(string pKriteria, string pNilaiKriteria)
-        //{
-        //    string sql = "";
-        //    if(pKriteria == "")
-        //    {
-        //        sql = "SELECT nota_beli_detail.nomor_nota_beli, nota_beli_detail.tanggal, nota_beli_detail.id_barang_baku, nota_beli_detail.harga" +
-        //              "FROM nota_beli_detail WHERE nota_beli_detail.id_barang_baku = " + pKriteria + "LIKE'%" + pNilaiKriteria + "ORDER BY nota_beli_detail.tanggal DESC LIMIT 1";
-        //        MySqlDataReader hasilData1 = Koneksi.JalankanPerintahQuery(sql);
-        //    }
 
-        //}
 
         public static List<Pembelian> BacaData(string pKriteria, string pNilaiKriteria)
         {
             string sql = "";
             if (pKriteria == "")
             {
-                //sql = "SELECT nb.no_nota as Nomor_Nota, nb.tanggal as Tanggal_Nota, s.nama as Nama_Supplier, bb.nama as Nama_Bahan_Baku, nbd.quantity," +
-                //      "nbd.harga FROM nota_beli nb INNER JOIN nota_beli_detail nbd ON nb.no_nota = nbd.nomor_nota_beli INNER JOIN supplier s ON s.kodeSupplier=nb.supplier_id " +
-                //      "INNER JOIN bahan_baku bb ON bb.kode = nbd.id_barang_baku";
                 sql = "select nb.no_nota, nb.tanggal, nb.supplier_id, S.nama, nb.jumlah, nb.diskon_persen, diskon_rph, nb.dpp, nb.ppn_persen, nb.ppn_rupiah," +
                       "nb.total_beli from nota_beli nb INNER JOIN supplier S on nb.supplier_id = S.kodeSupplier";
             }
 
             else
             {
-                //sql = "SELECT nb.no_nota as Nomor_Nota, nb.tanggal as Tanggal_Nota, s.nama as Nama_Supplier, bb.nama as Nama_Bahan_Baku, nbd.quantity, nbd.harga" +
-                //      "FROM nota_beli nb INNER JOIN nota_beli_detail nbd ON nb.no_nota = nbd.nomor_nota_beli INNER JOIN supplier s ON s.kodeSupplier = nb.supplier_id" +
-                //      "INNER JOIN bahan_baku bb ON bb.kode = nbd.id_barang_baku WHERE nb.tanggal BETWEEN " + pKriteria + "AND" + pNilaiKriteria;
                 sql = "select nb.no_nota, nb.tanggal, nb.supplier_id, S.nama, nb.jumlah, nb.diskon_persen, diskon_rph, nb.dpp, nb.ppn_persen, nb.ppn_rupiah," +
                       "nb.total_beli from nota_beli nb INNER JOIN supplier S on nb.supplier_id = S.kodeSupplier" + "WHERE" + pKriteria + "LIKE'%" + pNilaiKriteria + "%'";
             }
@@ -139,9 +123,9 @@ namespace SPSS_LIB
 
                 DateTime tanggal = DateTime.Parse(hasilData1.GetValue(1).ToString());
 
-                List<Supplier> listSupplier = Supplier.BacaData("kodeSupplier", hasilData1.GetValue(2).ToString());
+                string supplier = hasilData1.GetValue(2).ToString();
 
-                List<Supplier> listSupplierNama = Supplier.BacaData("nama", hasilData1.GetValue(3).ToString());
+                string listSupplierNama = hasilData1.GetValue(3).ToString();
 
                 int jumlah = int.Parse(hasilData1.GetValue(4).ToString());
 
@@ -152,7 +136,7 @@ namespace SPSS_LIB
                 int ppnRph = int.Parse(hasilData1.GetValue(9).ToString());
                 int netto = int.Parse(hasilData1.GetValue(10).ToString());
 
-                Pembelian nota = new Pembelian(noNota, tanggal, listSupplier[0], jumlah, discPersen, discRph, dpp, ppnPersen, ppnRph, netto);
+                Pembelian nota = new Pembelian(noNota, tanggal, supplier, jumlah, discPersen, discRph, dpp, ppnPersen, ppnRph, netto);
 
 
                 string sql2 = "select nbd.id_barang_baku, nbd.quantity, nbd.harga, nbd.jumlah, nbd.diskon_persen, nbd.diskon_rph, nbd.total_harga" +
@@ -211,7 +195,7 @@ namespace SPSS_LIB
 
                 DateTime tanggal = DateTime.Parse(hasilData1.GetValue(1).ToString());
 
-                List<Supplier> listSupplier = Supplier.BacaData("kodeSupplier", hasilData1.GetValue(2).ToString());
+                string supplier = hasilData1.GetValue(2).ToString();
 
                 int jumlah = int.Parse(hasilData1.GetValue(4).ToString());
 
@@ -222,7 +206,7 @@ namespace SPSS_LIB
                 int ppnRph = int.Parse(hasilData1.GetValue(9).ToString());
                 int netto = int.Parse(hasilData1.GetValue(10).ToString());
 
-                Pembelian nota = new Pembelian(noNota, tanggal, listSupplier[0], jumlah, discPersen, discRph, dpp, ppnPersen, ppnRph, netto);
+                Pembelian nota = new Pembelian(noNota, tanggal, supplier, jumlah, discPersen, discRph, dpp, ppnPersen, ppnRph, netto);
 
 
                 //string sql2 = "select nbd.id_barang_baku, nbd.quantity, nbd.harga, nbd.tanggal, nbd.supplier_id, nbd.jumlah" +

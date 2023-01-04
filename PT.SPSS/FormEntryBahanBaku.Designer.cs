@@ -115,11 +115,10 @@ namespace PT.SPSS
             // textBoxKodeBhnBaku
             // 
             this.textBoxKodeBhnBaku.Location = new System.Drawing.Point(114, 60);
-            this.textBoxKodeBhnBaku.Multiline = true;
             this.textBoxKodeBhnBaku.Name = "textBoxKodeBhnBaku";
-            this.textBoxKodeBhnBaku.Size = new System.Drawing.Size(240, 26);
+            this.textBoxKodeBhnBaku.Size = new System.Drawing.Size(240, 20);
             this.textBoxKodeBhnBaku.TabIndex = 83;
-            this.textBoxKodeBhnBaku.TextChanged += new System.EventHandler(this.textBoxKodeBhnBaku_TextChanged);
+            this.textBoxKodeBhnBaku.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxKodeBhnBaku_KeyDown);
             // 
             // label3
             // 

@@ -34,7 +34,7 @@ namespace PT.SPSS
 
             //comboBoxSupplier.DropDownStyle = ComboBoxStyle.DropDownList;
 
-            listBhnBaku = BahanBaku.BacaData("");
+            listBhnBaku = BahanBaku.BacaData2("");
 
             FormatDataGrid();
         }
@@ -76,20 +76,15 @@ namespace PT.SPSS
 
         private void FormatDataGrid3()
         {
-            dataGridViewBhnBaku.Columns.Clear();
+            dataGridViewSupplier.Columns.Clear();
 
-            dataGridViewBhnBaku.Columns.Add("kodeSupplier", "Kode");
-            dataGridViewBhnBaku.Columns.Add("nama", "Nama");
-            dataGridViewBhnBaku.Columns.Add("alamat", "Alamat");
-            dataGridViewBhnBaku.Columns.Add("kota", "Kota");
+            dataGridViewSupplier.Columns.Add("kodeSupplier", "Kode");
+            dataGridViewSupplier.Columns.Add("nama", "Nama");
+            dataGridViewSupplier.Columns.Add("alamat", "Alamat");
+            dataGridViewSupplier.Columns.Add("kota", "Kota");
 
-            dataGridViewBhnBaku.Columns["Kode"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewBhnBaku.Columns["Nama"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewBhnBaku.Columns["Alamat"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewBhnBaku.Columns["Kota"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-
-            dataGridViewBhnBaku.AllowUserToAddRows = false;
-            dataGridViewBhnBaku.ReadOnly = true;
+            dataGridViewSupplier.AllowUserToAddRows = false;
+            dataGridViewSupplier.ReadOnly = true;
 
         }
 
@@ -172,9 +167,9 @@ namespace PT.SPSS
         {
             try
             {
-                Supplier supplierDipilih = textBoxSupplier.Text;
+                //string supplierDipilih = textBoxSupplier.Text;
 
-                pembelian = new Pembelian(textBoxNoNota.Text, dateTimePicker.Value, supplierDipilih, int.Parse(textBoxJmlhAll.Text),
+                pembelian = new Pembelian(textBoxNoNota.Text, dateTimePicker.Value, textBoxSupplier.Text, int.Parse(textBoxJmlhAll.Text),
                 double.Parse(textBoxDiscPrsAll.Text), int.Parse(textBoxDiscRpAll.Text), int.Parse(textBoxDpp.Text), double.Parse(textBoxPPnPrs.Text), int.Parse(textBoxPPnRp.Text), int.Parse(textBoxNetto.Text));
 
                 
@@ -206,6 +201,9 @@ namespace PT.SPSS
                 textBoxDiscPrs.Text = "";
                 textBoxDiscRp.Text = "";
                 textBoxTotal.Text = "";
+                textBoxSupplier.Text = "";
+                textBoxNamaSupp.Text = "";
+                textBoxAlamat.Text = "";
                 textBoxJmlhAll.Text = "";
                 textBoxDiscPrsAll.Text = "";
                 textBoxDiscRpAll.Text = "";
@@ -341,6 +339,9 @@ namespace PT.SPSS
             textBoxJumlah.Text = "";
             textBoxDiscPrs.Text = "";
             textBoxDiscRp.Text = "";
+            textBoxSupplier.Text = "";
+            textBoxNamaSupp.Text = "";
+            textBoxAlamat.Text = "";
             textBoxTotal.Text = "";
             textBoxQty.Focus();
         }
@@ -361,7 +362,7 @@ namespace PT.SPSS
 
         private void textBoxNama_TextChanged(object sender, EventArgs e)
         {
-            listBhnBaku = BahanBaku.BacaData(textBoxNama.Text);
+            listBhnBaku = BahanBaku.BacaData2(textBoxNama.Text);
             DisplayOnDataGrid();
         }
 
@@ -379,7 +380,7 @@ namespace PT.SPSS
             {
                 panelBahan.Visible = true;
                 FormatDataGrid2();
-                listBhnBaku = BahanBaku.BacaData("");
+                listBhnBaku = BahanBaku.BacaData2("");
                 TampilDataGrid2();
                 textBoxNama.Focus();
             }
@@ -389,7 +390,7 @@ namespace PT.SPSS
         {
             if(e.KeyCode == Keys.F5)
             {
-                panelSupplier.Visible = true;
+                panelSupp.Visible = true;
                 FormatDataGrid3();
                 listSupplier = Supplier.BacaData("", "");
                 TampilDataGrid3();
@@ -403,11 +404,22 @@ namespace PT.SPSS
             {
                 DataGridViewRow row = this.dataGridViewSupplier.Rows[e.RowIndex];
 
-                textBoxKode.Text = row.Cells["kode"].Value.ToString();
+                textBoxSupplier.Text = row.Cells["kodeSupplier"].Value.ToString();
+                textBoxNamaSupp.Text = row.Cells["nama"].Value.ToString();
                 textBoxAlamat.Text = row.Cells["alamat"].Value.ToString();
                 textBoxKota.Text = row.Cells["kota"].Value.ToString();
             }
-            panelBahan.Visible = false;
+            panelSupp.Visible = false;
+        }
+
+        private void textBoxSupplier_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridViewBhnBaku_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

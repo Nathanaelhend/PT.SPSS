@@ -70,12 +70,43 @@ namespace SPSS_LIB
             //{
                 sql = "select B.kode, B.nama, B.harga, B.satuan, B.kodeKatBahanBaku, KBB.Nama" +
                     " from bahan_baku B inner join kategori_bahan_baku KBB on B.kodeKatBahanBaku = KBB.kodeBahan" +
-                    " where " + "B.nama" + " LIKE '%" + nilaiKriteria + "%'";
+                    " where B.kode  = " + "'" + nilaiKriteria + "'";
 
                 //sql = "SELECT nota_beli_detail.nomor_nota_beli, nota_beli_detail.tanggal, nota_beli_detail.id_barang_baku, " +
                 //      "nota_beli_detail.harga FROM nota_beli_detail" + " WHERE  " + kriteria + " LIKE '%" + nilaiKriteria + "%'" +
                 //      "ORDER BY nota_beli_detail.tanggal DESC LIMIT 1";
             //}
+
+            MySqlDataReader hasil = Koneksi.JalankanPerintahQuery(sql);
+
+
+            List<BahanBaku> listBhnBaku = new List<BahanBaku>();
+            while (hasil.Read() == true)
+            {
+                KategoriBahanBaku kbb = new KategoriBahanBaku(hasil.GetValue(4).ToString(), hasil.GetValue(5).ToString());
+
+                BahanBaku b = new BahanBaku(hasil.GetValue(0).ToString(), hasil.GetValue(1).ToString(), int.Parse(hasil.GetValue(2).ToString()), hasil.GetValue(3).ToString(), kbb);
+                listBhnBaku.Add(b);
+            }
+            return listBhnBaku;
+        }
+
+        public static List<BahanBaku> BacaData2(string nilaiKriteria)
+        {
+            string sql = "";
+
+            if (nilaiKriteria == "")
+            {
+                sql = "select B.kode, B.nama, B.harga, B.satuan, B.kodeKatBahanBaku, KBB.Nama" +
+                    " from bahan_baku B inner join kategori_bahan_baku KBB on B.kodeKatBahanBaku = KBB.kodeBahan";
+            }
+
+            else
+            {
+                sql = "select B.kode, B.nama, B.harga, B.satuan, B.kodeKatBahanBaku, KBB.Nama" +
+                        " from bahan_baku B inner join kategori_bahan_baku KBB on B.kodeKatBahanBaku = KBB.kodeBahan" +
+                        " where " + "B.nama" + " LIKE '%" + nilaiKriteria + "%'";
+            }
 
             MySqlDataReader hasil = Koneksi.JalankanPerintahQuery(sql);
 

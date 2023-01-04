@@ -90,14 +90,14 @@ namespace PT.SPSS
             try
             {
                 KategoriBahanBaku kbb = (KategoriBahanBaku)comboKatBhnBaku.SelectedItem;
-                BahanBaku b = new BahanBaku(textBoxKodeBhnBaku.Text, textBoxNama.Text,int.Parse(textBoxHarga.Text), textBoxSatuan.Text, kbb);
+                BahanBaku b = new BahanBaku(textBoxKodeBhnBaku.Text, textBoxNama.Text, int.Parse(textBoxHarga.Text), textBoxSatuan.Text, kbb);
                 BahanBaku.HapusData(b);
                 MessageBox.Show("Hapus data berhasil.", "Informasi");
             }
 
             catch (Exception ex)
             {
-                MessageBox.Show("Gagal menghapus supplier. Pesan Kesalahan : " + ex.Message);
+                MessageBox.Show("Gagal menghapus. Pesan Kesalahan : " + ex.Message);
             }
 
             textBoxKodeBhnBaku.Text = "";
@@ -107,9 +107,16 @@ namespace PT.SPSS
             textBoxKodeBhnBaku.Focus();
         }
 
-        private void textBoxKodeBhnBaku_TextChanged(object sender, EventArgs e)
+       
+
+        private void comboKatBhnBaku_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (textBoxKodeBhnBaku.Text.Length == 5)
+            KategoriBahanBaku kategoriDipilih = (KategoriBahanBaku)comboKatBhnBaku.SelectedItem;
+        }
+
+        private void textBoxKodeBhnBaku_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
             {
                 listBhnBaku = BahanBaku.BacaData(textBoxKodeBhnBaku.Text);
                 if (listBhnBaku.Count > 0)
@@ -123,13 +130,9 @@ namespace PT.SPSS
                 else
                 {
                     baru = true;
+                    textBoxNama.Focus();
                 }
             }
-        }
-
-        private void comboKatBhnBaku_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            KategoriBahanBaku kategoriDipilih = (KategoriBahanBaku)comboKatBhnBaku.SelectedItem;
         }
     }
 }

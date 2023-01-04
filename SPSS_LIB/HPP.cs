@@ -13,14 +13,14 @@ namespace SPSS_LIB
         private string noBukti;
         private DateTime tanggal;
         private DateTime deadline;
-        private BarangJadi brgJadi;
+        private string brgJadi;
         private int quantity;
         private int jumlah;
         private int hpp;
         private List<DetailHPP> listDetailHPP;
 
         #region Constructors
-        public HPP(string noBukti, DateTime tanggal, DateTime deadline, BarangJadi brgJadi, int quantity, int jumlah, int hpp)
+        public HPP(string noBukti, DateTime tanggal, DateTime deadline, string brgJadi, int quantity, int jumlah, int hpp)
         {
             this.NoBukti = noBukti;
             this.Tanggal = tanggal;
@@ -37,7 +37,7 @@ namespace SPSS_LIB
         public string NoBukti { get => noBukti; set => noBukti = value; }
         public DateTime Tanggal { get => tanggal; set => tanggal = value; }
         public DateTime Deadline { get => deadline; set => deadline = value; }
-        public BarangJadi BrgJadi { get => brgJadi; set => brgJadi = value; }
+        public string BrgJadi { get => brgJadi; set => brgJadi = value; }
         public int Quantity { get => quantity; set => quantity = value; }
         public int Jumlah { get => jumlah; set => jumlah = value; }
         public int Hpp { get => hpp; set => hpp = value; }
@@ -60,7 +60,7 @@ namespace SPSS_LIB
                 try
                 {
                     string sql1 = "insert into total_hpp(noBukti, tanggal, deadline, kodeBrgJadi, qty, jumlah, hpp) VALUES('" + hpp.NoBukti + "','" +
-                                    hpp.Tanggal.ToString("yyyy-MM-dd hh:mm:ss") + "','" + hpp.Deadline.ToString("yyyy-MM-dd hh:mm:ss") + "','" + hpp.BrgJadi.KodeBarang + "','" +
+                                    hpp.Tanggal.ToString("yyyy-MM-dd hh:mm:ss") + "','" + hpp.Deadline.ToString("yyyy-MM-dd hh:mm:ss") + "','" + hpp.BrgJadi + "','" +
                                     hpp.Quantity + "','" + hpp.Jumlah + "','" + hpp.Hpp  + "')";
 
                     Koneksi.JalankanPerintahDML(sql1);
@@ -84,7 +84,7 @@ namespace SPSS_LIB
             }
         }
 
-        public static List<HPP> BacaData(string kriteria, string nilaiKriteria)
+        public static List<HPP> BacaData(string kriteria, string nilaiKriteria, ref string nama)
         {
             string sql = "";
             if (kriteria == "")
@@ -104,21 +104,34 @@ namespace SPSS_LIB
 
 
             List<HPP> listHPP = new List<HPP>();
+            
             while (hasil.Read() == true)
-            { 
-                List<BarangJadi> listBrgJadi = BarangJadi.BacaData("kodeBarang", hasil.GetValue(6).ToString());
+            {
+                nama = hasil.GetValue(7).ToString();
+                string brgJadi = hasil.GetValue(6).ToString();
 
                 DateTime tanggal = DateTime.Parse(hasil.GetValue(1).ToString());
 
                 DateTime deadline = DateTime.Parse(hasil.GetValue(2).ToString());
 
-                HPP h = new HPP(hasil.GetValue(0).ToString(), tanggal, deadline, listBrgJadi[0], int.Parse(hasil.GetValue(3).ToString()), int.Parse(hasil.GetValue(4).ToString()), int.Parse(hasil.GetValue(5).ToString()));
+                HPP h = new HPP(hasil.GetValue(0).ToString(), tanggal, deadline, brgJadi, int.Parse(hasil.GetValue(3).ToString()), int.Parse(hasil.GetValue(4).ToString()), int.Parse(hasil.GetValue(5).ToString()));
                 listHPP.Add(h);
             }
             return listHPP;
         }
 
+        public static string TampilNama(string nama)
+        {
+            string sql = "SELECT nama FROM barang_jadi WHERE kodeBarang = " + nama;
+            MySqlDataReader hasil = Koneksi.JalankanPerintahQuery(sql);
 
+            string name = "";
+            while (hasil.Read() == true)
+            {
+                name = hasil.GetValue(0).ToString();
+            }
+            return name;
+        }
 
         public static int HitungHPP(int total, int quantity)
         {

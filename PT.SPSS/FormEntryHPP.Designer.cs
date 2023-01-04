@@ -37,7 +37,6 @@ namespace PT.SPSS
             this.buttonHapus = new System.Windows.Forms.Button();
             this.buttonSimpan = new System.Windows.Forms.Button();
             this.buttonBatal = new System.Windows.Forms.Button();
-            this.comboBoxKodeBB = new System.Windows.Forms.ComboBox();
             this.textBoxTotal = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.textBoxQtyBB = new System.Windows.Forms.TextBox();
@@ -61,11 +60,22 @@ namespace PT.SPSS
             this.label5 = new System.Windows.Forms.Label();
             this.textBoxNamaBrg = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.comboBoxBrgJadi = new System.Windows.Forms.ComboBox();
+            this.textBoxKodeBrgJadi = new System.Windows.Forms.TextBox();
+            this.panelBrgJadi = new System.Windows.Forms.Panel();
+            this.textBoxNama = new System.Windows.Forms.TextBox();
+            this.dataGridViewBrgJadi = new System.Windows.Forms.DataGridView();
+            this.textBoxKodeBB = new System.Windows.Forms.TextBox();
+            this.panelBB = new System.Windows.Forms.Panel();
+            this.textBoxNamaBB = new System.Windows.Forms.TextBox();
+            this.dataGridViewBB = new System.Windows.Forms.DataGridView();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewHPP)).BeginInit();
             this.panelSupplier.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.panelBrgJadi.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBrgJadi)).BeginInit();
+            this.panelBB.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBB)).BeginInit();
             this.SuspendLayout();
             // 
             // dateTimePicker
@@ -106,10 +116,10 @@ namespace PT.SPSS
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.textBoxKodeBB);
             this.groupBox3.Controls.Add(this.buttonHapus);
             this.groupBox3.Controls.Add(this.buttonSimpan);
             this.groupBox3.Controls.Add(this.buttonBatal);
-            this.groupBox3.Controls.Add(this.comboBoxKodeBB);
             this.groupBox3.Controls.Add(this.textBoxTotal);
             this.groupBox3.Controls.Add(this.label8);
             this.groupBox3.Controls.Add(this.textBoxQtyBB);
@@ -162,16 +172,6 @@ namespace PT.SPSS
             this.buttonBatal.TabIndex = 27;
             this.buttonBatal.Text = "BATAL";
             this.buttonBatal.UseVisualStyleBackColor = false;
-            // 
-            // comboBoxKodeBB
-            // 
-            this.comboBoxKodeBB.FormattingEnabled = true;
-            this.comboBoxKodeBB.Location = new System.Drawing.Point(140, 35);
-            this.comboBoxKodeBB.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBoxKodeBB.Name = "comboBoxKodeBB";
-            this.comboBoxKodeBB.Size = new System.Drawing.Size(143, 27);
-            this.comboBoxKodeBB.TabIndex = 17;
-            this.comboBoxKodeBB.SelectedIndexChanged += new System.EventHandler(this.comboBoxKodeBB_SelectedIndexChanged);
             // 
             // textBoxTotal
             // 
@@ -316,6 +316,7 @@ namespace PT.SPSS
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.textBoxKodeBrgJadi);
             this.groupBox1.Controls.Add(this.textBoxQty);
             this.groupBox1.Controls.Add(this.textBoxHPP);
             this.groupBox1.Controls.Add(this.label12);
@@ -324,7 +325,6 @@ namespace PT.SPSS
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.textBoxNamaBrg);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.comboBoxBrgJadi);
             this.groupBox1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(8, 107);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
@@ -409,6 +409,7 @@ namespace PT.SPSS
             this.textBoxNamaBrg.Name = "textBoxNamaBrg";
             this.textBoxNamaBrg.Size = new System.Drawing.Size(334, 27);
             this.textBoxNamaBrg.TabIndex = 10;
+            this.textBoxNamaBrg.TextChanged += new System.EventHandler(this.textBoxNamaBrg_TextChanged);
             // 
             // label4
             // 
@@ -420,21 +421,87 @@ namespace PT.SPSS
             this.label4.TabIndex = 8;
             this.label4.Text = "Barang Jadi :";
             // 
-            // comboBoxBrgJadi
+            // textBoxKodeBrgJadi
             // 
-            this.comboBoxBrgJadi.FormattingEnabled = true;
-            this.comboBoxBrgJadi.Location = new System.Drawing.Point(121, 29);
-            this.comboBoxBrgJadi.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBoxBrgJadi.Name = "comboBoxBrgJadi";
-            this.comboBoxBrgJadi.Size = new System.Drawing.Size(218, 27);
-            this.comboBoxBrgJadi.TabIndex = 7;
-            this.comboBoxBrgJadi.SelectedIndexChanged += new System.EventHandler(this.comboBoxBrgJadi_SelectedIndexChanged);
+            this.textBoxKodeBrgJadi.Location = new System.Drawing.Point(120, 29);
+            this.textBoxKodeBrgJadi.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxKodeBrgJadi.Name = "textBoxKodeBrgJadi";
+            this.textBoxKodeBrgJadi.Size = new System.Drawing.Size(209, 27);
+            this.textBoxKodeBrgJadi.TabIndex = 31;
+            this.textBoxKodeBrgJadi.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxKodeBrgJadi_KeyDown);
+            // 
+            // panelBrgJadi
+            // 
+            this.panelBrgJadi.Controls.Add(this.textBoxNama);
+            this.panelBrgJadi.Controls.Add(this.dataGridViewBrgJadi);
+            this.panelBrgJadi.Location = new System.Drawing.Point(196, 330);
+            this.panelBrgJadi.Name = "panelBrgJadi";
+            this.panelBrgJadi.Size = new System.Drawing.Size(268, 253);
+            this.panelBrgJadi.TabIndex = 57;
+            this.panelBrgJadi.Visible = false;
+            // 
+            // textBoxNama
+            // 
+            this.textBoxNama.Location = new System.Drawing.Point(16, 17);
+            this.textBoxNama.Multiline = true;
+            this.textBoxNama.Name = "textBoxNama";
+            this.textBoxNama.Size = new System.Drawing.Size(154, 27);
+            this.textBoxNama.TabIndex = 54;
+            this.textBoxNama.TextChanged += new System.EventHandler(this.textBoxNama_TextChanged);
+            // 
+            // dataGridViewBrgJadi
+            // 
+            this.dataGridViewBrgJadi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewBrgJadi.Location = new System.Drawing.Point(16, 50);
+            this.dataGridViewBrgJadi.Name = "dataGridViewBrgJadi";
+            this.dataGridViewBrgJadi.Size = new System.Drawing.Size(233, 186);
+            this.dataGridViewBrgJadi.TabIndex = 53;
+            this.dataGridViewBrgJadi.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewBrgJadi_CellClick);
+            // 
+            // textBoxKodeBB
+            // 
+            this.textBoxKodeBB.Location = new System.Drawing.Point(140, 35);
+            this.textBoxKodeBB.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxKodeBB.Name = "textBoxKodeBB";
+            this.textBoxKodeBB.Size = new System.Drawing.Size(126, 27);
+            this.textBoxKodeBB.TabIndex = 30;
+            this.textBoxKodeBB.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxKodeBB_KeyDown);
+            // 
+            // panelBB
+            // 
+            this.panelBB.Controls.Add(this.textBoxNamaBB);
+            this.panelBB.Controls.Add(this.dataGridViewBB);
+            this.panelBB.Location = new System.Drawing.Point(196, 330);
+            this.panelBB.Name = "panelBB";
+            this.panelBB.Size = new System.Drawing.Size(268, 253);
+            this.panelBB.TabIndex = 58;
+            this.panelBB.Visible = false;
+            // 
+            // textBoxNamaBB
+            // 
+            this.textBoxNamaBB.Location = new System.Drawing.Point(16, 17);
+            this.textBoxNamaBB.Multiline = true;
+            this.textBoxNamaBB.Name = "textBoxNamaBB";
+            this.textBoxNamaBB.Size = new System.Drawing.Size(154, 27);
+            this.textBoxNamaBB.TabIndex = 54;
+            this.textBoxNamaBB.TextChanged += new System.EventHandler(this.textBoxNamaBB_TextChanged);
+            // 
+            // dataGridViewBB
+            // 
+            this.dataGridViewBB.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewBB.Location = new System.Drawing.Point(16, 50);
+            this.dataGridViewBB.Name = "dataGridViewBB";
+            this.dataGridViewBB.Size = new System.Drawing.Size(233, 186);
+            this.dataGridViewBB.TabIndex = 53;
+            this.dataGridViewBB.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewBB_CellClick);
             // 
             // FormEntryHPP
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(781, 829);
+            this.Controls.Add(this.panelBB);
+            this.Controls.Add(this.panelBrgJadi);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.dataGridViewHPP);
             this.Controls.Add(this.label1);
@@ -448,6 +515,12 @@ namespace PT.SPSS
             this.panelSupplier.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.panelBrgJadi.ResumeLayout(false);
+            this.panelBrgJadi.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBrgJadi)).EndInit();
+            this.panelBB.ResumeLayout(false);
+            this.panelBB.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBB)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -472,8 +545,6 @@ namespace PT.SPSS
         private System.Windows.Forms.Panel panelSupplier;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox comboBoxBrgJadi;
-        private System.Windows.Forms.ComboBox comboBoxKodeBB;
         private System.Windows.Forms.DateTimePicker dateTimeDeadline;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox textBoxHPP;
@@ -486,5 +557,13 @@ namespace PT.SPSS
         private System.Windows.Forms.Button buttonSimpan;
         private System.Windows.Forms.Button buttonBatal;
         private System.Windows.Forms.TextBox textBoxQty;
+        private System.Windows.Forms.TextBox textBoxKodeBrgJadi;
+        private System.Windows.Forms.Panel panelBrgJadi;
+        private System.Windows.Forms.TextBox textBoxNama;
+        private System.Windows.Forms.DataGridView dataGridViewBrgJadi;
+        private System.Windows.Forms.TextBox textBoxKodeBB;
+        private System.Windows.Forms.Panel panelBB;
+        private System.Windows.Forms.TextBox textBoxNamaBB;
+        private System.Windows.Forms.DataGridView dataGridViewBB;
     }
 }

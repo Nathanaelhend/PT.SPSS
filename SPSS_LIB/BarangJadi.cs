@@ -57,20 +57,20 @@ namespace SPSS_LIB
         }
 
 
-        public static List<BarangJadi> BacaData(string kriteria, string nilaiKriteria)
+        public static List<BarangJadi> BacaData(string nilaiKriteria)
         {
             string sql = "";
-            if (kriteria == "")
-            {
-                sql = "select B.kodeBarang, B.nama, B.harga, B.satuan, B.kodeKategori, KB.keteranganBarang" +
-                    " from barang_jadi B inner join kategori_barang_jadi KB on B.kodeKategori = KB.kode";
-            }
-            else
-            {
+            //if (kriteria == "")
+            //{
+            //    sql = "select B.kodeBarang, B.nama, B.harga, B.satuan, B.kodeKategori, KB.keteranganBarang" +
+            //        " from barang_jadi B inner join kategori_barang_jadi KB on B.kodeKategori = KB.kode";
+            //}
+            //else
+            //{
                 sql = "select B.kodeBarang, B.nama, B.harga, B.satuan, B.kodeKategori, KB.keteranganBarang" +
                     " from barang_jadi B inner join kategori_barang_jadi KB on B.kodeKategori = KB.kode" +
-                    " where " + kriteria + " LIKE '%" + nilaiKriteria + "%'";
-            }
+                    " where  B.nama "+ " LIKE '%" + nilaiKriteria + "%'";
+            //}
 
             MySqlDataReader hasil = Koneksi.JalankanPerintahQuery(sql);
 

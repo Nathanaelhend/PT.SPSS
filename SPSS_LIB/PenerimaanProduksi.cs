@@ -49,11 +49,7 @@ namespace SPSS_LIB
             Koneksi.JalankanPerintahDML(sql);
         }
 
-        //public static void SisaProduksi(PenerimaanProduksi p)
-        //{
-        //    string sql = "SELECT SUM(penerimaan_produksi.hasilProduksi) , (total_hpp.qty - SUM(penerimaan_produksi.hasilProduksi)) FROM penerimaan_produksi" +
-        //                 "INNER JOIN total_hpp ON penerimaan_produksi.noBuktiHPP = total_hpp.noBukti WHERE penerimaan_produksi.noBuktiHPP = 'UP001'";
-        //}
+        
         #endregion
     }
 }

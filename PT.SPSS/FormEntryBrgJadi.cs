@@ -53,17 +53,25 @@ namespace PT.SPSS
 
         private void buttonHapus_Click(object sender, EventArgs e)
         {
-            try
+            if (textBoxKodeBrgJadi.Text != "" && textBoxNama.Text != "" && textBoxHarga.Text != "" && textBoxSatuan.Text != "")
             {
-                KategoriBarang kb = (KategoriBarang)comboKatBrgJadi.SelectedItem;
-                BarangJadi b = new BarangJadi(textBoxKodeBrgJadi.Text, textBoxNama.Text, int.Parse(textBoxHarga.Text), textBoxSatuan.Text, kb);
-                BarangJadi.HapusData(b);
-                MessageBox.Show("Hapus data berhasil.", "Informasi");
+                try
+                {
+                    KategoriBarang kb = (KategoriBarang)comboKatBrgJadi.SelectedItem;
+                    BarangJadi b = new BarangJadi(textBoxKodeBrgJadi.Text, textBoxNama.Text, int.Parse(textBoxHarga.Text), textBoxSatuan.Text, kb);
+                    BarangJadi.HapusData(b);
+                    MessageBox.Show("Hapus data berhasil.", "Informasi");
+                }
+
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Gagal menghapus supplier. Pesan Kesalahan : " + ex.Message);
+                }
             }
 
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show("Gagal menghapus supplier. Pesan Kesalahan : " + ex.Message);
+                MessageBox.Show("Harap Isi Data!");
             }
 
             textBoxKodeBrgJadi.Text = "";
@@ -77,34 +85,49 @@ namespace PT.SPSS
         {
             if (baru == true)
             {
-                //try
-                //{
-                    KategoriBarang kb = (KategoriBarang)comboKatBrgJadi.SelectedItem;
-                    BarangJadi b = new BarangJadi(textBoxKodeBrgJadi.Text, textBoxNama.Text, int.Parse(textBoxHarga.Text), textBoxSatuan.Text, kb);
-                    BarangJadi.TambahData(b);
+                if (textBoxKodeBrgJadi.Text != "" && textBoxNama.Text != "" && textBoxHarga.Text != "" && textBoxSatuan.Text != "")
+                {
+                    try
+                    {
+                        KategoriBarang kb = (KategoriBarang)comboKatBrgJadi.SelectedItem;
+                        BarangJadi b = new BarangJadi(textBoxKodeBrgJadi.Text, textBoxNama.Text, int.Parse(textBoxHarga.Text), textBoxSatuan.Text, kb);
+                        BarangJadi.TambahData(b);
 
-                    MessageBox.Show("Data Berhasil Disimpan");
-                //}
+                        MessageBox.Show("Data Berhasil Disimpan");
+                    }
 
-                //catch (Exception ex)
-                //{
-                //    MessageBox.Show("Gagal Menyimpan. Kesalahan : " + ex.Message);
-                //}
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Gagal Menyimpan. Kesalahan : " + ex.Message);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Harap Isi Data!");
+                }
+                
             }
 
             else
             {
-                try
+                if (textBoxKodeBrgJadi.Text != "" && textBoxNama.Text != "" && textBoxHarga.Text != "" && textBoxSatuan.Text != "")
                 {
-                    KategoriBarang kb = (KategoriBarang)comboKatBrgJadi.SelectedItem;
-                    BarangJadi b = new BarangJadi(textBoxKodeBrgJadi.Text, textBoxNama.Text, int.Parse(textBoxHarga.Text), textBoxSatuan.Text, kb);
-                    BarangJadi.UbahData(b);
-                    MessageBox.Show("Pengubahan berhasil.", "Informasi");
-                }
+                    try
+                    {
+                        KategoriBarang kb = (KategoriBarang)comboKatBrgJadi.SelectedItem;
+                        BarangJadi b = new BarangJadi(textBoxKodeBrgJadi.Text, textBoxNama.Text, int.Parse(textBoxHarga.Text), textBoxSatuan.Text, kb);
+                        BarangJadi.UbahData(b);
+                        MessageBox.Show("Pengubahan berhasil.", "Informasi");
+                    }
 
-                catch (Exception ex)
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Pengubahan gagal. Pesan Kesalahan : " + ex.Message, "Kesalahan");
+                    }
+                }
+                else
                 {
-                    MessageBox.Show("Pengubahan gagal. Pesan Kesalahan : " + ex.Message, "Kesalahan");
+                    MessageBox.Show("Harap Isi Data!");
                 }
             }
 
@@ -120,7 +143,7 @@ namespace PT.SPSS
         {
             if (textBoxKodeBrgJadi.Text.Length == 5)
             {
-                listBrgJadi = BarangJadi.BacaData("kodeBarang", textBoxKodeBrgJadi.Text);
+                listBrgJadi = BarangJadi.BacaData(textBoxKodeBrgJadi.Text);
                 if (listBrgJadi.Count > 0)
                 {
                     baru = false;

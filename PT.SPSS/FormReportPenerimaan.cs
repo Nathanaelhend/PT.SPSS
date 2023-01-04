@@ -23,7 +23,7 @@ namespace PT.SPSS
         {
             // TODO: This line of code loads data into the 'pt_spss_kpDataSet.penerimaan_produksi' table. You can move, or remove it, as needed.
             //this.penerimaan_produksiTableAdapter.Fill(this.pt_spss_kpDataSet.penerimaan_produksi);
-            listBrgJadi = BarangJadi.BacaData("", "");
+            listBrgJadi = BarangJadi.BacaData("");
 
 
             comboBoxBarang.DataSource = listBrgJadi;

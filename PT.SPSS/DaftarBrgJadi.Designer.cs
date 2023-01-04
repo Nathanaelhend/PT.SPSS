@@ -57,7 +57,6 @@ namespace PT.SPSS
             this.textBoxKriteria.Name = "textBoxKriteria";
             this.textBoxKriteria.Size = new System.Drawing.Size(212, 20);
             this.textBoxKriteria.TabIndex = 2;
-            this.textBoxKriteria.TextChanged += new System.EventHandler(this.textBoxKriteria_TextChanged);
             // 
             // comboBoxKriteria
             // 

@@ -30,6 +30,9 @@ namespace PT.SPSS
         private void InitializeComponent()
         {
             this.panelSupplier = new System.Windows.Forms.Panel();
+            this.panelSupp = new System.Windows.Forms.Panel();
+            this.textBoxSuppGrid = new System.Windows.Forms.TextBox();
+            this.dataGridViewSupplier = new System.Windows.Forms.DataGridView();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.textBoxKode = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -50,6 +53,8 @@ namespace PT.SPSS
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.textBoxNamaSupp = new System.Windows.Forms.TextBox();
+            this.textBoxSupplier = new System.Windows.Forms.TextBox();
             this.textBoxKota = new System.Windows.Forms.TextBox();
             this.textBoxAlamat = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -78,25 +83,21 @@ namespace PT.SPSS
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridViewPembelian = new System.Windows.Forms.DataGridView();
             this.buttonKeluar = new System.Windows.Forms.Button();
-            this.textBoxSupplier = new System.Windows.Forms.TextBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.textBoxSuppGrid = new System.Windows.Forms.TextBox();
-            this.dataGridViewSupplier = new System.Windows.Forms.DataGridView();
             this.panelSupplier.SuspendLayout();
+            this.panelSupp.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSupplier)).BeginInit();
             this.groupBox4.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panelBahan.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBhnBaku)).BeginInit();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPembelian)).BeginInit();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSupplier)).BeginInit();
             this.SuspendLayout();
             // 
             // panelSupplier
             // 
             this.panelSupplier.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.panelSupplier.Controls.Add(this.panel1);
+            this.panelSupplier.Controls.Add(this.panelSupp);
             this.panelSupplier.Controls.Add(this.groupBox4);
             this.panelSupplier.Controls.Add(this.groupBox1);
             this.panelSupplier.Controls.Add(this.dateTimePicker);
@@ -107,6 +108,33 @@ namespace PT.SPSS
             this.panelSupplier.Name = "panelSupplier";
             this.panelSupplier.Size = new System.Drawing.Size(998, 305);
             this.panelSupplier.TabIndex = 50;
+            // 
+            // panelSupp
+            // 
+            this.panelSupp.Controls.Add(this.textBoxSuppGrid);
+            this.panelSupp.Controls.Add(this.dataGridViewSupplier);
+            this.panelSupp.Location = new System.Drawing.Point(233, 38);
+            this.panelSupp.Name = "panelSupp";
+            this.panelSupp.Size = new System.Drawing.Size(567, 253);
+            this.panelSupp.TabIndex = 55;
+            this.panelSupp.Visible = false;
+            // 
+            // textBoxSuppGrid
+            // 
+            this.textBoxSuppGrid.Location = new System.Drawing.Point(16, 17);
+            this.textBoxSuppGrid.Multiline = true;
+            this.textBoxSuppGrid.Name = "textBoxSuppGrid";
+            this.textBoxSuppGrid.Size = new System.Drawing.Size(154, 27);
+            this.textBoxSuppGrid.TabIndex = 54;
+            // 
+            // dataGridViewSupplier
+            // 
+            this.dataGridViewSupplier.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewSupplier.Location = new System.Drawing.Point(16, 50);
+            this.dataGridViewSupplier.Name = "dataGridViewSupplier";
+            this.dataGridViewSupplier.Size = new System.Drawing.Size(512, 186);
+            this.dataGridViewSupplier.TabIndex = 53;
+            this.dataGridViewSupplier.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSupplier_CellClick);
             // 
             // groupBox4
             // 
@@ -324,6 +352,7 @@ namespace PT.SPSS
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.textBoxNamaSupp);
             this.groupBox1.Controls.Add(this.textBoxSupplier);
             this.groupBox1.Controls.Add(this.textBoxKota);
             this.groupBox1.Controls.Add(this.textBoxAlamat);
@@ -338,12 +367,30 @@ namespace PT.SPSS
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Informasi Supplier";
             // 
+            // textBoxNamaSupp
+            // 
+            this.textBoxNamaSupp.Location = new System.Drawing.Point(262, 26);
+            this.textBoxNamaSupp.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxNamaSupp.Name = "textBoxNamaSupp";
+            this.textBoxNamaSupp.Size = new System.Drawing.Size(135, 27);
+            this.textBoxNamaSupp.TabIndex = 58;
+            // 
+            // textBoxSupplier
+            // 
+            this.textBoxSupplier.Location = new System.Drawing.Point(108, 28);
+            this.textBoxSupplier.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxSupplier.Name = "textBoxSupplier";
+            this.textBoxSupplier.Size = new System.Drawing.Size(120, 27);
+            this.textBoxSupplier.TabIndex = 57;
+            this.textBoxSupplier.TextChanged += new System.EventHandler(this.textBoxSupplier_TextChanged);
+            this.textBoxSupplier.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxSupplier_KeyDown);
+            // 
             // textBoxKota
             // 
             this.textBoxKota.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.textBoxKota.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxKota.Enabled = false;
-            this.textBoxKota.Location = new System.Drawing.Point(716, 30);
+            this.textBoxKota.Location = new System.Drawing.Point(797, 29);
             this.textBoxKota.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxKota.Multiline = true;
             this.textBoxKota.Name = "textBoxKota";
@@ -355,11 +402,11 @@ namespace PT.SPSS
             this.textBoxAlamat.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.textBoxAlamat.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxAlamat.Enabled = false;
-            this.textBoxAlamat.Location = new System.Drawing.Point(311, 30);
+            this.textBoxAlamat.Location = new System.Drawing.Point(437, 29);
             this.textBoxAlamat.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxAlamat.Multiline = true;
             this.textBoxAlamat.Name = "textBoxAlamat";
-            this.textBoxAlamat.Size = new System.Drawing.Size(383, 27);
+            this.textBoxAlamat.Size = new System.Drawing.Size(310, 27);
             this.textBoxAlamat.TabIndex = 10;
             // 
             // label4
@@ -436,6 +483,7 @@ namespace PT.SPSS
             this.dataGridViewBhnBaku.Size = new System.Drawing.Size(233, 186);
             this.dataGridViewBhnBaku.TabIndex = 53;
             this.dataGridViewBhnBaku.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewBhnBaku_CellClick);
+            this.dataGridViewBhnBaku.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewBhnBaku_CellContentClick);
             // 
             // buttonSimpan
             // 
@@ -639,42 +687,6 @@ namespace PT.SPSS
             this.buttonKeluar.UseVisualStyleBackColor = false;
             this.buttonKeluar.Click += new System.EventHandler(this.buttonKeluar_Click);
             // 
-            // textBoxSupplier
-            // 
-            this.textBoxSupplier.Location = new System.Drawing.Point(121, 30);
-            this.textBoxSupplier.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxSupplier.Name = "textBoxSupplier";
-            this.textBoxSupplier.Size = new System.Drawing.Size(148, 27);
-            this.textBoxSupplier.TabIndex = 57;
-            this.textBoxSupplier.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxSupplier_KeyDown);
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.textBoxSuppGrid);
-            this.panel1.Controls.Add(this.dataGridViewSupplier);
-            this.panel1.Location = new System.Drawing.Point(254, 52);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(567, 253);
-            this.panel1.TabIndex = 55;
-            this.panel1.Visible = false;
-            // 
-            // textBoxSuppGrid
-            // 
-            this.textBoxSuppGrid.Location = new System.Drawing.Point(16, 17);
-            this.textBoxSuppGrid.Multiline = true;
-            this.textBoxSuppGrid.Name = "textBoxSuppGrid";
-            this.textBoxSuppGrid.Size = new System.Drawing.Size(154, 27);
-            this.textBoxSuppGrid.TabIndex = 54;
-            // 
-            // dataGridViewSupplier
-            // 
-            this.dataGridViewSupplier.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewSupplier.Location = new System.Drawing.Point(16, 50);
-            this.dataGridViewSupplier.Name = "dataGridViewSupplier";
-            this.dataGridViewSupplier.Size = new System.Drawing.Size(512, 186);
-            this.dataGridViewSupplier.TabIndex = 53;
-            this.dataGridViewSupplier.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSupplier_CellClick);
-            // 
             // FormPembelian
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -692,6 +704,9 @@ namespace PT.SPSS
             this.Load += new System.EventHandler(this.FormPembelian_Load);
             this.panelSupplier.ResumeLayout(false);
             this.panelSupplier.PerformLayout();
+            this.panelSupp.ResumeLayout(false);
+            this.panelSupp.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSupplier)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -702,9 +717,6 @@ namespace PT.SPSS
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPembelian)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSupplier)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -761,8 +773,9 @@ namespace PT.SPSS
         private System.Windows.Forms.TextBox textBoxKode;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textBoxSupplier;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panelSupp;
         private System.Windows.Forms.TextBox textBoxSuppGrid;
         private System.Windows.Forms.DataGridView dataGridViewSupplier;
+        private System.Windows.Forms.TextBox textBoxNamaSupp;
     }
 }

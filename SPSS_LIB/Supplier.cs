@@ -56,7 +56,7 @@ namespace SPSS_LIB
             }
             else
             {
-                sql = "select * from supplier where " + kriteria + " like '%" + nilaiKriteria + "%'";
+                sql = "select * from supplier where " + kriteria + " = "  + "'" + nilaiKriteria + "'";
             }
             MySqlDataReader hasil = Koneksi.JalankanPerintahQuery(sql);
             List<Supplier> listSupplier = new List<Supplier>();

@@ -22,80 +22,72 @@ namespace PT.SPSS
             InitializeComponent();
         }
 
-        private void FormatDataGrid2()
-        {
-            dataGridViewHPP.Columns.Clear();
+       
 
-            dataGridViewHPP.Columns.Add("noBukti", "No Bukti");
-            dataGridViewHPP.Columns.Add("tanggal", "Tanggal");
-            dataGridViewHPP.Columns.Add("kodeBrg", "Kode Barang");
-            dataGridViewHPP.Columns.Add("namaBrg", "Nama Barang");
-            dataGridViewHPP.Columns.Add("quantity", "Qty");
-
-            dataGridViewHPP.Columns["noBukti"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewHPP.Columns["tanggal"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewHPP.Columns["kodeBrg"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewHPP.Columns["namaBrg"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewHPP.Columns["quantity"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-
-
-            dataGridViewHPP.AllowUserToAddRows = false;
-            dataGridViewHPP.ReadOnly = true;
-
-        }
-
-        private void TampilDataGrid2()
-        {
-
-            if (hpp.Count > 0)
-            {
-                foreach (HPP h in hpp)
-                {
-                    dataGridViewHPP.Rows.Add(h.NoBukti, h.Tanggal, h.BrgJadi.KodeBarang, h.BrgJadi.Nama, h.Quantity);
-                }
-            }
-            else
-            {
-                dataGridViewHPP.DataSource = null;
-            }
-        }
+        
 
         private void textBoxNoHPP_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.F5)
+            if (e.KeyCode == Keys.Enter)
             {
-                panelHPP.Visible = true;
-                FormatDataGrid2();
-                hpp = HPP.BacaData("noBukti", textBoxNoHPP.Text);
-                TampilDataGrid2();
-            }
+                if (textBoxNoHPP.Text == "")
+                {
+                    MessageBox.Show("Kode harus diisi!");
+                }
 
-            //if(e.KeyCode == Keys.Enter)
-            //{
-            //    hpp = HPP.BacaData("noBukti", textBoxNoHPP.Text);
-            //    dateTimePickerTglHPP.Text = hpp[0].Tanggal.ToString();
-            //    textBoxKodeBrgJadi.Text = hpp[0].BrgJadi.KodeBarang.ToString();
-            //    textBoxNamaBrg.Text = hpp[0].BrgJadi.Nama.ToString();
-            //    textBoxQty.Text = hpp[0].Quantity.ToString();
-            //    textBoxJmlhProduksi.Focus();
-            //}
+                else if (textBoxNoHPP.Text != "")
+                {
+                    string nama = "";
+                    hpp = HPP.BacaData("noBukti", textBoxNoHPP.Text, ref nama);
+                    if (hpp.Count > 0)
+                    {
+                        
+                        dateTimePickerTglHPP.Text = hpp[0].Tanggal.ToString();
+                        textBoxKodeBrgJadi.Text = hpp[0].BrgJadi;
+                        textBoxNamaBrg.Text = nama;
+                        textBoxQty.Text = hpp[0].Quantity.ToString();
+                        textBoxJmlhProduksi.Focus();
+                    }
+                    else
+                    {
+                        MessageBox.Show("");
+                        textBoxNoHPP.Focus();
+                    }
+                }
+
+                else if (textBoxNoHPP.Text == "")
+                {
+                    dateTimePickerTglHPP.Value = DateTime.Now;
+                    textBoxKodeBrgJadi.Text = "";
+                    textBoxNamaBrg.Text = "";
+                    textBoxJmlhProduksi.Text = "";
+                }
+            }
         }
 
         private void FormPenerimaan_Load(object sender, EventArgs e)
         {
-            dataGridViewHPP.AllowUserToAddRows = false;
-            dataGridViewHPP.ReadOnly = true;
+            
         }
 
         private void buttonSimpan_Click(object sender, EventArgs e)
         {
-            hpp = HPP.BacaData("noBukti", textBoxNoHPP.Text);
 
-            PenerimaanProduksi pp = new PenerimaanProduksi(textBoxNoBukti.Text, dateTimePickerPenerimaan.Value, textBoxNoHPP.Text, dateTimePickerTglHPP.Value,
-                                    textBoxNoHPP.Text, textBoxJmlhProduksi.Text);
-            PenerimaanProduksi.TambahData(pp);
+            if (textBoxNoBukti.Text != "" && textBoxNoHPP.Text != "" && textBoxKodeBrgJadi.Text != "" && textBoxNamaBrg.Text != "" && textBoxQty.Text != "" && textBoxJmlhProduksi.Text != "")
+            {
+                string nama = "";
+                hpp = HPP.BacaData("noBukti", textBoxNoHPP.Text, ref nama);
 
-            MessageBox.Show("Data Berhasil Disimpan");
+                PenerimaanProduksi pp = new PenerimaanProduksi(textBoxNoBukti.Text, dateTimePickerPenerimaan.Value, textBoxNoHPP.Text, dateTimePickerTglHPP.Value,
+                                        textBoxNoHPP.Text, textBoxJmlhProduksi.Text);
+                PenerimaanProduksi.TambahData(pp);
+
+                MessageBox.Show("Data Berhasil Disimpan");
+            }
+            else
+            {
+                MessageBox.Show("Harap Isi Data!");
+            }
 
             textBoxNoBukti.Text = "";
             dateTimePickerPenerimaan.Value = DateTime.Now;
@@ -124,23 +116,6 @@ namespace PT.SPSS
             textBoxJmlhProduksi.Text = "";
             dateTimePickerTglHPP.Value = DateTime.Now;
             textBoxNoBukti.Focus();
-        }
-
-
-        private void dataGridViewHPP_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                DataGridViewRow row = this.dataGridViewHPP.Rows[e.RowIndex];
-                textBoxNoHPP.Text = row.Cells["noBukti"].Value.ToString();
-                dateTimePickerTglHPP.Text = row.Cells["tanggal"].Value.ToString();
-                textBoxKodeBrgJadi.Text = row.Cells["kodeBrg"].Value.ToString();
-                textBoxNamaBrg.Text = row.Cells["namaBrg"].Value.ToString(); ;
-                textBoxQty.Text = row.Cells["quantity"].Value.ToString();
-                textBoxJmlhProduksi.Focus();
-
-            }
-            panelHPP.Visible = false;
         }
     }
 }

@@ -22,7 +22,7 @@ namespace PT.SPSS
         private void DaftarBahanJadi_Load(object sender, EventArgs e)
         {
             FormatDataGrid();
-            listBahanJadi = BarangJadi.BacaData("", "");
+            listBahanJadi = BarangJadi.BacaData("");
 
             DisplayOnDataGrid();
             //if (listBahanJadi.Count > 0)
@@ -82,25 +82,25 @@ namespace PT.SPSS
 
         }
 
-        private void textBoxKriteria_TextChanged(object sender, EventArgs e)
-        {
-            if (comboBoxKriteria.Text == "Kode")
-            {
-                //kriteria = "b.kodeBarang";
-                listBahanJadi = BarangJadi.BacaData("kodeBarang", textBoxKriteria.Text);
-            }
-            else if (comboBoxKriteria.Text == "Nama")
-            {
-                listBahanJadi = BarangJadi.BacaData("nama", textBoxKriteria.Text);
-            }
-            else if (comboBoxKriteria.Text == "Satuan")
-            {
-                //kriteria = "b.satuan";
-                listBahanJadi = BarangJadi.BacaData("satuan", textBoxKriteria.Text);
-            }
+        //private void textBoxKriteria_TextChanged(object sender, EventArgs e)
+        //{
+        //    if (comboBoxKriteria.Text == "Kode")
+        //    {
+        //        //kriteria = "b.kodeBarang";
+        //        listBahanJadi = BarangJadi.BacaData("kodeBarang", textBoxKriteria.Text);
+        //    }
+        //    else if (comboBoxKriteria.Text == "Nama")
+        //    {
+        //        listBahanJadi = BarangJadi.BacaData("nama", textBoxKriteria.Text);
+        //    }
+        //    else if (comboBoxKriteria.Text == "Satuan")
+        //    {
+        //        //kriteria = "b.satuan";
+        //        listBahanJadi = BarangJadi.BacaData("satuan", textBoxKriteria.Text);
+        //    }
 
-            DisplayOnDataGrid();
-        }
+        //    DisplayOnDataGrid();
+        //}
 
 
     }

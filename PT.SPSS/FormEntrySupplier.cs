@@ -30,16 +30,24 @@ namespace PT.SPSS
 
         private void buttonHapus_Click(object sender, EventArgs e)
         {
-            try
+            if (textBoxKodeSupplier.Text != "" && textBoxNamaSupplier.Text != "" && textBoxAlamat.Text != "" && textBoxKota.Text != "")
             {
-                Supplier s = new Supplier(textBoxKodeSupplier.Text, textBoxNamaSupplier.Text, textBoxAlamat.Text, textBoxKota.Text);
-                Supplier.HapusData(s);
-                MessageBox.Show("Hapus data supplier berhasil.", "Informasi");
+                try
+                {
+                    Supplier s = new Supplier(textBoxKodeSupplier.Text, textBoxNamaSupplier.Text, textBoxAlamat.Text, textBoxKota.Text);
+                    Supplier.HapusData(s);
+                    MessageBox.Show("Hapus data supplier berhasil.", "Informasi");
+                }
+
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Gagal menghapus supplier. Pesan Kesalahan : " + ex.Message);
+                }
             }
 
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show("Gagal menghapus supplier. Pesan Kesalahan : " + ex.Message);
+                MessageBox.Show("Harap Isi Data!");
             }
 
             textBoxKodeSupplier.Text = "";
@@ -63,32 +71,46 @@ namespace PT.SPSS
         {
             if (baru == true)
             {
-                try
+                if (textBoxKodeSupplier.Text != "" && textBoxNamaSupplier.Text != "" && textBoxAlamat.Text != "" && textBoxKota.Text != "")
                 {
-                    Supplier s = new Supplier(textBoxKodeSupplier.Text, textBoxNamaSupplier.Text, textBoxAlamat.Text, textBoxKota.Text);
-                    Supplier.TambahData(s);
+                    try
+                    {
+                        Supplier s = new Supplier(textBoxKodeSupplier.Text, textBoxNamaSupplier.Text, textBoxAlamat.Text, textBoxKota.Text);
+                        Supplier.TambahData(s);
 
-                    MessageBox.Show("Data Berhasil Disimpan");
+                        MessageBox.Show("Data Berhasil Disimpan");
+                    }
+
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Gagal Menyimpan. Kesalahan : " + ex.Message);
+                    }
                 }
-
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show("Gagal Menyimpan. Kesalahan : " + ex.Message);
+                    MessageBox.Show("Harap Isi Data!");
                 }
             }
 
             else
             {
-                try
+                if (textBoxKodeSupplier.Text != "" && textBoxNamaSupplier.Text != "" && textBoxAlamat.Text != "" && textBoxKota.Text != "")
                 {
-                    Supplier s = new Supplier(textBoxKodeSupplier.Text, textBoxNamaSupplier.Text, textBoxAlamat.Text, textBoxKota.Text);
-                    Supplier.UbahData(s);
-                    MessageBox.Show("Pengubahan berhasil.", "Informasi");
-                }
+                    try
+                    {
+                        Supplier s = new Supplier(textBoxKodeSupplier.Text, textBoxNamaSupplier.Text, textBoxAlamat.Text, textBoxKota.Text);
+                        Supplier.UbahData(s);
+                        MessageBox.Show("Pengubahan berhasil.", "Informasi");
+                    }
 
-                catch (Exception ex)
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Pengubahan gagal. Pesan Kesalahan : " + ex.Message, "Kesalahan");
+                    }
+                }
+                else
                 {
-                    MessageBox.Show("Pengubahan gagal. Pesan Kesalahan : " + ex.Message, "Kesalahan");
+                    MessageBox.Show("Harap Isi Data!");
                 }
             }
 
@@ -110,14 +132,8 @@ namespace PT.SPSS
         {
             if (e.KeyCode == Keys.Enter)
             {
-                if (textBoxKodeSupplier.Text.Length < 5)
-                {
-                    MessageBox.Show("Kode harus 5 karakter");
-                }
-
-                else if (textBoxKodeSupplier.Text.Length == 5)
-                {
-                    listSupplier = Supplier.BacaData("kodeSupplier", textBoxKodeSupplier.Text);
+                
+                    listSupplier = Supplier.BacaData("kodeSupplier",textBoxKodeSupplier.Text);
                     if (listSupplier.Count > 0)
                     {
                         baru = false;
@@ -131,20 +147,6 @@ namespace PT.SPSS
                         baru = true;
                         textBoxNamaSupplier.Focus();
                     }
-                }
-
-                //else
-                //{
-                //    textBoxNamaSupplier.Text = "";
-                //    textBoxAlamat.Text = "";
-                //    textBoxKota.Text = "";
-                //}
-                else if (textBoxKodeSupplier.Text == "")
-                {
-                    textBoxNamaSupplier.Text = "";
-                    textBoxAlamat.Text = "";
-                    textBoxKota.Text = "";
-                }
             }
 
             
