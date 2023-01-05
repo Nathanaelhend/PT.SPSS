@@ -62,7 +62,7 @@ namespace PT.SPSS
 
             else
             {
-                if (textBoxKode.Text != "" && textBoxKeterangan.Text != "")
+                if (textBoxKode.Text != "")
                 {
                     try
                     {
@@ -75,12 +75,13 @@ namespace PT.SPSS
                     {
                         MessageBox.Show("Pengubahan gagal. Pesan Kesalahan : " + ex.Message, "Kesalahan");
                     }
-
                 }
                 else
                 {
                     MessageBox.Show("Harap Isi data!");
                 }
+
+               
             }
 
             textBoxKode.Focus();

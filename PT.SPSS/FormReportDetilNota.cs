@@ -62,6 +62,11 @@ namespace PT.SPSS
                 this.nota_beli_detailTableAdapter.FilterBahan(this.pt_spss_kpDataSet.nota_beli_detail, bhnBaku.Nama);
                 this.reportViewer1.RefreshReport();
             }
+            else
+            {
+                this.nota_beli_detailTableAdapter.Fill(this.pt_spss_kpDataSet.nota_beli_detail);
+                this.reportViewer1.RefreshReport();
+            }
         }
 
         private void radioButtonTanggal_CheckedChanged(object sender, EventArgs e)

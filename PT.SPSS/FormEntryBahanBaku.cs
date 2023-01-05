@@ -39,35 +39,53 @@ namespace PT.SPSS
         {
             if (baru == true)
             {
-                try
+                if (textBoxKodeBhnBaku.Text != "" && textBoxNama.Text != "" && textBoxHarga.Text != "" && textBoxSatuan.Text != "")
                 {
-                    KategoriBahanBaku kbb = (KategoriBahanBaku)comboKatBhnBaku.SelectedItem;
-                    BahanBaku b = new BahanBaku(textBoxKodeBhnBaku.Text, textBoxNama.Text, int.Parse(textBoxHarga.Text), textBoxSatuan.Text, kbb);
-                    BahanBaku.TambahData(b);
+                    try
+                    {
+                        KategoriBahanBaku kbb = (KategoriBahanBaku)comboKatBhnBaku.SelectedItem;
+                        BahanBaku b = new BahanBaku(textBoxKodeBhnBaku.Text, textBoxNama.Text, int.Parse(textBoxHarga.Text), textBoxSatuan.Text, kbb);
+                        BahanBaku.TambahData(b);
 
-                    MessageBox.Show("Data Berhasil Disimpan");
+                        MessageBox.Show("Data Berhasil Disimpan");
+                    }
+
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Gagal Menyimpan. Kesalahan : " + ex.Message);
+                    }
                 }
-
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show("Gagal Menyimpan. Kesalahan : " + ex.Message);
+                    MessageBox.Show("Harap Isi Data!");
                 }
+            
             }
 
             else
             {
-                try
+                if (textBoxKodeBhnBaku.Text != "" && textBoxNama.Text != "" && textBoxHarga.Text != "" && textBoxSatuan.Text != "")
                 {
-                    KategoriBahanBaku kbb = (KategoriBahanBaku)comboKatBhnBaku.SelectedItem;
-                    BahanBaku b = new BahanBaku(textBoxKodeBhnBaku.Text, textBoxNama.Text, int.Parse(textBoxHarga.Text), textBoxSatuan.Text, kbb);
-                    BahanBaku.UbahData(b);
-                    MessageBox.Show("Pengubahan berhasil.", "Informasi");
-                }
+                    try
+                    {
+                        KategoriBahanBaku kbb = (KategoriBahanBaku)comboKatBhnBaku.SelectedItem;
+                        BahanBaku b = new BahanBaku(textBoxKodeBhnBaku.Text, textBoxNama.Text, int.Parse(textBoxHarga.Text), textBoxSatuan.Text, kbb);
+                        BahanBaku.UbahData(b);
+                        MessageBox.Show("Pengubahan berhasil.", "Informasi");
+                    }
 
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Pengubahan gagal. Pesan Kesalahan : " + ex.Message, "Kesalahan");
+
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Pengubahan gagal. Pesan Kesalahan : " + ex.Message, "Kesalahan");
+                    }
                 }
+                else
+                {
+                    MessageBox.Show("Harap Isi data!");
+                }
+                
+                
             }
         }
 

@@ -71,7 +71,7 @@ namespace PT.SPSS
 
             else
             {
-                if (textBoxKodeCatBB.Text != "" && textBoxKeterangan.Text != "")
+                if (textBoxKodeCatBB.Text != "")
                 {
                     try
                     {
@@ -87,8 +87,9 @@ namespace PT.SPSS
                 }
                 else
                 {
-                    MessageBox.Show("Harap Isi Data!");
+                    MessageBox.Show("Harap Isi data!");
                 }
+              
             }
 
             textBoxKodeCatBB.Focus();

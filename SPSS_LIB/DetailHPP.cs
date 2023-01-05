@@ -9,11 +9,11 @@ namespace SPSS_LIB
     public class DetailHPP
     {
         private string kode;
-        private int quantity;
-        private int harga;
-        private int jumlah;
+        private double quantity;
+        private double harga;
+        private double jumlah;
 
-        public DetailHPP(string kode, int quantity, int harga, int jumlah)
+        public DetailHPP(string kode, double quantity, double harga, double jumlah)
         {
             this.Kode = kode;
             this.Quantity = quantity;
@@ -22,8 +22,8 @@ namespace SPSS_LIB
         }
 
         public string Kode { get => kode; set => kode = value; }
-        public int Quantity { get => quantity; set => quantity = value; }
-        public int Harga { get => harga; set => harga = value; }
-        public int Jumlah { get => jumlah; set => jumlah = value; }
+        public double Quantity { get => quantity; set => quantity = value; }
+        public double Harga { get => harga; set => harga = value; }
+        public double Jumlah { get => jumlah; set => jumlah = value; }
     }
 }

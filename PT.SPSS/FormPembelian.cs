@@ -165,61 +165,75 @@ namespace PT.SPSS
 
         private void buttonSimpan_Click(object sender, EventArgs e)
         {
-            try
+            if (textBoxNoNota.Text != "" && textBoxSupplier.Text != "" & textBoxDiscPrsAll.Text != "" && textBoxDiscRpAll.Text != "" && textBoxDpp.Text != "" && textBoxNetto.Text != "")
             {
-                //string supplierDipilih = textBoxSupplier.Text;
-
-                pembelian = new Pembelian(textBoxNoNota.Text, dateTimePicker.Value, textBoxSupplier.Text, int.Parse(textBoxJmlhAll.Text),
-                double.Parse(textBoxDiscPrsAll.Text), int.Parse(textBoxDiscRpAll.Text), int.Parse(textBoxDpp.Text), double.Parse(textBoxPPnPrs.Text), int.Parse(textBoxPPnRp.Text), int.Parse(textBoxNetto.Text));
-
-                
-                for (int i = 0; i < dataGridViewPembelian.Rows.Count; i++)
+                try
                 {
 
-                    string kodeBahan = dataGridViewPembelian.Rows[i].Cells["kode"].Value.ToString();
-                    
-                    int qty = int.Parse(dataGridViewPembelian.Rows[i].Cells["quantity"].Value.ToString());
-                    int harga = int.Parse(dataGridViewPembelian.Rows[i].Cells["harga"].Value.ToString());
-                    int jumlah = int.Parse(dataGridViewPembelian.Rows[i].Cells["jumlah"].Value.ToString());
-                    double discPrs = double.Parse(dataGridViewPembelian.Rows[i].Cells["diskon_persen"].Value.ToString());
-                    int discRph = int.Parse(dataGridViewPembelian.Rows[i].Cells["diskon_rph"].Value.ToString());
-                    int total = int.Parse(dataGridViewPembelian.Rows[i].Cells["total_harga"].Value.ToString());
+                    pembelian = new Pembelian(textBoxNoNota.Text, dateTimePicker.Value, textBoxSupplier.Text, int.Parse(textBoxJmlhAll.Text),
+                    double.Parse(textBoxDiscPrsAll.Text), int.Parse(textBoxDiscRpAll.Text), int.Parse(textBoxDpp.Text), double.Parse(textBoxPPnPrs.Text), int.Parse(textBoxPPnRp.Text), int.Parse(textBoxNetto.Text));
 
-                    pembelian.TambahPembelianDetil(kodeBahan, qty, harga, jumlah, discPrs, discRph, total);
+
+                    for (int i = 0; i < dataGridViewPembelian.Rows.Count; i++)
+                    {
+
+                        string kodeBahan = dataGridViewPembelian.Rows[i].Cells["kode"].Value.ToString();
+
+                        int qty = int.Parse(dataGridViewPembelian.Rows[i].Cells["quantity"].Value.ToString());
+                        int harga = int.Parse(dataGridViewPembelian.Rows[i].Cells["harga"].Value.ToString());
+                        int jumlah = int.Parse(dataGridViewPembelian.Rows[i].Cells["jumlah"].Value.ToString());
+                        double discPrs = double.Parse(dataGridViewPembelian.Rows[i].Cells["diskon_persen"].Value.ToString());
+                        int discRph = int.Parse(dataGridViewPembelian.Rows[i].Cells["diskon_rph"].Value.ToString());
+                        int total = int.Parse(dataGridViewPembelian.Rows[i].Cells["total_harga"].Value.ToString());
+
+                        int dpp = (total * int.Parse(textBoxDiscPrsAll.Text)) / 100;
+
+                        dpp = total - dpp;
+
+                        int hargaNett = (dpp + (dpp * int.Parse(textBoxPPnPrs.Text) / 100)) / qty;
+
+                        pembelian.TambahPembelianDetil(kodeBahan, qty, harga, jumlah, hargaNett, discPrs, discRph, total);
+                    }
+
+                    Pembelian.TambahData(pembelian);
+
+
+                    MessageBox.Show("Data nota Beli berhasil tersimpan.", "Informasi");
+
+                    textBoxNoNota.Text = "";
+                    textBoxNamaBahan.Text = "";
+                    dateTimePicker.Value = DateTime.Now;
+                    textBoxQty.Text = "";
+                    textBoxHarga.Text = "";
+                    textBoxJumlah.Text = "";
+                    textBoxDiscPrs.Text = "";
+                    textBoxDiscRp.Text = "";
+                    textBoxTotal.Text = "";
+                    textBoxSupplier.Text = "";
+                    textBoxNamaSupp.Text = "";
+                    textBoxAlamat.Text = "";
+                    textBoxJmlhAll.Text = "";
+                    textBoxDiscPrsAll.Text = "";
+                    textBoxDiscRpAll.Text = "";
+                    textBoxDpp.Text = "";
+                    textBoxPPnPrs.Text = "";
+                    textBoxPPnRp.Text = "";
+                    textBoxNetto.Text = "";
+                    textBoxNoNota.Focus();
+                    dataGridViewPembelian.Columns.Clear();
                 }
 
-                Pembelian.TambahData(pembelian);
-
-                MessageBox.Show("Data nota Beli berhasil tersimpan.", "Informasi");
-
-                textBoxNoNota.Text = "";
-                textBoxNamaBahan.Text = "";
-                dateTimePicker.Value = DateTime.Now;
-                textBoxQty.Text = "";
-                textBoxHarga.Text = "";
-                textBoxJumlah.Text = "";
-                textBoxDiscPrs.Text = "";
-                textBoxDiscRp.Text = "";
-                textBoxTotal.Text = "";
-                textBoxSupplier.Text = "";
-                textBoxNamaSupp.Text = "";
-                textBoxAlamat.Text = "";
-                textBoxJmlhAll.Text = "";
-                textBoxDiscPrsAll.Text = "";
-                textBoxDiscRpAll.Text = "";
-                textBoxDpp.Text = "";
-                textBoxPPnPrs.Text = "";
-                textBoxPPnRp.Text = "";
-                textBoxNetto.Text = "";
-                textBoxNoNota.Focus();
-                dataGridViewPembelian.Columns.Clear();
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Gagal menyimpan nota. Pesan kesalahan : " + ex.Message, "Kesalahan");
+                }
             }
-
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show("Gagal menyimpan nota. Pesan kesalahan : " + ex.Message, "Kesalahan");
+                MessageBox.Show("Harap Isi Data!");
             }
         }
+            
 
         private void DisplayOnDataGrid()
         {

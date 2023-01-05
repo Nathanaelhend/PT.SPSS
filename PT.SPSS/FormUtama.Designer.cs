@@ -39,15 +39,14 @@ namespace PT.SPSS
             this.penjualanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pembelianToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.DaftarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.daftarSupplierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.bahanBakuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.barangJadiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportPembelianToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportDetailPembelianToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportPenerimanProduksiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sisaProduksiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.penerimaanProduksiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.keluarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.orderPotongHPPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.orderPotongPerBarangToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -130,36 +129,15 @@ namespace PT.SPSS
             // DaftarToolStripMenuItem
             // 
             this.DaftarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.daftarSupplierToolStripMenuItem,
-            this.bahanBakuToolStripMenuItem,
-            this.barangJadiToolStripMenuItem,
             this.reportPembelianToolStripMenuItem,
             this.reportDetailPembelianToolStripMenuItem,
             this.reportPenerimanProduksiToolStripMenuItem,
-            this.sisaProduksiToolStripMenuItem});
+            this.sisaProduksiToolStripMenuItem,
+            this.orderPotongHPPToolStripMenuItem,
+            this.orderPotongPerBarangToolStripMenuItem});
             this.DaftarToolStripMenuItem.Name = "DaftarToolStripMenuItem";
             this.DaftarToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
             this.DaftarToolStripMenuItem.Text = "Report";
-            // 
-            // daftarSupplierToolStripMenuItem
-            // 
-            this.daftarSupplierToolStripMenuItem.Name = "daftarSupplierToolStripMenuItem";
-            this.daftarSupplierToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.daftarSupplierToolStripMenuItem.Text = "Supplier";
-            // 
-            // bahanBakuToolStripMenuItem
-            // 
-            this.bahanBakuToolStripMenuItem.Name = "bahanBakuToolStripMenuItem";
-            this.bahanBakuToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.bahanBakuToolStripMenuItem.Text = "Bahan Baku";
-            this.bahanBakuToolStripMenuItem.Click += new System.EventHandler(this.bahanBakuToolStripMenuItem_Click);
-            // 
-            // barangJadiToolStripMenuItem
-            // 
-            this.barangJadiToolStripMenuItem.Name = "barangJadiToolStripMenuItem";
-            this.barangJadiToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.barangJadiToolStripMenuItem.Text = "Barang Jadi";
-            this.barangJadiToolStripMenuItem.Click += new System.EventHandler(this.barangJadiToolStripMenuItem_Click);
             // 
             // reportPembelianToolStripMenuItem
             // 
@@ -203,6 +181,20 @@ namespace PT.SPSS
             this.keluarToolStripMenuItem.Text = "Keluar";
             this.keluarToolStripMenuItem.Click += new System.EventHandler(this.keluarToolStripMenuItem_Click);
             // 
+            // orderPotongHPPToolStripMenuItem
+            // 
+            this.orderPotongHPPToolStripMenuItem.Name = "orderPotongHPPToolStripMenuItem";
+            this.orderPotongHPPToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.orderPotongHPPToolStripMenuItem.Text = "Order Potong/HPP";
+            this.orderPotongHPPToolStripMenuItem.Click += new System.EventHandler(this.orderPotongHPPToolStripMenuItem_Click);
+            // 
+            // orderPotongPerBarangToolStripMenuItem
+            // 
+            this.orderPotongPerBarangToolStripMenuItem.Name = "orderPotongPerBarangToolStripMenuItem";
+            this.orderPotongPerBarangToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
+            this.orderPotongPerBarangToolStripMenuItem.Text = "Order Potong Per Barang";
+            this.orderPotongPerBarangToolStripMenuItem.Click += new System.EventHandler(this.orderPotongPerBarangToolStripMenuItem_Click);
+            // 
             // FormUtama
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -232,13 +224,12 @@ namespace PT.SPSS
         private System.Windows.Forms.ToolStripMenuItem kodeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem kategoriBahanBakuToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem keluarToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem daftarSupplierToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem bahanBakuToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem barangJadiToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem penerimaanProduksiToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reportPembelianToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reportDetailPembelianToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reportPenerimanProduksiToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sisaProduksiToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem orderPotongHPPToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem orderPotongPerBarangToolStripMenuItem;
     }
 }

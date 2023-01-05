@@ -129,7 +129,7 @@ namespace SPSS_LIB
             {
                 //sql = "SELECT nbd.id_barang_baku, b.nama, nbd.harga, b.satuan, b.kodeKatBahanBaku, kbb.Nama FROM nota_beli_detail nbd " + 
                 //      " INNER JOIN bahan_baku b ON nbd.id_barang_baku = b.kode inner join kategori_bahan_baku kbb on b.kodeKatBahanBaku = kbb.kodeBahan WHERE id_barang_baku = nbd.id_barang_baku ORDER BY nbd.tanggal DESC LIMIT 1";
-                sql = "SELECT nbd.id_barang_baku, b.nama, nbd.harga, b.satuan, b.kodeKatBahanBaku, kbb.Nama " +
+                sql = "SELECT nbd.id_barang_baku, b.nama,nbd.hargaNett, b.satuan, b.kodeKatBahanBaku, kbb.Nama " +
                     " FROM bahan_baku b INNER JOIN nota_beli_detail nbd ON b.kode = nbd.id_barang_baku INNER JOIN kategori_bahan_baku kbb ON b.kodeKatBahanBaku = kbb.kodeBahan, " +
                     " (SELECT id_barang_baku,MAX(tanggal)AS tanggal,harga FROM nota_beli_detail GROUP BY id_barang_baku) max_sales where nbd.id_barang_baku=max_sales.id_barang_baku and nbd.tanggal=max_sales.tanggal";
 
@@ -137,7 +137,7 @@ namespace SPSS_LIB
             else
             {
                 //sql = "select * from supplier where " + kriteria + " like '%" + nilaiKriteria + "%'";
-                sql = "SELECT nbd.id_barang_baku, b.nama, nbd.harga, b.satuan, b.kodeKatBahanBaku, kbb.Nama FROM nota_beli_detail nbd " +
+                sql = "SELECT nbd.id_barang_baku, b.nama, nbd.hargaNett, b.satuan, b.kodeKatBahanBaku, kbb.Nama FROM nota_beli_detail nbd " +
                       " INNER JOIN bahan_baku b ON nbd.id_barang_baku = b.kode inner join kategori_bahan_baku kbb on b.kodeKatBahanBaku = kbb.kodeBahan " +
                       " WHERE id_barang_baku = nbd.id_barang_baku ORDER BY nbd.tanggal DESC LIMIT 1";
             }

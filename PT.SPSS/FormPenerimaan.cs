@@ -22,10 +22,6 @@ namespace PT.SPSS
             InitializeComponent();
         }
 
-       
-
-        
-
         private void textBoxNoHPP_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -79,7 +75,7 @@ namespace PT.SPSS
                 hpp = HPP.BacaData("noBukti", textBoxNoHPP.Text, ref nama);
 
                 PenerimaanProduksi pp = new PenerimaanProduksi(textBoxNoBukti.Text, dateTimePickerPenerimaan.Value, textBoxNoHPP.Text, dateTimePickerTglHPP.Value,
-                                        textBoxNoHPP.Text, textBoxJmlhProduksi.Text);
+                                        textBoxKodeBrgJadi.Text, textBoxJmlhProduksi.Text);
                 PenerimaanProduksi.TambahData(pp);
 
                 MessageBox.Show("Data Berhasil Disimpan");

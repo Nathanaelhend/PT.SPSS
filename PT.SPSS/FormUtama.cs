@@ -216,18 +216,18 @@ namespace PT.SPSS
             frmSisaProduksi.Show();
         }
 
-        //private void penerimaanProduksiToolStripMenuItem_Click(object sender, EventArgs e)
-        //{
-        //    PenerimaanProduksi frmPenerimaan = new PenerimaanProduksi();
-        //    frmPenerimaan.Owner = this;
-        //    frmPenerimaan.Show();
-        //}
+        private void orderPotongHPPToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormReportHPP frmHpp = new FormReportHPP();
+            frmHpp.Owner = this;
+            frmHpp.Show();
+        }
 
-        //private void reportPembelianToolStripMenuItem_Click(object sender, EventArgs e)
-        //{
-        //    FormReport frmReportPembelian = new FormReport();
-        //    frmReportPembelian.Owner = this;
-        //    frmReportPembelian.Show();
-        //}
+        private void orderPotongPerBarangToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormReportOrderPotongBarang frmOrder = new FormReportOrderPotongBarang();
+            frmOrder.Owner = this;
+            frmOrder.Show();
+        }
     }
 }

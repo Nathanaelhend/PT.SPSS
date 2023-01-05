@@ -90,9 +90,8 @@ namespace PT.SPSS
             // textBoxKode
             // 
             this.textBoxKode.Location = new System.Drawing.Point(114, 60);
-            this.textBoxKode.Multiline = true;
             this.textBoxKode.Name = "textBoxKode";
-            this.textBoxKode.Size = new System.Drawing.Size(240, 26);
+            this.textBoxKode.Size = new System.Drawing.Size(240, 20);
             this.textBoxKode.TabIndex = 70;
             this.textBoxKode.TextChanged += new System.EventHandler(this.textBoxKode_TextChanged);
             // 

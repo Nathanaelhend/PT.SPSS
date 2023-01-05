@@ -58,9 +58,9 @@ namespace SPSS_LIB
         #endregion
 
         #region Methods
-        public void TambahPembelianDetil(string kode, int quantity, int harga, int jumlah, double discPersen, int discRph, int netto)
+        public void TambahPembelianDetil(string kode, int quantity, int harga, int jumlah, int hargaNett, double discPersen, int discRph, int netto)
         {
-            PembelianDetail notaBeliDetil = new PembelianDetail(kode, quantity, harga, jumlah, discPersen, discRph, netto);
+            PembelianDetail notaBeliDetil = new PembelianDetail(kode, quantity, harga, jumlah, hargaNett, discPersen, discRph, netto);
 
             this.ListBeliDetail.Add(notaBeliDetil);
         }
@@ -79,9 +79,9 @@ namespace SPSS_LIB
 
                     foreach (PembelianDetail pembelianDetail in pembelian.ListBeliDetail)
                     {
-                        string sql2 = "insert into nota_beli_detail(nomor_nota_beli, id_barang_baku, quantity, harga, tanggal, supplier_id, jumlah, diskon_persen, diskon_rph, total_harga) VALUES('" + pembelian.NoNota + "','" +
+                        string sql2 = "insert into nota_beli_detail(nomor_nota_beli, id_barang_baku, quantity, harga, tanggal, supplier_id, jumlah, hargaNett, diskon_persen, diskon_rph, total_harga) VALUES('" + pembelian.NoNota + "','" +
                                        pembelianDetail.Kode + "','" + pembelianDetail.Quantity + "','" + pembelianDetail.Harga + "','" + pembelian.Tanggal.ToString("yyyy-MM-dd hh:mm:ss") +
-                                       "','" + pembelian.Supplier + "','" + pembelianDetail.Jumlah + "','" + pembelianDetail.DiscPersen + "','" +
+                                       "','" + pembelian.Supplier + "','" + pembelianDetail.Jumlah + "','" + pembelianDetail.HargaNett + "','" + pembelianDetail.DiscPersen + "','" +
                                        pembelianDetail.DiscRph + "','" + pembelianDetail.TotalHarga + "')";
 
                         Koneksi.JalankanPerintahDML(sql2);
@@ -139,7 +139,7 @@ namespace SPSS_LIB
                 Pembelian nota = new Pembelian(noNota, tanggal, supplier, jumlah, discPersen, discRph, dpp, ppnPersen, ppnRph, netto);
 
 
-                string sql2 = "select nbd.id_barang_baku, nbd.quantity, nbd.harga, nbd.jumlah, nbd.diskon_persen, nbd.diskon_rph, nbd.total_harga" +
+                string sql2 = "select nbd.id_barang_baku, nbd.quantity, nbd.harga, nbd.jumlah, nbd.hargaNett, nbd.diskon_persen, nbd.diskon_rph, nbd.total_harga" +
                     " FROM nota_beli N INNER JOIN nota_beli_detail NBD ON N.no_nota = NBD.nomor_nota_beli " +
                      
                     " WHERE N.no_nota = '" + noNota + "'";
@@ -156,14 +156,15 @@ namespace SPSS_LIB
                     int qty = int.Parse(hasilData2.GetValue(1).ToString());
                     int harga = int.Parse(hasilData2.GetValue(2).ToString());
                     int jum = int.Parse(hasilData2.GetValue(3).ToString());
-                    double discPrs = double.Parse(hasilData2.GetValue(4).ToString());
-                    int discRp = int.Parse(hasilData2.GetValue(5).ToString());
-                    int total = int.Parse(hasilData2.GetValue(6).ToString());
+                    int hargaNett = int.Parse(hasilData2.GetValue(4).ToString());
+                    double discPrs = double.Parse(hasilData2.GetValue(5).ToString());
+                    int discRp = int.Parse(hasilData2.GetValue(6).ToString());
+                    int total = int.Parse(hasilData2.GetValue(7).ToString());
 
-                    PembelianDetail detilBeli = new PembelianDetail(kode, qty, harga, jum, discPrs, discRp, total);
+                    PembelianDetail detilBeli = new PembelianDetail(kode, qty, harga, jum, hargaNett, discPrs, discRp, total);
 
 
-                    nota.TambahPembelianDetil(kode, qty, harga, jum, discPrs, discRp, total);
+                    nota.TambahPembelianDetil(kode, qty, harga, jum, hargaNett, discPrs, discRp, total);
                 }
 
                 listHasilData.Add(nota);
@@ -239,59 +240,6 @@ namespace SPSS_LIB
             return listHasilData;
         }
 
-        public static void CetakNota(string pKriteria, string pNilaiKriteria, string pNamaFile, Font pFont)
-        {
-            List<Pembelian> listNotaBeli = new List<Pembelian>();
-
-            //baca data nota tertentu yg akan dicetak
-            listNotaBeli = Pembelian.BacaData(pKriteria, pNilaiKriteria);
-
-            //simpan dulu isi nota yang akan ditampilkan ke objek file (StreamWriter)
-            StreamWriter file = new StreamWriter(pNamaFile);
-
-            foreach (Pembelian nota in listNotaBeli)
-            {
-                //tampilkan info perusahaan
-                file.WriteLine("");
-                file.WriteLine("REKAP PEMBELIAN");
-                file.WriteLine("=".PadRight(50, '='));
-
-                //tampilkan header nota
-                file.WriteLine("No.Nota : " + nota.NoNota);
-                file.WriteLine("Tanggal : " + nota.Tanggal);
-                file.WriteLine("");
-                file.WriteLine("=".PadRight(50, '='));
-
-                //tampilkan barang yang terjual
-                int grandTotal = 0; //untuk menampilkan grand total nota
-                foreach (PembelianDetail nbd in nota.ListBeliDetail)
-                {
-                    //string nama = nbd.Tipe.Nama;
-                    //jika nama terlalu panjang maka hanya tampilkan 30 karakter pertama saja
-                    //if (nama.Length > 30)
-                    //{
-                    //    nama = nama.Substring(0, 30);
-                    //}
-                    int jumlah = nbd.Jumlah;
-                    int harga = nbd.Harga;
-                    int subTotal = jumlah * harga;
-                    file.Write(jumlah.ToString().PadRight(3, ' '));
-                    file.Write(harga.ToString("#,###").PadRight(7, ' ')); //agar harga ditampilkan dengan pemisah ribuan
-                    file.Write(subTotal.ToString("#,###").PadRight(20, ' ')); //agar subTotal ditampilkan dengan pemisah ribuan
-                    file.WriteLine("");
-                    grandTotal += subTotal;
-                }
-                file.WriteLine("=".PadRight(50, '='));
-                file.WriteLine("TOTAL : " + grandTotal.ToString("#,###"));
-                file.WriteLine("=".PadRight(50, '='));
-
-                file.WriteLine("");
-            }
-            file.Close();
-            //cetak ke printer
-            //Cetak c = new Cetak(pNamaFile, pFont, 20, 10, 10, 10);
-           // c.CetakKePrinter("text");
-        }
 
         public static double HitungDisc(int jumlah, int persen)
         {

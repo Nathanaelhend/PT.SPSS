@@ -48,6 +48,11 @@ namespace PT.SPSS
                 this.penerimaan_produksiTableAdapter.filterBarang(this.pt_spss_kpDataSet.penerimaan_produksi, brgJadi.Nama);
                 this.reportViewer1.RefreshReport();
             }
+            else
+            {
+                this.penerimaan_produksiTableAdapter.Fill(this.pt_spss_kpDataSet.penerimaan_produksi);
+                this.reportViewer1.RefreshReport();
+            }
         }
 
         private void radioButtonTanggal_CheckedChanged(object sender, EventArgs e)

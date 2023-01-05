@@ -55,6 +55,10 @@ namespace PT.SPSS
                     this.Owner.Enabled = true;
                     this.Close();
                 }
+                else
+                {
+                    MessageBox.Show("Harap Isi Username!");
+                }
             }
             catch(Exception ex)
             {

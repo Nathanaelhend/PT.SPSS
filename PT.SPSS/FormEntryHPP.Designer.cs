@@ -34,6 +34,7 @@ namespace PT.SPSS
             this.textBoxNoBukti = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.textBoxKodeBB = new System.Windows.Forms.TextBox();
             this.buttonHapus = new System.Windows.Forms.Button();
             this.buttonSimpan = new System.Windows.Forms.Button();
             this.buttonBatal = new System.Windows.Forms.Button();
@@ -52,6 +53,7 @@ namespace PT.SPSS
             this.dateTimeDeadline = new System.Windows.Forms.DateTimePicker();
             this.label13 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.textBoxKodeBrgJadi = new System.Windows.Forms.TextBox();
             this.textBoxQty = new System.Windows.Forms.TextBox();
             this.textBoxHPP = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -60,11 +62,9 @@ namespace PT.SPSS
             this.label5 = new System.Windows.Forms.Label();
             this.textBoxNamaBrg = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBoxKodeBrgJadi = new System.Windows.Forms.TextBox();
             this.panelBrgJadi = new System.Windows.Forms.Panel();
             this.textBoxNama = new System.Windows.Forms.TextBox();
             this.dataGridViewBrgJadi = new System.Windows.Forms.DataGridView();
-            this.textBoxKodeBB = new System.Windows.Forms.TextBox();
             this.panelBB = new System.Windows.Forms.Panel();
             this.textBoxNamaBB = new System.Windows.Forms.TextBox();
             this.dataGridViewBB = new System.Windows.Forms.DataGridView();
@@ -138,6 +138,15 @@ namespace PT.SPSS
             this.groupBox3.TabIndex = 53;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Detail Bahan Baku/Penolong";
+            // 
+            // textBoxKodeBB
+            // 
+            this.textBoxKodeBB.Location = new System.Drawing.Point(140, 35);
+            this.textBoxKodeBB.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxKodeBB.Name = "textBoxKodeBB";
+            this.textBoxKodeBB.Size = new System.Drawing.Size(126, 27);
+            this.textBoxKodeBB.TabIndex = 30;
+            this.textBoxKodeBB.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxKodeBB_KeyDown);
             // 
             // buttonHapus
             // 
@@ -335,12 +344,21 @@ namespace PT.SPSS
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Informasi Barang Jadi";
             // 
+            // textBoxKodeBrgJadi
+            // 
+            this.textBoxKodeBrgJadi.Location = new System.Drawing.Point(120, 29);
+            this.textBoxKodeBrgJadi.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxKodeBrgJadi.Name = "textBoxKodeBrgJadi";
+            this.textBoxKodeBrgJadi.Size = new System.Drawing.Size(209, 27);
+            this.textBoxKodeBrgJadi.TabIndex = 31;
+            this.textBoxKodeBrgJadi.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxKodeBrgJadi_KeyDown);
+            // 
             // textBoxQty
             // 
             this.textBoxQty.Location = new System.Drawing.Point(121, 64);
             this.textBoxQty.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxQty.Name = "textBoxQty";
-            this.textBoxQty.Size = new System.Drawing.Size(97, 27);
+            this.textBoxQty.Size = new System.Drawing.Size(136, 27);
             this.textBoxQty.TabIndex = 30;
             this.textBoxQty.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxQty_KeyDown);
             // 
@@ -353,7 +371,7 @@ namespace PT.SPSS
             this.textBoxHPP.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxHPP.Multiline = true;
             this.textBoxHPP.Name = "textBoxHPP";
-            this.textBoxHPP.Size = new System.Drawing.Size(97, 27);
+            this.textBoxHPP.Size = new System.Drawing.Size(136, 27);
             this.textBoxHPP.TabIndex = 16;
             // 
             // label12
@@ -375,7 +393,7 @@ namespace PT.SPSS
             this.textBoxJumlah.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxJumlah.Multiline = true;
             this.textBoxJumlah.Name = "textBoxJumlah";
-            this.textBoxJumlah.Size = new System.Drawing.Size(97, 27);
+            this.textBoxJumlah.Size = new System.Drawing.Size(136, 27);
             this.textBoxJumlah.TabIndex = 14;
             // 
             // label11
@@ -421,15 +439,6 @@ namespace PT.SPSS
             this.label4.TabIndex = 8;
             this.label4.Text = "Barang Jadi :";
             // 
-            // textBoxKodeBrgJadi
-            // 
-            this.textBoxKodeBrgJadi.Location = new System.Drawing.Point(120, 29);
-            this.textBoxKodeBrgJadi.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxKodeBrgJadi.Name = "textBoxKodeBrgJadi";
-            this.textBoxKodeBrgJadi.Size = new System.Drawing.Size(209, 27);
-            this.textBoxKodeBrgJadi.TabIndex = 31;
-            this.textBoxKodeBrgJadi.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxKodeBrgJadi_KeyDown);
-            // 
             // panelBrgJadi
             // 
             this.panelBrgJadi.Controls.Add(this.textBoxNama);
@@ -457,15 +466,6 @@ namespace PT.SPSS
             this.dataGridViewBrgJadi.Size = new System.Drawing.Size(233, 186);
             this.dataGridViewBrgJadi.TabIndex = 53;
             this.dataGridViewBrgJadi.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewBrgJadi_CellClick);
-            // 
-            // textBoxKodeBB
-            // 
-            this.textBoxKodeBB.Location = new System.Drawing.Point(140, 35);
-            this.textBoxKodeBB.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxKodeBB.Name = "textBoxKodeBB";
-            this.textBoxKodeBB.Size = new System.Drawing.Size(126, 27);
-            this.textBoxKodeBB.TabIndex = 30;
-            this.textBoxKodeBB.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxKodeBB_KeyDown);
             // 
             // panelBB
             // 

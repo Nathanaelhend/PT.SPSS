@@ -56,6 +56,11 @@ namespace PT.SPSS
                 this.nota_beliTableAdapter.filterSupplier(this.pt_spss_kpDataSet.nota_beli, supplier.Nama);
                 this.reportViewer1.RefreshReport();
             }
+            else
+            {
+                this.nota_beliTableAdapter.Fill(this.pt_spss_kpDataSet.nota_beli);
+                this.reportViewer1.RefreshReport();
+            }
         }
 
         private void dateTimeAwal_ValueChanged(object sender, EventArgs e)

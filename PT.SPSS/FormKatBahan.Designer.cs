@@ -90,9 +90,8 @@ namespace PT.SPSS
             // textBoxKodeCatBB
             // 
             this.textBoxKodeCatBB.Location = new System.Drawing.Point(117, 66);
-            this.textBoxKodeCatBB.Multiline = true;
             this.textBoxKodeCatBB.Name = "textBoxKodeCatBB";
-            this.textBoxKodeCatBB.Size = new System.Drawing.Size(240, 26);
+            this.textBoxKodeCatBB.Size = new System.Drawing.Size(240, 20);
             this.textBoxKodeCatBB.TabIndex = 88;
             this.textBoxKodeCatBB.TextChanged += new System.EventHandler(this.textBoxKodeCatBB_TextChanged);
             // 

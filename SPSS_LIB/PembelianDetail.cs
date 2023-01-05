@@ -13,17 +13,19 @@ namespace SPSS_LIB
         private int quantity;
         private int harga;
         private int jumlah;
+        private int hargaNett;
         private double discPersen;
         private int discRph;
         private int totalHarga;
 
         #region Constructors
-        public PembelianDetail(string kode, int quantity, int harga, int jumlah, double discPersen, int discRph, int totalHarga)
+        public PembelianDetail(string kode, int quantity, int harga, int jumlah, int hargaNett, double discPersen, int discRph, int totalHarga)
         {
             this.Kode = kode;
             this.Quantity = quantity;
             this.Harga = harga;
             this.Jumlah = jumlah;
+            this.HargaNett = hargaNett;
             this.DiscPersen = discPersen;
             this.DiscRph = discRph;
             this.TotalHarga = totalHarga;
@@ -35,6 +37,7 @@ namespace SPSS_LIB
         public int Quantity { get => quantity; set => quantity = value; }
         public int Harga { get => harga; set => harga = value; }
         public int Jumlah { get => jumlah; set => jumlah = value; }
+        public int HargaNett { get => hargaNett; set => hargaNett = value; }
         public double DiscPersen { get => discPersen; set => discPersen = value; }
         public int DiscRph { get => discRph; set => discRph = value; }
         public int TotalHarga { get => totalHarga; set => totalHarga = value; }

@@ -14,13 +14,13 @@ namespace SPSS_LIB
         private DateTime tanggal;
         private DateTime deadline;
         private string brgJadi;
-        private int quantity;
-        private int jumlah;
-        private int hpp;
+        private double quantity;
+        private double jumlah;
+        private double hpp;
         private List<DetailHPP> listDetailHPP;
 
         #region Constructors
-        public HPP(string noBukti, DateTime tanggal, DateTime deadline, string brgJadi, int quantity, int jumlah, int hpp)
+        public HPP(string noBukti, DateTime tanggal, DateTime deadline, string brgJadi, double quantity, double jumlah, double hpp)
         {
             this.NoBukti = noBukti;
             this.Tanggal = tanggal;
@@ -38,15 +38,15 @@ namespace SPSS_LIB
         public DateTime Tanggal { get => tanggal; set => tanggal = value; }
         public DateTime Deadline { get => deadline; set => deadline = value; }
         public string BrgJadi { get => brgJadi; set => brgJadi = value; }
-        public int Quantity { get => quantity; set => quantity = value; }
-        public int Jumlah { get => jumlah; set => jumlah = value; }
-        public int Hpp { get => hpp; set => hpp = value; }
+        public double Quantity { get => quantity; set => quantity = value; }
+        public double Jumlah { get => jumlah; set => jumlah = value; }
+        public double Hpp { get => hpp; set => hpp = value; }
         public List<DetailHPP> ListDetailHPP { get => listDetailHPP; set => listDetailHPP = value; }
         #endregion
 
 
         #region Methods
-        public void TambahHPPDetil(string kode, int quantity, int harga, int jumlah)
+        public void TambahHPPDetil(string kode, double quantity, double harga, double jumlah)
         {
             DetailHPP detailHPP = new DetailHPP(kode, quantity, harga, jumlah);
 
@@ -133,21 +133,21 @@ namespace SPSS_LIB
             return name;
         }
 
-        public static int HitungHPP(int total, int quantity)
+        public static double HitungHPP(double total, double quantity)
         {
-            int hpp = total / quantity;
+            double hpp = total / quantity;
             return hpp;
         }
 
-        public static int HitungTotalBB(int harga, int quantity)
+        public static double HitungTotalBB(double harga, double quantity)
         {
-            int total = harga * quantity;
+            double total = harga * quantity;
             return total;
         }
 
-        public static int HitungJumlah(int harga, int total)
+        public static double HitungJumlah(double harga, double total)
         {
-            int jumlah = harga + total;
+            double jumlah = harga + total;
             return jumlah;
         }
         #endregion

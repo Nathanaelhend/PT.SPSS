@@ -31,14 +31,24 @@ namespace PT.SPSS
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.pt_spss_kpDataSet = new PT.SPSS.pt_spss_kpDataSet();
-            this.label2 = new System.Windows.Forms.Label();
             this.sisa_produksiBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.pt_spss_kpDataSet = new PT.SPSS.pt_spss_kpDataSet();
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.label2 = new System.Windows.Forms.Label();
             this.sisa_produksiTableAdapter = new PT.SPSS.pt_spss_kpDataSetTableAdapters.sisa_produksiTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.pt_spss_kpDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sisa_produksiBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pt_spss_kpDataSet)).BeginInit();
             this.SuspendLayout();
+            // 
+            // sisa_produksiBindingSource
+            // 
+            this.sisa_produksiBindingSource.DataMember = "sisa_produksi";
+            this.sisa_produksiBindingSource.DataSource = this.pt_spss_kpDataSet;
+            // 
+            // pt_spss_kpDataSet
+            // 
+            this.pt_spss_kpDataSet.DataSetName = "pt_spss_kpDataSet";
+            this.pt_spss_kpDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // reportViewer1
             // 
@@ -52,11 +62,6 @@ namespace PT.SPSS
             this.reportViewer1.Size = new System.Drawing.Size(944, 501);
             this.reportViewer1.TabIndex = 69;
             // 
-            // pt_spss_kpDataSet
-            // 
-            this.pt_spss_kpDataSet.DataSetName = "pt_spss_kpDataSet";
-            this.pt_spss_kpDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // label2
             // 
             this.label2.BackColor = System.Drawing.SystemColors.ActiveBorder;
@@ -68,11 +73,6 @@ namespace PT.SPSS
             this.label2.TabIndex = 77;
             this.label2.Text = "REPORT SISA PRODUKSI";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // sisa_produksiBindingSource
-            // 
-            this.sisa_produksiBindingSource.DataMember = "sisa_produksi";
-            this.sisa_produksiBindingSource.DataSource = this.pt_spss_kpDataSet;
             // 
             // sisa_produksiTableAdapter
             // 
@@ -87,8 +87,8 @@ namespace PT.SPSS
             this.Controls.Add(this.label2);
             this.Name = "FormSisaProduksi";
             this.Load += new System.EventHandler(this.FormSisaProduksi_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pt_spss_kpDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sisa_produksiBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pt_spss_kpDataSet)).EndInit();
             this.ResumeLayout(false);
 
         }

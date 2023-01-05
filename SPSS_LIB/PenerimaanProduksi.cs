@@ -46,6 +46,11 @@ namespace SPSS_LIB
             string sql = "insert into penerimaan_produksi(noBukti, tanggalPenerimaan, noBuktiHPP, tanggalOrderPotong, hasilProduksi, kodeBrgJadi) VALUES('" + p.NoBukti + "','" +
                           p.TglPenerimaan.ToString("yyyy-MM-dd hh:mm:ss") + "','" + p.NoHPP + "','" + p.TglHpp.ToString("yyyy-MM-dd hh:mm:ss") + "','" +
                           p.HasilProduksi + "','" + p.KodeBrgJadi + "')";
+
+            Console.WriteLine(p.KodeBrgJadi);
+
+            //string sql = INSERT INTO `penerimaan_produksi` (`noBukti`, `tanggalPenerimaan`, `noBuktiHPP`, `tanggalOrderPotong`, `hasilProduksi`, `kodeBrgJadi`)
+            //             + VALUES('PRO01', '2023-01-06 11:19:31', 'PO001', '2023-01-12 11:19:31', '20', 'BL9285BIRU');
             Koneksi.JalankanPerintahDML(sql);
         }
 

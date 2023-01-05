@@ -19,6 +19,7 @@ namespace PT.SPSS
 
         List<BarangJadi> listBrgJadi = new List<BarangJadi>();
         HPP hpp;
+        
 
         public FormEntryHPP()
         {
@@ -53,9 +54,14 @@ namespace PT.SPSS
             dataGridViewHPP.Columns.Add("kode", "Kode Bahan");
             dataGridViewHPP.Columns.Add("nama", "Nama Bahan");
             dataGridViewHPP.Columns.Add("quantity", "Qty");
-            dataGridViewHPP.Columns.Add("harga", "Harga");
+            dataGridViewHPP.Columns.Add("hargaNett", "Harga");
             dataGridViewHPP.Columns.Add("jumlah", "Jumlah");
 
+            dataGridViewHPP.Columns["jumlah"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
+            dataGridViewHPP.Columns["Jumlah"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+            dataGridViewHPP.Columns["Jumlah"].DefaultCellStyle.Format = "#,##0.00";
 
             //agar datagrid tidak bisa diganti-ganti oleh user
             dataGridViewHPP.AllowUserToAddRows = false;
@@ -85,7 +91,7 @@ namespace PT.SPSS
             //menambah kolom di datagridview
             dataGridViewBB.Columns.Add("kode", "Kode");
             dataGridViewBB.Columns.Add("nama", "Nama Barang");
-            dataGridViewBB.Columns.Add("harga", "Harga");
+            dataGridViewBB.Columns.Add("hargaNett", "Harga");
 
 
             //agar datagrid tidak bisa diganti-ganti oleh user
@@ -113,7 +119,7 @@ namespace PT.SPSS
         private void TampilDataGrid3()
         {
 
-
+            
             if (listBhnBakuHrg.Count > 0)
             {
                 foreach (BahanBaku b in listBhnBakuHrg)
@@ -167,12 +173,12 @@ namespace PT.SPSS
         }
 
 
-        private int HitungTotal()
+        private double HitungTotal()
         {
-            int Total = 0;
+            double Total = 0;
             for (int i = 0; i < dataGridViewHPP.Rows.Count; i++)
             {
-                int subTotal = int.Parse(dataGridViewHPP.Rows[i].Cells["jumlah"].Value.ToString());
+                double subTotal = double.Parse(dataGridViewHPP.Rows[i].Cells["jumlah"].Value.ToString());
                 Total += subTotal;
             }
             return Total;
@@ -181,61 +187,75 @@ namespace PT.SPSS
         private void textBoxQtyBB_KeyDown(object sender, KeyEventArgs e)
         {
             //BahanBaku bahanDipilih = (BahanBaku)comboBoxKodeBB.SelectedItem;
+            
 
             if (e.KeyCode == Keys.Enter)
             {
-                textBoxTotal.Text = HPP.HitungTotalBB(int.Parse(textBoxHarga.Text), int.Parse(textBoxQtyBB.Text)).ToString();
+                textBoxTotal.Text = HPP.HitungTotalBB(double.Parse(textBoxHarga.Text), double.Parse(textBoxQtyBB.Text)).ToString();
 
-                // textBoxJumlah.Text += textBoxTotal.Text;
+                //textBoxJumlah.Text += textBoxTotal.Text;
                 
 
-                dataGridViewHPP.Rows.Add(textBoxKodeBB.Text, textBoxNamaBB.Text, textBoxQtyBB.Text, textBoxHarga.Text, textBoxTotal.Text);
+                dataGridViewHPP.Rows.Add(textBoxKodeBB.Text, textBoxKeterangan.Text, textBoxQtyBB.Text, textBoxHarga.Text, textBoxTotal.Text);
+                textBoxJumlah.Text = HitungTotal().ToString();
+                textBoxKodeBB.Text = "";
+                textBoxKeterangan.Text = "";
+                textBoxQtyBB.Text = "";
+                textBoxHarga.Text = "";
+                textBoxTotal.Text = "";
             }
-            textBoxJumlah.Text = HitungTotal().ToString();
+            
         }
 
         private void buttonSimpan_Click(object sender, EventArgs e)
         {
-            try
+            if (textBoxNoBukti.Text != "" && textBoxQty.Text != "" && textBoxKodeBrgJadi.Text != "" && textBoxJumlah.Text != "" && textBoxHPP.Text != "")
             {
-                //BarangJadi brgJadiDipilih = (BarangJadi)comboBoxBrgJadi.SelectedItem;
-                //BahanBaku bhnBakuDipilih = (BahanBaku)comboBoxKodeBB.SelectedItem;
-
-                hpp = new HPP(textBoxNoBukti.Text, dateTimePicker.Value, dateTimeDeadline.Value, textBoxKodeBrgJadi.Text,
-                int.Parse(textBoxQty.Text), int.Parse(textBoxJumlah.Text), int.Parse(textBoxHPP.Text));
-
-
-                for (int i = 0; i < dataGridViewHPP.Rows.Count; i++)
+                try
                 {
+                    //BarangJadi brgJadiDipilih = (BarangJadi)comboBoxBrgJadi.SelectedItem;
+                    //BahanBaku bhnBakuDipilih = (BahanBaku)comboBoxKodeBB.SelectedItem;
 
-                    string kodeBahan = dataGridViewHPP.Rows[i].Cells["kode"].Value.ToString();
+                    hpp = new HPP(textBoxNoBukti.Text, dateTimePicker.Value, dateTimeDeadline.Value, textBoxKodeBrgJadi.Text,
+                    double.Parse(textBoxQty.Text), double.Parse(textBoxJumlah.Text), double.Parse(textBoxHPP.Text));
 
-                    int qty = int.Parse(dataGridViewHPP.Rows[i].Cells["quantity"].Value.ToString());
-                    int harga = int.Parse(dataGridViewHPP.Rows[i].Cells["harga"].Value.ToString());
-                    int jumlah = int.Parse(dataGridViewHPP.Rows[i].Cells["jumlah"].Value.ToString());
-                    
 
-                    hpp.TambahHPPDetil(kodeBahan, qty, harga, jumlah);
+                    for (int i = 0; i < dataGridViewHPP.Rows.Count; i++)
+                    {
+
+                        string kodeBahan = dataGridViewHPP.Rows[i].Cells["kode"].Value.ToString();
+                        //string namaBahan = dataGridViewHPP.Rows[i].Cells["nama"].Value.ToString();
+                        double qty = double.Parse(dataGridViewHPP.Rows[i].Cells["quantity"].Value.ToString());
+                        double harga = double.Parse(dataGridViewHPP.Rows[i].Cells["hargaNett"].Value.ToString());
+                        double jumlah = double.Parse(dataGridViewHPP.Rows[i].Cells["jumlah"].Value.ToString());
+
+
+                        hpp.TambahHPPDetil(kodeBahan, qty, harga, jumlah);
+                    }
+
+                    HPP.TambahData(hpp);
+
+                    MessageBox.Show("Data HPP berhasil tersimpan.", "Informasi");
+                    textBoxNoBukti.Text = "";
+                    dateTimePicker.Value = DateTime.Now;
+                    dateTimeDeadline.Value = DateTime.Now;
+                    textBoxQty.Text = "";
+                    textBoxJumlah.Text = "";
+                    textBoxHPP.Text = "";
+                    textBoxHarga.Text = "";
+                    textBoxQty.Text = "";
+                    textBoxTotal.Text = "";
+                    textBoxNoBukti.Focus();
+                    dataGridViewHPP.Columns.Clear();
                 }
-
-                HPP.TambahData(hpp);
-
-                MessageBox.Show("Data HPP berhasil tersimpan.", "Informasi");
-                textBoxNoBukti.Text = "";
-                dateTimePicker.Value = DateTime.Now;
-                dateTimeDeadline.Value = DateTime.Now;
-                textBoxQty.Text = "";
-                textBoxJumlah.Text = "";
-                textBoxHPP.Text = "";
-                textBoxHarga.Text = "";
-                textBoxQty.Text = "";
-                textBoxTotal.Text = "";
-                textBoxNoBukti.Focus();
-                dataGridViewHPP.Columns.Clear();
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Gagal menyimpan HPP. Pesan kesalahan : " + ex.Message, "Kesalahan");
+                }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show("Gagal menyimpan HPP. Pesan kesalahan : " + ex.Message, "Kesalahan");
+                MessageBox.Show("Harap isi data!");
             }
         }
 
@@ -243,7 +263,7 @@ namespace PT.SPSS
         {
             if (e.KeyCode == Keys.Enter)
             {
-                textBoxHPP.Text = HPP.HitungHPP(int.Parse(textBoxJumlah.Text), int.Parse(textBoxQty.Text)).ToString();
+                textBoxHPP.Text = HPP.HitungHPP(double.Parse(textBoxJumlah.Text), double.Parse(textBoxQty.Text)).ToString();
             }
         }
 
@@ -302,7 +322,7 @@ namespace PT.SPSS
 
                 textBoxKodeBB.Text = row.Cells["kode"].Value.ToString();
                 textBoxKeterangan.Text = row.Cells["nama"].Value.ToString();
-                textBoxHarga.Text = row.Cells["harga"].Value.ToString();
+                textBoxHarga.Text = row.Cells["hargaNett"].Value.ToString();
             }
             panelBB.Visible = false;
         }

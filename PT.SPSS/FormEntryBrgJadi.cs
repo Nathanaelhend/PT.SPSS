@@ -129,6 +129,8 @@ namespace PT.SPSS
                 {
                     MessageBox.Show("Harap Isi Data!");
                 }
+                
+                
             }
 
             textBoxKodeBrgJadi.Focus();
