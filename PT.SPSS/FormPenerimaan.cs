@@ -74,7 +74,7 @@ namespace PT.SPSS
                 string nama = "";
                 hpp = HPP.BacaData("noBukti", textBoxNoHPP.Text, ref nama);
 
-                PenerimaanProduksi pp = new PenerimaanProduksi(textBoxNoBukti.Text, dateTimePickerPenerimaan.Value, textBoxNoHPP.Text, dateTimePickerTglHPP.Value,
+                PenerimaanProduksi pp = new PenerimaanProduksi(textBoxNoBukti.Text, dateTimePickerPenerimaan.Value.Date, textBoxNoHPP.Text, dateTimePickerTglHPP.Value.Date,
                                         textBoxKodeBrgJadi.Text, textBoxJmlhProduksi.Text);
                 PenerimaanProduksi.TambahData(pp);
 

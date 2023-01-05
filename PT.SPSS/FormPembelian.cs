@@ -170,7 +170,7 @@ namespace PT.SPSS
                 try
                 {
 
-                    pembelian = new Pembelian(textBoxNoNota.Text, dateTimePicker.Value, textBoxSupplier.Text, int.Parse(textBoxJmlhAll.Text),
+                    pembelian = new Pembelian(textBoxNoNota.Text, dateTimePicker.Value.Date, textBoxSupplier.Text, int.Parse(textBoxJmlhAll.Text),
                     double.Parse(textBoxDiscPrsAll.Text), int.Parse(textBoxDiscRpAll.Text), int.Parse(textBoxDpp.Text), double.Parse(textBoxPPnPrs.Text), int.Parse(textBoxPPnRp.Text), int.Parse(textBoxNetto.Text));
 
 

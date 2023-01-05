@@ -29,9 +29,9 @@ namespace PT.SPSS
         {
             if (radioButtonTanggal.Checked == true)
             {
-                this.total_hppTableAdapter.FilterDate(this.pt_spss_kpDataSet.total_hpp, dateTimeAwal.Value, dateTimeAkhir.Value.Date);
+                this.total_hppTableAdapter.FilterDate(this.pt_spss_kpDataSet.total_hpp, dateTimeAwal.Value.Date, dateTimeAkhir.Value.Date);
 
-                MessageBox.Show(dateTimeAwal.Value.Date.ToString());
+                
                 this.reportViewer1.RefreshReport();
             }
             else

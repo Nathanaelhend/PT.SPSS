@@ -37,7 +37,7 @@ namespace PT.SPSS
         {
             if(radioButtonTanggal.Checked == true)
             {
-                this.penerimaan_produksiTableAdapter.filterDate(this.pt_spss_kpDataSet.penerimaan_produksi, dateTimeAwal.Value, dateTimeAkhir.Value);
+                this.penerimaan_produksiTableAdapter.filterDate(this.pt_spss_kpDataSet.penerimaan_produksi, dateTimeAwal.Value.Date, dateTimeAkhir.Value.Date);
                 this.reportViewer1.RefreshReport();
             }
 

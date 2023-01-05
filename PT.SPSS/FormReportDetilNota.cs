@@ -29,7 +29,7 @@ namespace PT.SPSS
             comboBoxSupplier.DisplayMember = "nama";
             comboBoxSupplier.DropDownStyle = ComboBoxStyle.DropDownList;
 
-            listBhnBaku = BahanBaku.BacaData("");
+            listBhnBaku = BahanBaku.BacaData2("");
 
 
             comboBoxBhnBaku.DataSource = listBhnBaku;
@@ -42,7 +42,7 @@ namespace PT.SPSS
         {
             if (radioButtonTanggal.Checked == true)
             {
-                this.nota_beli_detailTableAdapter.FilterDate(this.pt_spss_kpDataSet.nota_beli_detail, dateTimeAwal.Value, dateTimeAkhir.Value);
+                this.nota_beli_detailTableAdapter.FilterDate(this.pt_spss_kpDataSet.nota_beli_detail, dateTimeAwal.Value.Date, dateTimeAkhir.Value.Date);
 
                 this.reportViewer1.RefreshReport();
             }
@@ -77,6 +77,16 @@ namespace PT.SPSS
         private void dateTimeAwal_ValueChanged(object sender, EventArgs e)
         {
             dateTimeAkhir.Enabled = true;
+        }
+
+        private void radioButtonSupplier_CheckedChanged(object sender, EventArgs e)
+        {
+            comboBoxSupplier.Enabled = true;
+        }
+
+        private void radioButtonBhnBaku_CheckedChanged(object sender, EventArgs e)
+        {
+            comboBoxBhnBaku.Enabled = true;
         }
     }
 }

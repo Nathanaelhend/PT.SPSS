@@ -801,7 +801,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Sum(Fields!qtyTotal.Value)</Value>
+                              <Value>=Fields!qtyTotal.Value</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -870,7 +870,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Sum(Fields!jumlahTotal.Value)</Value>
+                              <Value>=Fields!jumlahTotal.Value</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -939,7 +939,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Sum(Fields!hpp.Value)</Value>
+                              <Value>=Fields!hpp.Value</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>

@@ -216,7 +216,7 @@ namespace PT.SPSS
                     //BarangJadi brgJadiDipilih = (BarangJadi)comboBoxBrgJadi.SelectedItem;
                     //BahanBaku bhnBakuDipilih = (BahanBaku)comboBoxKodeBB.SelectedItem;
 
-                    hpp = new HPP(textBoxNoBukti.Text, dateTimePicker.Value, dateTimeDeadline.Value, textBoxKodeBrgJadi.Text,
+                    hpp = new HPP(textBoxNoBukti.Text, dateTimePicker.Value.Date, dateTimeDeadline.Value.Date, textBoxKodeBrgJadi.Text,
                     double.Parse(textBoxQty.Text), double.Parse(textBoxJumlah.Text), double.Parse(textBoxHPP.Text));
 
 

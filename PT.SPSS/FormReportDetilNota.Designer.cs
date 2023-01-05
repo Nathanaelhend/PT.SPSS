@@ -30,7 +30,7 @@ namespace PT.SPSS
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.nota_beli_detailBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.pt_spss_kpDataSet = new PT.SPSS.pt_spss_kpDataSet();
             this.comboBoxSupplier = new System.Windows.Forms.ComboBox();
@@ -64,10 +64,11 @@ namespace PT.SPSS
             // 
             // comboBoxSupplier
             // 
+            this.comboBoxSupplier.Enabled = false;
             this.comboBoxSupplier.FormattingEnabled = true;
             this.comboBoxSupplier.Location = new System.Drawing.Point(141, 86);
             this.comboBoxSupplier.Name = "comboBoxSupplier";
-            this.comboBoxSupplier.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxSupplier.Size = new System.Drawing.Size(200, 21);
             this.comboBoxSupplier.TabIndex = 20;
             // 
             // dateTimeAkhir
@@ -79,6 +80,7 @@ namespace PT.SPSS
             this.dateTimeAkhir.Name = "dateTimeAkhir";
             this.dateTimeAkhir.Size = new System.Drawing.Size(200, 20);
             this.dateTimeAkhir.TabIndex = 19;
+            this.dateTimeAkhir.Value = new System.DateTime(2023, 1, 6, 0, 0, 0, 0);
             // 
             // dateTimeAwal
             // 
@@ -89,6 +91,7 @@ namespace PT.SPSS
             this.dateTimeAwal.Name = "dateTimeAwal";
             this.dateTimeAwal.Size = new System.Drawing.Size(200, 20);
             this.dateTimeAwal.TabIndex = 18;
+            this.dateTimeAwal.Value = new System.DateTime(2023, 1, 6, 0, 0, 0, 0);
             this.dateTimeAwal.ValueChanged += new System.EventHandler(this.dateTimeAwal_ValueChanged);
             // 
             // label1
@@ -124,9 +127,9 @@ namespace PT.SPSS
             // 
             // reportViewer1
             // 
-            reportDataSource1.Name = "DataSetDetail";
-            reportDataSource1.Value = this.nota_beli_detailBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
+            reportDataSource3.Name = "DataSetDetail";
+            reportDataSource3.Value = this.nota_beli_detailBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource3);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "PT.SPSS.ReportPembelianDetail.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(12, 191);
             this.reportViewer1.Name = "reportViewer1";
@@ -137,10 +140,11 @@ namespace PT.SPSS
             // 
             // comboBoxBhnBaku
             // 
+            this.comboBoxBhnBaku.Enabled = false;
             this.comboBoxBhnBaku.FormattingEnabled = true;
             this.comboBoxBhnBaku.Location = new System.Drawing.Point(141, 113);
             this.comboBoxBhnBaku.Name = "comboBoxBhnBaku";
-            this.comboBoxBhnBaku.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxBhnBaku.Size = new System.Drawing.Size(200, 21);
             this.comboBoxBhnBaku.TabIndex = 22;
             // 
             // nota_beliBindingSource
@@ -166,6 +170,7 @@ namespace PT.SPSS
             this.radioButtonSupplier.TabStop = true;
             this.radioButtonSupplier.Text = "Supplier";
             this.radioButtonSupplier.UseVisualStyleBackColor = true;
+            this.radioButtonSupplier.CheckedChanged += new System.EventHandler(this.radioButtonSupplier_CheckedChanged);
             // 
             // radioButtonBhnBaku
             // 
@@ -177,6 +182,7 @@ namespace PT.SPSS
             this.radioButtonBhnBaku.TabStop = true;
             this.radioButtonBhnBaku.Text = "Bahan Baku";
             this.radioButtonBhnBaku.UseVisualStyleBackColor = true;
+            this.radioButtonBhnBaku.CheckedChanged += new System.EventHandler(this.radioButtonBhnBaku_CheckedChanged);
             // 
             // label2
             // 

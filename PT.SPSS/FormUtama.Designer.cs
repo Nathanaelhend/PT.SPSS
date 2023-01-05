@@ -43,10 +43,11 @@ namespace PT.SPSS
             this.reportDetailPembelianToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportPenerimanProduksiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sisaProduksiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.penerimaanProduksiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.keluarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.orderPotongHPPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.orderPotongPerBarangToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.penerimaanProduksiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.keluarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.daftarOrderPotongToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -134,7 +135,8 @@ namespace PT.SPSS
             this.reportPenerimanProduksiToolStripMenuItem,
             this.sisaProduksiToolStripMenuItem,
             this.orderPotongHPPToolStripMenuItem,
-            this.orderPotongPerBarangToolStripMenuItem});
+            this.orderPotongPerBarangToolStripMenuItem,
+            this.daftarOrderPotongToolStripMenuItem});
             this.DaftarToolStripMenuItem.Name = "DaftarToolStripMenuItem";
             this.DaftarToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
             this.DaftarToolStripMenuItem.Text = "Report";
@@ -142,30 +144,44 @@ namespace PT.SPSS
             // reportPembelianToolStripMenuItem
             // 
             this.reportPembelianToolStripMenuItem.Name = "reportPembelianToolStripMenuItem";
-            this.reportPembelianToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.reportPembelianToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
             this.reportPembelianToolStripMenuItem.Text = "Pembelian";
             this.reportPembelianToolStripMenuItem.Click += new System.EventHandler(this.reportPembelianToolStripMenuItem_Click);
             // 
             // reportDetailPembelianToolStripMenuItem
             // 
             this.reportDetailPembelianToolStripMenuItem.Name = "reportDetailPembelianToolStripMenuItem";
-            this.reportDetailPembelianToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.reportDetailPembelianToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
             this.reportDetailPembelianToolStripMenuItem.Text = "Detail Pembelian";
             this.reportDetailPembelianToolStripMenuItem.Click += new System.EventHandler(this.reportDetailPembelianToolStripMenuItem_Click);
             // 
             // reportPenerimanProduksiToolStripMenuItem
             // 
             this.reportPenerimanProduksiToolStripMenuItem.Name = "reportPenerimanProduksiToolStripMenuItem";
-            this.reportPenerimanProduksiToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.reportPenerimanProduksiToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
             this.reportPenerimanProduksiToolStripMenuItem.Text = "Peneriman Produksi";
             this.reportPenerimanProduksiToolStripMenuItem.Click += new System.EventHandler(this.reportPenerimanProduksiToolStripMenuItem_Click);
             // 
             // sisaProduksiToolStripMenuItem
             // 
             this.sisaProduksiToolStripMenuItem.Name = "sisaProduksiToolStripMenuItem";
-            this.sisaProduksiToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.sisaProduksiToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
             this.sisaProduksiToolStripMenuItem.Text = "Sisa Produksi";
             this.sisaProduksiToolStripMenuItem.Click += new System.EventHandler(this.sisaProduksiToolStripMenuItem_Click);
+            // 
+            // orderPotongHPPToolStripMenuItem
+            // 
+            this.orderPotongHPPToolStripMenuItem.Name = "orderPotongHPPToolStripMenuItem";
+            this.orderPotongHPPToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
+            this.orderPotongHPPToolStripMenuItem.Text = "Order Potong/HPP";
+            this.orderPotongHPPToolStripMenuItem.Click += new System.EventHandler(this.orderPotongHPPToolStripMenuItem_Click);
+            // 
+            // orderPotongPerBarangToolStripMenuItem
+            // 
+            this.orderPotongPerBarangToolStripMenuItem.Name = "orderPotongPerBarangToolStripMenuItem";
+            this.orderPotongPerBarangToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
+            this.orderPotongPerBarangToolStripMenuItem.Text = "Order Potong Per Barang";
+            this.orderPotongPerBarangToolStripMenuItem.Click += new System.EventHandler(this.orderPotongPerBarangToolStripMenuItem_Click);
             // 
             // penerimaanProduksiToolStripMenuItem
             // 
@@ -181,19 +197,12 @@ namespace PT.SPSS
             this.keluarToolStripMenuItem.Text = "Keluar";
             this.keluarToolStripMenuItem.Click += new System.EventHandler(this.keluarToolStripMenuItem_Click);
             // 
-            // orderPotongHPPToolStripMenuItem
+            // daftarOrderPotongToolStripMenuItem
             // 
-            this.orderPotongHPPToolStripMenuItem.Name = "orderPotongHPPToolStripMenuItem";
-            this.orderPotongHPPToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.orderPotongHPPToolStripMenuItem.Text = "Order Potong/HPP";
-            this.orderPotongHPPToolStripMenuItem.Click += new System.EventHandler(this.orderPotongHPPToolStripMenuItem_Click);
-            // 
-            // orderPotongPerBarangToolStripMenuItem
-            // 
-            this.orderPotongPerBarangToolStripMenuItem.Name = "orderPotongPerBarangToolStripMenuItem";
-            this.orderPotongPerBarangToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
-            this.orderPotongPerBarangToolStripMenuItem.Text = "Order Potong Per Barang";
-            this.orderPotongPerBarangToolStripMenuItem.Click += new System.EventHandler(this.orderPotongPerBarangToolStripMenuItem_Click);
+            this.daftarOrderPotongToolStripMenuItem.Name = "daftarOrderPotongToolStripMenuItem";
+            this.daftarOrderPotongToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
+            this.daftarOrderPotongToolStripMenuItem.Text = "Daftar Order Potong";
+            this.daftarOrderPotongToolStripMenuItem.Click += new System.EventHandler(this.daftarOrderPotongToolStripMenuItem_Click);
             // 
             // FormUtama
             // 
@@ -231,5 +240,6 @@ namespace PT.SPSS
         private System.Windows.Forms.ToolStripMenuItem sisaProduksiToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem orderPotongHPPToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem orderPotongPerBarangToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem daftarOrderPotongToolStripMenuItem;
     }
 }

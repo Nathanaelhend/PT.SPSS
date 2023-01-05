@@ -95,6 +95,12 @@
     <Compile Include="DaftarBrgJadi.Designer.cs">
       <DependentUpon>DaftarBrgJadi.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormDaftarOrderPotong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDaftarOrderPotong.Designer.cs">
+      <DependentUpon>FormDaftarOrderPotong.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormEntryBahanBaku.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -211,6 +217,9 @@
     <EmbeddedResource Include="DaftarBrgJadi.resx">
       <DependentUpon>DaftarBrgJadi.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormDaftarOrderPotong.resx">
+      <DependentUpon>FormDaftarOrderPotong.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormEntryBahanBaku.resx">
       <DependentUpon>FormEntryBahanBaku.cs</DependentUpon>
     </EmbeddedResource>
@@ -268,6 +277,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ReportHPPOrderPerBarang2.rdlc" />
     <EmbeddedResource Include="ReportHPPOrderPerBarang.rdlc" />
     <EmbeddedResource Include="ReportHPPOrderPotong.rdlc" />
     <EmbeddedResource Include="ReportPembelian.rdlc" />

@@ -8321,7 +8321,7 @@ WHERE total_hpp.noBukti = @Param1";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[1];
+            this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[2];
             this._commandCollection[0] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = @"SELECT        total_hpp.noBukti, total_hpp.tanggal, total_hpp.kodeBrgJadi, barang_jadi.nama AS namaBarang, total_hpp.qty AS qtyTotal, total_hpp.jumlah AS jumlahTotal, total_hpp.hpp, detail_hpp.kodeBhnBaku, bahan_baku.nama AS namaBahan, detail_hpp.qty , 
@@ -8340,6 +8340,32 @@ WHERE total_hpp.noBukti = @Param1";
             param.SourceColumn = "noBukti";
             param.SourceVersion = global::System.Data.DataRowVersion.Current;
             this._commandCollection[0].Parameters.Add(param);
+            this._commandCollection[1] = new global::MySql.Data.MySqlClient.MySqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = @"SELECT        total_hpp.noBukti, total_hpp.tanggal, total_hpp.kodeBrgJadi, barang_jadi.nama AS namaBarang, total_hpp.qty AS qtyTotal, total_hpp.jumlah AS jumlahTotal, total_hpp.hpp, detail_hpp.kodeBhnBaku, 
+                         bahan_baku.nama AS namaBahan, detail_hpp.qty, bahan_baku.satuan, detail_hpp.harga AS hargaDetail, detail_hpp.jumlah AS jumlahDetail
+FROM            total_hpp INNER JOIN
+                         barang_jadi ON total_hpp.kodeBrgJadi = barang_jadi.kodeBarang INNER JOIN
+                         detail_hpp ON total_hpp.noBukti = detail_hpp.noBukti INNER JOIN
+                         bahan_baku ON detail_hpp.kodeBhnBaku = bahan_baku.kode
+WHERE        (total_hpp.tanggal >= @Param1) AND (total_hpp.tanggal <= @Param2)";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@Param1";
+            param.DbType = global::System.Data.DbType.DateTime;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Date;
+            param.IsNullable = true;
+            param.SourceColumn = "tanggal";
+            param.SourceVersion = global::System.Data.DataRowVersion.Current;
+            this._commandCollection[1].Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@Param2";
+            param.DbType = global::System.Data.DbType.DateTime;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Date;
+            param.IsNullable = true;
+            param.SourceColumn = "tanggal";
+            param.SourceVersion = global::System.Data.DataRowVersion.Current;
+            this._commandCollection[1].Parameters.Add(param);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8372,6 +8398,54 @@ WHERE total_hpp.noBukti = @Param1";
             }
             else {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((string)(Param1));
+            }
+            pt_spss_kpDataSet.reporthppDataTable dataTable = new pt_spss_kpDataSet.reporthppDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FilterDate(pt_spss_kpDataSet.reporthppDataTable dataTable, global::System.Nullable<global::System.DateTime> Param1, global::System.Nullable<global::System.DateTime> Param2) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((Param1.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((System.DateTime)(Param1.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            if ((Param2.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((System.DateTime)(Param2.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual pt_spss_kpDataSet.reporthppDataTable GetDataByTgl(global::System.Nullable<global::System.DateTime> Param1, global::System.Nullable<global::System.DateTime> Param2) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((Param1.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((System.DateTime)(Param1.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            if ((Param2.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((System.DateTime)(Param2.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             pt_spss_kpDataSet.reporthppDataTable dataTable = new pt_spss_kpDataSet.reporthppDataTable();
             this.Adapter.Fill(dataTable);

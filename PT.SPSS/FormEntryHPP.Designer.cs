@@ -443,9 +443,9 @@ namespace PT.SPSS
             // 
             this.panelBrgJadi.Controls.Add(this.textBoxNama);
             this.panelBrgJadi.Controls.Add(this.dataGridViewBrgJadi);
-            this.panelBrgJadi.Location = new System.Drawing.Point(196, 330);
+            this.panelBrgJadi.Location = new System.Drawing.Point(179, 330);
             this.panelBrgJadi.Name = "panelBrgJadi";
-            this.panelBrgJadi.Size = new System.Drawing.Size(268, 253);
+            this.panelBrgJadi.Size = new System.Drawing.Size(346, 253);
             this.panelBrgJadi.TabIndex = 57;
             this.panelBrgJadi.Visible = false;
             // 
@@ -463,7 +463,7 @@ namespace PT.SPSS
             this.dataGridViewBrgJadi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewBrgJadi.Location = new System.Drawing.Point(16, 50);
             this.dataGridViewBrgJadi.Name = "dataGridViewBrgJadi";
-            this.dataGridViewBrgJadi.Size = new System.Drawing.Size(233, 186);
+            this.dataGridViewBrgJadi.Size = new System.Drawing.Size(317, 186);
             this.dataGridViewBrgJadi.TabIndex = 53;
             this.dataGridViewBrgJadi.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewBrgJadi_CellClick);
             // 
@@ -471,9 +471,9 @@ namespace PT.SPSS
             // 
             this.panelBB.Controls.Add(this.textBoxNamaBB);
             this.panelBB.Controls.Add(this.dataGridViewBB);
-            this.panelBB.Location = new System.Drawing.Point(196, 330);
+            this.panelBB.Location = new System.Drawing.Point(179, 348);
             this.panelBB.Name = "panelBB";
-            this.panelBB.Size = new System.Drawing.Size(268, 253);
+            this.panelBB.Size = new System.Drawing.Size(346, 253);
             this.panelBB.TabIndex = 58;
             this.panelBB.Visible = false;
             // 
@@ -491,7 +491,7 @@ namespace PT.SPSS
             this.dataGridViewBB.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewBB.Location = new System.Drawing.Point(16, 50);
             this.dataGridViewBB.Name = "dataGridViewBB";
-            this.dataGridViewBB.Size = new System.Drawing.Size(233, 186);
+            this.dataGridViewBB.Size = new System.Drawing.Size(315, 186);
             this.dataGridViewBB.TabIndex = 53;
             this.dataGridViewBB.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewBB_CellClick);
             // 
@@ -500,8 +500,8 @@ namespace PT.SPSS
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(781, 829);
-            this.Controls.Add(this.panelBB);
             this.Controls.Add(this.panelBrgJadi);
+            this.Controls.Add(this.panelBB);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.dataGridViewHPP);
             this.Controls.Add(this.label1);

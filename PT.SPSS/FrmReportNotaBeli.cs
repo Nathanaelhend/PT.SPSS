@@ -44,7 +44,7 @@ namespace PT.SPSS
          
             if(radioButtonTanggal.Checked == true) 
             { 
-                this.nota_beliTableAdapter.filterDate(this.pt_spss_kpDataSet.nota_beli, dateTimeAwal.Value, dateTimeAkhir.Value);
+                this.nota_beliTableAdapter.filterDate(this.pt_spss_kpDataSet.nota_beli, dateTimeAwal.Value.Date, dateTimeAkhir.Value.Date);
 
                 this.reportViewer1.RefreshReport();
             }

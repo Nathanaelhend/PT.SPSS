@@ -229,5 +229,12 @@ namespace PT.SPSS
             frmOrder.Owner = this;
             frmOrder.Show();
         }
+
+        private void daftarOrderPotongToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormDaftarOrderPotong frmDaftarOrderPtg = new FormDaftarOrderPotong();
+            frmDaftarOrderPtg.Owner = this;
+            frmDaftarOrderPtg.Show();
+        }
     }
 }

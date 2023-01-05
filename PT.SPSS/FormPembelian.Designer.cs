@@ -461,7 +461,7 @@ namespace PT.SPSS
             this.panelBahan.Controls.Add(this.dataGridViewBhnBaku);
             this.panelBahan.Location = new System.Drawing.Point(147, 415);
             this.panelBahan.Name = "panelBahan";
-            this.panelBahan.Size = new System.Drawing.Size(268, 253);
+            this.panelBahan.Size = new System.Drawing.Size(423, 253);
             this.panelBahan.TabIndex = 54;
             this.panelBahan.Visible = false;
             // 
@@ -480,7 +480,7 @@ namespace PT.SPSS
             this.dataGridViewBhnBaku.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewBhnBaku.Location = new System.Drawing.Point(16, 50);
             this.dataGridViewBhnBaku.Name = "dataGridViewBhnBaku";
-            this.dataGridViewBhnBaku.Size = new System.Drawing.Size(233, 186);
+            this.dataGridViewBhnBaku.Size = new System.Drawing.Size(386, 186);
             this.dataGridViewBhnBaku.TabIndex = 53;
             this.dataGridViewBhnBaku.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewBhnBaku_CellClick);
             this.dataGridViewBhnBaku.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewBhnBaku_CellContentClick);
