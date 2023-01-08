@@ -61,7 +61,7 @@ namespace PT.SPSS
 
             dataGridViewHPP.Columns["Jumlah"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
-            dataGridViewHPP.Columns["Jumlah"].DefaultCellStyle.Format = "#,##0.00";
+            dataGridViewHPP.Columns["jumlah"].DefaultCellStyle.Format = "#,###";
 
             //agar datagrid tidak bisa diganti-ganti oleh user
             dataGridViewHPP.AllowUserToAddRows = false;

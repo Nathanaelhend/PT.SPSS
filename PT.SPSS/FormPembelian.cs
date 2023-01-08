@@ -17,6 +17,12 @@ namespace PT.SPSS
         List<BahanBaku> listBhnBaku = new List<BahanBaku>();
         Pembelian pembelian;
         public string kodeBahanBaku = "";
+        public int discAllNum;
+        public int discNum;
+        public int ppnNum;
+        public int qtyNum;
+        public int hargaNum;
+
         public FormPembelian()
         {
             InitializeComponent();
@@ -109,7 +115,17 @@ namespace PT.SPSS
         {
             if (e.KeyCode == Keys.Enter)
             {
-                textBoxJumlah.Text = Pembelian.HitungJumlah(int.Parse(textBoxQty.Text), int.Parse(textBoxHarga.Text)).ToString();
+                if (Int32.TryParse(textBoxHarga.Text, out hargaNum))
+                {
+                    if (hargaNum < 0)
+                    {
+                        MessageBox.Show("Diskon tidak boleh bernilai negatif");
+                    }
+                    else
+                    {
+                        textBoxJumlah.Text = Pembelian.HitungJumlah(int.Parse(textBoxQty.Text), int.Parse(textBoxHarga.Text)).ToString();
+                    }
+                }
 
                 textBoxDiscPrs.Focus();
             }
@@ -130,16 +146,20 @@ namespace PT.SPSS
         {
             if (e.KeyCode == Keys.Enter)
             {
-                textBoxDiscRp.Text = Pembelian.HitungDisc(int.Parse(textBoxJumlah.Text), int.Parse(textBoxDiscPrs.Text)).ToString();
-                textBoxTotal.Text = Pembelian.HitungTotal(int.Parse(textBoxJumlah.Text), int.Parse(textBoxDiscRp.Text)).ToString();
+                if (Int32.TryParse(textBoxDiscPrs.Text, out discNum))
+                {
+                    if (discNum < 0)
+                    {
+                        MessageBox.Show("Diskon tidak boleh bernilai negatif");
+                    }
+                    else
+                    {
+                        textBoxDiscRp.Text = Pembelian.HitungDisc(int.Parse(textBoxJumlah.Text), int.Parse(textBoxDiscPrs.Text)).ToString();
+                        textBoxTotal.Text = Pembelian.HitungTotal(int.Parse(textBoxJumlah.Text), int.Parse(textBoxDiscRp.Text)).ToString();
+                    }
+                }
 
-                //dataGridViewPembelian.Rows.Add(textBoxKode.Text, textBoxNamaBahan.Text, textBoxQty.Text, textBoxHarga.Text, textBoxDiscPrs.Text, textBoxDiscRp.Text, textBoxTotal.Text);
-                //textBoxQty.Text = "";
-                //textBoxHarga.Text = "";
-                //textBoxJumlah.Text = "";
-                //textBoxDiscPrs.Text = "";
-                //textBoxDiscRp.Text = "";
-                //textBoxTotal.Text = "";
+                
             }
         }
 
@@ -147,9 +167,18 @@ namespace PT.SPSS
         {
             if (e.KeyCode == Keys.Enter)
             {
-                textBoxDiscRpAll.Text = Pembelian.HitungDisc(int.Parse(textBoxJmlhAll.Text), int.Parse(textBoxDiscPrsAll.Text)).ToString();
-                textBoxDpp.Text = Pembelian.HitungTotal(int.Parse(textBoxJmlhAll.Text), int.Parse(textBoxDiscRpAll.Text)).ToString();
-
+                if (Int32.TryParse(textBoxDiscPrsAll.Text, out discAllNum))
+                {
+                    if (ppnNum < 0)
+                    {
+                        MessageBox.Show("Diskon tidak boleh bernilai negatif");
+                    }
+                    else
+                    {
+                        textBoxDiscRpAll.Text = Pembelian.HitungDisc(int.Parse(textBoxJmlhAll.Text), int.Parse(textBoxDiscPrsAll.Text)).ToString();
+                        textBoxDpp.Text = Pembelian.HitungTotal(int.Parse(textBoxJmlhAll.Text), int.Parse(textBoxDiscRpAll.Text)).ToString();
+                    }
+                }
             }
         }
 
@@ -157,76 +186,90 @@ namespace PT.SPSS
         {
             if (e.KeyCode == Keys.Enter)
             {
-                textBoxPPnRp.Text = Pembelian.HitungPPn(int.Parse(textBoxDpp.Text), int.Parse(textBoxPPnPrs.Text)).ToString();
+                if(Int32.TryParse(textBoxPPnPrs.Text, out ppnNum))
+                {
+                    if (ppnNum < 0)
+                    {
+                        MessageBox.Show("PPN tidak boleh bernilai negatif");
+                    }
+                    else
+                    {
+                        textBoxPPnRp.Text = Pembelian.HitungPPn(int.Parse(textBoxDpp.Text), int.Parse(textBoxPPnPrs.Text)).ToString();
 
-                textBoxNetto.Text = Pembelian.HitungNetto(int.Parse(textBoxDpp.Text), int.Parse(textBoxPPnRp.Text)).ToString();
+                        textBoxNetto.Text = Pembelian.HitungNetto(int.Parse(textBoxDpp.Text), int.Parse(textBoxPPnRp.Text)).ToString();
+                    }
+                }
             }
+
         }
 
         private void buttonSimpan_Click(object sender, EventArgs e)
         {
             if (textBoxNoNota.Text != "" && textBoxSupplier.Text != "" & textBoxDiscPrsAll.Text != "" && textBoxDiscRpAll.Text != "" && textBoxDpp.Text != "" && textBoxNetto.Text != "")
             {
-                try
-                {
+                
+                        try
+                        {
 
-                    pembelian = new Pembelian(textBoxNoNota.Text, dateTimePicker.Value.Date, textBoxSupplier.Text, int.Parse(textBoxJmlhAll.Text),
-                    double.Parse(textBoxDiscPrsAll.Text), int.Parse(textBoxDiscRpAll.Text), int.Parse(textBoxDpp.Text), double.Parse(textBoxPPnPrs.Text), int.Parse(textBoxPPnRp.Text), int.Parse(textBoxNetto.Text));
-
-
-                    for (int i = 0; i < dataGridViewPembelian.Rows.Count; i++)
-                    {
-
-                        string kodeBahan = dataGridViewPembelian.Rows[i].Cells["kode"].Value.ToString();
-
-                        int qty = int.Parse(dataGridViewPembelian.Rows[i].Cells["quantity"].Value.ToString());
-                        int harga = int.Parse(dataGridViewPembelian.Rows[i].Cells["harga"].Value.ToString());
-                        int jumlah = int.Parse(dataGridViewPembelian.Rows[i].Cells["jumlah"].Value.ToString());
-                        double discPrs = double.Parse(dataGridViewPembelian.Rows[i].Cells["diskon_persen"].Value.ToString());
-                        int discRph = int.Parse(dataGridViewPembelian.Rows[i].Cells["diskon_rph"].Value.ToString());
-                        int total = int.Parse(dataGridViewPembelian.Rows[i].Cells["total_harga"].Value.ToString());
-
-                        int dpp = (total * int.Parse(textBoxDiscPrsAll.Text)) / 100;
-
-                        dpp = total - dpp;
-
-                        int hargaNett = (dpp + (dpp * int.Parse(textBoxPPnPrs.Text) / 100)) / qty;
-
-                        pembelian.TambahPembelianDetil(kodeBahan, qty, harga, jumlah, hargaNett, discPrs, discRph, total);
-                    }
-
-                    Pembelian.TambahData(pembelian);
+                            pembelian = new Pembelian(textBoxNoNota.Text, dateTimePicker.Value.Date, textBoxSupplier.Text, int.Parse(textBoxJmlhAll.Text),
+                            double.Parse(textBoxDiscPrsAll.Text), int.Parse(textBoxDiscRpAll.Text), int.Parse(textBoxDpp.Text), double.Parse(textBoxPPnPrs.Text), int.Parse(textBoxPPnRp.Text), int.Parse(textBoxNetto.Text));
 
 
-                    MessageBox.Show("Data nota Beli berhasil tersimpan.", "Informasi");
+                            for (int i = 0; i < dataGridViewPembelian.Rows.Count; i++)
+                            {
 
-                    textBoxNoNota.Text = "";
-                    textBoxNamaBahan.Text = "";
-                    dateTimePicker.Value = DateTime.Now;
-                    textBoxQty.Text = "";
-                    textBoxHarga.Text = "";
-                    textBoxJumlah.Text = "";
-                    textBoxDiscPrs.Text = "";
-                    textBoxDiscRp.Text = "";
-                    textBoxTotal.Text = "";
-                    textBoxSupplier.Text = "";
-                    textBoxNamaSupp.Text = "";
-                    textBoxAlamat.Text = "";
-                    textBoxJmlhAll.Text = "";
-                    textBoxDiscPrsAll.Text = "";
-                    textBoxDiscRpAll.Text = "";
-                    textBoxDpp.Text = "";
-                    textBoxPPnPrs.Text = "";
-                    textBoxPPnRp.Text = "";
-                    textBoxNetto.Text = "";
-                    textBoxNoNota.Focus();
-                    dataGridViewPembelian.Columns.Clear();
-                }
+                                string kodeBahan = dataGridViewPembelian.Rows[i].Cells["kode"].Value.ToString();
 
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Gagal menyimpan nota. Pesan kesalahan : " + ex.Message, "Kesalahan");
-                }
+                                int qty = int.Parse(dataGridViewPembelian.Rows[i].Cells["quantity"].Value.ToString());
+                                int harga = int.Parse(dataGridViewPembelian.Rows[i].Cells["harga"].Value.ToString());
+                                int jumlah = int.Parse(dataGridViewPembelian.Rows[i].Cells["jumlah"].Value.ToString());
+                                double discPrs = double.Parse(dataGridViewPembelian.Rows[i].Cells["diskon_persen"].Value.ToString());
+                                int discRph = int.Parse(dataGridViewPembelian.Rows[i].Cells["diskon_rph"].Value.ToString());
+                                int total = int.Parse(dataGridViewPembelian.Rows[i].Cells["total_harga"].Value.ToString());
+
+                                int dpp = (total * int.Parse(textBoxDiscPrsAll.Text)) / 100;
+
+                                dpp = total - dpp;
+
+                                int hargaNett = (dpp + (dpp * int.Parse(textBoxPPnPrs.Text) / 100)) / qty;
+
+                                pembelian.TambahPembelianDetil(kodeBahan, qty, harga, jumlah, hargaNett, discPrs, discRph, total);
+                            }
+
+                            Pembelian.TambahData(pembelian);
+
+
+                            MessageBox.Show("Data nota Beli berhasil tersimpan.", "Informasi");
+
+                            textBoxNoNota.Text = "";
+                            textBoxNamaBahan.Text = "";
+                            dateTimePicker.Value = DateTime.Now;
+                            textBoxQty.Text = "";
+                            textBoxHarga.Text = "";
+                            textBoxJumlah.Text = "";
+                            textBoxDiscPrs.Text = "";
+                            textBoxDiscRp.Text = "";
+                            textBoxTotal.Text = "";
+                            textBoxSupplier.Text = "";
+                            textBoxNamaSupp.Text = "";
+                            textBoxAlamat.Text = "";
+                            textBoxJmlhAll.Text = "";
+                            textBoxDiscPrsAll.Text = "";
+                            textBoxDiscRpAll.Text = "";
+                            textBoxDpp.Text = "";
+                            textBoxPPnPrs.Text = "";
+                            textBoxPPnRp.Text = "";
+                            textBoxNetto.Text = "";
+                            textBoxNoNota.Focus();
+                            dataGridViewPembelian.Columns.Clear();
+                        }
+
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Gagal menyimpan nota. Pesan kesalahan : " + ex.Message, "Kesalahan");
+                        }
+                    
+
             }
             else
             {
@@ -268,6 +311,11 @@ namespace PT.SPSS
             dataGridViewPembelian.Columns.Add("diskon_persen", "Diskon %");
             dataGridViewPembelian.Columns.Add("diskon_rph", "Diskon");
             dataGridViewPembelian.Columns.Add("total_harga", "Total Harga");
+
+            dataGridViewPembelian.Columns["harga"].DefaultCellStyle.Format = "#,###";
+            dataGridViewPembelian.Columns["jumlah"].DefaultCellStyle.Format = "#,###";
+            dataGridViewPembelian.Columns["diskon_rph"].DefaultCellStyle.Format = "#,###";
+            dataGridViewPembelian.Columns["total_harga"].DefaultCellStyle.Format = "#,###";
 
             //agar datagrid tidak bisa diganti-ganti oleh user
             dataGridViewPembelian.AllowUserToAddRows = false;

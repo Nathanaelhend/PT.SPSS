@@ -62,7 +62,7 @@ namespace PT.SPSS
             }
             catch(Exception ex)
             {
-                MessageBox.Show("Koneksi gagal. Pesan kesalahan : " + ex.Message);
+                MessageBox.Show("Koneksi gagal. Pastikan username password atau koneksi database benar!");
             }
         }
 
